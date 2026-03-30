@@ -8,13 +8,15 @@ export default async function Page({ params }) {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   )
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('plants')
     .select('*')
     .eq('slug', slug)
-    .single()
+    .maybeSingle()
 
-  if (!data) return <div>データなし</div>
+  if (error || !data) {
+    return <div>Not found</div>
+  }
 
   const q = encodeURIComponent(data.name)
   const googleUrl = "https://www.google.com/search?tbm=isch&q=" + q
@@ -23,8 +25,8 @@ export default async function Page({ params }) {
     <div style={{ padding: 20 }}>
       <h1>{data.name}</h1>
 
-      <a href={googleUrl} target="_blank" rel="noopener noreferrer">
-        🔍 画像検索（Google）
+      <a href={googleUrl} target="_blank">
+        🔍 画像検索
       </a>
     </div>
   )
