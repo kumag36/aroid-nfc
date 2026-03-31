@@ -1,12 +1,12 @@
+import { supabase } from '@/lib/supabase'
+
 export const dynamic = 'force-dynamic'
 
-const plants = [
-  { name: 'Monstera Albo', slug: 'monstera-albo' },
-  { name: 'Thai Constellation', slug: 'thai-con' },
-  { name: 'Mint', slug: 'mint' }
-]
+export default async function Page() {
+  const { data } = await supabase
+    .from('nfc_tags')
+    .select('*')
 
-export default function Page() {
   return (
     <main style={{
       background: '#020617',
@@ -14,38 +14,19 @@ export default function Page() {
       padding: '20px',
       color: '#fff'
     }}>
-      <h1 style={{
-        fontSize: '24px',
-        marginBottom: '20px'
-      }}>
-        図鑑一覧
-      </h1>
+      <h1>図鑑一覧</h1>
 
-      {plants.map(p => (
-        <a key={p.slug} href={`/plant/${p.slug}`} style={{
+      {data?.map(p => (
+        <a key={p.id} href={`/plant/${p.slug}`} style={{
           display: 'block',
           background: '#0f172a',
           padding: '16px',
           marginBottom: '12px',
           borderRadius: '12px',
-          textDecoration: 'none',
           color: '#fff',
-          border: '1px solid #1e293b'
+          textDecoration: 'none'
         }}>
-          <div style={{
-            fontSize: '18px',
-            fontWeight: 'bold'
-          }}>
-            🌿 {p.name}
-          </div>
-
-          <div style={{
-            fontSize: '12px',
-            color: '#94a3b8',
-            marginTop: '4px'
-          }}>
-            詳細を見る →
-          </div>
+          🌿 {p.name}
         </a>
       ))}
     </main>
