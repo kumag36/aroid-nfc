@@ -1,16 +1,53 @@
+export const dynamic = 'force-dynamic'
+
+const plants = [
+  { name: 'Monstera Albo', slug: 'monstera-albo' },
+  { name: 'Thai Constellation', slug: 'thai-con' },
+  { name: 'Mint', slug: 'mint' }
+]
+
 export default function Page() {
   return (
-    <div style={{
+    <main style={{
       background: '#020617',
       minHeight: '100vh',
-      color: '#fff',
-      padding: '20px'
+      padding: '20px',
+      color: '#fff'
     }}>
-      <h1>図鑑一覧</h1>
+      <h1 style={{
+        fontSize: '24px',
+        marginBottom: '20px'
+      }}>
+        図鑑一覧
+      </h1>
 
-      <a href="/plant/test">
-        テストページ
-      </a>
-    </div>
+      {plants.map(p => (
+        <a key={p.slug} href={`/plant/${p.slug}`} style={{
+          display: 'block',
+          background: '#0f172a',
+          padding: '16px',
+          marginBottom: '12px',
+          borderRadius: '12px',
+          textDecoration: 'none',
+          color: '#fff',
+          border: '1px solid #1e293b'
+        }}>
+          <div style={{
+            fontSize: '18px',
+            fontWeight: 'bold'
+          }}>
+            🌿 {p.name}
+          </div>
+
+          <div style={{
+            fontSize: '12px',
+            color: '#94a3b8',
+            marginTop: '4px'
+          }}>
+            詳細を見る →
+          </div>
+        </a>
+      ))}
+    </main>
   )
 }
