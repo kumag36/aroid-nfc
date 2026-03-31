@@ -1,7 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 export default function Page() {
-  return (
-    <div>
-      OK
-    </div>
-  )
+  return <div>Top</div>
 }
