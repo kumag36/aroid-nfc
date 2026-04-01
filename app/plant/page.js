@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function Page() {
   const { data } = await supabase
-    .from('nfc_tags')
+    .from('plants')
     .select('*')
 
   return (
@@ -14,7 +14,9 @@ export default async function Page() {
       padding: '20px',
       color: '#fff'
     }}>
-      <h1>図鑑一覧</h1>
+      <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>
+        図鑑一覧
+      </h1>
 
       {data?.map(p => (
         <a key={p.id} href={`/plant/${p.slug}`} style={{
