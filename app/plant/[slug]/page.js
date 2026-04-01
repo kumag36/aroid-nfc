@@ -9,13 +9,11 @@ export default async function Page({ params }) {
     .from('plants')
     .select('*')
     .eq('slug', slug)
-    .single()
+    .maybeSingle()
 
   if (!data) {
-    return <div style={{ color: '#fff' }}>Not found</div>
+    return <div style={{ color: '#fff' }}>データなし</div>
   }
-
-  const googleUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(data.name)}`
 
   return (
     <main style={{
@@ -24,29 +22,7 @@ export default async function Page({ params }) {
       padding: '20px',
       color: '#fff'
     }}>
-      <h1 style={{ fontSize: '28px', marginBottom: '10px' }}>
-        {data.name}
-      </h1>
-
-      <p style={{ color: '#94a3b8', marginBottom: '20px' }}>
-        {data.description}
-      </p>
-
-      <a
-        href={googleUrl}
-        target="_blank"
-        style={{
-          display: 'inline-block',
-          background: '#22c55e',
-          padding: '10px 16px',
-          borderRadius: '8px',
-          color: '#000',
-          fontWeight: 'bold',
-          textDecoration: 'none'
-        }}
-      >
-        🔍 画像を見る
-      </a>
+      <h1>{data.name}</h1>
     </main>
   )
 }
