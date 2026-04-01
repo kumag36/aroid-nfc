@@ -1,12 +1,22 @@
+import { supabase } from '@/lib/supabase'
+
 export const dynamic = 'force-dynamic'
 
-const dummy = [
-  { name: 'Monstera Albo', slug: 'monstera-albo' },
-  { name: 'Thai Constellation', slug: 'thai-con' },
-  { name: 'Mint', slug: 'mint' }
-]
+export default async function Page({ params }) {
+  const { slug } = params
 
-export default function Page() {
+  const { data } = await supabase
+    .from('plants')
+    .select('*')
+    .eq('slug', slug)
+    .single()
+
+  if (!data) {
+    return <div style={{ color: '#fff' }}>Not found</div>
+  }
+
+  const googleUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(data.name)}`
+
   return (
     <main style={{
       background: '#020617',
@@ -14,33 +24,29 @@ export default function Page() {
       padding: '20px',
       color: '#fff'
     }}>
-      <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>
-        図鑑一覧
+      <h1 style={{ fontSize: '28px', marginBottom: '10px' }}>
+        {data.name}
       </h1>
 
-      {dummy.map(p => (
-        <a key={p.slug} href={`/plant/${p.slug}`} style={{
-          display: 'block',
-          background: '#0f172a',
-          padding: '16px',
-          marginBottom: '12px',
-          borderRadius: '10px',
-          textDecoration: 'none',
-          color: '#fff'
-        }}>
-          <div style={{ fontSize: '18px', fontWeight: 'bold' }}>
-            🌿 {p.name}
-          </div>
+      <p style={{ color: '#94a3b8', marginBottom: '20px' }}>
+        {data.description}
+      </p>
 
-          <div style={{
-            fontSize: '12px',
-            color: '#94a3b8',
-            marginTop: '4px'
-          }}>
-            詳細を見る →
-          </div>
-        </a>
-      ))}
+      <a
+        href={googleUrl}
+        target="_blank"
+        style={{
+          display: 'inline-block',
+          background: '#22c55e',
+          padding: '10px 16px',
+          borderRadius: '8px',
+          color: '#000',
+          fontWeight: 'bold',
+          textDecoration: 'none'
+        }}
+      >
+        🔍 画像を見る
+      </a>
     </main>
   )
 }
