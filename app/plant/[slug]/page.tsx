@@ -1,26 +1,36 @@
-import { createClient } from '@supabase/supabase-js'
+﻿export default async function Page({ params }) {
 
-const supabase = createClient(
-  "https://wasawygnvsvolkdrfjgs.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indhc2F3eWdudnN2b2xrZHJmamdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4NjI0ODcsImV4cCI6MjA5MDQzODQ4N30.28yMkwHVNgbhUTuQzyDej8SbTLDeumYJHo06YPeNVNc"
-)
+  const slug = params.slug
 
-export default async function Page({ params }: { params: { slug: string } }) {
+  const res = await fetch(
+    https://wasawygnvsvolkdrfjgs.supabase.co/rest/v1/plants?select=*&slug=eq.,
+    {
+      headers: {
+        apikey: "eyJhbGciOiJIUzI1NiIs...",
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIs..."
+      },
+      cache: "no-store"
+    }
+  )
 
-  const { data } = await supabase
-    .from('plants')
-    .select('*')
-    .eq('slug', params.slug)
-    .single()
+  const data = await res.json()
 
-  if (!data) {
+  if (!data || data.length === 0) {
     return <div>Not Found</div>
   }
 
+  const plant = data[0]
+
+  const googleUrl = https://www.google.com/search?tbm=isch&q=
+
   return (
     <div style={{ padding: 20 }}>
-      <h1>{data.name}</h1>
-      <p>{data.scientific_name}</p>
+      <h1>{plant.name}</h1>
+      <p>{plant.scientific_name}</p>
+
+      <a href={googleUrl} target="_blank">
+        🔍 Google画像で見る
+      </a>
     </div>
   )
 }

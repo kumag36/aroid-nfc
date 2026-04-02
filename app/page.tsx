@@ -3,8 +3,8 @@
 export default async function Home() {
   const res = await fetch("https://wasawygnvsvolkdrfjgs.supabase.co/rest/v1/plants?select=*", {
     headers: {
-      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indhc2F3eWdudnN2b2xrZHJmamdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4NjI0ODcsImV4cCI6MjA5MDQzODQ4N30.28yMkwHVNgbhUTuQzyDej8SbTLDeumYJHo06YPeNVNc",
-      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indhc2F3eWdudnN2b2xrZHJmamdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4NjI0ODcsImV4cCI6MjA5MDQzODQ4N30.28yMkwHVNgbhUTuQzyDej8SbTLDeumYJHo06YPeNVNc"
+      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
     },
     cache: "no-store"
   })
