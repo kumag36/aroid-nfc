@@ -1,5 +1,5 @@
-export default async function Page(props: any) {
-  const { uid } = await props.params
+export default async function Page({ params }: any) {
+  const uid = params.uid
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/items?id=eq.${uid}`,
