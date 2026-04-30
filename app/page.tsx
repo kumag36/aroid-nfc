@@ -67,8 +67,14 @@ export default function Home() {
       <header className="absolute inset-x-0 top-0 z-30 px-5 py-5 text-[#fffaf0]">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-full border border-current text-[11px] tracking-[0.16em]">
-              ZP
+            <span className="relative block h-12 w-12 overflow-hidden rounded-full bg-[#d9ffd8] ring-1 ring-[#fffaf0]/55">
+              <Image
+                src="/brand/zamakuri-logo.png"
+                alt=""
+                fill
+                className="object-cover"
+                sizes="48px"
+              />
             </span>
             <span>
               <span className="block text-sm font-semibold tracking-[0.18em]">
@@ -101,15 +107,27 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#08100c] to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-5 pb-20 pt-28">
+          <div className="relative mb-8 h-24 w-24 overflow-hidden rounded-full bg-[#d9ffd8] shadow-[0_20px_60px_rgba(0,0,0,0.34)] ring-1 ring-[#fffaf0]/25 md:h-32 md:w-32">
+            <Image
+              src="/brand/zamakuri-logo.png"
+              alt="ざまくりプランツ"
+              fill
+              priority
+              className="object-cover"
+              sizes="(min-width: 768px) 128px, 96px"
+            />
+          </div>
           <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
-            ZAMAKURI PLANTS HISTORY
+            ZAMAKURI PLANTS 1 YEAR HISTORY
           </p>
-          <h1 className="max-w-4xl text-[clamp(2.6rem,7vw,6.4rem)] font-medium leading-[1.08] tracking-normal">
-            植物と向き合う時間を、<span className="whitespace-nowrap">品位へ。</span>
+          <h1 className="max-w-5xl text-[clamp(2.5rem,6.4vw,6.2rem)] font-medium leading-[1.1] tracking-normal">
+            ざまくりプランツ
+            <span className="block">1年の歩み</span>
           </h1>
           <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/85 md:text-lg md:leading-9">
-            平屋の軒先から始まった小さな植物屋は、ひと鉢ごとの表情を見極め、
-            全国の植物好きと静かにつながる場所へ育ちました。
+            〜 開業から走り続けた11か月（約1年てことで😆）〜
+            <br />
+            平屋の軒先から始まった小さな植物屋が、全国の植物好きとつながる場所へ育つまで。
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a
@@ -153,7 +171,7 @@ export default function Home() {
             </h2>
           </div>
           <p className="text-[15px] leading-8 text-[#6a645b]">
-            1年でここまで来た、小さな植物屋のリアル。販売記録ではなく、
+            開業から走り続けた11か月（約1年てことで😆）。販売記録ではなく、
             本気で植物と向き合ってきた時間の記録です。
           </p>
         </div>
