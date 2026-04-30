@@ -87,6 +87,7 @@ export default function Home() {
           </Link>
 
           <nav className="hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
+            <Link href="/dictionary">DICTIONARY</Link>
             <Link href="/i/ZMK-000001">ZMK-000001</Link>
             <a href="#history">HISTORY</a>
             <a href="#future">FUTURE</a>
@@ -137,7 +138,7 @@ export default function Home() {
               年表を見る
             </a>
             <Link
-              href="/i/ZMK-000001"
+              href="/dictionary"
               className="inline-flex min-h-12 min-w-48 items-center justify-center border border-[#fffaf0]/35 px-6 text-sm font-semibold tracking-[0.16em]"
             >
               図鑑を見る
