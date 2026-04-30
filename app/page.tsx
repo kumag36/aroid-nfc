@@ -70,8 +70,8 @@ const history = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f5fff3] text-[#191a15] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
-      <header className="absolute inset-x-0 top-0 z-30 px-5 py-5 text-[#fffaf0]">
+    <main className="min-h-screen bg-[#f7fbf1] text-[#191a15] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+      <header className="absolute inset-x-0 top-0 z-30 border-b border-[#fffaf0]/10 bg-[#050806]/18 px-5 py-5 text-[#fffaf0] backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <span className="relative block h-12 w-12 overflow-hidden rounded-full bg-[#d9ffd8] ring-1 ring-[#fffaf0]/55">
@@ -108,10 +108,10 @@ export default function Home() {
           alt=""
           fill
           priority
-          className="object-cover opacity-[0.58]"
+          className="object-cover opacity-[0.46] saturate-[0.9]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,10,7,0.94)_0%,rgba(9,15,11,0.76)_43%,rgba(9,15,11,0.2)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,10,7,0.97)_0%,rgba(8,16,12,0.84)_48%,rgba(8,16,12,0.34)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#08100c] to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-5 pb-20 pt-28">
@@ -133,20 +133,20 @@ export default function Home() {
             <span className="block">1年の歩み</span>
           </h1>
           <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/85">
-            〜 開業から走り続けた11か月（約1年てことで😆）〜
+            開業から走り続けた11か月。約1年分の熱量を、静かな記録として。
             <br />
             平屋の軒先から始まった小さな植物屋が、全国の植物好きとつながる場所へ育つまで。
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a
               href="#history"
-              className="inline-flex min-h-12 min-w-48 items-center justify-center border border-[#d9ffd8] bg-[#d9ffd8] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d]"
+              className="inline-flex min-h-12 min-w-48 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08),0_18px_60px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]"
             >
               年表を見る
             </a>
             <Link
               href="/dictionary"
-              className="inline-flex min-h-12 min-w-48 items-center justify-center border border-[#fffaf0]/35 px-6 text-sm font-semibold tracking-[0.16em]"
+              className="inline-flex min-h-12 min-w-48 items-center justify-center border border-[#fffaf0]/28 bg-[#050806]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55"
             >
               図鑑を見る
             </Link>
@@ -154,7 +154,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f5fff3] px-5 py-20 text-[#191a15] md:py-28">
+      <section className="bg-[#f7fbf1] px-5 py-20 text-[#191a15] md:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#8f5949]">
@@ -164,18 +164,18 @@ export default function Home() {
               いまのざまくりを、静かに覗く。
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-[15px] leading-8 text-[#665f55]">
-              入荷、育成、イベントの空気感を日々の記録として。サイトの世界観から浮かないよう、余白のある展示として配置しています。
+              入荷、育成、イベントの空気感を日々の記録として。余白を持たせ、ブランドの静けさに馴染む展示として配置しています。
             </p>
           </div>
 
-          <div className="mx-auto mt-10 max-w-[540px] border border-[#191a15]/10 bg-[#fffaf0] shadow-[0_24px_70px_rgba(25,26,21,0.12)]">
+          <div className="mx-auto mt-10 max-w-[500px] border border-[#191a15]/12 bg-[#fbfff6] shadow-[0_28px_90px_rgba(25,26,21,0.10)]">
             <div className="flex items-center justify-between border-b border-[#191a15]/10 px-4 py-3">
               <p className="text-[11px] font-semibold tracking-[0.22em] text-[#8f5949]">
                 LIVE RECORD
               </p>
               <span className="text-xs text-[#665f55]/70">Instagram</span>
             </div>
-            <div className="aspect-[4/5] overflow-hidden bg-[#fffaf0]">
+            <div className="aspect-[4/5] overflow-hidden bg-[#fbfff6]">
               <iframe
                 src={instagramEmbedUrl}
                 title="ざまくりプランツ Instagram"
@@ -198,7 +198,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#08100c] px-5 py-16 text-[#fffaf0] md:py-20">
+      <section className="bg-[#050806] px-5 py-20 text-[#fffaf0] md:py-24">
         <div className="mx-auto grid max-w-7xl gap-4 border-y border-[#fffaf0]/10 py-8 md:grid-cols-3">
           {[
             ['01', '状態を見て渡す', '株の表情、根、葉の動きを見て、納得できるものだけを届けます。'],
@@ -243,7 +243,7 @@ export default function Home() {
             </h2>
           </div>
           <p className="text-[15px] leading-8 text-[#6a645b]">
-            開業から走り続けた11か月（約1年てことで😆）。販売記録ではなく、
+            開業から走り続けた11か月。販売記録ではなく、
             本気で植物と向き合ってきた時間の記録です。
           </p>
         </div>
@@ -317,6 +317,10 @@ export default function Home() {
     </main>
   )
 }
+
+
+
+
 
 
 

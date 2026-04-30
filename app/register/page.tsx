@@ -34,7 +34,7 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
   ].join('\n'))
   return (
     <main className="min-h-screen bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
-      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_78%_20%,rgba(217,255,216,0.18),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 py-8 md:pb-24">
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_78%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 py-8 md:pb-24">
         <div className="mx-auto flex max-w-7xl items-center justify-between py-4">
           <Link href="/" className="flex items-center gap-3">
             <span className="relative block h-11 w-11 overflow-hidden rounded-full bg-[#d9ffd8] ring-1 ring-[#fffaf0]/45">
@@ -65,7 +65,7 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
           <aside className="border border-[#fffaf0]/12 bg-[#fffaf0]/6 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur">
             <p className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">SEND TO</p>
             <div className="grid gap-3">
-              <Link href={instagramProfileUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center border border-[#d9ffd8] bg-[#d9ffd8] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d] transition duration-300 hover:-translate-y-0.5">
+              <Link href={instagramProfileUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08),0_18px_60px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]">
                 Instagram DMで送る
               </Link>
               <Link href={`mailto:kumajuko@gmail.com?subject=${mailSubject}&body=${mailBody}`} className="inline-flex min-h-12 items-center justify-center border border-[#fffaf0]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#fffaf0]/55">
@@ -81,7 +81,7 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
 
       <section className="mx-auto grid max-w-7xl gap-4 px-5 py-16 md:grid-cols-3 md:py-24">
         {registrationSteps.map(([number, title, text]) => (
-          <article key={number} className="border border-[#fffaf0]/12 bg-[#08140f]/78 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)]">
+          <article key={number} className="border border-[#fffaf0]/10 bg-[#07120d]/86 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)]">
             <p className="mb-5 text-xs font-semibold tracking-[0.22em] text-[#b89558]">{number}</p>
             <h2 className="text-2xl font-medium leading-tight">{title}</h2>
             <p className="mt-5 text-[15px] leading-8 text-[#d8d0bf]/76">{text}</p>
@@ -106,7 +106,7 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
         </div>
       </section>
 
-      <section className="bg-[#f5fff3] px-5 py-16 text-[#191a15] md:py-20">
+      <section className="bg-[#f7fbf1] px-5 py-16 text-[#191a15] md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[15px] leading-8 text-[#665f55]">
             図鑑は育てながら深くなる。NFC管理DBは、その一株の時間を残すための台帳です。
@@ -124,6 +124,8 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
     </main>
   )
 }
+
+
 
 
 

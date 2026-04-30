@@ -38,7 +38,7 @@ export default function DictionaryPage() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
-      <header className="absolute inset-x-0 top-0 z-30 px-5 py-5 text-[#fffaf0]">
+      <header className="absolute inset-x-0 top-0 z-30 border-b border-[#fffaf0]/10 bg-[#050806]/18 px-5 py-5 text-[#fffaf0] backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <span className="relative block h-12 w-12 overflow-hidden rounded-full bg-[#d9ffd8] ring-1 ring-[#fffaf0]/55">
@@ -68,7 +68,7 @@ export default function DictionaryPage() {
         </div>
       </header>
 
-      <section className="relative min-h-[88vh] bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.18),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-20 pt-32 md:pt-40">
+      <section className="relative min-h-[88vh] bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-20 pt-32 md:pt-40">
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#06100b] to-transparent" />
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center">
           <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
@@ -85,7 +85,7 @@ export default function DictionaryPage() {
             <button
               type="button"
               onClick={() => focusCategory('Monstera')}
-              className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#d9ffd8] bg-[#d9ffd8] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d] transition duration-300 hover:-translate-y-0.5 hover:bg-[#e7ffe6]"
+              className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#d9ffd8]/70 bg-[#d9ffd8]/12 px-6 text-sm font-semibold tracking-[0.16em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]"
             >
               モンステラから見る
             </button>
@@ -145,8 +145,8 @@ export default function DictionaryPage() {
             onClick={() => setActiveCategory('All')}
             className={`shrink-0 border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition ${
               activeCategory === 'All'
-                ? 'border-[#d9ffd8] bg-[#d9ffd8] text-[#15120d]'
-                : 'border-[#fffaf0]/14 bg-[#fffaf0]/5 text-[#eee7d7]/74 hover:border-[#b89558]/55'
+                ? 'border-[#d9ffd8]/65 bg-[#d9ffd8]/12 text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08)]'
+                : 'border-[#fffaf0]/12 bg-[#fffaf0]/4 text-[#eee7d7]/70 hover:border-[#d9ffd8]/40'
             }`}
           >
             All
@@ -158,8 +158,8 @@ export default function DictionaryPage() {
               onClick={() => setActiveCategory(category)}
               className={`shrink-0 border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition ${
                 activeCategory === category
-                  ? 'border-[#d9ffd8] bg-[#d9ffd8] text-[#15120d]'
-                  : 'border-[#fffaf0]/14 bg-[#fffaf0]/5 text-[#eee7d7]/74 hover:border-[#b89558]/55'
+                  ? 'border-[#d9ffd8]/65 bg-[#d9ffd8]/12 text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08)]'
+                  : 'border-[#fffaf0]/12 bg-[#fffaf0]/4 text-[#eee7d7]/70 hover:border-[#d9ffd8]/40'
               }`}
             >
               {category}
@@ -171,7 +171,7 @@ export default function DictionaryPage() {
           {filteredPlants.map((plant, index) => (
             <article
               key={plant.slug}
-              className="group flex min-h-[320px] flex-col border border-[#fffaf0]/12 bg-[#08140f]/78 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-1 hover:border-[#b89558]/55 hover:bg-[#0b1b13]/90"
+              className="group flex min-h-[340px] flex-col border border-[#fffaf0]/10 bg-[#07120d]/86 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.20)] transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34 hover:bg-[#0a1711]/92"
             >
               <div className="mb-6 flex items-start justify-between gap-4">
                 <p className="text-[11px] font-bold tracking-[0.22em] text-[#b89558]">
@@ -206,7 +206,7 @@ export default function DictionaryPage() {
 
               <Link
                 href={`/dictionary/${plant.slug}`}
-                className="mt-7 inline-flex min-h-11 items-center justify-center border border-[#fffaf0]/18 px-4 text-xs font-semibold tracking-[0.18em] text-[#fffaf0] transition duration-300 group-hover:border-[#b89558]/70 group-hover:text-[#f0c982]"
+                className="mt-7 inline-flex min-h-11 items-center justify-center border border-[#fffaf0]/18 px-4 text-xs font-semibold tracking-[0.18em] text-[#fffaf0] transition duration-300 group-hover:border-[#d9ffd8]/55 group-hover:text-[#eaffdf]"
               >
                 詳細を見る
               </Link>
@@ -221,7 +221,7 @@ export default function DictionaryPage() {
         )}
       </section>
 
-      <section className="border-t border-[#fffaf0]/10 bg-[#f5fff3] px-5 py-20 text-[#191a15] md:py-28">
+      <section className="border-t border-[#fffaf0]/10 bg-[#f7fbf1] px-5 py-20 text-[#191a15] md:py-28">
         <div className="mx-auto max-w-7xl">
           <p className="mb-5 text-xs font-bold tracking-[0.28em] text-[#8f5949]">
             GROWING ARCHIVE
@@ -251,4 +251,6 @@ export default function DictionaryPage() {
     </main>
   )
 }
+
+
 

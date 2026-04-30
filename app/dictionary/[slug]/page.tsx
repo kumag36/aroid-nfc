@@ -92,8 +92,8 @@ export async function generateMetadata({ params }: DictionaryDetailPageProps) {
 
 function MissingPage() {
   return (
-    <main className="grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.18),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] px-5 py-20 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
-      <section className="w-full max-w-3xl border border-[#fffaf0]/12 bg-[#08140f]/78 p-8 shadow-[0_24px_90px_rgba(0,0,0,0.28)] md:p-12">
+    <main className="grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] px-5 py-20 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+      <section className="w-full max-w-3xl border border-[#fffaf0]/10 bg-[#07120d]/86 p-8 shadow-[0_24px_90px_rgba(0,0,0,0.28)] md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
           DICTIONARY DATA NOT FOUND
         </p>
@@ -106,7 +106,7 @@ function MissingPage() {
           図鑑一覧から、いま記録されている品種を見てください。
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Link href="/dictionary" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#d9ffd8] bg-[#d9ffd8] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d] transition duration-300 hover:-translate-y-0.5">
+          <Link href="/dictionary" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08),0_18px_60px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]">
             図鑑へ戻る
           </Link>
           <Link href="/" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#fffaf0]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#fffaf0]/55">
@@ -133,7 +133,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
 
   return (
     <main className="min-h-screen bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
-      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.18),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-16 pt-8 md:pb-24">
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-16 pt-8 md:pb-24">
         <div className="mx-auto flex max-w-7xl items-center justify-between py-4 text-[#fffaf0]">
           <Link href="/" className="text-xs font-semibold tracking-[0.22em] text-[#fffaf0]/78">
             ZAMAKURI PLANTS
@@ -204,7 +204,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
 
       <section className="mx-auto grid max-w-7xl gap-4 px-5 py-16 md:grid-cols-2 md:py-24">
         {profile.map((section) => (
-          <article key={section.label} className="min-h-[260px] border border-[#fffaf0]/12 bg-[#08140f]/78 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-1 hover:border-[#b89558]/55 md:p-8">
+          <article key={section.label} className="min-h-[260px] border border-[#fffaf0]/10 bg-[#07120d]/86 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34 md:p-8">
             <p className="mb-5 text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">
               {section.label}
             </p>
@@ -232,7 +232,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
-            <Link href="/register" className="inline-flex min-h-12 items-center justify-center border border-[#d9ffd8] bg-[#d9ffd8] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d] transition duration-300 hover:-translate-y-0.5">
+            <Link href="/register" className="inline-flex min-h-12 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08),0_18px_60px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]">
               個体登録を申請する
             </Link>
             <Link href="/i/ZMK-000001" className="inline-flex min-h-12 items-center justify-center border border-[#fffaf0]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#fffaf0]/55">
@@ -259,7 +259,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {relatedPlants.map((item) => (
-              <Link key={item.slug} href={`/dictionary/${item.slug}`} className="group border border-[#fffaf0]/12 bg-[#08140f]/78 p-5 transition duration-300 hover:-translate-y-1 hover:border-[#b89558]/55">
+              <Link key={item.slug} href={`/dictionary/${item.slug}`} className="group border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34">
                 <p className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">
                   {item.category}
                 </p>
@@ -275,7 +275,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
         </section>
       )}
 
-      <section className="bg-[#f5fff3] px-5 py-16 text-[#191a15] md:py-20">
+      <section className="bg-[#f7fbf1] px-5 py-16 text-[#191a15] md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[15px] leading-8 text-[#665f55]">
             図鑑は育てながら深くなる。品種の情報と、個体の履歴を同じ文脈で残していきます。
@@ -293,5 +293,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
     </main>
   )
 }
+
+
 
 
