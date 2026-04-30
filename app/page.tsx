@@ -70,7 +70,7 @@ const history = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f3efe5] text-[#191a15] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[#f5fff3] text-[#191a15] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <header className="absolute inset-x-0 top-0 z-30 px-5 py-5 text-[#fffaf0]">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
@@ -140,7 +140,7 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap gap-3">
             <a
               href="#history"
-              className="inline-flex min-h-12 min-w-48 items-center justify-center border border-[#b89558] bg-[#b89558] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d]"
+              className="inline-flex min-h-12 min-w-48 items-center justify-center border border-[#d9ffd8] bg-[#d9ffd8] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d]"
             >
               年表を見る
             </a>
@@ -154,7 +154,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f3efe5] px-5 py-20 text-[#191a15] md:py-28">
+      <section className="bg-[#f5fff3] px-5 py-20 text-[#191a15] md:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#8f5949]">
@@ -317,6 +317,7 @@ export default function Home() {
     </main>
   )
 }
+
 
 
 

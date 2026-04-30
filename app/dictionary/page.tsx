@@ -68,7 +68,7 @@ export default function DictionaryPage() {
         </div>
       </header>
 
-      <section className="relative min-h-[88vh] bg-[radial-gradient(circle_at_80%_18%,rgba(61,93,70,0.48),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-20 pt-32 md:pt-40">
+      <section className="relative min-h-[88vh] bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.18),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-20 pt-32 md:pt-40">
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#06100b] to-transparent" />
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center">
           <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
@@ -85,7 +85,7 @@ export default function DictionaryPage() {
             <button
               type="button"
               onClick={() => focusCategory('Monstera')}
-              className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#b89558] bg-[#b89558] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d] transition duration-300 hover:-translate-y-0.5 hover:bg-[#c8a869]"
+              className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#d9ffd8] bg-[#d9ffd8] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d] transition duration-300 hover:-translate-y-0.5 hover:bg-[#e7ffe6]"
             >
               モンステラから見る
             </button>
@@ -145,7 +145,7 @@ export default function DictionaryPage() {
             onClick={() => setActiveCategory('All')}
             className={`shrink-0 border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition ${
               activeCategory === 'All'
-                ? 'border-[#b89558] bg-[#b89558] text-[#15120d]'
+                ? 'border-[#d9ffd8] bg-[#d9ffd8] text-[#15120d]'
                 : 'border-[#fffaf0]/14 bg-[#fffaf0]/5 text-[#eee7d7]/74 hover:border-[#b89558]/55'
             }`}
           >
@@ -158,7 +158,7 @@ export default function DictionaryPage() {
               onClick={() => setActiveCategory(category)}
               className={`shrink-0 border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition ${
                 activeCategory === category
-                  ? 'border-[#b89558] bg-[#b89558] text-[#15120d]'
+                  ? 'border-[#d9ffd8] bg-[#d9ffd8] text-[#15120d]'
                   : 'border-[#fffaf0]/14 bg-[#fffaf0]/5 text-[#eee7d7]/74 hover:border-[#b89558]/55'
               }`}
             >
@@ -221,7 +221,7 @@ export default function DictionaryPage() {
         )}
       </section>
 
-      <section className="border-t border-[#fffaf0]/10 bg-[#f3efe5] px-5 py-20 text-[#191a15] md:py-28">
+      <section className="border-t border-[#fffaf0]/10 bg-[#f5fff3] px-5 py-20 text-[#191a15] md:py-28">
         <div className="mx-auto max-w-7xl">
           <p className="mb-5 text-xs font-bold tracking-[0.28em] text-[#8f5949]">
             GROWING ARCHIVE
@@ -251,3 +251,4 @@ export default function DictionaryPage() {
     </main>
   )
 }
+

@@ -88,7 +88,7 @@ async function fetchItem(uid: string): Promise<{
 
 function EmptyState({ uid, error }: { uid: string; error: NfcError | null }) {
   return (
-    <main className="grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(61,93,70,0.42),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] px-5 py-20 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.18),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] px-5 py-20 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <section className="w-full max-w-3xl border border-[#fffaf0]/12 bg-[#08140f]/78 p-8 shadow-[0_24px_90px_rgba(0,0,0,0.28)] md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
           NFC DATA NOT REGISTERED / {uid}
@@ -104,6 +104,12 @@ function EmptyState({ uid, error }: { uid: string; error: NfcError | null }) {
 
         <div className="mt-10 grid gap-3">
           <ProtectedPhoneLink />
+          <Link
+            href={`/register?uid=${encodeURIComponent(uid)}`}
+            className="inline-flex min-h-12 items-center justify-center border border-[#d9ffd8] bg-[#d9ffd8] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d] transition duration-300 hover:-translate-y-0.5"
+          >
+            登録申請へ進む
+          </Link>
           <Link
             href="/dictionary"
             className="inline-flex min-h-12 items-center justify-center border border-[#fffaf0]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#fffaf0]/55"
@@ -150,7 +156,7 @@ export default async function Page({ params }: IndividualPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(61,93,70,0.36),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] px-5 py-20 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.16),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] px-5 py-20 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <section className="mx-auto max-w-5xl border border-[#fffaf0]/12 bg-[#08140f]/78 p-8 shadow-[0_24px_90px_rgba(0,0,0,0.26)] md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
           NFC INDIVIDUAL / {uid}
@@ -167,7 +173,7 @@ export default async function Page({ params }: IndividualPageProps) {
           {item.slug && (
             <Link
               href={`/dictionary/${item.slug}`}
-              className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#b89558] bg-[#b89558] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d]"
+              className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#d9ffd8] bg-[#d9ffd8] px-6 text-sm font-semibold tracking-[0.16em] text-[#15120d]"
             >
               図鑑詳細へ
             </Link>
@@ -183,5 +189,8 @@ export default async function Page({ params }: IndividualPageProps) {
     </main>
   )
 }
+
+
+
 
 
