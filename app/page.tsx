@@ -1,6 +1,10 @@
 ﻿import Image from 'next/image'
 import Link from 'next/link'
 
+const instagramEmbedUrl =
+  process.env.NEXT_PUBLIC_INSTAGRAM_EMBED_URL ??
+  'https://www.instagram.com/zamakuri_plants/embed'
+
 const history = [
   {
     title: '幼少期｜原点',
@@ -147,6 +151,31 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-[#06100b] px-5 py-20 text-[#fffaf0] md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
+              INSTAGRAM
+            </p>
+            <h2 className="text-[clamp(2rem,4vw,3.6rem)] font-medium leading-tight">
+              いまのざまくりを、静かに覗く。
+            </h2>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-[540px] border border-[#fffaf0]/12 bg-[#08140f]/78 p-3 shadow-[0_24px_90px_rgba(0,0,0,0.3)] md:p-4">
+            <div className="aspect-[9/12] overflow-hidden bg-[#050806]">
+              <iframe
+                src={instagramEmbedUrl}
+                title="ざまくりプランツ Instagram"
+                className="h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto grid max-w-7xl gap-10 border-b border-[#191a15]/10 px-5 py-20 md:grid-cols-[220px_1fr] md:py-28">
         <p className="text-xs font-bold tracking-[0.28em] text-[#8f5949]">SINCE 2024</p>
         <div className="max-w-4xl">
@@ -246,3 +275,7 @@ export default function Home() {
     </main>
   )
 }
+
+
+
+
