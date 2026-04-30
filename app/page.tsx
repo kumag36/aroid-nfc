@@ -4,6 +4,9 @@ import Link from 'next/link'
 const instagramEmbedUrl =
   process.env.NEXT_PUBLIC_INSTAGRAM_EMBED_URL ??
   'https://www.instagram.com/zamakuri_plants/embed'
+const instagramProfileUrl =
+  process.env.NEXT_PUBLIC_INSTAGRAM_PROFILE_URL ??
+  'https://www.instagram.com/zamakuri_plants/'
 
 const history = [
   {
@@ -129,7 +132,7 @@ export default function Home() {
             ざまくりプランツ
             <span className="block">1年の歩み</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/85 md:text-lg md:leading-9">
+          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/85">
             〜 開業から走り続けた11か月（約1年てことで😆）〜
             <br />
             平屋の軒先から始まった小さな植物屋が、全国の植物好きとつながる場所へ育つまで。
@@ -151,19 +154,28 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#06100b] px-5 py-20 text-[#fffaf0] md:py-28">
+      <section className="bg-[#f3efe5] px-5 py-20 text-[#191a15] md:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
+            <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#8f5949]">
               INSTAGRAM
             </p>
             <h2 className="text-[clamp(2rem,4vw,3.6rem)] font-medium leading-tight">
               いまのざまくりを、静かに覗く。
             </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-[15px] leading-8 text-[#665f55]">
+              入荷、育成、イベントの空気感を日々の記録として。サイトの世界観から浮かないよう、余白のある展示として配置しています。
+            </p>
           </div>
 
-          <div className="mx-auto mt-10 max-w-[540px] border border-[#fffaf0]/12 bg-[#08140f]/78 p-3 shadow-[0_24px_90px_rgba(0,0,0,0.3)] md:p-4">
-            <div className="aspect-[9/12] overflow-hidden bg-[#050806]">
+          <div className="mx-auto mt-10 max-w-[540px] border border-[#191a15]/10 bg-[#fffaf0] shadow-[0_24px_70px_rgba(25,26,21,0.12)]">
+            <div className="flex items-center justify-between border-b border-[#191a15]/10 px-4 py-3">
+              <p className="text-[11px] font-semibold tracking-[0.22em] text-[#8f5949]">
+                LIVE RECORD
+              </p>
+              <span className="text-xs text-[#665f55]/70">Instagram</span>
+            </div>
+            <div className="aspect-[4/5] overflow-hidden bg-[#fffaf0]">
               <iframe
                 src={instagramEmbedUrl}
                 title="ざまくりプランツ Instagram"
@@ -172,7 +184,37 @@ export default function Home() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <div className="border-t border-[#191a15]/10 px-4 py-4 text-center">
+              <Link
+                href={instagramProfileUrl}
+                className="inline-flex min-h-11 items-center justify-center border border-[#191a15]/18 px-5 text-xs font-semibold tracking-[0.18em] text-[#191a15] transition duration-300 hover:-translate-y-0.5 hover:border-[#191a15]/45"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagramで見る
+              </Link>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[#08100c] px-5 py-16 text-[#fffaf0] md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-4 border-y border-[#fffaf0]/10 py-8 md:grid-cols-3">
+          {[
+            ['01', '状態を見て渡す', '株の表情、根、葉の動きを見て、納得できるものだけを届けます。'],
+            ['02', '育成まで見据える', '買って終わりではなく、環境に馴染むまでを植物の時間として捉えます。'],
+            ['03', '個体を記録する', 'NFCと図鑑で、品種名だけでは見えない一株ごとの情報を残します。'],
+          ].map(([number, title, text]) => (
+            <article key={number} className="border-[#fffaf0]/10 py-4 md:border-l md:px-8 md:first:border-l-0">
+              <p className="mb-4 text-xs font-semibold tracking-[0.22em] text-[#b89558]">
+                {number}
+              </p>
+              <h3 className="text-2xl font-medium leading-tight">{title}</h3>
+              <p className="mt-4 text-[15px] leading-8 text-[#eee7d7]/72">
+                {text}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -182,7 +224,7 @@ export default function Home() {
           <h2 className="text-[clamp(2rem,4vw,3.6rem)] font-medium leading-tight">
             派手さではなく、確かな目利きで残るブランドへ。
           </h2>
-          <p className="mt-8 text-[15px] leading-8 text-[#6a645b] md:text-lg md:leading-9">
+          <p className="mt-8 text-[15px] leading-8 text-[#6a645b]">
             ざまくりプランツが大切にしているのは、植物の希少性だけではありません。
             育てる人の暮らしに馴染む姿、時間を重ねたときの美しさ、そして手渡すまでの
             ひとつひとつの判断。その積み重ねを、年表として見える形にしました。
@@ -257,10 +299,10 @@ export default function Home() {
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
               NEXT SEASON
             </p>
-            <h2 className="text-[clamp(2rem,4.6vw,4.6rem)] font-medium leading-tight">
+            <h2 className="text-[clamp(2rem,4vw,3.6rem)] font-medium leading-tight">
               これからが、本番です。
             </h2>
-            <p className="mt-8 max-w-2xl whitespace-pre-line text-[15px] leading-8 text-[#eee7d7]/82 md:text-lg md:leading-9">
+            <p className="mt-8 max-w-2xl whitespace-pre-line text-[15px] leading-8 text-[#eee7d7]/82">
               {`ただ売るだけの植物屋では終わりません。
 
 品種を知る。違いが分かる。育てられる。
