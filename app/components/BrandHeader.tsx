@@ -6,6 +6,7 @@ const navItems = [
   { href: '/dictionary', label: 'DICTIONARY' },
   { href: '/#history', label: 'HISTORY' },
   { href: '/museum', label: 'MUSEUM' },
+  { href: '/music', label: 'MUSIC' },
   { href: '/register', label: 'NFC DB' },
 ]
 
@@ -34,4 +35,3 @@ export default function BrandHeader() {
     </header>
   )
 }
-
