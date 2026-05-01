@@ -22,5 +22,76 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-size: 15px;
+  line-height: 1.85;
+  letter-spacing: 0.018em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt" 1;
+}
+
+main {
+  overflow-wrap: anywhere;
+}
+
+main h1,
+main h2,
+main h3 {
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+main h1 {
+  font-size: clamp(2.15rem, 5.4vw, 5.2rem) !important;
+  line-height: 1.12 !important;
+  font-weight: 500;
+}
+
+main h2 {
+  font-size: clamp(1.82rem, 3.6vw, 3.45rem) !important;
+  line-height: 1.2 !important;
+  font-weight: 500;
+}
+
+main h3 {
+  line-height: 1.28 !important;
+}
+
+main article h3 {
+  font-size: clamp(1.2rem, 1.7vw, 1.75rem) !important;
+}
+
+main p {
+  line-height: 1.95;
+}
+
+main p,
+main li,
+main dd {
+  text-wrap: pretty;
+}
+
+main :is(a, button) {
+  letter-spacing: 0.08em;
+}
+
+main :is(input, textarea) {
+  letter-spacing: 0.03em;
+}
+
+::selection {
+  background: rgba(217, 255, 216, 0.28);
+  color: #fffaf0;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 14.5px;
+    line-height: 1.78;
+  }
+
+  main :is(a, button) {
+    letter-spacing: 0.055em;
+  }
 }
