@@ -84,16 +84,7 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#08100c] to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-5 pb-20 pt-28">
-          <div className="relative mb-8 h-24 w-24 overflow-hidden rounded-full bg-[#d9ffd8] shadow-[0_20px_60px_rgba(0,0,0,0.34)] ring-1 ring-[#fffaf0]/25 md:h-32 md:w-32">
-            <Image
-              src="/brand/zamakuri-logo.png"
-              alt="ざまくりプランツ"
-              fill
-              priority
-              className="object-cover"
-              sizes="(min-width: 768px) 128px, 96px"
-            />
-          </div>
+          <div className="mb-8 h-px w-28 bg-[#d9ffd8]/50" />
           <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
             ZAMAKURI PLANTS 1 YEAR HISTORY
           </p>
@@ -201,61 +192,63 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="history" className="mx-auto max-w-7xl px-5 py-20 md:py-28">
-        <div className="mb-14 grid gap-8 md:grid-cols-[1fr_420px] md:items-end">
-          <div>
-            <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#8f6f37]">
-              CHRONOLOGY
+      <section id="history" className="relative overflow-hidden bg-[#050806] px-5 py-20 text-[#fffaf0] md:py-28">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_10%,rgba(217,255,216,0.10),transparent_30%)]" />
+        <div className="relative mx-auto max-w-7xl">
+          <div className="mb-16 grid gap-8 border-b border-[#fffaf0]/10 pb-12 md:grid-cols-[1fr_420px] md:items-end">
+            <div>
+              <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
+                CHRONOLOGY / SINCE 2025
+              </p>
+              <h2 className="max-w-4xl text-[clamp(2.2rem,5vw,5rem)] font-medium leading-tight">
+                ざまくりプランツ年表
+              </h2>
+            </div>
+            <p className="text-[15px] leading-8 text-[#eee7d7]/72">
+              開業から走り続けた11か月。販売記録ではなく、植物と向き合う判断、現場で得た信頼、そして次の基準へ進むための記録です。
             </p>
-            <h2 className="text-[clamp(2.1rem,5vw,4.8rem)] font-medium leading-tight">
-              ざまくりプランツ年表
-            </h2>
           </div>
-          <p className="text-[15px] leading-8 text-[#6a645b]">
-            開業から走り続けた11か月。販売記録ではなく、
-            本気で植物と向き合ってきた時間の記録です。
-          </p>
-        </div>
 
-        <div className="border-t border-[#191a15]/12">
-          {history.map((item, index) => (
-            <article
-              key={item.title}
-              className="group grid gap-8 border-b border-[#191a15]/12 py-10 md:grid-cols-[130px_minmax(0,0.82fr)_minmax(300px,0.9fr)] md:gap-12 md:py-14"
-            >
-              <div>
-                <p className="text-sm font-bold tracking-[0.18em] text-[#8f6f37]">
-                  {String(index + 1).padStart(2, '0')}
-                </p>
-                <p className="mt-3 text-[11px] font-semibold tracking-[0.18em] text-[#191a15]/42">
-                  {item.period}
-                </p>
-              </div>
+          <div className="grid gap-6">
+            {history.map((item, index) => (
+              <article
+                key={item.title}
+                className="group grid gap-8 border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.22)] transition duration-300 hover:border-[#d9ffd8]/30 md:grid-cols-[120px_minmax(0,1fr)_420px] md:items-stretch md:p-7"
+              >
+                <div className="flex items-start justify-between gap-4 border-b border-[#fffaf0]/10 pb-5 md:block md:border-b-0 md:border-r md:pb-0 md:pr-7">
+                  <p className="text-3xl font-medium leading-none text-[#d9ffd8]/82">
+                    {String(index + 1).padStart(2, '0')}
+                  </p>
+                  <p className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-[#eee7d7]/48 md:mt-5">
+                    {item.period}
+                  </p>
+                </div>
 
-              <div>
-                <h3 className="text-[clamp(1.45rem,2.8vw,2.35rem)] font-medium leading-tight">
-                  {item.title}
-                </h3>
-                <p className="mt-4 border-l border-[#8f6f37]/35 pl-4 text-[15px] leading-8 text-[#2d342d]">
-                  {item.lead}
-                </p>
-                <p className="mt-6 whitespace-pre-line text-[15px] leading-8 text-[#665f55]">
-                  {item.text}
-                </p>
-              </div>
+                <div className="flex flex-col justify-center md:py-3">
+                  <h3 className="text-[clamp(1.55rem,3vw,2.5rem)] font-medium leading-tight text-[#fffaf0]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-5 border-l border-[#d9ffd8]/35 pl-4 text-[15px] leading-8 text-[#eee7d7]/86">
+                    {item.lead}
+                  </p>
+                  <p className="mt-6 whitespace-pre-line text-[15px] leading-8 text-[#d8d0bf]/72">
+                    {item.text}
+                  </p>
+                </div>
 
-              <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-[#d9d3c7]">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover saturate-[0.86] contrast-[1.02] transition duration-700 group-hover:scale-[1.03]"
-                  sizes="(min-width: 768px) 36vw, 100vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050705]/35 to-transparent" />
-              </div>
-            </article>
-          ))}
+                <div className="relative min-h-[260px] overflow-hidden bg-[#102018] md:min-h-[360px]">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover opacity-[0.86] saturate-[0.8] contrast-[1.04] transition duration-700 group-hover:scale-[1.03]"
+                    sizes="(min-width: 768px) 34vw, 100vw"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,6,0.02),rgba(5,8,6,0.42))]" />
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -294,6 +287,7 @@ export default function Home() {
     </main>
   )
 }
+
 
 
 
