@@ -4,6 +4,7 @@ import Link from 'next/link'
 const navItems = [
   { href: '/', label: 'TOP' },
   { href: '/dictionary', label: 'DICTIONARY' },
+  { href: '/#history', label: 'HISTORY' },
   { href: '/register', label: 'NFC DB' },
 ]
 
@@ -32,5 +33,3 @@ export default function BrandHeader() {
     </header>
   )
 }
-
-

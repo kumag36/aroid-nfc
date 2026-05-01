@@ -1,4 +1,4 @@
-﻿import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import BrandHeader from './components/BrandHeader'
 
@@ -11,64 +11,61 @@ const instagramProfileUrl =
 
 const history = [
   {
-    title: '幼少期｜原点',
-    image: '/history/start.jpg',
-    text: `メダカ、観賞魚、爬虫類、昆虫、タランチュラ。
+    period: 'Before 2025',
+    title: '原点｜観察する目が育つ',
+    image: '/history/origin.jpg',
+    lead: '好きから始まり、いつしか「状態を読む」習慣になった時間。',
+    text: `メダカ、観賞魚、爬虫類、昆虫、タランチュラ。ジャンルは違っても、向き合っていたのはいつも「生きているものの変化」でした。
 
-気づけば、常に生き物が身近にある環境で育っていました。
+水、温度、光、餌、環境。少しの違いで状態が変わる。その理由を見つけることが、遊びであり、学びでもありました。
 
-「どうすれば元気に育つのか」
-「なぜ状態が変わるのか」
-
-遊びの延長のようでいて、この頃からすでに観察と管理の感覚は培われていました。`,
+ざまくりプランツの目利きは、販売から急に始まったものではありません。長く積み重なった観察の感覚が、植物を見る目の土台になっています。`,
   },
   {
+    period: 'Immersion',
     title: 'モンステラへの没入',
     image: '/history/plants.jpg',
-    text: `タイコンステレーション、ホワイトタイガー、イエローマリリン、ホワイトモンスター。
+    lead: '希少品種を集めるだけではなく、違いを見分ける段階へ。',
+    text: `タイコンステレーション、ホワイトタイガー、イエローマリリン、ホワイトモンスター。希少な名前に触れるほど、品種名だけでは語れない個体差が見えてきました。
 
-希少品種に触れる中で、「ただのコレクション」では満足できなくなります。
+斑の入り方、葉の厚み、節間、根の強さ、展開の癖。美しさは一枚の写真ではなく、育つ過程の中にあります。
 
-環境、光、用土、管理。すべてが状態に直結する世界。
-
-良い株とは何かを、自分の目で見極めるようになりました。`,
+この頃から、ただ仕入れて並べるのではなく「良い株とは何か」を自分の基準で確かめるようになりました。`,
   },
   {
-    title: 'ざまくりプランツ始動（0ヶ月目）',
-    image: '/history/start.jpg',
-    text: `神奈川県座間市。
+    period: 'Opening / 0 Month',
+    title: 'ざまくりプランツ始動',
+    image: '/history/opening.jpg',
+    lead: '神奈川県座間市、平屋の軒先から始まった小さな植物屋。',
+    text: `大きな店舗も、派手な看板も、過剰な在庫もない。最初にあったのは、確実に良いと思える株だけを届けたいという判断でした。
 
-平屋の軒先から、ざまくりプランツはスタートしました。
+小さく始めることは、妥協ではありません。仕入れ、管理、手渡し、説明。その一つひとつに目が届く大きさで始めることを選びました。
 
-派手な店舗も、過剰な在庫もない。
-あるのは「確実に良いと思える株だけ」。
-
-小さくても、本気でやると決めた瞬間でした。`,
+ざまくりプランツは、ここから「売る場所」ではなく、植物と人の時間をつなぐ場所として動き出します。`,
   },
   {
-    title: 'イベント出店（3ヶ月目）',
+    period: 'Event / 3 Months',
+    title: 'イベント出店で、現場に立つ',
     image: '/history/event.jpg',
-    text: `最初に選んだのは現場。
+    lead: '画面越しではなく、実物を見てもらうことで信頼を積み上げる。',
+    text: `最初に選んだのは、ネットだけで完結する販売ではなく、実際に見て、触れて、納得してもらう現場でした。
 
-ネットではなく、実際に見て、触れて、納得してもらう販売。
+葉の質感、根の状態、斑の入り方。言葉だけでは伝わらない情報が、目の前の株にはあります。
 
-「状態いいですね」
-
-その一言が、すべてを証明してくれました。`,
+「状態いいですね」。その一言は、価格や希少性よりも強い証明でした。ざまくりプランツの基準が、現場で少しずつ形になっていきました。`,
   },
   {
-    title: '海外との接点（9ヶ月目）',
+    period: 'Asia / 9 Months',
+    title: '海外との接点、基準が上がる',
     image: '/history/overseas.jpg',
-    text: `タイ・中国・ベトナム。
+    lead: 'タイ、中国、ベトナム。熱量の高い現場に触れ、扱う覚悟を更新する。',
+    text: `アジアを代表するナーセリーや、世界中のマニアが集まる流通の現場。そこには、想像以上のスピードと熱量がありました。
 
-アジアを代表するナーセリーや、世界中のマニアが集まる現場に触れる。
+入ってくる株のレベル、選別の基準、情報の流れ。希少性だけに流されず、本物として扱うためには、見る目も管理もさらに上げる必要がある。
 
-持ち込まれる株のレベル、熱量、スピード感。
-
-本物を扱う覚悟が、ここで一段上がりました。`,
+この接点を経て、ざまくりプランツは「珍しい株を扱う店」から、「違いを理解して届ける場所」へ進んでいきます。`,
   },
 ]
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7fbf1] text-[#191a15] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
@@ -226,14 +223,22 @@ export default function Home() {
               key={item.title}
               className="group grid gap-8 border-b border-[#191a15]/12 py-10 md:grid-cols-[130px_minmax(0,0.82fr)_minmax(300px,0.9fr)] md:gap-12 md:py-14"
             >
-              <p className="text-sm font-bold tracking-[0.18em] text-[#8f6f37]">
-                {String(index + 1).padStart(2, '0')}
-              </p>
+              <div>
+                <p className="text-sm font-bold tracking-[0.18em] text-[#8f6f37]">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
+                <p className="mt-3 text-[11px] font-semibold tracking-[0.18em] text-[#191a15]/42">
+                  {item.period}
+                </p>
+              </div>
 
               <div>
                 <h3 className="text-[clamp(1.45rem,2.8vw,2.35rem)] font-medium leading-tight">
                   {item.title}
                 </h3>
+                <p className="mt-4 border-l border-[#8f6f37]/35 pl-4 text-[15px] leading-8 text-[#2d342d]">
+                  {item.lead}
+                </p>
                 <p className="mt-6 whitespace-pre-line text-[15px] leading-8 text-[#665f55]">
                   {item.text}
                 </p>
@@ -244,7 +249,7 @@ export default function Home() {
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover grayscale-[18%] transition duration-700 group-hover:scale-[1.03]"
+                  className="object-cover saturate-[0.86] contrast-[1.02] transition duration-700 group-hover:scale-[1.03]"
                   sizes="(min-width: 768px) 36vw, 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050705]/35 to-transparent" />
@@ -289,6 +294,7 @@ export default function Home() {
     </main>
   )
 }
+
 
 
 
