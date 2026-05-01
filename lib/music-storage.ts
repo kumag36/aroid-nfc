@@ -30,6 +30,30 @@ export const musicBucket = process.env.SUPABASE_MUSIC_BUCKET ?? 'music'
 
 const featuredTracks: MusicTrack[] = [
   {
+    id: 'youtube-5royjnkiqe0',
+    title: 'MY GREEN ANGEL \uff5e ZAMAKURI ver. \uff5e \ud83c\udf3f \u904b\u547d\u306e\u51fa\u4f1a\u3044\u3092\u90aa\u9b54\u3057\u306b\u304f\u308b\u5974\u3089\u73fe\u308b\u3010\u662d\u548c\u30b9\u30ab\u30ec\u30b2\u30a8\u3011',
+    artist: 'Japanese LoFi Chanel',
+    description: 'YouTube Shorts archive selected for the Zamakuri music room.',
+    createdAt: '2026-05-02T00:03:00.000Z',
+    sourceType: 'youtube',
+    youtube: {
+      url: 'https://youtube.com/shorts/5ROYJNkIqE0',
+      embedUrl: 'https://www.youtube.com/embed/5ROYJNkIqE0',
+    },
+  },
+  {
+    id: 'youtube-ofiwx52ggag',
+    title: 'MY GREEN ANGEL \ud83c\udf3f\uff5c\u904b\u547d\u306e\u3072\u3068\u682a\u306b\u51fa\u4f1a\u3063\u305f\u77ac\u9593\uff08\u662d\u548c\u30b9\u30ab\u30ec\u30b2\u30a8\uff09',
+    artist: 'Japanese LoFi Chanel',
+    description: 'YouTube video archive selected for the Zamakuri music room.',
+    createdAt: '2026-05-02T00:02:00.000Z',
+    sourceType: 'youtube',
+    youtube: {
+      url: 'https://youtu.be/OFiWX52ggag',
+      embedUrl: 'https://www.youtube.com/embed/OFiWX52ggag',
+    },
+  },
+  {
     id: 'youtube-fu-p2y-nte08g',
     title: 'PLANT ADDICT \ud83e\udeb4\ud83e\udd11\uff5c\u690d\u7269\u4e2d\u6bd2\uff08\u3057\u3087\u304f\u3061\u3085\u3046\u3069\u304f\uff09\uff5c\u662d\u548c\u30b9\u30ab\u30ec\u30b2\u30a8 \u00d7 \u89b3\u8449\u690d\u7269',
     artist: 'Japanese LoFi Chanel',
