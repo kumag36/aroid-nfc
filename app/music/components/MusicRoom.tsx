@@ -31,7 +31,7 @@ export default function MusicRoom() {
   useEffect(() => {
     let ignore = false
 
-    fetch('/api/music', { cache: 'no-store' })
+    fetch(`/api/music?refresh=${Date.now()}`, { cache: 'no-store' })
       .then((response) => response.json() as Promise<MusicResponse>)
       .then((data) => {
         if (!ignore) {
