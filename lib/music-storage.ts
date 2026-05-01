@@ -6,9 +6,14 @@ export type MusicTrack = {
   artist: string
   description: string
   createdAt: string
-  audio: {
+  sourceType: 'audio' | 'youtube'
+  audio?: {
     path: string
     url: string
+  }
+  youtube?: {
+    url: string
+    embedUrl: string
   }
 }
 
@@ -22,6 +27,33 @@ type MusicManifest = {
 }
 
 export const musicBucket = process.env.SUPABASE_MUSIC_BUCKET ?? 'music'
+
+const featuredTracks: MusicTrack[] = [
+  {
+    id: 'youtube-bg-xq-gxr-to-ek',
+    title: 'YouTube Shorts - BgXqGxrTOEk',
+    artist: 'ZAMAKURI PLANTS',
+    description: 'Short-form music and video archive for the Zamakuri music room.',
+    createdAt: '2026-05-02T00:01:00.000Z',
+    sourceType: 'youtube',
+    youtube: {
+      url: 'https://youtube.com/shorts/BgXqGxrTOEk',
+      embedUrl: 'https://www.youtube.com/embed/BgXqGxrTOEk',
+    },
+  },
+  {
+    id: 'youtube-ria-mk3-st-skg',
+    title: 'YouTube Shorts - RiaMk3StSkg',
+    artist: 'ZAMAKURI PLANTS',
+    description: 'Short-form music and video archive for the Zamakuri music room.',
+    createdAt: '2026-05-02T00:00:00.000Z',
+    sourceType: 'youtube',
+    youtube: {
+      url: 'https://youtube.com/shorts/RiaMk3StSkg?feature=share',
+      embedUrl: 'https://www.youtube.com/embed/RiaMk3StSkg',
+    },
+  },
+]
 
 function getMusicClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -49,7 +81,7 @@ export async function listMusicTracks(): Promise<MusicTrack[]> {
   const client = getMusicClient()
 
   if (!client) {
-    return []
+    return featuredTracks
   }
 
   const { data: folders, error } = await client.storage.from(musicBucket).list('tracks', {
@@ -58,13 +90,13 @@ export async function listMusicTracks(): Promise<MusicTrack[]> {
   })
 
   if (error || !folders) {
-    return []
+    return featuredTracks
   }
 
   const tracks = await Promise.all(
     folders
       .filter((item) => isLikelyFolder(item.name))
-      .map(async (folder) => {
+      .map(async (folder): Promise<MusicTrack | null> => {
         const manifestPath = `tracks/${folder.name}/manifest.json`
         const { data: manifestFile } = await client.storage.from(musicBucket).download(manifestPath)
 
@@ -86,6 +118,7 @@ export async function listMusicTracks(): Promise<MusicTrack[]> {
             artist: manifest.artist ?? 'ZAMAKURI PLANTS',
             description: manifest.description ?? '',
             createdAt: manifest.createdAt,
+            sourceType: 'audio' as const,
             audio: {
               path: manifest.audioPath,
               url: data.signedUrl,
@@ -97,9 +130,11 @@ export async function listMusicTracks(): Promise<MusicTrack[]> {
       }),
   )
 
-  return tracks
+  const uploadedTracks = tracks
     .filter((track): track is MusicTrack => Boolean(track))
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+
+  return [...featuredTracks, ...uploadedTracks]
 }
 
 export function getMusicAdminReady() {
@@ -148,7 +183,16 @@ export async function ensureMusicBucket() {
   const { error } = await client.storage.createBucket(musicBucket, {
     public: false,
     fileSizeLimit: 1024 * 1024 * 120,
-    allowedMimeTypes: ['audio/mpeg', 'audio/mp3', 'audio/wav', 'audio/x-wav', 'audio/mp4', 'audio/aac', 'audio/ogg', 'audio/webm'],
+    allowedMimeTypes: [
+      'audio/mpeg',
+      'audio/mp3',
+      'audio/wav',
+      'audio/x-wav',
+      'audio/mp4',
+      'audio/aac',
+      'audio/ogg',
+      'audio/webm',
+    ],
   })
 
   if (error) {

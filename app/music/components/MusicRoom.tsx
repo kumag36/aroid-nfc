@@ -8,9 +8,14 @@ type MusicTrack = {
   artist: string
   description: string
   createdAt: string
-  audio: {
+  sourceType: 'audio' | 'youtube'
+  audio?: {
     path: string
     url: string
+  }
+  youtube?: {
+    url: string
+    embedUrl: string
   }
 }
 
@@ -58,7 +63,7 @@ export default function MusicRoom() {
   if (isLoading) {
     return (
       <div className="border border-[#fffaf0]/10 bg-[#07120d]/86 px-5 py-16 text-center text-[#d8d0bf]/70">
-        音楽室の空気を整えています。
+        Preparing the listening room.
       </div>
     )
   }
@@ -68,11 +73,10 @@ export default function MusicRoom() {
       <div className="border border-[#fffaf0]/10 bg-[#07120d]/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.22)] md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">NO TRACKS YET</p>
         <h2 className="text-[clamp(2rem,5vw,4.2rem)] font-medium leading-tight text-[#fffaf0]">
-          まだ音源はありません。
+          No music has been added yet.
         </h2>
         <p className="mt-7 max-w-2xl text-[15px] leading-8 text-[#d8d0bf]/76 md:text-lg md:leading-9">
-          管理者ページから音源をアップすると、ここに静かな音楽室として並びます。
-          試作曲、鼻歌、植物に聴かせたい音まで置けます。
+          Upload audio from the admin page and it will appear here as a quiet listening room.
         </p>
       </div>
     )
@@ -123,7 +127,29 @@ export default function MusicRoom() {
           )}
 
           <div className="mt-10 border border-[#fffaf0]/10 bg-[#050806]/72 p-4 md:p-6">
-            <audio controls src={selectedTrack.audio.url} className="w-full" />
+            {selectedTrack.sourceType === 'youtube' && selectedTrack.youtube ? (
+              <div className="mx-auto max-w-[430px]">
+                <div className="relative aspect-[9/16] overflow-hidden border border-[#fffaf0]/10 bg-black">
+                  <iframe
+                    src={selectedTrack.youtube.embedUrl}
+                    title={selectedTrack.title}
+                    className="absolute inset-0 h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+                <a
+                  href={selectedTrack.youtube.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex text-xs font-semibold tracking-[0.18em] text-[#d9ffd8]/78 transition hover:text-[#d9ffd8]"
+                >
+                  OPEN ON YOUTUBE
+                </a>
+              </div>
+            ) : selectedTrack.audio ? (
+              <audio controls src={selectedTrack.audio.url} className="w-full" />
+            ) : null}
           </div>
         </article>
       )}
