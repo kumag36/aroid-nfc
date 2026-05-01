@@ -1,9 +1,11 @@
 ﻿import Image from 'next/image'
 import Link from 'next/link'
+import BrandHeader from '@/app/components/BrandHeader'
 
 export default function NotFound() {
   return (
-    <main className="grid min-h-screen place-items-center overflow-hidden bg-[radial-gradient(circle_at_72%_18%,rgba(217,255,216,0.10),transparent_28%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 py-16 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-[radial-gradient(circle_at_72%_18%,rgba(217,255,216,0.10),transparent_28%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 py-16 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+      <BrandHeader />
       <section className="relative w-full max-w-4xl border border-[#fffaf0]/12 bg-[#08140f]/84 p-7 text-center shadow-[0_30px_100px_rgba(0,0,0,0.32)] md:p-12">
         <div className="mx-auto mb-7 grid h-28 w-28 place-items-center rounded-full bg-[#d9ffd8] p-3 shadow-[0_22px_70px_rgba(0,0,0,0.28)] ring-1 ring-[#fffaf0]/40 md:h-36 md:w-36">
           <div className="relative h-full w-full overflow-hidden rounded-full">
@@ -42,6 +44,9 @@ export default function NotFound() {
     </main>
   )
 }
+
+
+
 
 
 

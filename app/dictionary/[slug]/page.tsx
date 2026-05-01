@@ -1,4 +1,5 @@
 ﻿import Link from 'next/link'
+import BrandHeader from '@/app/components/BrandHeader'
 import { plants, type Plant } from '@/lib/dictionary-data'
 
 type DictionaryDetailPageProps = {
@@ -92,7 +93,8 @@ export async function generateMetadata({ params }: DictionaryDetailPageProps) {
 
 function MissingPage() {
   return (
-    <main className="grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] px-5 py-20 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="relative grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] px-5 py-20 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+      <BrandHeader />
       <section className="w-full max-w-3xl border border-[#fffaf0]/10 bg-[#07120d]/86 p-8 shadow-[0_24px_90px_rgba(0,0,0,0.28)] md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
           DICTIONARY DATA NOT FOUND
@@ -133,17 +135,8 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
 
   return (
     <main className="min-h-screen bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+      <BrandHeader />
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-16 pt-8 md:pb-24">
-        <div className="mx-auto flex max-w-7xl items-center justify-between py-4 text-[#fffaf0]">
-          <Link href="/" className="text-xs font-semibold tracking-[0.22em] text-[#fffaf0]/78">
-            ZAMAKURI PLANTS
-          </Link>
-          <nav className="flex items-center gap-5 text-[11px] tracking-[0.2em] text-[#fffaf0]/70">
-            <Link href="/dictionary">DICTIONARY</Link>
-            <Link href="/i/ZMK-000001">NFC</Link>
-          </nav>
-        </div>
-
         <div className="relative z-10 mx-auto grid max-w-7xl gap-10 py-16 md:grid-cols-[minmax(0,1fr)_360px] md:items-end md:py-24">
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
@@ -293,6 +286,10 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
     </main>
   )
 }
+
+
+
+
 
 
 

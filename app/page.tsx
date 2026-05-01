@@ -1,5 +1,6 @@
 ﻿import Image from 'next/image'
 import Link from 'next/link'
+import BrandHeader from './components/BrandHeader'
 
 const instagramEmbedUrl =
   process.env.NEXT_PUBLIC_INSTAGRAM_EMBED_URL ??
@@ -71,36 +72,7 @@ const history = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7fbf1] text-[#191a15] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
-      <header className="absolute inset-x-0 top-0 z-30 border-b border-[#fffaf0]/10 bg-[#050806]/18 px-5 py-5 text-[#fffaf0] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="relative block h-12 w-12 overflow-hidden rounded-full bg-[#d9ffd8] ring-1 ring-[#fffaf0]/55">
-              <Image
-                src="/brand/zamakuri-logo.png"
-                alt=""
-                fill
-                className="object-cover"
-                sizes="48px"
-              />
-            </span>
-            <span>
-              <span className="block text-sm font-semibold tracking-[0.18em]">
-                ざまくりプランツ
-              </span>
-              <span className="block text-[10px] tracking-[0.2em] opacity-75">
-                ZAMAKURI PLANTS
-              </span>
-            </span>
-          </Link>
-
-          <nav className="hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
-            <Link href="/dictionary">DICTIONARY</Link>
-            <Link href="/i/ZMK-000001">ZMK-000001</Link>
-            <a href="#history">HISTORY</a>
-            <a href="#future">FUTURE</a>
-          </nav>
-        </div>
-      </header>
+      <BrandHeader />
 
       <section className="relative min-h-[92vh] overflow-hidden bg-[#08100c] text-[#fffaf0]">
         <Image
@@ -219,7 +191,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-10 border-b border-[#191a15]/10 px-5 py-20 md:grid-cols-[220px_1fr] md:py-28">
-        <p className="text-xs font-bold tracking-[0.28em] text-[#8f5949]">SINCE 2024</p>
+        <p className="text-xs font-bold tracking-[0.28em] text-[#8f5949]">SINCE 2025</p>
         <div className="max-w-4xl">
           <h2 className="text-[clamp(2rem,4vw,3.6rem)] font-medium leading-tight">
             派手さではなく、確かな目利きで残るブランドへ。
@@ -317,6 +289,10 @@ export default function Home() {
     </main>
   )
 }
+
+
+
+
 
 
 

@@ -1,9 +1,9 @@
 ﻿'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
 import { categories, plants, type Category } from '@/lib/dictionary-data'
+import BrandHeader from '@/app/components/BrandHeader'
 
 export default function DictionaryPage() {
   const [activeCategory, setActiveCategory] = useState<Category | 'All'>('All')
@@ -38,35 +38,7 @@ export default function DictionaryPage() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
-      <header className="absolute inset-x-0 top-0 z-30 border-b border-[#fffaf0]/10 bg-[#050806]/18 px-5 py-5 text-[#fffaf0] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="relative block h-12 w-12 overflow-hidden rounded-full bg-[#d9ffd8] ring-1 ring-[#fffaf0]/55">
-              <Image
-                src="/brand/zamakuri-logo.png"
-                alt=""
-                fill
-                className="object-cover"
-                sizes="48px"
-              />
-            </span>
-            <span>
-              <span className="block text-sm font-semibold tracking-[0.18em]">
-                ざまくりプランツ
-              </span>
-              <span className="block text-[10px] tracking-[0.2em] opacity-75">
-                ZAMAKURI PLANTS
-              </span>
-            </span>
-          </Link>
-
-          <nav className="hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
-            <Link href="/">TOP</Link>
-            <a href="#dictionary-list">DICTIONARY</a>
-            <Link href="/i/ZMK-000001">NFC</Link>
-          </nav>
-        </div>
-      </header>
+      <BrandHeader />
 
       <section className="relative min-h-[88vh] bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-20 pt-32 md:pt-40">
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#06100b] to-transparent" />
@@ -251,6 +223,11 @@ export default function DictionaryPage() {
     </main>
   )
 }
+
+
+
+
+
 
 
 

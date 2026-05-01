@@ -1,5 +1,5 @@
-﻿import Image from 'next/image'
-import Link from 'next/link'
+﻿import Link from 'next/link'
+import BrandHeader from '@/app/components/BrandHeader'
 
 const instagramProfileUrl =
   process.env.NEXT_PUBLIC_INSTAGRAM_PROFILE_URL ??
@@ -34,20 +34,8 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
   ].join('\n'))
   return (
     <main className="min-h-screen bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+      <BrandHeader />
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_78%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 py-8 md:pb-24">
-        <div className="mx-auto flex max-w-7xl items-center justify-between py-4">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="relative block h-11 w-11 overflow-hidden rounded-full bg-[#d9ffd8] ring-1 ring-[#fffaf0]/45">
-              <Image src="/brand/zamakuri-logo.png" alt="" fill className="object-cover" sizes="44px" />
-            </span>
-            <span className="text-xs font-semibold tracking-[0.22em] text-[#fffaf0]/82">ZAMAKURI PLANTS</span>
-          </Link>
-          <nav className="flex gap-5 text-[11px] tracking-[0.2em] text-[#fffaf0]/70">
-            <Link href="/dictionary">DICTIONARY</Link>
-            <Link href="/i/ZMK-000001">NFC</Link>
-          </nav>
-        </div>
-
         <div className="mx-auto grid max-w-7xl gap-10 py-16 md:grid-cols-[minmax(0,1fr)_380px] md:items-end md:py-24">
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
@@ -124,6 +112,11 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
     </main>
   )
 }
+
+
+
+
+
 
 
 
