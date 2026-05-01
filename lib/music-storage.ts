@@ -30,18 +30,6 @@ export const musicBucket = process.env.SUPABASE_MUSIC_BUCKET ?? 'music'
 
 const featuredTracks: MusicTrack[] = [
   {
-    id: 'youtube-11zwjdgx-xe',
-    title: 'MY GREEN ANGEL \ud83c\udf3f\uff5c\u904b\u547d\u306e\u3072\u3068\u682a\u306b\u51fa\u4f1a\u3063\u305f\u77ac\u9593\uff08\u662d\u548c\u30b9\u30ab\u30ec\u30b2\u30a8\uff09',
-    artist: 'Japanese LoFi Chanel',
-    description: 'YouTube Shorts archive selected for the Zamakuri music room.',
-    createdAt: '2026-05-02T00:02:00.000Z',
-    sourceType: 'youtube',
-    youtube: {
-      url: 'https://youtube.com/shorts/11zwjdgX-xE',
-      embedUrl: 'https://www.youtube.com/embed/11zwjdgX-xE',
-    },
-  },
-  {
     id: 'youtube-fu-p2y-nte08g',
     title: 'PLANT ADDICT \ud83e\udeb4\ud83e\udd11\uff5c\u690d\u7269\u4e2d\u6bd2\uff08\u3057\u3087\u304f\u3061\u3085\u3046\u3069\u304f\uff09\uff5c\u662d\u548c\u30b9\u30ab\u30ec\u30b2\u30a8 \u00d7 \u89b3\u8449\u690d\u7269',
     artist: 'Japanese LoFi Chanel',
