@@ -31,9 +31,9 @@ export const musicBucket = process.env.SUPABASE_MUSIC_BUCKET ?? 'music'
 const featuredTracks: MusicTrack[] = [
   {
     id: 'youtube-bg-xq-gxr-to-ek',
-    title: 'YouTube Shorts - BgXqGxrTOEk',
-    artist: 'ZAMAKURI PLANTS',
-    description: 'Short-form music and video archive for the Zamakuri music room.',
+    title: 'PLANT ADDICT \u30fc \u690d\u7269\u4e2d\u6bd2\ud83e\udeb4\ud83e\udd11',
+    artist: 'Japanese LoFi Chanel',
+    description: 'YouTube Shorts archive selected for the Zamakuri music room.',
     createdAt: '2026-05-02T00:01:00.000Z',
     sourceType: 'youtube',
     youtube: {
@@ -43,9 +43,9 @@ const featuredTracks: MusicTrack[] = [
   },
   {
     id: 'youtube-ria-mk3-st-skg',
-    title: 'YouTube Shorts - RiaMk3StSkg',
-    artist: 'ZAMAKURI PLANTS',
-    description: 'Short-form music and video archive for the Zamakuri music room.',
+    title: '\u690d\u7269\u4e2d\u6bd2\ud83e\udeb4\ud83e\udd11 \uff5e PLANT ADDICT',
+    artist: 'Japanese LoFi Chanel',
+    description: 'YouTube Shorts archive selected for the Zamakuri music room.',
     createdAt: '2026-05-02T00:00:00.000Z',
     sourceType: 'youtube',
     youtube: {
