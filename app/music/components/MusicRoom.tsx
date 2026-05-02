@@ -253,13 +253,13 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
   const player = selectedTrack ? (
     <article
       className={`overflow-hidden border border-[#fffaf0]/10 bg-[radial-gradient(circle_at_50%_0%,rgba(217,255,216,0.08),transparent_36%),linear-gradient(145deg,#11170f,#050806_58%,#17150f)] shadow-[0_38px_120px_rgba(0,0,0,0.42)] ${
-        variant === 'hero' ? 'p-3 md:p-4' : 'p-3 md:p-5'
+        variant === 'hero' ? 'p-2.5 md:p-3' : 'p-3 md:p-5'
       }`}
     >
-      <div className={`mb-5 grid gap-3 ${variant === 'hero' ? '' : 'md:grid-cols-[1fr_220px]'}`}>
-        <div className="border border-[#fffaf0]/10 bg-[#050806]/82 p-4 shadow-[inset_0_0_30px_rgba(0,0,0,0.48)]">
+      <div className={`grid gap-3 ${variant === 'hero' ? 'mb-3' : 'mb-5 md:grid-cols-[1fr_220px]'}`}>
+        <div className={`border border-[#fffaf0]/10 bg-[#050806]/82 shadow-[inset_0_0_30px_rgba(0,0,0,0.48)] ${variant === 'hero' ? 'p-3' : 'p-4'}`}>
           <p className="text-[10px] font-black tracking-[0.22em] text-[#b89558]">NOW PLAYING</p>
-          <div className="mt-3 overflow-hidden border border-[#d9ffd8]/20 bg-[#020403] px-3 py-3 shadow-[inset_0_0_18px_rgba(217,255,216,0.08)]">
+          <div className={`mt-3 overflow-hidden border border-[#d9ffd8]/20 bg-[#020403] px-3 shadow-[inset_0_0_18px_rgba(217,255,216,0.08)] ${variant === 'hero' ? 'py-2' : 'py-3'}`}>
             <div className="np-marquee flex w-max whitespace-nowrap text-[12px] font-semibold leading-none tracking-[0.18em] text-[#d9ffd8] [text-shadow:0_0_10px_rgba(217,255,216,0.64)] md:text-sm">
               <span className="pr-14">{selectedTrack.title}</span>
               <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
@@ -275,14 +275,14 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
         </div>
       </div>
 
-      <div className={`relative mx-auto aspect-square overflow-hidden ${variant === 'hero' ? 'max-w-[560px]' : 'max-w-[780px]'}`}>
+      <div className={`relative mx-auto aspect-square overflow-hidden ${variant === 'hero' ? 'max-w-[420px]' : 'max-w-[780px]'}`}>
         <Image
           src="/music/boombox-1980-anime-cutout.webp"
           alt=""
           fill
           className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.52)]"
           aria-hidden="true"
-          sizes={variant === 'hero' ? '(max-width: 768px) 94vw, 560px' : '(max-width: 768px) 94vw, 780px'}
+          sizes={variant === 'hero' ? '(max-width: 768px) 94vw, 420px' : '(max-width: 768px) 94vw, 780px'}
           priority={variant === 'hero'}
         />
         {selectedTrack.sourceType === 'audio' && selectedTrack.audio ? (
@@ -349,13 +349,13 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
       </div>
 
       {variant === 'hero' && (
-        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
           {tracks.map((track, index) => (
             <button
               key={track.id}
               type="button"
               onClick={() => selectTrack(track.id)}
-              className={`min-h-12 border px-3 text-left text-[10px] font-semibold leading-4 tracking-[0.12em] transition ${
+              className={`min-h-10 border px-2.5 text-left text-[10px] font-semibold leading-4 tracking-[0.12em] transition ${
                 selectedTrack.id === track.id
                   ? 'border-[#d9ffd8]/60 bg-[#d9ffd8]/12 text-[#fffaf0]'
                   : 'border-[#fffaf0]/10 bg-[#fffaf0]/4 text-[#d8d0bf]/62 hover:border-[#d9ffd8]/34'

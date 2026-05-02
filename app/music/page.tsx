@@ -14,7 +14,7 @@ export default function MusicPage() {
 
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_78%_18%,rgba(217,255,216,0.13),transparent_31%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-16 pt-32 md:pb-24 md:pt-40">
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#06100b] to-transparent" />
-        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:min-h-[560px] lg:grid-cols-[minmax(0,0.72fr)_minmax(520px,0.88fr)] lg:items-center">
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:min-h-[560px] lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.68fr)] lg:items-center">
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
               ZAMAKURI MUSIC ROOM
@@ -36,7 +36,7 @@ export default function MusicPage() {
             </div>
           </div>
 
-          <div className="lg:pt-4">
+          <div className="mx-auto w-full max-w-[560px] lg:ml-auto lg:pt-2">
             <MusicRoom variant="hero" />
           </div>
         </div>
