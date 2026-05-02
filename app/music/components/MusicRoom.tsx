@@ -208,7 +208,7 @@ export default function MusicRoom() {
 
           <div className="relative mx-auto aspect-square max-w-[780px] overflow-hidden">
             <Image
-              src="/music/boombox-1980-anime-cutout.png"
+              src="/music/boombox-1980-anime-cutout.webp"
               alt=""
               fill
               className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.52)]"
