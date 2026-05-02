@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { Plant } from '@/lib/dictionary-data'
 import type {
   DictionaryImageAssignment,
@@ -19,8 +19,6 @@ type Props = {
   adminReady: boolean
 }
 
-const passwordStorageKey = 'zamakuri-dictionary-admin-password'
-
 export default function DictionaryImageAdmin({
   plants,
   candidates,
@@ -30,25 +28,12 @@ export default function DictionaryImageAdmin({
 }: Props) {
   const [assignments, setAssignments] = useState(initialAssignments)
   const [exclusions, setExclusions] = useState(initialExclusions)
-  const [password, setPassword] = useState(() => {
-    if (typeof window === 'undefined') {
-      return ''
-    }
-
-    return window.localStorage.getItem(passwordStorageKey) ?? ''
-  })
   const [activeGenus, setActiveGenus] = useState('all')
   const [activeSpecies, setActiveSpecies] = useState('all')
   const [activePlant, setActivePlant] = useState('all')
   const [queueFilter, setQueueFilter] = useState<QueueFilter>('queue')
   const [message, setMessage] = useState('')
   const [busyId, setBusyId] = useState('')
-
-  useEffect(() => {
-    if (password) {
-      window.localStorage.setItem(passwordStorageKey, password)
-    }
-  }, [password])
 
   const plantBySlug = useMemo(() => {
     return new Map(plants.map((plant) => [plant.slug, plant]))
@@ -110,7 +95,12 @@ export default function DictionaryImageAdmin({
         activeSpecies === 'all' ||
         suggestedTaxa.some((taxon) => taxon.speciesKey === activeSpecies)
       const matchesPlant =
-        activePlant === 'all' || candidate.suggestedPlantSlugs.includes(activePlant)
+        activePlant === 'all' ||
+        candidate.suggestedPlantSlugs.includes(activePlant) ||
+        assignments.some(
+          (assignment) =>
+            assignment.imageId === candidate.id && assignment.plantSlug === activePlant,
+        )
 
       if (!matchesGenus || !matchesSpecies || !matchesPlant) return false
       if (queueFilter === 'queue') return !isAssigned && !isExcluded
@@ -124,11 +114,19 @@ export default function DictionaryImageAdmin({
     activePlant,
     activeSpecies,
     assignedImageIds,
+    assignments,
     candidates,
     excludedImageIds,
     queueFilter,
     taxonBySlug,
   ])
+
+  async function refreshState() {
+    const response = await fetch('/api/dictionary/images', { cache: 'no-store' })
+    const result = await response.json()
+    setAssignments(result.assignments ?? [])
+    setExclusions(result.exclusions ?? [])
+  }
 
   const saveAssignment = async (
     candidate: DictionaryImageCandidate,
@@ -148,7 +146,6 @@ export default function DictionaryImageAdmin({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'assign',
-        password,
         imageId: candidate.id,
         plantSlug,
         role,
@@ -167,6 +164,7 @@ export default function DictionaryImageAdmin({
     setQueueFilter('queue')
     setMessage('確認済みとして紐づけました。作業キューから外れます。')
     setBusyId('')
+    await refreshState()
   }
 
   const excludeCandidate = async (candidate: DictionaryImageCandidate) => {
@@ -178,7 +176,6 @@ export default function DictionaryImageAdmin({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'exclude',
-        password,
         imageId: candidate.id,
         reason: '管理者が図鑑候補から除外',
       }),
@@ -196,6 +193,7 @@ export default function DictionaryImageAdmin({
     setQueueFilter('queue')
     setMessage('除外しました。作業キューから外れます。')
     setBusyId('')
+    await refreshState()
   }
 
   const queueCount = candidates.filter(
@@ -215,18 +213,16 @@ export default function DictionaryImageAdmin({
           IMAGE REVIEW QUEUE
         </p>
         <p className="mt-4 text-[14px] leading-8 text-[#d8d0bf]/76">
-          自動判定は仮候補です。品種は確定しません。最終確認で紐づけた画像だけが採用済みになり、
-          作業キューから消えます。不要な画像は除外できます。
+          自動判定は仮候補です。品種は確定しません。最終確認で紐づけた画像だけが採用済みになり、作業キューから消えます。不要な画像は除外できます。
         </p>
         {!adminReady && (
           <p className="mt-4 border border-[#b89558]/30 bg-[#b89558]/10 px-4 py-3 text-[13px] leading-7 text-[#ead2a4]">
-            Supabase保存は未設定です。候補確認はできますが、保存には管理者パスワードと
-            SUPABASE_SERVICE_ROLE_KEY、Storage bucket dictionary が必要です。
+            Supabase保存先が未設定です。SUPABASE_SERVICE_ROLE_KEY と Storage bucket dictionary を確認してください。
           </p>
         )}
       </div>
 
-      <div className="grid gap-4 md:grid-cols-[1fr_1fr_1fr_260px]">
+      <div className="grid gap-4 md:grid-cols-3">
         <FilterSelect
           label="GENUS"
           value={activeGenus}
@@ -269,18 +265,6 @@ export default function DictionaryImageAdmin({
               .map((plant) => [plant.slug, plant.tradeName] as const),
           ]}
         />
-
-        <label className="block">
-          <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
-            ADMIN PASSWORD
-          </span>
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            className="h-12 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none"
-          />
-        </label>
       </div>
 
       <div className="flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

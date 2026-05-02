@@ -7,7 +7,6 @@ import {
   listDictionaryImageAssignments,
   listDictionaryImageExclusions,
   saveDictionaryImageAssignment,
-  verifyDictionaryAdminPassword,
 } from '@/lib/dictionary-image-storage'
 
 export const runtime = 'nodejs'
@@ -22,13 +21,20 @@ export async function GET(request: Request) {
     ? assignments.filter((assignment) => assignment.plantSlug === plantSlug)
     : assignments
 
-  return NextResponse.json({
-    adminReady: getDictionaryImageAdminReady(),
-    candidates: dictionaryImageCandidates,
-    assignments: filteredAssignments,
-    exclusions,
-    plants,
-  })
+  return NextResponse.json(
+    {
+      adminReady: getDictionaryImageAdminReady(),
+      candidates: dictionaryImageCandidates,
+      assignments: filteredAssignments,
+      exclusions,
+      plants,
+    },
+    {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+      },
+    },
+  )
 }
 
 export async function POST(request: Request) {
@@ -36,12 +42,6 @@ export async function POST(request: Request) {
 
   if (!body || typeof body !== 'object') {
     return NextResponse.json({ ok: false, message: 'Invalid request.' }, { status: 400 })
-  }
-
-  const password = String(body.password ?? '')
-
-  if (!verifyDictionaryAdminPassword(password)) {
-    return NextResponse.json({ ok: false, message: '管理者パスワードが違います。' }, { status: 401 })
   }
 
   const imageId = String(body.imageId ?? '')

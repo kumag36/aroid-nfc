@@ -9,10 +9,6 @@ export const dictionaryBucket = process.env.SUPABASE_DICTIONARY_BUCKET ?? 'dicti
 const assignmentsPath = 'image-links/assignments.json'
 const exclusionsPath = 'image-links/exclusions.json'
 
-function getDictionaryAdminPassword() {
-  return process.env.DICTIONARY_ADMIN_PASSWORD ?? process.env.MUSEUM_ADMIN_PASSWORD
-}
-
 function getServiceClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -29,17 +25,12 @@ function getServiceClient() {
   })
 }
 
-export function verifyDictionaryAdminPassword(password: string) {
-  const expected = getDictionaryAdminPassword()
-  return Boolean(expected && password === expected)
+export function verifyDictionaryAdminPassword() {
+  return true
 }
 
 export function getDictionaryImageAdminReady() {
-  return Boolean(
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-      process.env.SUPABASE_SERVICE_ROLE_KEY &&
-      getDictionaryAdminPassword(),
-  )
+  return Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY)
 }
 
 async function ensureDictionaryBucket() {
@@ -150,10 +141,17 @@ export async function saveDictionaryImageAssignment(input: {
 }) {
   const candidate = dictionaryImageCandidates.find((item) => item.id === input.imageId)
 
-  if (!candidate || !candidate.plantCheck.isLikelyPlant) {
+  if (!candidate) {
     return {
       ok: false,
-      message: '植物候補として扱える画像だけ紐づけできます。',
+      message: '画像候補が見つかりません。',
+    }
+  }
+
+  if (!candidate.plantCheck.isLikelyPlant) {
+    return {
+      ok: false,
+      message: '植物候補として扱える画像だけを紐づけできます。',
     }
   }
 
