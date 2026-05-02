@@ -2,8 +2,10 @@ import { NextResponse } from 'next/server'
 import { plants } from '@/lib/dictionary-data'
 import { dictionaryImageCandidates } from '@/lib/dictionary-image-data'
 import {
+  excludeDictionaryImage,
   getDictionaryImageAdminReady,
   listDictionaryImageAssignments,
+  listDictionaryImageExclusions,
   saveDictionaryImageAssignment,
   verifyDictionaryAdminPassword,
 } from '@/lib/dictionary-image-storage'
@@ -15,6 +17,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const plantSlug = searchParams.get('plantSlug')
   const assignments = await listDictionaryImageAssignments()
+  const exclusions = await listDictionaryImageExclusions()
   const filteredAssignments = plantSlug
     ? assignments.filter((assignment) => assignment.plantSlug === plantSlug)
     : assignments
@@ -23,6 +26,7 @@ export async function GET(request: Request) {
     adminReady: getDictionaryImageAdminReady(),
     candidates: dictionaryImageCandidates,
     assignments: filteredAssignments,
+    exclusions,
     plants,
   })
 }
@@ -41,6 +45,17 @@ export async function POST(request: Request) {
   }
 
   const imageId = String(body.imageId ?? '')
+  const action = body.action === 'exclude' ? 'exclude' : 'assign'
+
+  if (action === 'exclude') {
+    const result = await excludeDictionaryImage({
+      imageId,
+      reason: typeof body.reason === 'string' ? body.reason : undefined,
+    })
+
+    return NextResponse.json(result, { status: result.ok ? 200 : 503 })
+  }
+
   const plantSlug = String(body.plantSlug ?? '')
   const role = body.role === 'gallery' ? 'gallery' : 'primary'
   const note = typeof body.note === 'string' ? body.note : undefined

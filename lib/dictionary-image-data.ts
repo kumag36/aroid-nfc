@@ -27,6 +27,13 @@ export type DictionaryImageAssignment = {
   createdAt: string
 }
 
+export type DictionaryImageExclusion = {
+  id: string
+  imageId: string
+  reason?: string
+  createdAt: string
+}
+
 export const dictionaryImageCandidates =
   candidatesJson as DictionaryImageCandidate[]
 

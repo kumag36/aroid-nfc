@@ -5,11 +5,13 @@ import { useEffect, useMemo, useState } from 'react'
 import type {
   DictionaryImageAssignment,
   DictionaryImageCandidate,
+  DictionaryImageExclusion,
 } from '@/lib/dictionary-image-data'
 
 type ResponseShape = {
   candidates: DictionaryImageCandidate[]
   assignments: DictionaryImageAssignment[]
+  exclusions: DictionaryImageExclusion[]
 }
 
 export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string }) {
@@ -27,7 +29,7 @@ export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string 
       })
       .catch(() => {
         if (active) {
-          setData({ candidates: [], assignments: [] })
+          setData({ candidates: [], assignments: [], exclusions: [] })
         }
       })
 
@@ -41,9 +43,13 @@ export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string 
       return null
     }
 
+    const excludedIds = new Set(data.exclusions.map((item) => item.imageId))
+    const availableAssignments = data.assignments.filter(
+      (assignment) => !excludedIds.has(assignment.imageId),
+    )
     const primary =
-      data.assignments.find((assignment) => assignment.role === 'primary') ??
-      data.assignments[0]
+      availableAssignments.find((assignment) => assignment.role === 'primary') ??
+      availableAssignments[0]
 
     if (!primary) {
       return null

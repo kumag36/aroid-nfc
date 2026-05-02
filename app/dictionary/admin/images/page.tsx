@@ -6,6 +6,7 @@ import rejectedImages from '@/lib/dictionary-image-rejected.json'
 import {
   getDictionaryImageAdminReady,
   listDictionaryImageAssignments,
+  listDictionaryImageExclusions,
 } from '@/lib/dictionary-image-storage'
 import DictionaryImageAdmin from './DictionaryImageAdmin'
 
@@ -17,6 +18,8 @@ export const metadata = {
 
 export default async function DictionaryImageAdminPage() {
   const assignments = await listDictionaryImageAssignments()
+  const exclusions = await listDictionaryImageExclusions()
+  const pendingCount = dictionaryImageCandidates.length - assignments.length - exclusions.length
 
   return (
     <main className="min-h-screen bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
@@ -30,10 +33,10 @@ export default async function DictionaryImageAdminPage() {
             </p>
             <h1 className="max-w-5xl text-[clamp(2.3rem,6vw,5.4rem)] font-medium leading-[1.08] tracking-normal">
               画像候補を
-              <span className="block">品種へ紐づける。</span>
+              <span className="block">確認して紐づける。</span>
             </h1>
             <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/82 md:text-lg md:leading-9">
-              画像はまず植物候補として棚卸しし、品種の確定は管理者が選択します。iCloudから追加した写真も、候補化すれば同じ流れで扱えます。
+              自動判定は仮候補です。最終確認した画像だけを採用し、不要な画像は除外して、作業キューを軽く保ちます。
             </p>
           </div>
 
@@ -42,12 +45,13 @@ export default async function DictionaryImageAdminPage() {
               CURRENT QUEUE
             </p>
             <p className="mt-4">
-              候補画像 <span className="text-[#eaffdf]">{dictionaryImageCandidates.length}</span> 枚 /
-              採用済み <span className="text-[#eaffdf]"> {assignments.length}</span> 件
+              未確認 <span className="text-[#eaffdf]">{Math.max(pendingCount, 0)}</span> 枚 /
+              採用済み <span className="text-[#eaffdf]"> {assignments.length}</span> 件 /
+              除外 <span className="text-[#eaffdf]"> {exclusions.length}</span> 枚
             </p>
             <p className="mt-3">
-              除外画像 <span className="text-[#eaffdf]">{rejectedImages.length}</span> 枚。
-              植物ではない画像は、この画面で採用しなければ図鑑には出ません。
+              抽出時の自動除外は <span className="text-[#eaffdf]">{rejectedImages.length}</span> 枚。
+              管理者が採用しない限り、図鑑には表示されません。
             </p>
           </div>
         </div>
@@ -58,6 +62,7 @@ export default async function DictionaryImageAdminPage() {
           plants={plants}
           candidates={dictionaryImageCandidates}
           initialAssignments={assignments}
+          initialExclusions={exclusions}
           adminReady={getDictionaryImageAdminReady()}
         />
         <div className="mt-10 text-center">

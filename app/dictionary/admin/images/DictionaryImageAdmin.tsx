@@ -6,12 +6,16 @@ import type { Plant } from '@/lib/dictionary-data'
 import type {
   DictionaryImageAssignment,
   DictionaryImageCandidate,
+  DictionaryImageExclusion,
 } from '@/lib/dictionary-image-data'
+
+type QueueFilter = 'queue' | 'suggested' | 'assigned' | 'excluded' | 'all'
 
 type Props = {
   plants: Plant[]
   candidates: DictionaryImageCandidate[]
   initialAssignments: DictionaryImageAssignment[]
+  initialExclusions: DictionaryImageExclusion[]
   adminReady: boolean
 }
 
@@ -19,11 +23,16 @@ export default function DictionaryImageAdmin({
   plants,
   candidates,
   initialAssignments,
+  initialExclusions,
   adminReady,
 }: Props) {
   const [assignments, setAssignments] = useState(initialAssignments)
+  const [exclusions, setExclusions] = useState(initialExclusions)
   const [password, setPassword] = useState('')
+  const [activeGenus, setActiveGenus] = useState('all')
+  const [activeSpecies, setActiveSpecies] = useState('all')
   const [activePlant, setActivePlant] = useState('all')
+  const [queueFilter, setQueueFilter] = useState<QueueFilter>('queue')
   const [message, setMessage] = useState('')
   const [busyId, setBusyId] = useState('')
 
@@ -31,22 +40,82 @@ export default function DictionaryImageAdmin({
     return new Map(plants.map((plant) => [plant.slug, plant]))
   }, [plants])
 
+  const assignedImageIds = useMemo(
+    () => new Set(assignments.map((assignment) => assignment.imageId)),
+    [assignments],
+  )
+  const excludedImageIds = useMemo(
+    () => new Set(exclusions.map((exclusion) => exclusion.imageId)),
+    [exclusions],
+  )
+  const plantTaxa = useMemo(() => {
+    return plants.map((plant) => {
+      const parts = plant.displayName
+        .replace(/[()]/g, ' ')
+        .split(/\s+/)
+        .filter(Boolean)
+      const genus = parts[0] ?? 'Unknown'
+      const species = parts[1]?.startsWith("'") ? 'sp.' : parts[1] ?? 'sp.'
+
+      return {
+        slug: plant.slug,
+        genus,
+        species,
+        speciesKey: `${genus} ${species}`,
+      }
+    })
+  }, [plants])
+  const taxonBySlug = useMemo(() => {
+    return new Map(plantTaxa.map((taxon) => [taxon.slug, taxon]))
+  }, [plantTaxa])
+  const genusOptions = useMemo(() => {
+    return [...new Set(plantTaxa.map((taxon) => taxon.genus))].sort()
+  }, [plantTaxa])
+  const speciesOptions = useMemo(() => {
+    return [
+      ...new Set(
+        plantTaxa
+          .filter((taxon) => activeGenus === 'all' || taxon.genus === activeGenus)
+          .map((taxon) => taxon.speciesKey),
+      ),
+    ].sort()
+  }, [activeGenus, plantTaxa])
+
   const visibleCandidates = useMemo(() => {
-    if (activePlant === 'all') {
-      return candidates
-    }
+    return candidates.filter((candidate) => {
+      const isAssigned = assignedImageIds.has(candidate.id)
+      const isExcluded = excludedImageIds.has(candidate.id)
+      const hasSuggestion = candidate.suggestedPlantSlugs.length > 0
+      const suggestedTaxa = candidate.suggestedPlantSlugs
+        .map((slug) => taxonBySlug.get(slug))
+        .filter((taxon): taxon is NonNullable<typeof taxon> => Boolean(taxon))
+      const matchesGenus =
+        activeGenus === 'all' ||
+        suggestedTaxa.some((taxon) => taxon.genus === activeGenus)
+      const matchesSpecies =
+        activeSpecies === 'all' ||
+        suggestedTaxa.some((taxon) => taxon.speciesKey === activeSpecies)
+      const matchesPlant =
+        activePlant === 'all' || candidate.suggestedPlantSlugs.includes(activePlant)
 
-    if (activePlant === 'unlinked') {
-      return candidates.filter(
-        (candidate) =>
-          !assignments.some((assignment) => assignment.imageId === candidate.id),
-      )
-    }
-
-    return candidates.filter((candidate) =>
-      candidate.suggestedPlantSlugs.includes(activePlant),
-    )
-  }, [activePlant, assignments, candidates])
+      if (!matchesGenus || !matchesSpecies) return false
+      if (!matchesPlant) return false
+      if (queueFilter === 'queue') return !isAssigned && !isExcluded
+      if (queueFilter === 'suggested') return !isAssigned && !isExcluded && hasSuggestion
+      if (queueFilter === 'assigned') return isAssigned
+      if (queueFilter === 'excluded') return isExcluded
+      return true
+    })
+  }, [
+    activeGenus,
+    activePlant,
+    activeSpecies,
+    assignedImageIds,
+    candidates,
+    excludedImageIds,
+    queueFilter,
+    taxonBySlug,
+  ])
 
   const saveAssignment = async (
     candidate: DictionaryImageCandidate,
@@ -65,6 +134,7 @@ export default function DictionaryImageAdmin({
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        action: 'assign',
         password,
         imageId: candidate.id,
         plantSlug,
@@ -80,33 +150,118 @@ export default function DictionaryImageAdmin({
     }
 
     setAssignments(result.assignments)
-    setMessage('紐づけを保存しました。')
+    setExclusions(result.exclusions)
+    setMessage('確認済みとして紐づけました。作業キューから外れます。')
     setBusyId('')
   }
+
+  const excludeCandidate = async (candidate: DictionaryImageCandidate) => {
+    setBusyId(candidate.id)
+    setMessage('')
+
+    const response = await fetch('/api/dictionary/images', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'exclude',
+        password,
+        imageId: candidate.id,
+        reason: '管理者が図鑑候補から除外',
+      }),
+    })
+    const result = await response.json()
+
+    if (!response.ok || !result.ok) {
+      setMessage(result.message ?? '除外できませんでした。')
+      setBusyId('')
+      return
+    }
+
+    setAssignments(result.assignments)
+    setExclusions(result.exclusions)
+    setMessage('除外しました。作業キューから外れます。')
+    setBusyId('')
+  }
+
+  const queueCount = candidates.filter(
+    (candidate) => !assignedImageIds.has(candidate.id) && !excludedImageIds.has(candidate.id),
+  ).length
+  const suggestedCount = candidates.filter(
+    (candidate) =>
+      !assignedImageIds.has(candidate.id) &&
+      !excludedImageIds.has(candidate.id) &&
+      candidate.suggestedPlantSlugs.length > 0,
+  ).length
 
   return (
     <div className="space-y-8">
       <div className="border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
         <p className="text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">
-          IMAGE LINKING POLICY
+          IMAGE REVIEW QUEUE
         </p>
         <p className="mt-4 text-[14px] leading-8 text-[#d8d0bf]/76">
-          ここでは画像を自動で品種確定しません。植物らしさだけを最低限チェックし、候補名は参考表示に留めます。
-          最終的な品種紐づけは管理者が選択したものだけ保存されます。iCloud写真も、いったん候補画像として追加すれば同じ画面で選別できます。
+          自動判定は「仮候補」です。品種は確定しません。ワシの最終確認で紐づけた画像だけが採用済みになり、
+          作業キューから消えます。不要な画像は除外できます。
         </p>
         {!adminReady && (
           <p className="mt-4 border border-[#b89558]/30 bg-[#b89558]/10 px-4 py-3 text-[13px] leading-7 text-[#ead2a4]">
-            Supabase保存は未設定です。候補確認はできます。保存するには
-            DICTIONARY_ADMIN_PASSWORD または MUSEUM_ADMIN_PASSWORD と
-            SUPABASE_SERVICE_ROLE_KEY、Storage bucket dictionary を設定します。
+            Supabase保存は未設定です。候補確認はできますが、保存には管理者パスワードと
+            SUPABASE_SERVICE_ROLE_KEY、Storage bucket dictionary が必要です。
           </p>
         )}
       </div>
 
-      <div className="grid gap-4 md:grid-cols-[1fr_260px]">
+      <div className="grid gap-4 md:grid-cols-[1fr_1fr_1fr_260px]">
         <label className="block">
           <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
-            FILTER
+            GENUS
+          </span>
+          <select
+            value={activeGenus}
+            onChange={(event) => {
+              setActiveGenus(event.target.value)
+              setActiveSpecies('all')
+              setActivePlant('all')
+            }}
+            className="h-12 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none"
+          >
+            <option className="bg-[#07120d]" value="all">
+              全属
+            </option>
+            {genusOptions.map((genus) => (
+              <option className="bg-[#07120d]" key={genus} value={genus}>
+                {genus}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="block">
+          <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
+            SPECIES
+          </span>
+          <select
+            value={activeSpecies}
+            onChange={(event) => {
+              setActiveSpecies(event.target.value)
+              setActivePlant('all')
+            }}
+            className="h-12 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none"
+          >
+            <option className="bg-[#07120d]" value="all">
+              全種
+            </option>
+            {speciesOptions.map((species) => (
+              <option className="bg-[#07120d]" key={species} value={species}>
+                {species}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="block">
+          <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
+            VARIETY
           </span>
           <select
             value={activePlant}
@@ -114,16 +269,22 @@ export default function DictionaryImageAdmin({
             className="h-12 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none"
           >
             <option className="bg-[#07120d]" value="all">
-              全候補を見る
+              全品種
             </option>
-            <option className="bg-[#07120d]" value="unlinked">
-              未紐づけだけ
-            </option>
-            {plants.map((plant) => (
-              <option className="bg-[#07120d]" key={plant.slug} value={plant.slug}>
-                {plant.tradeName}
-              </option>
-            ))}
+            {plants
+              .filter((plant) => {
+                const taxon = taxonBySlug.get(plant.slug)
+                return (
+                  taxon &&
+                  (activeGenus === 'all' || taxon.genus === activeGenus) &&
+                  (activeSpecies === 'all' || taxon.speciesKey === activeSpecies)
+                )
+              })
+              .map((plant) => (
+                <option className="bg-[#07120d]" key={plant.slug} value={plant.slug}>
+                  {plant.tradeName}
+                </option>
+              ))}
           </select>
         </label>
 
@@ -140,6 +301,29 @@ export default function DictionaryImageAdmin({
         </label>
       </div>
 
+      <div className="flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {[
+          ['queue', `未確認 ${queueCount}`],
+          ['suggested', `仮候補あり ${suggestedCount}`],
+          ['assigned', `採用済み ${assignments.length}`],
+          ['excluded', `除外 ${exclusions.length}`],
+          ['all', `全件 ${candidates.length}`],
+        ].map(([value, label]) => (
+          <button
+            key={value}
+            type="button"
+            onClick={() => setQueueFilter(value as QueueFilter)}
+            className={`shrink-0 border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition ${
+              queueFilter === value
+                ? 'border-[#d9ffd8]/65 bg-[#d9ffd8]/12 text-[#eaffdf]'
+                : 'border-[#fffaf0]/12 bg-[#fffaf0]/4 text-[#eee7d7]/70 hover:border-[#d9ffd8]/40'
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
       {message && (
         <div className="border border-[#fffaf0]/12 bg-[#fffaf0]/6 px-4 py-3 text-sm text-[#eaffdf]">
           {message}
@@ -149,6 +333,7 @@ export default function DictionaryImageAdmin({
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {visibleCandidates.map((candidate) => {
           const linked = assignments.filter((assignment) => assignment.imageId === candidate.id)
+          const excluded = exclusions.find((exclusion) => exclusion.imageId === candidate.id)
           const defaultPlant = candidate.suggestedPlantSlugs[0] ?? ''
 
           return (
@@ -161,12 +346,20 @@ export default function DictionaryImageAdmin({
                 const plant = plantBySlug.get(assignment.plantSlug)
                 return `${plant?.tradeName ?? assignment.plantSlug} / ${assignment.role}`
               })}
+              excludedLabel={excluded ? excluded.reason ?? '除外済み' : ''}
               busy={busyId === candidate.id}
               onSave={saveAssignment}
+              onExclude={excludeCandidate}
             />
           )
         })}
       </div>
+
+      {visibleCandidates.length === 0 && (
+        <div className="border border-[#fffaf0]/12 bg-[#fffaf0]/5 px-5 py-12 text-center text-[#d8d0bf]/72">
+          この条件の画像候補はありません。
+        </div>
+      )}
     </div>
   )
 }
@@ -176,19 +369,23 @@ function CandidateCard({
   plants,
   defaultPlant,
   linkedLabels,
+  excludedLabel,
   busy,
   onSave,
+  onExclude,
 }: {
   candidate: DictionaryImageCandidate
   plants: Plant[]
   defaultPlant: string
   linkedLabels: string[]
+  excludedLabel: string
   busy: boolean
   onSave: (
     candidate: DictionaryImageCandidate,
     plantSlug: string,
     role: 'primary' | 'gallery',
   ) => void
+  onExclude: (candidate: DictionaryImageCandidate) => void
 }) {
   const [plantSlug, setPlantSlug] = useState(defaultPlant)
   const [role, setRole] = useState<'primary' | 'gallery'>('primary')
@@ -228,7 +425,7 @@ function CandidateCard({
                 key={slug}
                 className="rounded-full border border-[#b89558]/30 bg-[#b89558]/10 px-3 py-1 text-[11px] text-[#ead2a4]"
               >
-                候補: {plants.find((plant) => plant.slug === slug)?.tradeName ?? slug}
+                仮候補: {plants.find((plant) => plant.slug === slug)?.tradeName ?? slug}
               </span>
             ))}
           </div>
@@ -239,6 +436,12 @@ function CandidateCard({
             {linkedLabels.map((label) => (
               <p key={label}>採用済み: {label}</p>
             ))}
+          </div>
+        )}
+
+        {excludedLabel && (
+          <div className="border border-[#b89558]/24 bg-[#b89558]/10 p-3 text-xs leading-6 text-[#ead2a4]">
+            除外済み: {excludedLabel}
           </div>
         )}
 
@@ -282,14 +485,24 @@ function CandidateCard({
           </button>
         </div>
 
-        <button
-          type="button"
-          disabled={busy}
-          onClick={() => onSave(candidate, plantSlug, role)}
-          className="min-h-11 w-full border border-[#d9ffd8]/60 bg-[#d9ffd8]/10 px-4 text-xs font-semibold tracking-[0.18em] text-[#eaffdf] transition hover:bg-[#d9ffd8] hover:text-[#07110c] disabled:opacity-45"
-        >
-          {busy ? '保存中' : 'この画像を紐づける'}
-        </button>
+        <div className="grid gap-2 sm:grid-cols-[1fr_112px]">
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => onSave(candidate, plantSlug, role)}
+            className="min-h-11 border border-[#d9ffd8]/60 bg-[#d9ffd8]/10 px-4 text-xs font-semibold tracking-[0.18em] text-[#eaffdf] transition hover:bg-[#d9ffd8] hover:text-[#07110c] disabled:opacity-45"
+          >
+            {busy ? '保存中' : '確認して紐づけ'}
+          </button>
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => onExclude(candidate)}
+            className="min-h-11 border border-[#b89558]/45 px-4 text-xs font-semibold tracking-[0.16em] text-[#ead2a4] transition hover:bg-[#b89558] hover:text-[#07110c] disabled:opacity-45"
+          >
+            除外
+          </button>
+        </div>
       </div>
     </article>
   )
