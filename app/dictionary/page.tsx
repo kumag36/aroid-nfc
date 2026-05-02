@@ -1,13 +1,69 @@
 ﻿'use client'
 
 import Link from 'next/link'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { categories, plants, type Category } from '@/lib/dictionary-data'
 import BrandHeader from '@/app/components/BrandHeader'
+
+type DictionaryImageResponse = {
+  candidates: {
+    id: string
+    src: string
+  }[]
+  assignments: {
+    imageId: string
+    plantSlug: string
+    role: 'primary' | 'gallery'
+    createdAt: string
+  }[]
+  exclusions: {
+    imageId: string
+  }[]
+}
 
 export default function DictionaryPage() {
   const [activeCategory, setActiveCategory] = useState<Category | 'All'>('All')
   const [query, setQuery] = useState('')
+  const [cardImages, setCardImages] = useState<Record<string, string>>({})
+
+  useEffect(() => {
+    let active = true
+
+    fetch('/api/dictionary/images', { cache: 'no-store' })
+      .then((response) => response.json())
+      .then((data: DictionaryImageResponse) => {
+        if (!active) return
+
+        const excludedIds = new Set(data.exclusions.map((item) => item.imageId))
+        const imageById = new Map(data.candidates.map((candidate) => [candidate.id, candidate]))
+        const nextImages: Record<string, string> = {}
+
+        for (const plant of plants) {
+          const assignments = data.assignments
+            .filter(
+              (assignment) =>
+                assignment.plantSlug === plant.slug && !excludedIds.has(assignment.imageId),
+            )
+            .sort((a, b) => {
+              if (a.role !== b.role) return a.role === 'primary' ? -1 : 1
+              return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+            })
+          const image = assignments[0] ? imageById.get(assignments[0].imageId) : null
+          if (image) {
+            nextImages[plant.slug] = image.src
+          }
+        }
+
+        setCardImages(nextImages)
+      })
+      .catch(() => {
+        if (active) setCardImages({})
+      })
+
+    return () => {
+      active = false
+    }
+  }, [])
 
   const filteredPlants = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -151,9 +207,19 @@ export default function DictionaryPage() {
           {filteredPlants.map((plant, index) => (
             <article
               key={plant.slug}
-              className="group flex min-h-[340px] flex-col border border-[#fffaf0]/10 bg-[#07120d]/86 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.20)] transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34 hover:bg-[#0a1711]/92"
+              className="group relative flex min-h-[340px] overflow-hidden border border-[#fffaf0]/10 bg-[#07120d]/86 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.20)] transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34 hover:bg-[#0a1711]/92"
             >
-              <div className="mb-6 flex items-start justify-between gap-4">
+              {cardImages[plant.slug] && (
+                <>
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-[0.16] grayscale-[18%] saturate-[0.72] transition duration-500 group-hover:opacity-[0.22]"
+                    style={{ backgroundImage: `url(${cardImages[plant.slug]})` }}
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(4,9,6,0.96)_0%,rgba(5,12,8,0.88)_48%,rgba(5,12,8,0.72)_100%)]" />
+                </>
+              )}
+
+              <div className="relative z-10 mb-6 flex items-start justify-between gap-4">
                 <p className="text-[11px] font-bold tracking-[0.22em] text-[#b89558]">
                   {plant.category}
                 </p>
@@ -162,14 +228,14 @@ export default function DictionaryPage() {
                 </span>
               </div>
 
-              <h3 className="text-xl font-medium leading-snug text-[#fffaf0]">
+              <h3 className="relative z-10 text-xl font-medium leading-snug text-[#fffaf0]">
                 {plant.displayName}
               </h3>
-              <p className="mt-3 text-sm leading-7 text-[#d8d0bf]/72">
+              <p className="relative z-10 mt-3 text-sm leading-7 text-[#d8d0bf]/72">
                 和名 / 流通名：{plant.tradeName}
               </p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="relative z-10 mt-5 flex flex-wrap gap-2">
                 {plant.tags.map((tag) => (
                   <span
                     key={tag}
@@ -180,13 +246,13 @@ export default function DictionaryPage() {
                 ))}
               </div>
 
-              <p className="mt-6 flex-1 text-[15px] leading-8 text-[#d8d0bf]/76">
+              <p className="relative z-10 mt-6 flex-1 text-[15px] leading-8 text-[#d8d0bf]/76">
                 {plant.description}
               </p>
 
               <Link
                 href={`/dictionary/${plant.slug}`}
-                className="mt-7 inline-flex min-h-11 items-center justify-center border border-[#fffaf0]/18 px-4 text-xs font-semibold tracking-[0.18em] text-[#fffaf0] transition duration-300 group-hover:border-[#d9ffd8]/55 group-hover:text-[#eaffdf]"
+                className="relative z-10 mt-7 inline-flex min-h-11 items-center justify-center border border-[#fffaf0]/18 bg-[#06100b]/18 px-4 text-xs font-semibold tracking-[0.18em] text-[#fffaf0] backdrop-blur-[2px] transition duration-300 group-hover:border-[#d9ffd8]/55 group-hover:text-[#eaffdf]"
               >
                 詳細を見る
               </Link>
