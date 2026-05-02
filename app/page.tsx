@@ -68,7 +68,7 @@ const history = [
 ]
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f7fbf1] text-[#191a15] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[#d9ffd8] text-[#191a15] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
 
       <section className="relative min-h-[92vh] overflow-hidden bg-[#08100c] text-[#fffaf0]">
@@ -114,7 +114,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f7fbf1] px-5 py-20 text-[#191a15] md:py-28">
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#08100c_0%,#14241a_10%,#d9ffd8_30%,#efffe9_100%)] px-5 py-20 pt-28 text-[#191a15] md:py-28 md:pt-36">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-[radial-gradient(circle_at_50%_0%,rgba(217,255,216,0.26),transparent_55%)]" />
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#8f5949]">
@@ -128,14 +129,14 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mx-auto mt-10 max-w-[500px] border border-[#191a15]/12 bg-[#fbfff6] shadow-[0_28px_90px_rgba(25,26,21,0.10)]">
+          <div className="mx-auto mt-10 max-w-[500px] border border-[#191a15]/12 bg-[#f7fff2]/92 shadow-[0_28px_90px_rgba(25,26,21,0.10)]">
             <div className="flex items-center justify-between border-b border-[#191a15]/10 px-4 py-3">
               <p className="text-[11px] font-semibold tracking-[0.22em] text-[#8f5949]">
                 LIVE RECORD
               </p>
               <span className="text-xs text-[#665f55]/70">Instagram</span>
             </div>
-            <div className="aspect-[4/5] overflow-hidden bg-[#fbfff6]">
+            <div className="aspect-[4/5] overflow-hidden bg-[#f7fff2]">
               <iframe
                 src={instagramEmbedUrl}
                 title="ざまくりプランツ Instagram"
