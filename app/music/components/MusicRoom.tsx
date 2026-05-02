@@ -149,10 +149,15 @@ export default function MusicRoom() {
     setIsPlaying(false)
   }
 
-  function pauseAudio() {
+  function toggleAudio() {
     const audio = audioRef.current
 
     if (!audio || !canUseCassetteControls) return
+
+    if (audio.paused) {
+      audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
+      return
+    }
 
     audio.pause()
   }
@@ -325,9 +330,9 @@ export default function MusicRoom() {
             />
             <button
               type="button"
-              onClick={playAudio}
+              onClick={toggleAudio}
               disabled={!canUseCassetteControls}
-              aria-label="Play"
+              aria-label="Play or pause"
               className={`${controlHitbox} left-[18.6%] top-[74.4%] h-[12.2%] w-[14.2%]`}
             />
             <button
@@ -361,9 +366,9 @@ export default function MusicRoom() {
             />
             <button
               type="button"
-              onClick={pauseAudio}
+              onClick={toggleAudio}
               disabled={!canUseCassetteControls}
-              aria-label="Pause"
+              aria-label="Play or pause"
               className={`${controlHitbox} left-[76.1%] top-[74.4%] h-[12.2%] w-[14.2%]`}
             />
           </div>
