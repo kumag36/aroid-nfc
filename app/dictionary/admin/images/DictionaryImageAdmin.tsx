@@ -36,6 +36,8 @@ export default function DictionaryImageAdmin({
   const [queueFilter, setQueueFilter] = useState<QueueFilter>('queue')
   const [message, setMessage] = useState('')
   const [busyId, setBusyId] = useState('')
+  const [selectedIds, setSelectedIds] = useState<string[]>([])
+  const [isBulkExcluding, setIsBulkExcluding] = useState(false)
 
   const assignedImageIds = useMemo(
     () => new Set(assignments.map((assignment) => assignment.imageId)),
@@ -119,8 +121,36 @@ export default function DictionaryImageAdmin({
     taxonBySlug,
   ])
 
+  const visibleSelectableIds = useMemo(
+    () =>
+      visibleCandidates
+        .filter((candidate) => !excludedImageIds.has(candidate.id))
+        .map((candidate) => candidate.id),
+    [excludedImageIds, visibleCandidates],
+  )
+  const selectedVisibleCount = selectedIds.filter((id) => visibleSelectableIds.includes(id)).length
+  const allVisibleSelected =
+    visibleSelectableIds.length > 0 && selectedVisibleCount === visibleSelectableIds.length
+
   function refreshPageState() {
     router.refresh()
+  }
+
+  function toggleSelected(imageId: string, checked: boolean) {
+    setSelectedIds((current) =>
+      checked
+        ? [...new Set([...current, imageId])]
+        : current.filter((id) => id !== imageId),
+    )
+  }
+
+  function toggleVisibleSelection() {
+    setSelectedIds((current) => {
+      if (allVisibleSelected) {
+        return current.filter((id) => !visibleSelectableIds.includes(id))
+      }
+      return [...new Set([...current, ...visibleSelectableIds])]
+    })
   }
 
   const saveAssignment = async (
@@ -156,39 +186,73 @@ export default function DictionaryImageAdmin({
 
     setAssignments(result.assignments ?? [])
     setExclusions(result.exclusions ?? [])
+    setSelectedIds((current) => current.filter((id) => id !== candidate.id))
     setQueueFilter('queue')
     setMessage('確認済みとして紐づけました。作業キューから外れます。')
     setBusyId('')
     refreshPageState()
   }
 
-  const excludeCandidate = async (candidate: DictionaryImageCandidate) => {
-    setBusyId(candidate.id)
-    setMessage('')
-
+  const excludeById = async (imageId: string, reason = '管理者が図鑑候補から除外') => {
     const response = await fetch('/api/dictionary/images', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'exclude',
-        imageId: candidate.id,
-        reason: '管理者が図鑑候補から除外',
+        imageId,
+        reason,
       }),
     })
     const result = await response.json()
 
     if (!response.ok || !result.ok) {
-      setMessage(result.message ?? '除外できませんでした。')
-      setBusyId('')
-      return
+      throw new Error(result.message ?? '除外できませんでした。')
     }
 
     setAssignments(result.assignments ?? [])
     setExclusions(result.exclusions ?? [])
-    setQueueFilter('queue')
-    setMessage('除外しました。作業キューから外れます。')
-    setBusyId('')
-    refreshPageState()
+  }
+
+  const excludeCandidate = async (candidate: DictionaryImageCandidate) => {
+    setBusyId(candidate.id)
+    setMessage('')
+
+    try {
+      await excludeById(candidate.id)
+      setSelectedIds((current) => current.filter((id) => id !== candidate.id))
+      setQueueFilter('queue')
+      setMessage('除外しました。作業キューから外れます。')
+      refreshPageState()
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : '除外できませんでした。')
+    } finally {
+      setBusyId('')
+    }
+  }
+
+  const bulkExcludeSelected = async () => {
+    const targets = selectedIds.filter((id) => !excludedImageIds.has(id))
+    if (targets.length === 0) {
+      setMessage('除外する画像を選択してください。')
+      return
+    }
+
+    setIsBulkExcluding(true)
+    setMessage('')
+
+    try {
+      for (const imageId of targets) {
+        await excludeById(imageId, '管理者が複数選択で一括除外')
+      }
+      setSelectedIds((current) => current.filter((id) => !targets.includes(id)))
+      setQueueFilter('queue')
+      setMessage(`${targets.length}枚を一括除外しました。`)
+      refreshPageState()
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : '一括除外できませんでした。')
+    } finally {
+      setIsBulkExcluding(false)
+    }
   }
 
   const queueCount = candidates.filter(
@@ -285,6 +349,39 @@ export default function DictionaryImageAdmin({
         ))}
       </div>
 
+      <div className="sticky top-3 z-20 flex flex-col gap-3 border border-[#fffaf0]/10 bg-[#06100b]/92 p-3 shadow-[0_20px_80px_rgba(0,0,0,0.28)] backdrop-blur md:flex-row md:items-center md:justify-between">
+        <label className="flex min-h-11 items-center gap-3 text-sm text-[#eaffdf]">
+          <input
+            type="checkbox"
+            checked={allVisibleSelected}
+            onChange={toggleVisibleSelection}
+            className="h-4 w-4 accent-[#d9ffd8]"
+          />
+          表示中を選択
+          <span className="text-xs text-[#d8d0bf]/64">
+            選択中 {selectedIds.length} 枚
+          </span>
+        </label>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => setSelectedIds([])}
+            disabled={selectedIds.length === 0 || isBulkExcluding}
+            className="min-h-11 border border-[#fffaf0]/14 px-4 text-xs font-semibold tracking-[0.16em] text-[#d8d0bf] disabled:opacity-40"
+          >
+            選択解除
+          </button>
+          <button
+            type="button"
+            onClick={bulkExcludeSelected}
+            disabled={selectedIds.length === 0 || isBulkExcluding}
+            className="min-h-11 border border-[#b89558]/55 bg-[#b89558]/10 px-4 text-xs font-semibold tracking-[0.16em] text-[#ead2a4] transition hover:bg-[#b89558] hover:text-[#07110c] disabled:opacity-40"
+          >
+            {isBulkExcluding ? '除外中' : '選択を一括除外'}
+          </button>
+        </div>
+      </div>
+
       {message && (
         <div className="border border-[#fffaf0]/12 bg-[#fffaf0]/6 px-4 py-3 text-sm text-[#eaffdf]">
           {message}
@@ -305,7 +402,9 @@ export default function DictionaryImageAdmin({
               defaultPlant={defaultPlant}
               linkedAssignments={linked}
               excludedLabel={excluded ? excluded.reason ?? '除外済み' : ''}
-              busy={busyId === candidate.id}
+              busy={busyId === candidate.id || isBulkExcluding}
+              selected={selectedIds.includes(candidate.id)}
+              onSelectedChange={(checked) => toggleSelected(candidate.id, checked)}
               onSave={saveAssignment}
               onExclude={excludeCandidate}
             />
@@ -360,6 +459,8 @@ function CandidateCard({
   linkedAssignments,
   excludedLabel,
   busy,
+  selected,
+  onSelectedChange,
   onSave,
   onExclude,
 }: {
@@ -369,6 +470,8 @@ function CandidateCard({
   linkedAssignments: DictionaryImageAssignment[]
   excludedLabel: string
   busy: boolean
+  selected: boolean
+  onSelectedChange: (checked: boolean) => void
   onSave: (
     candidate: DictionaryImageCandidate,
     plantSlug: string,
@@ -383,7 +486,7 @@ function CandidateCard({
     linkedAssignment ? plants.find((plant) => plant.slug === linkedAssignment.plantSlug) : null
 
   return (
-    <article className="overflow-hidden border border-[#fffaf0]/10 bg-[#07120d]/86 shadow-[0_24px_80px_rgba(0,0,0,0.2)]">
+    <article className={`overflow-hidden border bg-[#07120d]/86 shadow-[0_24px_80px_rgba(0,0,0,0.2)] ${selected ? 'border-[#d9ffd8]/70' : 'border-[#fffaf0]/10'}`}>
       <div className="relative aspect-[4/5] bg-[#020503]">
         <Image
           src={candidate.src}
@@ -393,6 +496,14 @@ function CandidateCard({
           className="object-cover"
           loading="lazy"
         />
+        <label className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center border border-[#fffaf0]/30 bg-[#06100b]/80 backdrop-blur">
+          <input
+            type="checkbox"
+            checked={selected}
+            onChange={(event) => onSelectedChange(event.target.checked)}
+            className="h-4 w-4 accent-[#d9ffd8]"
+          />
+        </label>
         <div className="absolute left-3 top-3 rounded-full border border-[#d9ffd8]/30 bg-[#06100b]/80 px-3 py-1 text-[11px] text-[#eaffdf] backdrop-blur">
           PLANT {Math.round(candidate.plantCheck.confidence * 100)}%
         </div>
