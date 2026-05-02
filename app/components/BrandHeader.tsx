@@ -7,20 +7,20 @@ const navItems = [
   { href: '/#history', label: 'HISTORY' },
   { href: '/museum', label: 'MUSEUM' },
   { href: '/music', label: 'MUSIC' },
-  { href: '/register', label: 'NFC DB' },
+  { href: '/nfc/verify', label: 'NFC LAB' },
 ]
 
 export default function BrandHeader() {
   return (
-    <header className="absolute inset-x-0 top-0 z-30 border-b border-[#fffaf0]/10 bg-[#050806]/18 px-5 py-5 text-[#fffaf0] backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="relative block h-12 w-12 overflow-hidden rounded-full bg-[#d9ffd8] shadow-[0_10px_30px_rgba(0,0,0,0.22)] ring-1 ring-[#fffaf0]/45">
+    <header className="absolute inset-x-0 top-0 z-30 border-b border-[#fffaf0]/10 bg-[#050806]/18 px-4 py-4 text-[#fffaf0] backdrop-blur-md sm:px-5 sm:py-5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
+        <Link href="/" className="flex min-w-0 items-center gap-3">
+          <span className="relative block h-10 w-10 shrink-0 overflow-hidden rounded-full bg-[#d9ffd8] shadow-[0_10px_30px_rgba(0,0,0,0.22)] ring-1 ring-[#fffaf0]/45 sm:h-12 sm:w-12">
             <Image src="/brand/zamakuri-logo.png" alt="" fill className="object-cover" sizes="48px" />
           </span>
-          <span>
-            <span className="block text-sm font-semibold tracking-[0.18em]">ざまくりプランツ</span>
-            <span className="block text-[10px] tracking-[0.2em] opacity-75">ZAMAKURI PLANTS</span>
+          <span className="min-w-0">
+            <span className="block truncate text-[13px] font-semibold tracking-[0.14em] sm:text-sm sm:tracking-[0.18em]">ざまくりプランツ</span>
+            <span className="block truncate text-[9px] tracking-[0.16em] opacity-75 sm:text-[10px] sm:tracking-[0.2em]">ZAMAKURI PLANTS</span>
           </span>
         </Link>
 

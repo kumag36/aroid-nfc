@@ -3,8 +3,8 @@ import BrandHeader from '@/app/components/BrandHeader'
 import MusicRoom from './components/MusicRoom'
 
 export const metadata = {
-  title: 'ざまくり音楽室 | ざまくりプランツ',
-  description: 'ざまくりプランツの音源を静かに展示するオンライン音楽室。',
+  title: 'ざまくり音楽室 | ZAMAKURI.JP',
+  description: 'ざまくりプランツの音源と映像を静かに展示するオンライン音楽室。',
 }
 
 export default function MusicPage() {

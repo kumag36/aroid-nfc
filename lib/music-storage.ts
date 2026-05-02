@@ -28,6 +28,57 @@ type MusicManifest = {
 
 export const musicBucket = process.env.SUPABASE_MUSIC_BUCKET ?? 'music'
 
+const localAudioTracks: MusicTrack[] = [
+  {
+    id: 'audio-shokubutsu-chudoku',
+    title: '\u690d\u7269\u4e2d\u6bd2',
+    artist: 'ZAMAKURI PLANTS',
+    description: '\u3056\u307e\u304f\u308a\u97f3\u697d\u5ba4\u306b\u53ce\u9332\u3057\u305f\u30aa\u30ea\u30b8\u30ca\u30eb\u97f3\u6e90\u3002\u30e9\u30b8\u30ab\u30bb\u30dc\u30bf\u30f3\u3067\u518d\u751f\u3067\u304d\u307e\u3059\u3002',
+    createdAt: '2026-05-02T01:03:00.000Z',
+    sourceType: 'audio',
+    audio: {
+      path: 'public/music/shokubutsu-chudoku.mp3',
+      url: '/music/shokubutsu-chudoku.mp3',
+    },
+  },
+  {
+    id: 'audio-plant-addict',
+    title: 'PLANT ADDICT',
+    artist: 'ZAMAKURI PLANTS',
+    description: '\u690d\u7269\u3078\u306e\u71b1\u3092\u97f3\u306b\u3057\u305f\u30aa\u30ea\u30b8\u30ca\u30eb\u97f3\u6e90\u3002\u30e9\u30b8\u30ab\u30bb\u30dc\u30bf\u30f3\u3067\u518d\u751f\u3067\u304d\u307e\u3059\u3002',
+    createdAt: '2026-05-02T01:02:00.000Z',
+    sourceType: 'audio',
+    audio: {
+      path: 'public/music/plant-addict.mp3',
+      url: '/music/plant-addict.mp3',
+    },
+  },
+  {
+    id: 'audio-my-green-angel',
+    title: 'MY GREEN ANGEL',
+    artist: 'ZAMAKURI PLANTS',
+    description: '\u3056\u307e\u304f\u308a\u30d7\u30e9\u30f3\u30c4\u306e\u4e16\u754c\u89b3\u306b\u5bc4\u308a\u6dfb\u3046\u30aa\u30ea\u30b8\u30ca\u30eb\u97f3\u6e90\u3002',
+    createdAt: '2026-05-02T01:01:00.000Z',
+    sourceType: 'audio',
+    audio: {
+      path: 'public/music/my-green-angel.mp3',
+      url: '/music/my-green-angel.mp3',
+    },
+  },
+  {
+    id: 'audio-my-green-angel-zamakuri-var',
+    title: 'MY GREEN ANGEL - ZAMAKURI var.',
+    artist: 'ZAMAKURI PLANTS',
+    description: '\u3056\u307e\u304f\u308a\u30d0\u30fc\u30b8\u30e7\u30f3\u3068\u3057\u3066\u53ce\u9332\u3057\u305f\u97f3\u6e90\u3002\u30e9\u30b8\u30ab\u30bb\u30dc\u30bf\u30f3\u3067\u518d\u751f\u3067\u304d\u307e\u3059\u3002',
+    createdAt: '2026-05-02T01:00:00.000Z',
+    sourceType: 'audio',
+    audio: {
+      path: 'public/music/my-green-angel-zamakuri-var.mp3',
+      url: '/music/my-green-angel-zamakuri-var.mp3',
+    },
+  },
+]
+
 const featuredTracks: MusicTrack[] = [
   {
     id: 'youtube-5royjnkiqe0',
@@ -105,7 +156,7 @@ export async function listMusicTracks(): Promise<MusicTrack[]> {
   const client = getMusicClient()
 
   if (!client) {
-    return featuredTracks
+    return [...localAudioTracks, ...featuredTracks]
   }
 
   const { data: folders, error } = await client.storage.from(musicBucket).list('tracks', {
@@ -114,7 +165,7 @@ export async function listMusicTracks(): Promise<MusicTrack[]> {
   })
 
   if (error || !folders) {
-    return featuredTracks
+    return [...localAudioTracks, ...featuredTracks]
   }
 
   const tracks = await Promise.all(
@@ -158,7 +209,7 @@ export async function listMusicTracks(): Promise<MusicTrack[]> {
     .filter((track): track is MusicTrack => Boolean(track))
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
 
-  return [...featuredTracks, ...uploadedTracks]
+  return [...localAudioTracks, ...featuredTracks, ...uploadedTracks]
 }
 
 export function getMusicAdminReady() {

@@ -4,8 +4,13 @@ import ProtectedPhoneLink from './ProtectedPhoneLink'
 
 type ItemRow = {
   id?: string
+  uid?: string
+  plant_id?: string
+  name?: string | null
   name_en?: string | null
+  scientific_name?: string | null
   name_jp?: string | null
+  trade_name?: string | null
   slug?: string | null
 }
 
@@ -21,6 +26,15 @@ type IndividualPageProps = {
 }
 
 export const dynamic = 'force-dynamic'
+
+function normalizeItem(row: ItemRow): ItemRow {
+  return {
+    id: row.id ?? row.uid ?? row.plant_id,
+    name_en: row.name_en ?? row.scientific_name ?? row.name,
+    name_jp: row.name_jp ?? row.trade_name,
+    slug: row.slug,
+  }
+}
 
 async function fetchItem(uid: string): Promise<{
   item: ItemRow | null
@@ -42,7 +56,7 @@ async function fetchItem(uid: string): Promise<{
   try {
     const endpoint = new URL('/rest/v1/items', supabaseUrl)
     endpoint.searchParams.set('id', `eq.${uid}`)
-    endpoint.searchParams.set('select', 'id,name_en,name_jp,slug')
+    endpoint.searchParams.set('select', '*')
 
     const response = await fetch(endpoint.toString(), {
       headers: {
@@ -53,11 +67,12 @@ async function fetchItem(uid: string): Promise<{
     })
 
     if (!response.ok) {
+      const detail = await response.text().catch(() => '')
       return {
         item: null,
         error: {
           code: `SUPABASE_HTTP_${response.status}`,
-          message: `Debug: Supabase returned ${response.status}.`,
+          message: detail ? `Debug: Supabase returned ${response.status}: ${detail}` : `Debug: Supabase returned ${response.status}.`,
         },
       }
     }
@@ -74,7 +89,7 @@ async function fetchItem(uid: string): Promise<{
       }
     }
 
-    return { item: data[0], error: null }
+    return { item: normalizeItem(data[0]), error: null }
   } catch {
     return {
       item: null,
