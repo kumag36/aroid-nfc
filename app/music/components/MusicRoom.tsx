@@ -50,6 +50,8 @@ function VuMeter({ active }: { active: boolean }) {
 
 export default function MusicRoom() {
   const audioRef = useRef<HTMLAudioElement>(null)
+  const seekDelayRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const seekIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const [tracks, setTracks] = useState<MusicTrack[]>([])
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -86,9 +88,27 @@ export default function MusicRoom() {
     () => tracks.find((track) => track.id === selectedId) ?? tracks[0],
     [selectedId, tracks],
   )
+  const selectedIndex = useMemo(
+    () => Math.max(0, tracks.findIndex((track) => track.id === selectedTrack?.id)),
+    [selectedTrack?.id, tracks],
+  )
 
   const isShort = selectedTrack?.youtube?.url.includes('/shorts/') ?? false
   const canUseCassetteControls = selectedTrack?.sourceType === 'audio' && Boolean(selectedTrack.audio)
+
+  function clearSeekHold() {
+    if (seekDelayRef.current) {
+      clearTimeout(seekDelayRef.current)
+      seekDelayRef.current = null
+    }
+
+    if (seekIntervalRef.current) {
+      clearInterval(seekIntervalRef.current)
+      seekIntervalRef.current = null
+    }
+  }
+
+  useEffect(() => clearSeekHold, [])
 
   useEffect(() => {
     const audio = audioRef.current
@@ -134,6 +154,31 @@ export default function MusicRoom() {
     audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + seconds))
   }
 
+  function startSeekHold(direction: -1 | 1) {
+    if (!canUseCassetteControls) return
+
+    clearSeekHold()
+    seekDelayRef.current = setTimeout(() => {
+      seekAudio(direction * 3)
+      seekIntervalRef.current = setInterval(() => seekAudio(direction * 3), 180)
+    }, 260)
+  }
+
+  function selectRelativeTrack(offset: -1 | 1) {
+    if (tracks.length < 2) return
+
+    clearSeekHold()
+    stopAudio()
+    const nextIndex = (selectedIndex + offset + tracks.length) % tracks.length
+    setSelectedId(tracks[nextIndex].id)
+  }
+
+  function selectTrack(trackId: string) {
+    clearSeekHold()
+    stopAudio()
+    setSelectedId(trackId)
+  }
+
   if (isLoading) {
     return (
       <div className="border border-[#fffaf0]/10 bg-[#07120d]/86 px-5 py-16 text-center text-[#d8d0bf]/70">
@@ -169,7 +214,7 @@ export default function MusicRoom() {
               <button
                 key={track.id}
                 type="button"
-                onClick={() => setSelectedId(track.id)}
+                onClick={() => selectTrack(track.id)}
                 className={`group border px-4 py-4 text-left transition duration-300 ${
                   selectedTrack?.id === track.id
                     ? 'border-[#d9ffd8]/60 bg-[#d9ffd8]/12 text-[#fffaf0] shadow-[inset_4px_0_0_#d9ffd8]'
@@ -242,16 +287,30 @@ export default function MusicRoom() {
             />
             <button
               type="button"
-              onClick={() => seekAudio(-15)}
-              disabled={!canUseCassetteControls}
-              aria-label="Rewind 15 seconds"
+              onPointerDown={() => startSeekHold(-1)}
+              onPointerUp={clearSeekHold}
+              onPointerCancel={clearSeekHold}
+              onPointerLeave={clearSeekHold}
+              onDoubleClick={(event) => {
+                event.preventDefault()
+                selectRelativeTrack(-1)
+              }}
+              disabled={tracks.length < 2 && !canUseCassetteControls}
+              aria-label="Hold to rewind, double click for previous track"
               className={`${controlHitbox} left-[33.5%] top-[74.9%] h-[11%] w-[13.2%]`}
             />
             <button
               type="button"
-              onClick={() => seekAudio(15)}
-              disabled={!canUseCassetteControls}
-              aria-label="Fast forward 15 seconds"
+              onPointerDown={() => startSeekHold(1)}
+              onPointerUp={clearSeekHold}
+              onPointerCancel={clearSeekHold}
+              onPointerLeave={clearSeekHold}
+              onDoubleClick={(event) => {
+                event.preventDefault()
+                selectRelativeTrack(1)
+              }}
+              disabled={tracks.length < 2 && !canUseCassetteControls}
+              aria-label="Hold to fast forward, double click for next track"
               className={`${controlHitbox} left-[48%] top-[74.9%] h-[11%] w-[13.2%]`}
             />
             <button
