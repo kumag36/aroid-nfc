@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
@@ -25,7 +25,7 @@ type MusicResponse = {
 }
 
 const controlHitbox =
-  'absolute rounded-[10px] border border-transparent bg-transparent text-transparent outline-none transition duration-200 enabled:hover:border-[#d9ffd8]/70 enabled:hover:bg-[#d9ffd8]/10 enabled:focus-visible:border-[#d9ffd8] enabled:focus-visible:bg-[#d9ffd8]/12 disabled:cursor-not-allowed'
+  'absolute touch-manipulation select-none rounded-[10px] border border-transparent bg-transparent text-transparent outline-none transition duration-200 enabled:hover:border-[#d9ffd8]/70 enabled:hover:bg-[#d9ffd8]/10 enabled:focus-visible:border-[#d9ffd8] enabled:focus-visible:bg-[#d9ffd8]/12 disabled:cursor-not-allowed'
 
 function VuMeter({ active }: { active: boolean }) {
   return (
@@ -52,6 +52,9 @@ export default function MusicRoom() {
   const audioRef = useRef<HTMLAudioElement>(null)
   const seekDelayRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const seekIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const holdActiveRef = useRef(false)
+  const lastRewindTapRef = useRef(0)
+  const lastForwardTapRef = useRef(0)
   const [tracks, setTracks] = useState<MusicTrack[]>([])
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -158,10 +161,31 @@ export default function MusicRoom() {
     if (!canUseCassetteControls) return
 
     clearSeekHold()
+    holdActiveRef.current = false
     seekDelayRef.current = setTimeout(() => {
+      holdActiveRef.current = true
       seekAudio(direction * 3)
       seekIntervalRef.current = setInterval(() => seekAudio(direction * 3), 180)
     }, 260)
+  }
+
+  function finishSeekPress(direction: -1 | 1, eventTime: number) {
+    const wasHolding = holdActiveRef.current
+
+    clearSeekHold()
+    holdActiveRef.current = false
+
+    if (wasHolding) return
+
+    const lastTapRef = direction === -1 ? lastRewindTapRef : lastForwardTapRef
+
+    if (eventTime - lastTapRef.current < 360) {
+      lastTapRef.current = 0
+      selectRelativeTrack(direction)
+      return
+    }
+
+    lastTapRef.current = eventTime
   }
 
   function selectRelativeTrack(offset: -1 | 1) {
@@ -192,10 +216,10 @@ export default function MusicRoom() {
       <div className="border border-[#fffaf0]/10 bg-[#07120d]/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.22)] md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.28em] text-[#b89558]">NO TAPES YET</p>
         <h2 className="text-[clamp(2rem,5vw,4.2rem)] font-medium leading-tight text-[#fffaf0]">
-          まだ音源がありません。
+          No music has been added yet.
         </h2>
         <p className="mt-7 max-w-2xl text-[15px] leading-8 text-[#d8d0bf]/76 md:text-lg md:leading-9">
-          管理画面から音源を追加すると、ここにカセットとして並びます。
+          Upload audio from the admin page and it will appear here as a cassette.
         </p>
       </div>
     )
@@ -288,29 +312,23 @@ export default function MusicRoom() {
             <button
               type="button"
               onPointerDown={() => startSeekHold(-1)}
-              onPointerUp={clearSeekHold}
+              onPointerUp={(event) => finishSeekPress(-1, event.timeStamp)}
               onPointerCancel={clearSeekHold}
               onPointerLeave={clearSeekHold}
-              onDoubleClick={(event) => {
-                event.preventDefault()
-                selectRelativeTrack(-1)
-              }}
+              onContextMenu={(event) => event.preventDefault()}
               disabled={tracks.length < 2 && !canUseCassetteControls}
-              aria-label="Hold to rewind, double click for previous track"
+              aria-label="Hold to rewind, double tap for previous track"
               className={`${controlHitbox} left-[33.5%] top-[74.9%] h-[11%] w-[13.2%]`}
             />
             <button
               type="button"
               onPointerDown={() => startSeekHold(1)}
-              onPointerUp={clearSeekHold}
+              onPointerUp={(event) => finishSeekPress(1, event.timeStamp)}
               onPointerCancel={clearSeekHold}
               onPointerLeave={clearSeekHold}
-              onDoubleClick={(event) => {
-                event.preventDefault()
-                selectRelativeTrack(1)
-              }}
+              onContextMenu={(event) => event.preventDefault()}
               disabled={tracks.length < 2 && !canUseCassetteControls}
-              aria-label="Hold to fast forward, double click for next track"
+              aria-label="Hold to fast forward, double tap for next track"
               className={`${controlHitbox} left-[48%] top-[74.9%] h-[11%] w-[13.2%]`}
             />
             <button
@@ -364,7 +382,7 @@ export default function MusicRoom() {
 
           {!canUseCassetteControls && (
             <p className="mt-4 text-center text-[11px] leading-5 text-[#d8d0bf]/50">
-              YouTube展示は埋め込みプレイヤーで再生します。アップロード音源はラジカセボタンで操作できます。
+              YouTube tracks play in the embedded player. Double tap REW / FF to move between tracks.
             </p>
           )}
         </article>
