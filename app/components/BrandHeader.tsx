@@ -24,13 +24,21 @@ export default function BrandHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-[#fffaf0]/78 transition hover:text-[#d9ffd8]">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex shrink-0 items-center gap-3 md:gap-8">
+          <nav className="hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
+            {navItems.map((item) => (
+              <Link key={item.href} href={item.href} className="text-[#fffaf0]/78 transition hover:text-[#d9ffd8]">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <Link
+            href="/admin"
+            className="inline-flex min-h-9 items-center justify-center border border-[#d9ffd8]/35 bg-[#d9ffd8]/8 px-3 text-[10px] font-semibold tracking-[0.18em] text-[#eaffdf] transition hover:border-[#d9ffd8]/70 hover:bg-[#d9ffd8] hover:text-[#07110c] sm:px-4 sm:text-[11px]"
+          >
+            ADMIN
+          </Link>
+        </div>
       </div>
     </header>
   )
