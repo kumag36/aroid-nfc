@@ -24,8 +24,8 @@ type MusicResponse = {
   tracks: MusicTrack[]
 }
 
-const buttonBase =
-  'min-h-11 border border-[#161a13] bg-[linear-gradient(180deg,#fff5d8_0%,#a99b81_45%,#4d483d_100%)] px-2 text-[10px] font-black tracking-[0.12em] text-[#11150f] shadow-[inset_0_2px_0_rgba(255,255,255,0.7),inset_0_-4px_0_rgba(0,0,0,0.24),0_6px_0_#10130f,0_10px_16px_rgba(0,0,0,0.3)] transition duration-150 enabled:active:translate-y-1 enabled:active:shadow-[inset_0_1px_0_rgba(255,255,255,0.55),inset_0_-2px_0_rgba(0,0,0,0.24),0_2px_0_#10130f,0_7px_12px_rgba(0,0,0,0.28)] disabled:cursor-not-allowed disabled:opacity-45'
+const controlHitbox =
+  'absolute rounded-[10px] border border-transparent bg-transparent text-transparent outline-none transition duration-200 enabled:hover:border-[#d9ffd8]/70 enabled:hover:bg-[#d9ffd8]/10 enabled:focus-visible:border-[#d9ffd8] enabled:focus-visible:bg-[#d9ffd8]/12 disabled:cursor-not-allowed'
 
 function VuMeter({ active }: { active: boolean }) {
   return (
@@ -118,6 +118,14 @@ export default function MusicRoom() {
     setIsPlaying(false)
   }
 
+  function pauseAudio() {
+    const audio = audioRef.current
+
+    if (!audio || !canUseCassetteControls) return
+
+    audio.pause()
+  }
+
   function seekAudio(seconds: number) {
     const audio = audioRef.current
 
@@ -198,13 +206,15 @@ export default function MusicRoom() {
             </div>
           </div>
 
-          <div className="relative mx-auto aspect-[16/9] max-w-5xl overflow-hidden">
+          <div className="relative mx-auto aspect-square max-w-[780px] overflow-hidden">
             <Image
-              src="/music/boombox-1980.svg"
+              src="/music/boombox-1980-anime-cutout.png"
               alt=""
               fill
               className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.52)]"
               aria-hidden="true"
+              sizes="(max-width: 768px) 94vw, 780px"
+              priority
             />
             {selectedTrack.sourceType === 'audio' && selectedTrack.audio ? (
               <audio
@@ -216,23 +226,48 @@ export default function MusicRoom() {
                 onEnded={() => setIsPlaying(false)}
               />
             ) : null}
-            <div className="absolute left-[28%] top-[82%] grid w-[48%] grid-cols-5 gap-[3.6%]">
-              <button type="button" disabled className={buttonBase} title="Recording is disabled">
-                REC
-              </button>
-              <button type="button" onClick={() => seekAudio(-15)} disabled={!canUseCassetteControls} className={buttonBase}>
-                REW
-              </button>
-              <button type="button" onClick={playAudio} disabled={!canUseCassetteControls} className={`${buttonBase} !bg-[linear-gradient(180deg,#d9ffd8_0%,#8fc98c_48%,#3d6c44_100%)]`}>
-                PLAY
-              </button>
-              <button type="button" onClick={stopAudio} disabled={!canUseCassetteControls} className={buttonBase}>
-                STOP
-              </button>
-              <button type="button" onClick={() => seekAudio(15)} disabled={!canUseCassetteControls} className={buttonBase}>
-                FF
-              </button>
-            </div>
+            <button
+              type="button"
+              disabled
+              aria-label="Record is disabled"
+              title="Recording is disabled"
+              className={`${controlHitbox} left-[2.8%] top-[74.5%] h-[11.5%] w-[15.2%]`}
+            />
+            <button
+              type="button"
+              onClick={playAudio}
+              disabled={!canUseCassetteControls}
+              aria-label="Play"
+              className={`${controlHitbox} left-[19.2%] top-[74.9%] h-[11%] w-[13.2%]`}
+            />
+            <button
+              type="button"
+              onClick={() => seekAudio(-15)}
+              disabled={!canUseCassetteControls}
+              aria-label="Rewind 15 seconds"
+              className={`${controlHitbox} left-[33.5%] top-[74.9%] h-[11%] w-[13.2%]`}
+            />
+            <button
+              type="button"
+              onClick={() => seekAudio(15)}
+              disabled={!canUseCassetteControls}
+              aria-label="Fast forward 15 seconds"
+              className={`${controlHitbox} left-[48%] top-[74.9%] h-[11%] w-[13.2%]`}
+            />
+            <button
+              type="button"
+              onClick={stopAudio}
+              disabled={!canUseCassetteControls}
+              aria-label="Stop"
+              className={`${controlHitbox} left-[62.4%] top-[74.9%] h-[11%] w-[13.2%]`}
+            />
+            <button
+              type="button"
+              onClick={pauseAudio}
+              disabled={!canUseCassetteControls}
+              aria-label="Pause"
+              className={`${controlHitbox} left-[76.7%] top-[74.9%] h-[11%] w-[13.2%]`}
+            />
           </div>
 
           {selectedTrack.description && (
