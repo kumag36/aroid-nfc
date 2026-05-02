@@ -48,7 +48,11 @@ function VuMeter({ active }: { active: boolean }) {
   )
 }
 
-export default function MusicRoom() {
+type MusicRoomProps = {
+  variant?: 'full' | 'hero'
+}
+
+export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const seekDelayRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const seekIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -246,133 +250,126 @@ export default function MusicRoom() {
     )
   }
 
-  return (
-    <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
-      <aside className="lg:sticky lg:top-28 lg:self-start">
-        <div className="border border-[#fffaf0]/10 bg-[#07120d]/88 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
-          <div className="mb-4 flex items-center justify-between gap-4 border-b border-[#fffaf0]/10 pb-4">
-            <p className="text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">TAPE CASE</p>
-            <span className="text-[11px] tracking-[0.18em] text-[#d8d0bf]/46">{tracks.length} TAPES</span>
+  const player = selectedTrack ? (
+    <article
+      className={`overflow-hidden border border-[#fffaf0]/10 bg-[radial-gradient(circle_at_50%_0%,rgba(217,255,216,0.08),transparent_36%),linear-gradient(145deg,#11170f,#050806_58%,#17150f)] shadow-[0_38px_120px_rgba(0,0,0,0.42)] ${
+        variant === 'hero' ? 'p-3 md:p-4' : 'p-3 md:p-5'
+      }`}
+    >
+      <div className={`mb-5 grid gap-3 ${variant === 'hero' ? '' : 'md:grid-cols-[1fr_220px]'}`}>
+        <div className="border border-[#fffaf0]/10 bg-[#050806]/82 p-4 shadow-[inset_0_0_30px_rgba(0,0,0,0.48)]">
+          <p className="text-[10px] font-black tracking-[0.22em] text-[#b89558]">NOW PLAYING</p>
+          <div className="mt-3 overflow-hidden border border-[#d9ffd8]/20 bg-[#020403] px-3 py-3 shadow-[inset_0_0_18px_rgba(217,255,216,0.08)]">
+            <div className="np-marquee flex w-max whitespace-nowrap text-[12px] font-semibold leading-none tracking-[0.18em] text-[#d9ffd8] [text-shadow:0_0_10px_rgba(217,255,216,0.64)] md:text-sm">
+              <span className="pr-14">{selectedTrack.title}</span>
+              <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
+              <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
+            </div>
           </div>
-          <div className="grid gap-2">
-            {tracks.map((track, index) => (
-              <button
-                key={track.id}
-                type="button"
-                onClick={() => selectTrack(track.id)}
-                className={`group border px-4 py-4 text-left transition duration-300 ${
-                  selectedTrack?.id === track.id
-                    ? 'border-[#d9ffd8]/60 bg-[#d9ffd8]/12 text-[#fffaf0] shadow-[inset_4px_0_0_#d9ffd8]'
-                    : 'border-[#fffaf0]/10 bg-[#fffaf0]/4 text-[#d8d0bf]/72 hover:border-[#d9ffd8]/30'
-                }`}
-              >
-                <span className="mb-3 block text-[10px] font-semibold tracking-[0.18em] text-[#b89558]">
-                  SIDE A / {String(index + 1).padStart(2, '0')}
-                </span>
-                <span className="block text-sm font-semibold leading-6">{track.title}</span>
-                <span className="mt-2 block text-[11px] tracking-[0.14em] text-[#d8d0bf]/48">
-                  {track.sourceType === 'audio' && track.youtube ? 'LOCAL AUDIO + YOUTUBE META' : track.sourceType === 'audio' ? 'CASSETTE AUDIO' : 'VIDEO ARCHIVE'} / {track.artist}
-                </span>
-              </button>
-            ))}
-          </div>
+          <p className="mt-3 text-xs font-semibold tracking-[0.16em] text-[#d9ffd8]/78">{selectedTrack.artist}</p>
         </div>
-      </aside>
+        <div className={`content-between gap-3 border border-[#fffaf0]/10 bg-[#050806]/82 p-3 ${variant === 'hero' ? 'hidden' : 'grid'}`}>
+          <p className="text-[10px] font-black tracking-[0.18em] text-[#d8d0bf]/54">LEVEL METER</p>
+          <VuMeter active={isPlaying} />
+          <p className="text-[10px] tracking-[0.18em] text-[#d8d0bf]/44">{isPlaying ? 'ON AIR' : 'STAND BY'}</p>
+        </div>
+      </div>
 
-      {selectedTrack && (
-        <article className="overflow-hidden border border-[#fffaf0]/10 bg-[radial-gradient(circle_at_50%_0%,rgba(217,255,216,0.08),transparent_36%),linear-gradient(145deg,#11170f,#050806_58%,#17150f)] p-3 shadow-[0_38px_120px_rgba(0,0,0,0.42)] md:p-5">
-          <div className="mb-5 grid gap-3 md:grid-cols-[1fr_220px]">
-            <div className="border border-[#fffaf0]/10 bg-[#050806]/82 p-4 shadow-[inset_0_0_30px_rgba(0,0,0,0.48)]">
-              <p className="text-[10px] font-black tracking-[0.22em] text-[#b89558]">NOW PLAYING</p>
-              <div className="mt-3 overflow-hidden border border-[#d9ffd8]/20 bg-[#020403] px-3 py-3 shadow-[inset_0_0_18px_rgba(217,255,216,0.08)]">
-                <div className="np-marquee flex w-max whitespace-nowrap text-[12px] font-semibold leading-none tracking-[0.18em] text-[#d9ffd8] [text-shadow:0_0_10px_rgba(217,255,216,0.64)] md:text-sm">
-                  <span className="pr-14">{selectedTrack.title}</span>
-                  <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
-                  <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
-                </div>
-              </div>
-              <p className="mt-3 text-xs font-semibold tracking-[0.16em] text-[#d9ffd8]/78">{selectedTrack.artist}</p>
-            </div>
-            <div className="grid content-between gap-3 border border-[#fffaf0]/10 bg-[#050806]/82 p-3">
-              <p className="text-[10px] font-black tracking-[0.18em] text-[#d8d0bf]/54">LEVEL METER</p>
-              <VuMeter active={isPlaying} />
-              <p className="text-[10px] tracking-[0.18em] text-[#d8d0bf]/44">{isPlaying ? 'ON AIR' : 'STAND BY'}</p>
-            </div>
-          </div>
+      <div className={`relative mx-auto aspect-square overflow-hidden ${variant === 'hero' ? 'max-w-[560px]' : 'max-w-[780px]'}`}>
+        <Image
+          src="/music/boombox-1980-anime-cutout.webp"
+          alt=""
+          fill
+          className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.52)]"
+          aria-hidden="true"
+          sizes={variant === 'hero' ? '(max-width: 768px) 94vw, 560px' : '(max-width: 768px) 94vw, 780px'}
+          priority={variant === 'hero'}
+        />
+        {selectedTrack.sourceType === 'audio' && selectedTrack.audio ? (
+          <audio
+            ref={audioRef}
+            src={selectedTrack.audio.url}
+            preload="metadata"
+            onCanPlay={playWhenReady}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            onEnded={() => setIsPlaying(false)}
+          />
+        ) : null}
+        <button
+          type="button"
+          disabled
+          aria-label="Record is disabled"
+          title="Recording is disabled"
+          className={`${controlHitbox} left-[2.8%] top-[74.5%] h-[11.5%] w-[15.2%]`}
+        />
+        <button
+          type="button"
+          onClick={toggleAudio}
+          disabled={!canUseCassetteControls}
+          aria-label="Play or pause"
+          className={`${controlHitbox} left-[18.6%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+        />
+        <button
+          type="button"
+          onPointerDown={() => startSeekHold(-1)}
+          onPointerUp={(event) => finishSeekPress(-1, event.timeStamp)}
+          onPointerCancel={clearSeekHold}
+          onPointerLeave={clearSeekHold}
+          onContextMenu={(event) => event.preventDefault()}
+          disabled={tracks.length < 2 && !canUseCassetteControls}
+          aria-label="Hold to rewind, double tap for previous track"
+          className={`${controlHitbox} left-[33%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+        />
+        <button
+          type="button"
+          onPointerDown={() => startSeekHold(1)}
+          onPointerUp={(event) => finishSeekPress(1, event.timeStamp)}
+          onPointerCancel={clearSeekHold}
+          onPointerLeave={clearSeekHold}
+          onContextMenu={(event) => event.preventDefault()}
+          disabled={tracks.length < 2 && !canUseCassetteControls}
+          aria-label="Hold to fast forward, double tap for next track"
+          className={`${controlHitbox} left-[47.5%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+        />
+        <button
+          type="button"
+          onClick={stopAudio}
+          disabled={!canUseCassetteControls}
+          aria-label="Stop"
+          className={`${controlHitbox} left-[61.8%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+        />
+        <button
+          type="button"
+          onClick={toggleAudio}
+          disabled={!canUseCassetteControls}
+          aria-label="Play or pause"
+          className={`${controlHitbox} left-[76.1%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+        />
+      </div>
 
-          <div className="relative mx-auto aspect-square max-w-[780px] overflow-hidden">
-            <Image
-              src="/music/boombox-1980-anime-cutout.webp"
-              alt=""
-              fill
-              className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.52)]"
-              aria-hidden="true"
-              sizes="(max-width: 768px) 94vw, 780px"
-              priority
-            />
-            {selectedTrack.sourceType === 'audio' && selectedTrack.audio ? (
-              <audio
-                ref={audioRef}
-                src={selectedTrack.audio.url}
-                preload="metadata"
-                onCanPlay={playWhenReady}
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
-                onEnded={() => setIsPlaying(false)}
-              />
-            ) : null}
+      {variant === 'hero' && (
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {tracks.map((track, index) => (
             <button
+              key={track.id}
               type="button"
-              disabled
-              aria-label="Record is disabled"
-              title="Recording is disabled"
-              className={`${controlHitbox} left-[2.8%] top-[74.5%] h-[11.5%] w-[15.2%]`}
-            />
-            <button
-              type="button"
-              onClick={toggleAudio}
-              disabled={!canUseCassetteControls}
-              aria-label="Play or pause"
-              className={`${controlHitbox} left-[18.6%] top-[74.4%] h-[12.2%] w-[14.2%]`}
-            />
-            <button
-              type="button"
-              onPointerDown={() => startSeekHold(-1)}
-              onPointerUp={(event) => finishSeekPress(-1, event.timeStamp)}
-              onPointerCancel={clearSeekHold}
-              onPointerLeave={clearSeekHold}
-              onContextMenu={(event) => event.preventDefault()}
-              disabled={tracks.length < 2 && !canUseCassetteControls}
-              aria-label="Hold to rewind, double tap for previous track"
-              className={`${controlHitbox} left-[33%] top-[74.4%] h-[12.2%] w-[14.2%]`}
-            />
-            <button
-              type="button"
-              onPointerDown={() => startSeekHold(1)}
-              onPointerUp={(event) => finishSeekPress(1, event.timeStamp)}
-              onPointerCancel={clearSeekHold}
-              onPointerLeave={clearSeekHold}
-              onContextMenu={(event) => event.preventDefault()}
-              disabled={tracks.length < 2 && !canUseCassetteControls}
-              aria-label="Hold to fast forward, double tap for next track"
-              className={`${controlHitbox} left-[47.5%] top-[74.4%] h-[12.2%] w-[14.2%]`}
-            />
-            <button
-              type="button"
-              onClick={stopAudio}
-              disabled={!canUseCassetteControls}
-              aria-label="Stop"
-              className={`${controlHitbox} left-[61.8%] top-[74.4%] h-[12.2%] w-[14.2%]`}
-            />
-            <button
-              type="button"
-              onClick={toggleAudio}
-              disabled={!canUseCassetteControls}
-              aria-label="Play or pause"
-              className={`${controlHitbox} left-[76.1%] top-[74.4%] h-[12.2%] w-[14.2%]`}
-            />
-          </div>
+              onClick={() => selectTrack(track.id)}
+              className={`min-h-12 border px-3 text-left text-[10px] font-semibold leading-4 tracking-[0.12em] transition ${
+                selectedTrack.id === track.id
+                  ? 'border-[#d9ffd8]/60 bg-[#d9ffd8]/12 text-[#fffaf0]'
+                  : 'border-[#fffaf0]/10 bg-[#fffaf0]/4 text-[#d8d0bf]/62 hover:border-[#d9ffd8]/34'
+              }`}
+            >
+              <span className="block text-[#b89558]">TAPE {String(index + 1).padStart(2, '0')}</span>
+              <span className="block truncate">{track.title}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
+      {variant === 'full' && (
+        <>
           <div className="mt-6 grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-start">
             {selectedTrack.description && (
               <p className="text-[14px] leading-7 text-[#d8d0bf]/72">{selectedTrack.description}</p>
@@ -423,23 +420,64 @@ export default function MusicRoom() {
               YouTube tracks play in the embedded player. Double tap REW / FF to move between tracks.
             </p>
           )}
-          <style jsx>{`
-            .np-marquee {
-              animation: np-marquee 18s linear infinite;
-            }
-
-            @keyframes np-marquee {
-              from {
-                transform: translateX(0);
-              }
-
-              to {
-                transform: translateX(-33.333%);
-              }
-            }
-          `}</style>
-        </article>
+        </>
       )}
+      <style jsx>{`
+        .np-marquee {
+          animation: np-marquee 18s linear infinite;
+        }
+
+        @keyframes np-marquee {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(-33.333%);
+          }
+        }
+      `}</style>
+    </article>
+  ) : null
+
+  if (variant === 'hero') {
+    return <div id="cassette" className="scroll-mt-28">{player}</div>
+  }
+
+  return (
+    <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
+      <aside className="lg:sticky lg:top-28 lg:self-start">
+        <div className="border border-[#fffaf0]/10 bg-[#07120d]/88 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
+          <div className="mb-4 flex items-center justify-between gap-4 border-b border-[#fffaf0]/10 pb-4">
+            <p className="text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">TAPE CASE</p>
+            <span className="text-[11px] tracking-[0.18em] text-[#d8d0bf]/46">{tracks.length} TAPES</span>
+          </div>
+          <div className="grid gap-2">
+            {tracks.map((track, index) => (
+              <button
+                key={track.id}
+                type="button"
+                onClick={() => selectTrack(track.id)}
+                className={`group border px-4 py-4 text-left transition duration-300 ${
+                  selectedTrack?.id === track.id
+                    ? 'border-[#d9ffd8]/60 bg-[#d9ffd8]/12 text-[#fffaf0] shadow-[inset_4px_0_0_#d9ffd8]'
+                    : 'border-[#fffaf0]/10 bg-[#fffaf0]/4 text-[#d8d0bf]/72 hover:border-[#d9ffd8]/30'
+                }`}
+              >
+                <span className="mb-3 block text-[10px] font-semibold tracking-[0.18em] text-[#b89558]">
+                  SIDE A / {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="block text-sm font-semibold leading-6">{track.title}</span>
+                <span className="mt-2 block text-[11px] tracking-[0.14em] text-[#d8d0bf]/48">
+                  {track.sourceType === 'audio' && track.youtube ? 'LOCAL AUDIO + YOUTUBE META' : track.sourceType === 'audio' ? 'CASSETTE AUDIO' : 'VIDEO ARCHIVE'} / {track.artist}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </aside>
+
+      {player}
     </div>
   )
 }
