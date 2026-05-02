@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { Plant } from '@/lib/dictionary-data'
 import type {
   DictionaryImageAssignment,
@@ -19,6 +19,8 @@ type Props = {
   adminReady: boolean
 }
 
+const passwordStorageKey = 'zamakuri-dictionary-admin-password'
+
 export default function DictionaryImageAdmin({
   plants,
   candidates,
@@ -28,13 +30,25 @@ export default function DictionaryImageAdmin({
 }: Props) {
   const [assignments, setAssignments] = useState(initialAssignments)
   const [exclusions, setExclusions] = useState(initialExclusions)
-  const [password, setPassword] = useState('')
+  const [password, setPassword] = useState(() => {
+    if (typeof window === 'undefined') {
+      return ''
+    }
+
+    return window.localStorage.getItem(passwordStorageKey) ?? ''
+  })
   const [activeGenus, setActiveGenus] = useState('all')
   const [activeSpecies, setActiveSpecies] = useState('all')
   const [activePlant, setActivePlant] = useState('all')
   const [queueFilter, setQueueFilter] = useState<QueueFilter>('queue')
   const [message, setMessage] = useState('')
   const [busyId, setBusyId] = useState('')
+
+  useEffect(() => {
+    if (password) {
+      window.localStorage.setItem(passwordStorageKey, password)
+    }
+  }, [password])
 
   const plantBySlug = useMemo(() => {
     return new Map(plants.map((plant) => [plant.slug, plant]))
