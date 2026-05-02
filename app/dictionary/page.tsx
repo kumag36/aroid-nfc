@@ -104,34 +104,80 @@ export default function DictionaryPage() {
     <main className="min-h-screen overflow-hidden bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
 
-      <section className="relative min-h-[88vh] bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-20 pt-32 md:pt-40">
+      <section className="relative bg-[radial-gradient(circle_at_78%_18%,rgba(217,255,216,0.13),transparent_31%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-20 pt-32 md:pt-40">
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#06100b] to-transparent" />
-        <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center">
-          <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
-            ZAMAKURI AROID DICTIONARY
-          </p>
-          <h1 className="max-w-5xl text-[clamp(2.55rem,7vw,6.4rem)] font-medium leading-[1.08] tracking-normal">
-            ざまくり
-            <span className="block">アロイド図鑑</span>
-          </h1>
-          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/84 md:text-lg md:leading-9">
-            モンステラを中心に、アロイドの品種・特徴・見分け方を静かに深く記録するWEB図鑑。
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={() => focusCategory('Monstera')}
-              className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#d9ffd8]/70 bg-[#d9ffd8]/12 px-6 text-sm font-semibold tracking-[0.16em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]"
-            >
-              モンステラから見る
-            </button>
-            <button
-              type="button"
-              onClick={() => focusCategory('All')}
-              className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#fffaf0]/35 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#fffaf0]/65"
-            >
-              全品種を見る
-            </button>
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:min-h-[560px] lg:grid-cols-[minmax(0,0.88fr)_minmax(360px,0.72fr)] lg:items-center">
+          <div>
+            <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
+              ZAMAKURI AROID DICTIONARY
+            </p>
+            <h1 className="max-w-4xl text-[clamp(2.55rem,7vw,6.4rem)] font-medium leading-[1.08] tracking-normal">
+              ざまくり
+              <span className="block">アロイド図鑑</span>
+            </h1>
+            <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/84 md:text-lg md:leading-9">
+              モンステラを中心に、アロイドの品種・特徴・見分け方を静かに深く記録するWEB図鑑。
+            </p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => focusCategory('Monstera')}
+                className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#d9ffd8]/70 bg-[#d9ffd8]/12 px-6 text-sm font-semibold tracking-[0.16em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]"
+              >
+                モンステラから見る
+              </button>
+              <button
+                type="button"
+                onClick={() => focusCategory('All')}
+                className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#fffaf0]/35 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#fffaf0]/65"
+              >
+                全品種を見る
+              </button>
+            </div>
+          </div>
+
+          <div className="hidden lg:block">
+            <div className="relative ml-auto max-w-[520px] border border-[#fffaf0]/12 bg-[#07120d]/72 p-6 shadow-[0_32px_120px_rgba(0,0,0,0.28)] backdrop-blur-sm">
+              <div className="mb-7 flex items-center justify-between gap-5 border-b border-[#fffaf0]/10 pb-5">
+                <p className="text-[11px] font-semibold tracking-[0.28em] text-[#b89558]">
+                  LIVE INDEX
+                </p>
+                <span className="text-[11px] tracking-[0.2em] text-[#d8d0bf]/55">DB READY</span>
+              </div>
+              <div className="grid gap-4">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="border border-[#d9ffd8]/18 bg-[#050806]/52 p-5">
+                    <p className="text-[10px] font-semibold tracking-[0.24em] text-[#d8d0bf]/48">
+                      VARIETIES
+                    </p>
+                    <p className="mt-4 text-4xl font-medium text-[#fffaf0]">{plants.length}</p>
+                  </div>
+                  <div className="border border-[#d9ffd8]/18 bg-[#050806]/52 p-5">
+                    <p className="text-[10px] font-semibold tracking-[0.24em] text-[#d8d0bf]/48">
+                      CATEGORIES
+                    </p>
+                    <p className="mt-4 text-4xl font-medium text-[#fffaf0]">{categories.length}</p>
+                  </div>
+                </div>
+                <div className="border border-[#fffaf0]/10 bg-[#050806]/52 p-5">
+                  <p className="mb-4 text-[10px] font-semibold tracking-[0.24em] text-[#d8d0bf]/48">
+                    FOCUS
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Monstera', 'Philodendron', 'Alocasia', 'NFC DB'].map((label) => (
+                      <span
+                        key={label}
+                        className="border border-[#d9ffd8]/18 bg-[#d9ffd8]/8 px-3 py-2 text-[10px] font-semibold tracking-[0.16em] text-[#eaffdf]"
+                      >
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 border border-[#d9ffd8]/18" />
+              <div className="pointer-events-none absolute -bottom-6 -left-6 h-20 w-20 border border-[#b89558]/22" />
+            </div>
           </div>
         </div>
       </section>
