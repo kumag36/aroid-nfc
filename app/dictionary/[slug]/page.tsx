@@ -1,5 +1,6 @@
 ﻿import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
+import DictionaryPlantImage from '@/app/dictionary/components/DictionaryPlantImage'
 import { plants, type Plant } from '@/lib/dictionary-data'
 
 type DictionaryDetailPageProps = {
@@ -161,7 +162,9 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
             </p>
           </div>
 
-          <aside className="border border-[#fffaf0]/12 bg-[#fffaf0]/6 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur">
+          <div className="space-y-4">
+            <DictionaryPlantImage plantSlug={plant.slug} />
+            <aside className="border border-[#fffaf0]/12 bg-[#fffaf0]/6 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur">
             <p className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">
               QUICK FACTS
             </p>
@@ -215,7 +218,8 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
                 </div>
               )}
             </dl>
-          </aside>
+            </aside>
+          </div>
         </div>
       </section>
 

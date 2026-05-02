@@ -1,0 +1,3340 @@
+[
+  {
+    "id": "001-a-monstera-obliqua-peru-beauty",
+    "src": "/dictionary/candidates/001-a-monstera-obliqua-peru-beauty.webp",
+    "originalName": "A-monstera-Obliqua-Peru-beauty.jpg",
+    "relativePath": "img\\A-monstera-Obliqua-Peru-beauty.jpg",
+    "width": 1000,
+    "height": 1000,
+    "sizeKb": 198,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-obliqua-peru-form"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "002-al003-alocasia-dragon-scale-variegated",
+    "src": "/dictionary/candidates/002-al003-alocasia-dragon-scale-variegated.webp",
+    "originalName": "AL003_Alocasia_dragon_scale_Variegated.png",
+    "relativePath": "img\\AL003_Alocasia_dragon_scale_Variegated.png",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 63,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "alocasia-baginda-dragon-scale-mint-variegated"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "003-al008-alocasia-black-velvet-var-pink-albo",
+    "src": "/dictionary/candidates/003-al008-alocasia-black-velvet-var-pink-albo.webp",
+    "originalName": "AL008_Alocasia_black_velvet_Var._Pink_albo.png",
+    "relativePath": "img\\AL008_Alocasia_black_velvet_Var._Pink_albo.png",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 112,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "alocasia-black-velvet-pink-albo"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "004-bulbasaur",
+    "src": "/dictionary/candidates/004-bulbasaur.webp",
+    "originalName": "bulbasaur.jpg",
+    "relativePath": "img\\bulbasaur.jpg",
+    "width": 989,
+    "height": 1200,
+    "sizeKb": 192,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-bulbasaur"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "005-img-0004-480x480",
+    "src": "/dictionary/candidates/005-img-0004-480x480.webp",
+    "originalName": "IMG_0004_480x480.jpg",
+    "relativePath": "img\\IMG_0004_480x480.jpg",
+    "width": 371,
+    "height": 480,
+    "sizeKb": 38,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: img_. Requires admin review."
+    }
+  },
+  {
+    "id": "006-img-52192",
+    "src": "/dictionary/candidates/006-img-52192.webp",
+    "originalName": "IMG_52192.png",
+    "relativePath": "img\\IMG_52192.png",
+    "width": 900,
+    "height": 1200,
+    "sizeKb": 120,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: img_. Requires admin review."
+    }
+  },
+  {
+    "id": "007-img-5971-900x",
+    "src": "/dictionary/candidates/007-img-5971-900x.webp",
+    "originalName": "IMG_5971_900x.jpg",
+    "relativePath": "img\\IMG_5971_900x.jpg",
+    "width": 900,
+    "height": 882,
+    "sizeKb": 57,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: img_. Requires admin review."
+    }
+  },
+  {
+    "id": "008-img-6432",
+    "src": "/dictionary/candidates/008-img-6432.webp",
+    "originalName": "IMG_6432.PNG",
+    "relativePath": "img\\IMG_6432.PNG",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 110,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "009-img-6433",
+    "src": "/dictionary/candidates/009-img-6433.webp",
+    "originalName": "IMG_6433.PNG",
+    "relativePath": "img\\IMG_6433.PNG",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 127,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-aurea-yellow-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "010-img-6434",
+    "src": "/dictionary/candidates/010-img-6434.webp",
+    "originalName": "IMG_6434.PNG",
+    "relativePath": "img\\IMG_6434.PNG",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 39,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "011-img-6435",
+    "src": "/dictionary/candidates/011-img-6435.webp",
+    "originalName": "IMG_6435.PNG",
+    "relativePath": "img\\IMG_6435.PNG",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 54,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "012-img-6436",
+    "src": "/dictionary/candidates/012-img-6436.webp",
+    "originalName": "IMG_6436.PNG",
+    "relativePath": "img\\IMG_6436.PNG",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 82,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "013-img-6437",
+    "src": "/dictionary/candidates/013-img-6437.webp",
+    "originalName": "IMG_6437.PNG",
+    "relativePath": "img\\IMG_6437.PNG",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 72,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "014-img-6438",
+    "src": "/dictionary/candidates/014-img-6438.webp",
+    "originalName": "IMG_6438.PNG",
+    "relativePath": "img\\IMG_6438.PNG",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 70,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "015-monstera-esqueleto-care-and-growing-guide-plantcarefully",
+    "src": "/dictionary/candidates/015-monstera-esqueleto-care-and-growing-guide-plantcarefully.webp",
+    "originalName": "Monstera Esqueleto Care and Growing Guide _ Plantcarefully.jpg",
+    "relativePath": "img\\Monstera Esqueleto Care and Growing Guide _ Plantcarefully.jpg",
+    "width": 736,
+    "height": 919,
+    "sizeKb": 76,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-sp-esqueleto"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "016-monstera-deliciosa-legacy-variegated-mth-1-scaled",
+    "src": "/dictionary/candidates/016-monstera-deliciosa-legacy-variegated-mth-1-scaled.webp",
+    "originalName": "monstera-deliciosa-legacy-variegated-mth-1-scaled.png",
+    "relativePath": "img\\monstera-deliciosa-legacy-variegated-mth-1-scaled.png",
+    "width": 900,
+    "height": 1200,
+    "sizeKb": 205,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "017-monstera-deliciosa-mint-variegated-houseplants",
+    "src": "/dictionary/candidates/017-monstera-deliciosa-mint-variegated-houseplants.webp",
+    "originalName": "Monstera-Deliciosa-Mint-Variegated-houseplants.jpg",
+    "relativePath": "img\\Monstera-Deliciosa-Mint-Variegated-houseplants.jpg",
+    "width": 900,
+    "height": 1200,
+    "sizeKb": 212,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "018-monstera-esqueleto",
+    "src": "/dictionary/candidates/018-monstera-esqueleto.webp",
+    "originalName": "Monstera-Esqueleto.jpeg",
+    "relativePath": "img\\Monstera-Esqueleto.jpeg",
+    "width": 800,
+    "height": 800,
+    "sizeKb": 53,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-sp-esqueleto"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "019-monstera-obliqua-peru-medium-158773",
+    "src": "/dictionary/candidates/019-monstera-obliqua-peru-medium-158773.webp",
+    "originalName": "monstera-obliqua-peru-medium-158773.png",
+    "relativePath": "img\\monstera-obliqua-peru-medium-158773.png",
+    "width": 1200,
+    "height": 1200,
+    "sizeKb": 65,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-obliqua-peru-form"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "020-monstera-white-ghost-lava-v0-lfay78q5vrvd1",
+    "src": "/dictionary/candidates/020-monstera-white-ghost-lava-v0-lfay78q5vrvd1.webp",
+    "originalName": "monstera-white-ghost-lava-v0-lfay78q5vrvd1.jpg",
+    "relativePath": "img\\monstera-white-ghost-lava-v0-lfay78q5vrvd1.jpg",
+    "width": 900,
+    "height": 1200,
+    "sizeKb": 93,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "021-1",
+    "src": "/dictionary/candidates/021-1.webp",
+    "originalName": "1.png",
+    "relativePath": "MONSTERA図鑑\\1.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 15,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "022-10",
+    "src": "/dictionary/candidates/022-10.webp",
+    "originalName": "10.png",
+    "relativePath": "MONSTERA図鑑\\10.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 92,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "023-11",
+    "src": "/dictionary/candidates/023-11.webp",
+    "originalName": "11.png",
+    "relativePath": "MONSTERA図鑑\\11.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 41,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "024-12",
+    "src": "/dictionary/candidates/024-12.webp",
+    "originalName": "12.png",
+    "relativePath": "MONSTERA図鑑\\12.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 43,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "025-13",
+    "src": "/dictionary/candidates/025-13.webp",
+    "originalName": "13.png",
+    "relativePath": "MONSTERA図鑑\\13.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 59,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "026-14",
+    "src": "/dictionary/candidates/026-14.webp",
+    "originalName": "14.png",
+    "relativePath": "MONSTERA図鑑\\14.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 53,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "027-15",
+    "src": "/dictionary/candidates/027-15.webp",
+    "originalName": "15.png",
+    "relativePath": "MONSTERA図鑑\\15.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 53,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "028-16",
+    "src": "/dictionary/candidates/028-16.webp",
+    "originalName": "16.png",
+    "relativePath": "MONSTERA図鑑\\16.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 56,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "029-17",
+    "src": "/dictionary/candidates/029-17.webp",
+    "originalName": "17.png",
+    "relativePath": "MONSTERA図鑑\\17.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 50,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "030-18",
+    "src": "/dictionary/candidates/030-18.webp",
+    "originalName": "18.png",
+    "relativePath": "MONSTERA図鑑\\18.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 55,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "031-19",
+    "src": "/dictionary/candidates/031-19.webp",
+    "originalName": "19.png",
+    "relativePath": "MONSTERA図鑑\\19.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 53,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "032-2",
+    "src": "/dictionary/candidates/032-2.webp",
+    "originalName": "2.png",
+    "relativePath": "MONSTERA図鑑\\2.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 65,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "033-20",
+    "src": "/dictionary/candidates/033-20.webp",
+    "originalName": "20.png",
+    "relativePath": "MONSTERA図鑑\\20.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 51,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "034-21",
+    "src": "/dictionary/candidates/034-21.webp",
+    "originalName": "21.png",
+    "relativePath": "MONSTERA図鑑\\21.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 48,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "035-22",
+    "src": "/dictionary/candidates/035-22.webp",
+    "originalName": "22.png",
+    "relativePath": "MONSTERA図鑑\\22.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 37,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "036-23",
+    "src": "/dictionary/candidates/036-23.webp",
+    "originalName": "23.png",
+    "relativePath": "MONSTERA図鑑\\23.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 4,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "037-24",
+    "src": "/dictionary/candidates/037-24.webp",
+    "originalName": "24.png",
+    "relativePath": "MONSTERA図鑑\\24.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 7,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "038-3",
+    "src": "/dictionary/candidates/038-3.webp",
+    "originalName": "3.png",
+    "relativePath": "MONSTERA図鑑\\3.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 58,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "039-4",
+    "src": "/dictionary/candidates/039-4.webp",
+    "originalName": "4.png",
+    "relativePath": "MONSTERA図鑑\\4.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 66,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "040-5",
+    "src": "/dictionary/candidates/040-5.webp",
+    "originalName": "5.png",
+    "relativePath": "MONSTERA図鑑\\5.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 82,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "041-6",
+    "src": "/dictionary/candidates/041-6.webp",
+    "originalName": "6.png",
+    "relativePath": "MONSTERA図鑑\\6.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 50,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "042-7",
+    "src": "/dictionary/candidates/042-7.webp",
+    "originalName": "7.png",
+    "relativePath": "MONSTERA図鑑\\7.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 43,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "043-8",
+    "src": "/dictionary/candidates/043-8.webp",
+    "originalName": "8.png",
+    "relativePath": "MONSTERA図鑑\\8.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 74,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "044-9",
+    "src": "/dictionary/candidates/044-9.webp",
+    "originalName": "9.png",
+    "relativePath": "MONSTERA図鑑\\9.png",
+    "width": 851,
+    "height": 1200,
+    "sizeKb": 84,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "045-1",
+    "src": "/dictionary/candidates/045-1.webp",
+    "originalName": "1.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\1.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 14,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "046-10",
+    "src": "/dictionary/candidates/046-10.webp",
+    "originalName": "10.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\10.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 84,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "047-11",
+    "src": "/dictionary/candidates/047-11.webp",
+    "originalName": "11.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\11.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 37,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "048-12",
+    "src": "/dictionary/candidates/048-12.webp",
+    "originalName": "12.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\12.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 41,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "049-13",
+    "src": "/dictionary/candidates/049-13.webp",
+    "originalName": "13.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\13.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 55,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "050-14",
+    "src": "/dictionary/candidates/050-14.webp",
+    "originalName": "14.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\14.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 48,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "051-15",
+    "src": "/dictionary/candidates/051-15.webp",
+    "originalName": "15.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\15.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 50,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "052-16",
+    "src": "/dictionary/candidates/052-16.webp",
+    "originalName": "16.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\16.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 53,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "053-17",
+    "src": "/dictionary/candidates/053-17.webp",
+    "originalName": "17.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\17.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 48,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "054-18",
+    "src": "/dictionary/candidates/054-18.webp",
+    "originalName": "18.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\18.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 52,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "055-19",
+    "src": "/dictionary/candidates/055-19.webp",
+    "originalName": "19.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\19.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 50,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "056-2",
+    "src": "/dictionary/candidates/056-2.webp",
+    "originalName": "2.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\2.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 61,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "057-20",
+    "src": "/dictionary/candidates/057-20.webp",
+    "originalName": "20.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\20.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 47,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "058-21",
+    "src": "/dictionary/candidates/058-21.webp",
+    "originalName": "21.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\21.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 44,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "059-22",
+    "src": "/dictionary/candidates/059-22.webp",
+    "originalName": "22.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\22.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 34,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "060-23",
+    "src": "/dictionary/candidates/060-23.webp",
+    "originalName": "23.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\23.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 3,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "061-24",
+    "src": "/dictionary/candidates/061-24.webp",
+    "originalName": "24.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\24.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 7,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "062-3",
+    "src": "/dictionary/candidates/062-3.webp",
+    "originalName": "3.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\3.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 55,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "063-4",
+    "src": "/dictionary/candidates/063-4.webp",
+    "originalName": "4.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\4.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 63,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "064-5",
+    "src": "/dictionary/candidates/064-5.webp",
+    "originalName": "5.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\5.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 77,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "065-6",
+    "src": "/dictionary/candidates/065-6.webp",
+    "originalName": "6.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\6.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 47,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "066-7",
+    "src": "/dictionary/candidates/066-7.webp",
+    "originalName": "7.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\7.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 40,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "067-8",
+    "src": "/dictionary/candidates/067-8.webp",
+    "originalName": "8.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\8.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 67,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "068-9",
+    "src": "/dictionary/candidates/068-9.webp",
+    "originalName": "9.png",
+    "relativePath": "MONSTERA図鑑\\MONSTERA図鑑 (写真コラージュ（縦）)\\9.png",
+    "width": 800,
+    "height": 1200,
+    "sizeKb": 78,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: monstera. Requires admin review."
+    }
+  },
+  {
+    "id": "069-589013835-1921664712564934-5445288918651122937-n",
+    "src": "/dictionary/candidates/069-589013835-1921664712564934-5445288918651122937-n.webp",
+    "originalName": "589013835_1921664712564934_5445288918651122937_n.jpg",
+    "relativePath": "xanxan\\shu\\589013835_1921664712564934_5445288918651122937_n.jpg",
+    "width": 1080,
+    "height": 835,
+    "sizeKb": 116,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: xanxan. Requires admin review."
+    }
+  },
+  {
+    "id": "070-589864926-856830433416476-3927167651880778396-n",
+    "src": "/dictionary/candidates/070-589864926-856830433416476-3927167651880778396-n.webp",
+    "originalName": "589864926_856830433416476_3927167651880778396_n.jpg",
+    "relativePath": "xanxan\\shu\\589864926_856830433416476_3927167651880778396_n.jpg",
+    "width": 1080,
+    "height": 835,
+    "sizeKb": 111,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: xanxan. Requires admin review."
+    }
+  },
+  {
+    "id": "071-589965175-1320634459837702-1420049369822478099-n",
+    "src": "/dictionary/candidates/071-589965175-1320634459837702-1420049369822478099-n.webp",
+    "originalName": "589965175_1320634459837702_1420049369822478099_n.jpg",
+    "relativePath": "xanxan\\shu\\589965175_1320634459837702_1420049369822478099_n.jpg",
+    "width": 1080,
+    "height": 835,
+    "sizeKb": 113,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: xanxan. Requires admin review."
+    }
+  },
+  {
+    "id": "072-590243994-1506664990551489-2758144080156496052-n",
+    "src": "/dictionary/candidates/072-590243994-1506664990551489-2758144080156496052-n.webp",
+    "originalName": "590243994_1506664990551489_2758144080156496052_n.jpg",
+    "relativePath": "xanxan\\shu\\590243994_1506664990551489_2758144080156496052_n.jpg",
+    "width": 1080,
+    "height": 835,
+    "sizeKb": 118,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: xanxan. Requires admin review."
+    }
+  },
+  {
+    "id": "073-590290813-1217578613517354-9144360362840298513-n",
+    "src": "/dictionary/candidates/073-590290813-1217578613517354-9144360362840298513-n.webp",
+    "originalName": "590290813_1217578613517354_9144360362840298513_n.jpg",
+    "relativePath": "xanxan\\shu\\590290813_1217578613517354_9144360362840298513_n.jpg",
+    "width": 1080,
+    "height": 835,
+    "sizeKb": 117,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: xanxan. Requires admin review."
+    }
+  },
+  {
+    "id": "074-591211589-24373126089029943-9116926387631430407-n",
+    "src": "/dictionary/candidates/074-591211589-24373126089029943-9116926387631430407-n.webp",
+    "originalName": "591211589_24373126089029943_9116926387631430407_n.jpg",
+    "relativePath": "xanxan\\shu\\591211589_24373126089029943_9116926387631430407_n.jpg",
+    "width": 1080,
+    "height": 835,
+    "sizeKb": 110,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: xanxan. Requires admin review."
+    }
+  },
+  {
+    "id": "075-591759034-2683556805346972-1602321764713272986-n",
+    "src": "/dictionary/candidates/075-591759034-2683556805346972-1602321764713272986-n.webp",
+    "originalName": "591759034_2683556805346972_1602321764713272986_n.jpg",
+    "relativePath": "xanxan\\shu\\591759034_2683556805346972_1602321764713272986_n.jpg",
+    "width": 1080,
+    "height": 835,
+    "sizeKb": 136,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.72,
+      "reason": "Plant-related token detected: xanxan. Requires admin review."
+    }
+  },
+  {
+    "id": "076-20",
+    "src": "/dictionary/candidates/076-20.webp",
+    "originalName": "20.png",
+    "relativePath": "メルカリ\\BMF\\20.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 50,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "077-bmf",
+    "src": "/dictionary/candidates/077-bmf.webp",
+    "originalName": "bmf.png",
+    "relativePath": "メルカリ\\BMF\\bmf.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 51,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "078-dsc-6697",
+    "src": "/dictionary/candidates/078-dsc-6697.webp",
+    "originalName": "DSC_6697.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6697.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "079-dsc-6698",
+    "src": "/dictionary/candidates/079-dsc-6698.webp",
+    "originalName": "DSC_6698.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6698.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "080-dsc-6699",
+    "src": "/dictionary/candidates/080-dsc-6699.webp",
+    "originalName": "DSC_6699.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6699.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 24,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "081-dsc-6700",
+    "src": "/dictionary/candidates/081-dsc-6700.webp",
+    "originalName": "DSC_6700.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6700.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "082-dsc-6701",
+    "src": "/dictionary/candidates/082-dsc-6701.webp",
+    "originalName": "DSC_6701.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6701.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 25,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "083-dsc-6702",
+    "src": "/dictionary/candidates/083-dsc-6702.webp",
+    "originalName": "DSC_6702.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6702.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "084-dsc-6703",
+    "src": "/dictionary/candidates/084-dsc-6703.webp",
+    "originalName": "DSC_6703.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6703.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "085-dsc-6704",
+    "src": "/dictionary/candidates/085-dsc-6704.webp",
+    "originalName": "DSC_6704.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6704.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "086-dsc-6705",
+    "src": "/dictionary/candidates/086-dsc-6705.webp",
+    "originalName": "DSC_6705.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6705.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 19,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "087-dsc-6706",
+    "src": "/dictionary/candidates/087-dsc-6706.webp",
+    "originalName": "DSC_6706.JPG",
+    "relativePath": "メルカリ\\BMF\\DSC_6706.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 24,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "088-dsc-6737",
+    "src": "/dictionary/candidates/088-dsc-6737.webp",
+    "originalName": "DSC_6737.JPG",
+    "relativePath": "メルカリ\\lemonlime\\DSC_6737.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 26,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-lemon-lime"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "089-dsc-6738",
+    "src": "/dictionary/candidates/089-dsc-6738.webp",
+    "originalName": "DSC_6738.JPG",
+    "relativePath": "メルカリ\\lemonlime\\DSC_6738.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 27,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-lemon-lime"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "090-dsc-6739",
+    "src": "/dictionary/candidates/090-dsc-6739.webp",
+    "originalName": "DSC_6739.JPG",
+    "relativePath": "メルカリ\\lemonlime\\DSC_6739.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 26,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-lemon-lime"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "091-dsc-6740",
+    "src": "/dictionary/candidates/091-dsc-6740.webp",
+    "originalName": "DSC_6740.JPG",
+    "relativePath": "メルカリ\\lemonlime\\DSC_6740.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 26,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-lemon-lime"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "092-dsc-6741",
+    "src": "/dictionary/candidates/092-dsc-6741.webp",
+    "originalName": "DSC_6741.JPG",
+    "relativePath": "メルカリ\\lemonlime\\DSC_6741.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 25,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-lemon-lime"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "093-21",
+    "src": "/dictionary/candidates/093-21.webp",
+    "originalName": "21.png",
+    "relativePath": "メルカリ\\mint\\21.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 60,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "094-dsc-6717",
+    "src": "/dictionary/candidates/094-dsc-6717.webp",
+    "originalName": "DSC_6717.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6717.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "095-dsc-6718",
+    "src": "/dictionary/candidates/095-dsc-6718.webp",
+    "originalName": "DSC_6718.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6718.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 25,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "096-dsc-6719",
+    "src": "/dictionary/candidates/096-dsc-6719.webp",
+    "originalName": "DSC_6719.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6719.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 27,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "097-dsc-6720",
+    "src": "/dictionary/candidates/097-dsc-6720.webp",
+    "originalName": "DSC_6720.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6720.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "098-dsc-6721",
+    "src": "/dictionary/candidates/098-dsc-6721.webp",
+    "originalName": "DSC_6721.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6721.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 24,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "099-dsc-6722",
+    "src": "/dictionary/candidates/099-dsc-6722.webp",
+    "originalName": "DSC_6722.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6722.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 24,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "100-dsc-6723",
+    "src": "/dictionary/candidates/100-dsc-6723.webp",
+    "originalName": "DSC_6723.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6723.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "101-dsc-6724",
+    "src": "/dictionary/candidates/101-dsc-6724.webp",
+    "originalName": "DSC_6724.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6724.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 25,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "102-dsc-6725",
+    "src": "/dictionary/candidates/102-dsc-6725.webp",
+    "originalName": "DSC_6725.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6725.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 29,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "103-dsc-6726",
+    "src": "/dictionary/candidates/103-dsc-6726.webp",
+    "originalName": "DSC_6726.JPG",
+    "relativePath": "メルカリ\\mint\\DSC_6726.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 28,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-mint"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "104-23",
+    "src": "/dictionary/candidates/104-23.webp",
+    "originalName": "23.png",
+    "relativePath": "メルカリ\\Tycon\\23.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 85,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "105-dsc-6676",
+    "src": "/dictionary/candidates/105-dsc-6676.webp",
+    "originalName": "DSC_6676.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6676.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 24,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "106-dsc-6679",
+    "src": "/dictionary/candidates/106-dsc-6679.webp",
+    "originalName": "DSC_6679.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6679.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 17,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "107-dsc-6680",
+    "src": "/dictionary/candidates/107-dsc-6680.webp",
+    "originalName": "DSC_6680.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6680.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "108-dsc-6681",
+    "src": "/dictionary/candidates/108-dsc-6681.webp",
+    "originalName": "DSC_6681.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6681.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 19,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "109-dsc-6682",
+    "src": "/dictionary/candidates/109-dsc-6682.webp",
+    "originalName": "DSC_6682.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6682.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "110-dsc-6683",
+    "src": "/dictionary/candidates/110-dsc-6683.webp",
+    "originalName": "DSC_6683.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6683.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 22,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "111-dsc-6684",
+    "src": "/dictionary/candidates/111-dsc-6684.webp",
+    "originalName": "DSC_6684.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6684.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 22,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "112-dsc-6685",
+    "src": "/dictionary/candidates/112-dsc-6685.webp",
+    "originalName": "DSC_6685.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6685.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 26,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "113-dsc-6686",
+    "src": "/dictionary/candidates/113-dsc-6686.webp",
+    "originalName": "DSC_6686.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6686.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "114-dsc-6687",
+    "src": "/dictionary/candidates/114-dsc-6687.webp",
+    "originalName": "DSC_6687.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6687.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "115-dsc-6688",
+    "src": "/dictionary/candidates/115-dsc-6688.webp",
+    "originalName": "DSC_6688.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6688.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "116-dsc-6689",
+    "src": "/dictionary/candidates/116-dsc-6689.webp",
+    "originalName": "DSC_6689.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6689.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 22,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "117-dsc-6690",
+    "src": "/dictionary/candidates/117-dsc-6690.webp",
+    "originalName": "DSC_6690.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6690.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "118-dsc-6691",
+    "src": "/dictionary/candidates/118-dsc-6691.webp",
+    "originalName": "DSC_6691.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6691.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "119-dsc-6692",
+    "src": "/dictionary/candidates/119-dsc-6692.webp",
+    "originalName": "DSC_6692.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6692.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 29,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "120-dsc-6693",
+    "src": "/dictionary/candidates/120-dsc-6693.webp",
+    "originalName": "DSC_6693.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6693.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 19,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "121-dsc-6694",
+    "src": "/dictionary/candidates/121-dsc-6694.webp",
+    "originalName": "DSC_6694.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6694.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 24,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "122-dsc-6695",
+    "src": "/dictionary/candidates/122-dsc-6695.webp",
+    "originalName": "DSC_6695.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6695.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 26,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "123-dsc-6696",
+    "src": "/dictionary/candidates/123-dsc-6696.webp",
+    "originalName": "DSC_6696.JPG",
+    "relativePath": "メルカリ\\Tycon\\DSC_6696.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "124-1800-x-600-mm-1080-x-1080-px",
+    "src": "/dictionary/candidates/124-1800-x-600-mm-1080-x-1080-px.webp",
+    "originalName": "名称未設定 (1800 x 600 mm) (1080 x 1080 px).png",
+    "relativePath": "メルカリ\\Tycon\\名称未設定 (1800 x 600 mm) (1080 x 1080 px).png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 64,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "125-1",
+    "src": "/dictionary/candidates/125-1.webp",
+    "originalName": "1.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\1.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 39,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "126-10",
+    "src": "/dictionary/candidates/126-10.webp",
+    "originalName": "10.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\10.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 34,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "127-11",
+    "src": "/dictionary/candidates/127-11.webp",
+    "originalName": "11.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\11.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 35,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "128-12",
+    "src": "/dictionary/candidates/128-12.webp",
+    "originalName": "12.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\12.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 35,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "129-13",
+    "src": "/dictionary/candidates/129-13.webp",
+    "originalName": "13.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\13.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 34,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "130-14",
+    "src": "/dictionary/candidates/130-14.webp",
+    "originalName": "14.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\14.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 34,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "131-15",
+    "src": "/dictionary/candidates/131-15.webp",
+    "originalName": "15.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\15.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 45,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "132-16",
+    "src": "/dictionary/candidates/132-16.webp",
+    "originalName": "16.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\16.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 32,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "133-17",
+    "src": "/dictionary/candidates/133-17.webp",
+    "originalName": "17.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\17.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 38,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "134-18",
+    "src": "/dictionary/candidates/134-18.webp",
+    "originalName": "18.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\18.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 40,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "135-19",
+    "src": "/dictionary/candidates/135-19.webp",
+    "originalName": "19.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\19.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 34,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "136-2",
+    "src": "/dictionary/candidates/136-2.webp",
+    "originalName": "2.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\2.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 29,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "137-3",
+    "src": "/dictionary/candidates/137-3.webp",
+    "originalName": "3.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\3.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 37,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "138-4",
+    "src": "/dictionary/candidates/138-4.webp",
+    "originalName": "4.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\4.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 31,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "139-5",
+    "src": "/dictionary/candidates/139-5.webp",
+    "originalName": "5.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\5.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 33,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "140-6",
+    "src": "/dictionary/candidates/140-6.webp",
+    "originalName": "6.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\6.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 35,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "141-7",
+    "src": "/dictionary/candidates/141-7.webp",
+    "originalName": "7.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\7.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 34,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "142-8",
+    "src": "/dictionary/candidates/142-8.webp",
+    "originalName": "8.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\8.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 40,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "143-9",
+    "src": "/dictionary/candidates/143-9.webp",
+    "originalName": "9.png",
+    "relativePath": "メルカリ\\Tycon\\(1080 x 1080 px)\\9.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 34,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-thai-constellation"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "144-dsc-6707",
+    "src": "/dictionary/candidates/144-dsc-6707.webp",
+    "originalName": "DSC_6707.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6707.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 19,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "145-dsc-6708",
+    "src": "/dictionary/candidates/145-dsc-6708.webp",
+    "originalName": "DSC_6708.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6708.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 26,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "146-dsc-6709",
+    "src": "/dictionary/candidates/146-dsc-6709.webp",
+    "originalName": "DSC_6709.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6709.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 22,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "147-dsc-6710",
+    "src": "/dictionary/candidates/147-dsc-6710.webp",
+    "originalName": "DSC_6710.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6710.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 31,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "148-dsc-6711",
+    "src": "/dictionary/candidates/148-dsc-6711.webp",
+    "originalName": "DSC_6711.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6711.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 22,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "149-dsc-6712",
+    "src": "/dictionary/candidates/149-dsc-6712.webp",
+    "originalName": "DSC_6712.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6712.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "150-dsc-6713",
+    "src": "/dictionary/candidates/150-dsc-6713.webp",
+    "originalName": "DSC_6713.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6713.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 22,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "151-dsc-6714",
+    "src": "/dictionary/candidates/151-dsc-6714.webp",
+    "originalName": "DSC_6714.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6714.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "152-dsc-6715",
+    "src": "/dictionary/candidates/152-dsc-6715.webp",
+    "originalName": "DSC_6715.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6715.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "153-dsc-6716",
+    "src": "/dictionary/candidates/153-dsc-6716.webp",
+    "originalName": "DSC_6716.JPG",
+    "relativePath": "メルカリ\\whitemonster\\DSC_6716.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 19,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-white-monster"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "154-dsc-6727",
+    "src": "/dictionary/candidates/154-dsc-6727.webp",
+    "originalName": "DSC_6727.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6727.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 25,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "155-dsc-6728",
+    "src": "/dictionary/candidates/155-dsc-6728.webp",
+    "originalName": "DSC_6728.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6728.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 25,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "156-dsc-6729",
+    "src": "/dictionary/candidates/156-dsc-6729.webp",
+    "originalName": "DSC_6729.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6729.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "157-dsc-6730",
+    "src": "/dictionary/candidates/157-dsc-6730.webp",
+    "originalName": "DSC_6730.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6730.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 25,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "158-dsc-6731",
+    "src": "/dictionary/candidates/158-dsc-6731.webp",
+    "originalName": "DSC_6731.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6731.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 24,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "159-dsc-6732",
+    "src": "/dictionary/candidates/159-dsc-6732.webp",
+    "originalName": "DSC_6732.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6732.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "160-dsc-6733",
+    "src": "/dictionary/candidates/160-dsc-6733.webp",
+    "originalName": "DSC_6733.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6733.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 24,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "161-dsc-6734",
+    "src": "/dictionary/candidates/161-dsc-6734.webp",
+    "originalName": "DSC_6734.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6734.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "162-dsc-6735",
+    "src": "/dictionary/candidates/162-dsc-6735.webp",
+    "originalName": "DSC_6735.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6735.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 26,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "163-dsc-6736",
+    "src": "/dictionary/candidates/163-dsc-6736.webp",
+    "originalName": "DSC_6736.JPG",
+    "relativePath": "メルカリ\\whitetiger\\DSC_6736.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 24,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "164-mwt",
+    "src": "/dictionary/candidates/164-mwt.webp",
+    "originalName": "mwt.png",
+    "relativePath": "メルカリ\\whitetiger\\mwt.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 101,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-borsigiana-albo-white-tiger"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "165-22",
+    "src": "/dictionary/candidates/165-22.webp",
+    "originalName": "22.png",
+    "relativePath": "メルカリ\\yellowm\\22.png",
+    "width": 1080,
+    "height": 1080,
+    "sizeKb": 73,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "166-dsc-6742",
+    "src": "/dictionary/candidates/166-dsc-6742.webp",
+    "originalName": "DSC_6742.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6742.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "167-dsc-6743",
+    "src": "/dictionary/candidates/167-dsc-6743.webp",
+    "originalName": "DSC_6743.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6743.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 27,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "168-dsc-6744",
+    "src": "/dictionary/candidates/168-dsc-6744.webp",
+    "originalName": "DSC_6744.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6744.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 23,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "169-dsc-6745",
+    "src": "/dictionary/candidates/169-dsc-6745.webp",
+    "originalName": "DSC_6745.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6745.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 30,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "170-dsc-6746",
+    "src": "/dictionary/candidates/170-dsc-6746.webp",
+    "originalName": "DSC_6746.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6746.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 19,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "171-dsc-6747",
+    "src": "/dictionary/candidates/171-dsc-6747.webp",
+    "originalName": "DSC_6747.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6747.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 21,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "172-dsc-6748",
+    "src": "/dictionary/candidates/172-dsc-6748.webp",
+    "originalName": "DSC_6748.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6748.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 31,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "173-dsc-6749",
+    "src": "/dictionary/candidates/173-dsc-6749.webp",
+    "originalName": "DSC_6749.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6749.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 26,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "174-dsc-6750",
+    "src": "/dictionary/candidates/174-dsc-6750.webp",
+    "originalName": "DSC_6750.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6750.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 25,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "175-dsc-6751",
+    "src": "/dictionary/candidates/175-dsc-6751.webp",
+    "originalName": "DSC_6751.JPG",
+    "relativePath": "メルカリ\\yellowm\\DSC_6751.JPG",
+    "width": 1200,
+    "height": 795,
+    "sizeKb": 22,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-deliciosa-yellow-marilyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "176-albvp",
+    "src": "/dictionary/candidates/176-albvp.webp",
+    "originalName": "albvp.jpg",
+    "relativePath": "商用OK画像\\albvp.jpg",
+    "width": 670,
+    "height": 753,
+    "sizeKb": 29,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "alocasia-black-velvet-pink-albo"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "177-aljack",
+    "src": "/dictionary/candidates/177-aljack.webp",
+    "originalName": "aljack.jpg",
+    "relativePath": "商用OK画像\\aljack.jpg",
+    "width": 900,
+    "height": 1200,
+    "sizeKb": 157,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "alocasia-jacklyn"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "178-alv",
+    "src": "/dictionary/candidates/178-alv.webp",
+    "originalName": "alv.jpg",
+    "relativePath": "商用OK画像\\alv.jpg",
+    "width": 900,
+    "height": 1200,
+    "sizeKb": 51,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "alocasia-venom"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "179-mbmf",
+    "src": "/dictionary/candidates/179-mbmf.webp",
+    "originalName": "mbmf.jpg",
+    "relativePath": "商用OK画像\\mbmf.jpg",
+    "width": 506,
+    "height": 704,
+    "sizeKb": 31,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-burle-marx-flame"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "180-moperu",
+    "src": "/dictionary/candidates/180-moperu.webp",
+    "originalName": "moperu.jpg",
+    "relativePath": "商用OK画像\\moperu.jpg",
+    "width": 720,
+    "height": 960,
+    "sizeKb": 81,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-obliqua-peru-form"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "181-msi",
+    "src": "/dictionary/candidates/181-msi.webp",
+    "originalName": "msi.jpg",
+    "relativePath": "商用OK画像\\msi.jpg",
+    "width": 906,
+    "height": 1200,
+    "sizeKb": 155,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-sierrana-green-form"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  },
+  {
+    "id": "182-mst",
+    "src": "/dictionary/candidates/182-mst.webp",
+    "originalName": "mst.jpg",
+    "relativePath": "商用OK画像\\mst.jpg",
+    "width": 360,
+    "height": 556,
+    "sizeKb": 18,
+    "source": "Monstera Department / image candidate",
+    "suggestedPlantSlugs": [
+      "monstera-standleyana-aurea"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.9,
+      "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
+    }
+  }
+]
