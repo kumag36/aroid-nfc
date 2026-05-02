@@ -250,7 +250,7 @@ export default function MusicRoom() {
                 </span>
                 <span className="block text-sm font-semibold leading-6">{track.title}</span>
                 <span className="mt-2 block text-[11px] tracking-[0.14em] text-[#d8d0bf]/48">
-                  {track.sourceType === 'audio' ? 'CASSETTE AUDIO' : 'VIDEO ARCHIVE'} / {track.artist}
+                  {track.sourceType === 'audio' && track.youtube ? 'LOCAL AUDIO + YOUTUBE META' : track.sourceType === 'audio' ? 'CASSETTE AUDIO' : 'VIDEO ARCHIVE'} / {track.artist}
                 </span>
               </button>
             ))}
@@ -347,9 +347,21 @@ export default function MusicRoom() {
             />
           </div>
 
-          {selectedTrack.description && (
-            <p className="mt-6 text-[14px] leading-7 text-[#d8d0bf]/72">{selectedTrack.description}</p>
-          )}
+          <div className="mt-6 grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-start">
+            {selectedTrack.description && (
+              <p className="text-[14px] leading-7 text-[#d8d0bf]/72">{selectedTrack.description}</p>
+            )}
+            {selectedTrack.youtube && (
+              <a
+                href={selectedTrack.youtube.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center justify-center border border-[#d9ffd8]/40 px-5 text-xs font-semibold tracking-[0.16em] text-[#d9ffd8]/86 transition hover:-translate-y-0.5 hover:border-[#d9ffd8]/75 hover:text-[#eaffdf]"
+              >
+                OPEN ON YOUTUBE
+              </a>
+            )}
+          </div>
 
           <div className="mt-5 border border-[#141711] bg-[#030504] p-3 md:p-4">
             {selectedTrack.sourceType === 'youtube' && selectedTrack.youtube ? (
