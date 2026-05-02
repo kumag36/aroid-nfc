@@ -37,10 +37,6 @@ export default function DictionaryImageAdmin({
   const [message, setMessage] = useState('')
   const [busyId, setBusyId] = useState('')
 
-  const plantBySlug = useMemo(() => {
-    return new Map(plants.map((plant) => [plant.slug, plant]))
-  }, [plants])
-
   const assignedImageIds = useMemo(
     () => new Set(assignments.map((assignment) => assignment.imageId)),
     [assignments],
@@ -123,11 +119,7 @@ export default function DictionaryImageAdmin({
     taxonBySlug,
   ])
 
-  async function refreshPageState() {
-    const response = await fetch('/api/dictionary/images', { cache: 'no-store' })
-    const result = await response.json()
-    setAssignments(result.assignments ?? [])
-    setExclusions(result.exclusions ?? [])
+  function refreshPageState() {
     router.refresh()
   }
 
@@ -167,7 +159,7 @@ export default function DictionaryImageAdmin({
     setQueueFilter('queue')
     setMessage('確認済みとして紐づけました。作業キューから外れます。')
     setBusyId('')
-    await refreshPageState()
+    refreshPageState()
   }
 
   const excludeCandidate = async (candidate: DictionaryImageCandidate) => {
@@ -196,7 +188,7 @@ export default function DictionaryImageAdmin({
     setQueueFilter('queue')
     setMessage('除外しました。作業キューから外れます。')
     setBusyId('')
-    await refreshPageState()
+    refreshPageState()
   }
 
   const queueCount = candidates.filter(
@@ -303,7 +295,7 @@ export default function DictionaryImageAdmin({
         {visibleCandidates.map((candidate) => {
           const linked = assignments.filter((assignment) => assignment.imageId === candidate.id)
           const excluded = exclusions.find((exclusion) => exclusion.imageId === candidate.id)
-          const defaultPlant = candidate.suggestedPlantSlugs[0] ?? ''
+          const defaultPlant = linked[0]?.plantSlug ?? candidate.suggestedPlantSlugs[0] ?? ''
 
           return (
             <CandidateCard
@@ -311,10 +303,7 @@ export default function DictionaryImageAdmin({
               candidate={candidate}
               plants={plants}
               defaultPlant={defaultPlant}
-              linkedLabels={linked.map((assignment) => {
-                const plant = plantBySlug.get(assignment.plantSlug)
-                return `${plant?.tradeName ?? assignment.plantSlug} / ${assignment.role}`
-              })}
+              linkedAssignments={linked}
               excludedLabel={excluded ? excluded.reason ?? '除外済み' : ''}
               busy={busyId === candidate.id}
               onSave={saveAssignment}
@@ -368,7 +357,7 @@ function CandidateCard({
   candidate,
   plants,
   defaultPlant,
-  linkedLabels,
+  linkedAssignments,
   excludedLabel,
   busy,
   onSave,
@@ -377,7 +366,7 @@ function CandidateCard({
   candidate: DictionaryImageCandidate
   plants: Plant[]
   defaultPlant: string
-  linkedLabels: string[]
+  linkedAssignments: DictionaryImageAssignment[]
   excludedLabel: string
   busy: boolean
   onSave: (
@@ -389,6 +378,9 @@ function CandidateCard({
 }) {
   const [plantSlug, setPlantSlug] = useState(defaultPlant)
   const [role, setRole] = useState<'primary' | 'gallery'>('primary')
+  const linkedAssignment = linkedAssignments[0] ?? null
+  const linkedPlant =
+    linkedAssignment ? plants.find((plant) => plant.slug === linkedAssignment.plantSlug) : null
 
   return (
     <article className="overflow-hidden border border-[#fffaf0]/10 bg-[#07120d]/86 shadow-[0_24px_80px_rgba(0,0,0,0.2)]">
@@ -431,11 +423,37 @@ function CandidateCard({
           </div>
         )}
 
-        {linkedLabels.length > 0 && (
+        {linkedAssignments.length > 0 && (
           <div className="space-y-1 border border-[#d9ffd8]/18 bg-[#d9ffd8]/8 p-3 text-xs leading-6 text-[#eaffdf]">
-            {linkedLabels.map((label) => (
-              <p key={label}>採用済み: {label}</p>
-            ))}
+            {linkedAssignments.map((assignment) => {
+              const plant = plants.find((item) => item.slug === assignment.plantSlug)
+              return (
+                <p key={assignment.id}>
+                  採用済み: {plant?.tradeName ?? assignment.plantSlug} / {assignment.role}
+                </p>
+              )
+            })}
+            {linkedAssignment && (
+              <label className="mt-3 flex min-h-10 items-center gap-3 border border-[#d9ffd8]/20 bg-[#07120d]/70 px-3 text-[12px] font-semibold tracking-[0.12em] text-[#eaffdf]">
+                <input
+                  type="checkbox"
+                  checked={linkedAssignment.role === 'primary'}
+                  disabled={busy}
+                  onChange={(event) =>
+                    onSave(
+                      candidate,
+                      linkedAssignment.plantSlug,
+                      event.target.checked ? 'primary' : 'gallery',
+                    )
+                  }
+                  className="h-4 w-4 accent-[#d9ffd8]"
+                />
+                代表画像
+                <span className="ml-auto text-[10px] font-normal tracking-[0.08em] text-[#d8d0bf]/62">
+                  {linkedPlant?.tradeName ?? linkedAssignment.plantSlug}
+                </span>
+              </label>
+            )}
           </div>
         )}
 
