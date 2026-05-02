@@ -275,9 +275,9 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
         </div>
       </div>
 
-      <div className={`relative mx-auto aspect-square overflow-hidden ${variant === 'hero' ? 'max-w-[420px]' : 'max-w-[780px]'}`}>
+      <div className={`relative mx-auto aspect-[1085/869] overflow-hidden ${variant === 'hero' ? 'max-w-[420px]' : 'max-w-[780px]'}`}>
         <Image
-          src="/music/boombox-1980-anime-cutout.webp"
+          src="/music/boombox-1980-anime-cutout.cropped.webp"
           alt=""
           fill
           className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.52)]"
@@ -301,14 +301,14 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
           disabled
           aria-label="Record is disabled"
           title="Recording is disabled"
-          className={`${controlHitbox} left-[2.8%] top-[74.5%] h-[11.5%] w-[15.2%]`}
+          className={`${controlHitbox} left-[2.2%] top-[81%] h-[14.6%] w-[15.4%]`}
         />
         <button
           type="button"
           onClick={toggleAudio}
           disabled={!canUseCassetteControls}
           aria-label="Play or pause"
-          className={`${controlHitbox} left-[18.6%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+          className={`${controlHitbox} left-[18.2%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
         <button
           type="button"
@@ -319,7 +319,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
           onContextMenu={(event) => event.preventDefault()}
           disabled={tracks.length < 2 && !canUseCassetteControls}
           aria-label="Hold to rewind, double tap for previous track"
-          className={`${controlHitbox} left-[33%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+          className={`${controlHitbox} left-[32.8%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
         <button
           type="button"
@@ -330,21 +330,21 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
           onContextMenu={(event) => event.preventDefault()}
           disabled={tracks.length < 2 && !canUseCassetteControls}
           aria-label="Hold to fast forward, double tap for next track"
-          className={`${controlHitbox} left-[47.5%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+          className={`${controlHitbox} left-[47.5%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
         <button
           type="button"
           onClick={stopAudio}
           disabled={!canUseCassetteControls}
           aria-label="Stop"
-          className={`${controlHitbox} left-[61.8%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+          className={`${controlHitbox} left-[62%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
         <button
           type="button"
           onClick={toggleAudio}
           disabled={!canUseCassetteControls}
           aria-label="Play or pause"
-          className={`${controlHitbox} left-[76.1%] top-[74.4%] h-[12.2%] w-[14.2%]`}
+          className={`${controlHitbox} left-[77%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
       </div>
 
