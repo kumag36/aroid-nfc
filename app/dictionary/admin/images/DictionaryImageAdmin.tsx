@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
 import type { Plant } from '@/lib/dictionary-data'
 import type {
@@ -26,6 +27,7 @@ export default function DictionaryImageAdmin({
   initialExclusions,
   adminReady,
 }: Props) {
+  const router = useRouter()
   const [assignments, setAssignments] = useState(initialAssignments)
   const [exclusions, setExclusions] = useState(initialExclusions)
   const [activeGenus, setActiveGenus] = useState('all')
@@ -121,11 +123,12 @@ export default function DictionaryImageAdmin({
     taxonBySlug,
   ])
 
-  async function refreshState() {
+  async function refreshPageState() {
     const response = await fetch('/api/dictionary/images', { cache: 'no-store' })
     const result = await response.json()
     setAssignments(result.assignments ?? [])
     setExclusions(result.exclusions ?? [])
+    router.refresh()
   }
 
   const saveAssignment = async (
@@ -164,7 +167,7 @@ export default function DictionaryImageAdmin({
     setQueueFilter('queue')
     setMessage('確認済みとして紐づけました。作業キューから外れます。')
     setBusyId('')
-    await refreshState()
+    await refreshPageState()
   }
 
   const excludeCandidate = async (candidate: DictionaryImageCandidate) => {
@@ -193,7 +196,7 @@ export default function DictionaryImageAdmin({
     setQueueFilter('queue')
     setMessage('除外しました。作業キューから外れます。')
     setBusyId('')
-    await refreshState()
+    await refreshPageState()
   }
 
   const queueCount = candidates.filter(
