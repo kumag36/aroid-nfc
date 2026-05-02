@@ -53,7 +53,7 @@ export async function POST(request: Request) {
       reason: typeof body.reason === 'string' ? body.reason : undefined,
     })
 
-    return NextResponse.json(result, { status: result.ok ? 200 : 503 })
+    return NextResponse.json(result, { status: result.ok ? 200 : 500 })
   }
 
   const plantSlug = String(body.plantSlug ?? '')
@@ -72,5 +72,5 @@ export async function POST(request: Request) {
     note,
   })
 
-  return NextResponse.json(result, { status: result.ok ? 200 : 503 })
+  return NextResponse.json(result, { status: result.ok ? 200 : 500 })
 }

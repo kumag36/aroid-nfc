@@ -42,6 +42,26 @@ export function getDictionaryImageAdminReady() {
   )
 }
 
+async function ensureDictionaryBucket() {
+  const client = getServiceClient()
+
+  if (!client) {
+    return 'Dictionary image storage is not configured.'
+  }
+
+  const { data } = await client.storage.getBucket(dictionaryBucket)
+  if (data) {
+    return null
+  }
+
+  const { error } = await client.storage.createBucket(dictionaryBucket, {
+    public: false,
+    fileSizeLimit: 1024 * 1024 * 10,
+  })
+
+  return error?.message ?? null
+}
+
 async function readJsonArray<T>(
   path: string,
   validate: (item: unknown) => item is T,
@@ -71,8 +91,12 @@ async function readJsonArray<T>(
 }
 
 async function writeJson(path: string, value: unknown) {
-  const client = getServiceClient()
+  const bucketError = await ensureDictionaryBucket()
+  if (bucketError) {
+    return bucketError
+  }
 
+  const client = getServiceClient()
   if (!client) {
     return 'Dictionary image storage is not configured.'
   }
@@ -144,18 +168,16 @@ export async function saveDictionaryImageAssignment(input: {
     createdAt: new Date().toISOString(),
   }
 
-  const withoutSamePair = currentAssignments.filter(
-    (item) => !(item.imageId === input.imageId && item.plantSlug === input.plantSlug),
-  )
+  const withoutImage = currentAssignments.filter((item) => item.imageId !== input.imageId)
   const nextAssignments =
     input.role === 'primary'
       ? [
-          ...withoutSamePair.filter(
+          ...withoutImage.filter(
             (item) => !(item.plantSlug === input.plantSlug && item.role === 'primary'),
           ),
           nextItem,
         ]
-      : [...withoutSamePair, nextItem]
+      : [...withoutImage, nextItem]
   const nextExclusions = currentExclusions.filter((item) => item.imageId !== input.imageId)
 
   const assignmentError = await writeJson(assignmentsPath, nextAssignments)

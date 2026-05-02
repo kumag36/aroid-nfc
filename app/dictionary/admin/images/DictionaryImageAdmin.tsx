@@ -98,8 +98,7 @@ export default function DictionaryImageAdmin({
       const matchesPlant =
         activePlant === 'all' || candidate.suggestedPlantSlugs.includes(activePlant)
 
-      if (!matchesGenus || !matchesSpecies) return false
-      if (!matchesPlant) return false
+      if (!matchesGenus || !matchesSpecies || !matchesPlant) return false
       if (queueFilter === 'queue') return !isAssigned && !isExcluded
       if (queueFilter === 'suggested') return !isAssigned && !isExcluded && hasSuggestion
       if (queueFilter === 'assigned') return isAssigned
@@ -149,8 +148,9 @@ export default function DictionaryImageAdmin({
       return
     }
 
-    setAssignments(result.assignments)
-    setExclusions(result.exclusions)
+    setAssignments(result.assignments ?? [])
+    setExclusions(result.exclusions ?? [])
+    setQueueFilter('queue')
     setMessage('確認済みとして紐づけました。作業キューから外れます。')
     setBusyId('')
   }
@@ -177,8 +177,9 @@ export default function DictionaryImageAdmin({
       return
     }
 
-    setAssignments(result.assignments)
-    setExclusions(result.exclusions)
+    setAssignments(result.assignments ?? [])
+    setExclusions(result.exclusions ?? [])
+    setQueueFilter('queue')
     setMessage('除外しました。作業キューから外れます。')
     setBusyId('')
   }
@@ -200,7 +201,7 @@ export default function DictionaryImageAdmin({
           IMAGE REVIEW QUEUE
         </p>
         <p className="mt-4 text-[14px] leading-8 text-[#d8d0bf]/76">
-          自動判定は「仮候補」です。品種は確定しません。ワシの最終確認で紐づけた画像だけが採用済みになり、
+          自動判定は仮候補です。品種は確定しません。最終確認で紐づけた画像だけが採用済みになり、
           作業キューから消えます。不要な画像は除外できます。
         </p>
         {!adminReady && (
@@ -212,66 +213,37 @@ export default function DictionaryImageAdmin({
       </div>
 
       <div className="grid gap-4 md:grid-cols-[1fr_1fr_1fr_260px]">
-        <label className="block">
-          <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
-            GENUS
-          </span>
-          <select
-            value={activeGenus}
-            onChange={(event) => {
-              setActiveGenus(event.target.value)
-              setActiveSpecies('all')
-              setActivePlant('all')
-            }}
-            className="h-12 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none"
-          >
-            <option className="bg-[#07120d]" value="all">
-              全属
-            </option>
-            {genusOptions.map((genus) => (
-              <option className="bg-[#07120d]" key={genus} value={genus}>
-                {genus}
-              </option>
-            ))}
-          </select>
-        </label>
+        <FilterSelect
+          label="GENUS"
+          value={activeGenus}
+          onChange={(value) => {
+            setActiveGenus(value)
+            setActiveSpecies('all')
+            setActivePlant('all')
+          }}
+          options={[['all', '全属'], ...genusOptions.map((genus) => [genus, genus] as const)]}
+        />
 
-        <label className="block">
-          <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
-            SPECIES
-          </span>
-          <select
-            value={activeSpecies}
-            onChange={(event) => {
-              setActiveSpecies(event.target.value)
-              setActivePlant('all')
-            }}
-            className="h-12 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none"
-          >
-            <option className="bg-[#07120d]" value="all">
-              全種
-            </option>
-            {speciesOptions.map((species) => (
-              <option className="bg-[#07120d]" key={species} value={species}>
-                {species}
-              </option>
-            ))}
-          </select>
-        </label>
+        <FilterSelect
+          label="SPECIES"
+          value={activeSpecies}
+          onChange={(value) => {
+            setActiveSpecies(value)
+            setActivePlant('all')
+          }}
+          options={[
+            ['all', '全種'],
+            ...speciesOptions.map((species) => [species, species] as const),
+          ]}
+        />
 
-        <label className="block">
-          <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
-            VARIETY
-          </span>
-          <select
-            value={activePlant}
-            onChange={(event) => setActivePlant(event.target.value)}
-            className="h-12 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none"
-          >
-            <option className="bg-[#07120d]" value="all">
-              全品種
-            </option>
-            {plants
+        <FilterSelect
+          label="VARIETY"
+          value={activePlant}
+          onChange={setActivePlant}
+          options={[
+            ['all', '全品種'],
+            ...plants
               .filter((plant) => {
                 const taxon = taxonBySlug.get(plant.slug)
                 return (
@@ -280,13 +252,9 @@ export default function DictionaryImageAdmin({
                   (activeSpecies === 'all' || taxon.speciesKey === activeSpecies)
                 )
               })
-              .map((plant) => (
-                <option className="bg-[#07120d]" key={plant.slug} value={plant.slug}>
-                  {plant.tradeName}
-                </option>
-              ))}
-          </select>
-        </label>
+              .map((plant) => [plant.slug, plant.tradeName] as const),
+          ]}
+        />
 
         <label className="block">
           <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
@@ -361,6 +329,37 @@ export default function DictionaryImageAdmin({
         </div>
       )}
     </div>
+  )
+}
+
+function FilterSelect({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string
+  value: string
+  options: readonly (readonly [string, string])[]
+  onChange: (value: string) => void
+}) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
+        {label}
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-12 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none"
+      >
+        {options.map(([optionValue, optionLabel]) => (
+          <option className="bg-[#07120d]" key={optionValue} value={optionValue}>
+            {optionLabel}
+          </option>
+        ))}
+      </select>
+    </label>
   )
 }
 
