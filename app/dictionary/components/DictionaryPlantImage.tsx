@@ -14,13 +14,20 @@ type ResponseShape = {
   exclusions: DictionaryImageExclusion[]
 }
 
+type AssignedImage = {
+  assignment: DictionaryImageAssignment
+  image: DictionaryImageCandidate
+}
+
 export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string }) {
   const [data, setData] = useState<ResponseShape | null>(null)
 
   useEffect(() => {
     let active = true
 
-    fetch(`/api/dictionary/images?plantSlug=${encodeURIComponent(plantSlug)}`)
+    fetch(`/api/dictionary/images?plantSlug=${encodeURIComponent(plantSlug)}`, {
+      cache: 'no-store',
+    })
       .then((response) => response.json())
       .then((result) => {
         if (active) {
@@ -38,27 +45,36 @@ export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string 
     }
   }, [plantSlug])
 
-  const image = useMemo(() => {
+  const assignedImages = useMemo<AssignedImage[]>(() => {
     if (!data) {
-      return null
+      return []
     }
 
     const excludedIds = new Set(data.exclusions.map((item) => item.imageId))
-    const availableAssignments = data.assignments.filter(
-      (assignment) => !excludedIds.has(assignment.imageId),
-    )
-    const primary =
-      availableAssignments.find((assignment) => assignment.role === 'primary') ??
-      availableAssignments[0]
+    const imageById = new Map(data.candidates.map((candidate) => [candidate.id, candidate]))
 
-    if (!primary) {
-      return null
-    }
-
-    return data.candidates.find((candidate) => candidate.id === primary.imageId) ?? null
+    return data.assignments
+      .filter((assignment) => !excludedIds.has(assignment.imageId))
+      .map((assignment) => {
+        const image = imageById.get(assignment.imageId)
+        return image ? { assignment, image } : null
+      })
+      .filter((item): item is AssignedImage => Boolean(item))
+      .sort((a, b) => {
+        if (a.assignment.role !== b.assignment.role) {
+          return a.assignment.role === 'primary' ? -1 : 1
+        }
+        return (
+          new Date(a.assignment.createdAt).getTime() -
+          new Date(b.assignment.createdAt).getTime()
+        )
+      })
   }, [data])
 
-  if (!image) {
+  const primary = assignedImages[0] ?? null
+  const gallery = assignedImages.slice(1)
+
+  if (!primary) {
     return (
       <div className="relative flex aspect-[4/5] min-h-[360px] items-end overflow-hidden border border-[#fffaf0]/12 bg-[radial-gradient(circle_at_50%_18%,rgba(217,255,216,0.11),transparent_36%),linear-gradient(160deg,#0b1710,#030604)] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
         <div className="absolute inset-6 border border-[#fffaf0]/8" />
@@ -78,18 +94,35 @@ export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string 
     <figure className="overflow-hidden border border-[#fffaf0]/12 bg-[#020503] shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
       <div className="aspect-[4/5]">
         <Image
-          src={image.src}
-          alt={image.originalName}
-          width={image.width}
-          height={image.height}
+          src={primary.image.src}
+          alt={primary.image.originalName}
+          width={primary.image.width}
+          height={primary.image.height}
           sizes="(min-width: 768px) 360px, 100vw"
           className="h-full w-full object-cover"
           loading="lazy"
         />
       </div>
       <figcaption className="border-t border-[#fffaf0]/10 bg-[#07120d]/92 px-4 py-3 text-[11px] leading-6 text-[#d8d0bf]/62">
-        管理者確認済み画像 / {image.source}
+        管理者確認済み画像 / {primary.image.source}
       </figcaption>
+
+      {gallery.length > 0 && (
+        <div className="grid grid-cols-3 gap-1 border-t border-[#fffaf0]/10 bg-[#07120d] p-1">
+          {gallery.slice(0, 6).map(({ assignment, image }) => (
+            <div key={assignment.id} className="relative aspect-square overflow-hidden bg-[#020503]">
+              <Image
+                src={image.src}
+                alt={image.originalName}
+                fill
+                sizes="120px"
+                className="object-cover"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </figure>
   )
 }

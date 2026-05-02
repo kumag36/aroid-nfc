@@ -170,8 +170,10 @@ export async function saveDictionaryImageAssignment(input: {
   const nextAssignments =
     input.role === 'primary'
       ? [
-          ...withoutImage.filter(
-            (item) => !(item.plantSlug === input.plantSlug && item.role === 'primary'),
+          ...withoutImage.map((item) =>
+            item.plantSlug === input.plantSlug && item.role === 'primary'
+              ? { ...item, role: 'gallery' as const }
+              : item,
           ),
           nextItem,
         ]
