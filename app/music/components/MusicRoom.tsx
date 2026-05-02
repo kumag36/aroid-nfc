@@ -55,6 +55,7 @@ export default function MusicRoom() {
   const holdActiveRef = useRef(false)
   const lastRewindTapRef = useRef(0)
   const lastForwardTapRef = useRef(0)
+  const shouldAutoplayRef = useRef(false)
   const [tracks, setTracks] = useState<MusicTrack[]>([])
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -131,6 +132,13 @@ export default function MusicRoom() {
     audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
   }
 
+  function playWhenReady() {
+    if (!shouldAutoplayRef.current) return
+
+    shouldAutoplayRef.current = false
+    playAudio()
+  }
+
   function stopAudio() {
     const audio = audioRef.current
 
@@ -193,13 +201,21 @@ export default function MusicRoom() {
 
     clearSeekHold()
     stopAudio()
+    shouldAutoplayRef.current = true
     const nextIndex = (selectedIndex + offset + tracks.length) % tracks.length
     setSelectedId(tracks[nextIndex].id)
   }
 
-  function selectTrack(trackId: string) {
+  function selectTrack(trackId: string, autoplay = true) {
     clearSeekHold()
+
+    if (trackId === selectedTrack?.id) {
+      if (autoplay) playAudio()
+      return
+    }
+
     stopAudio()
+    shouldAutoplayRef.current = autoplay
     setSelectedId(trackId)
   }
 
@@ -263,9 +279,13 @@ export default function MusicRoom() {
           <div className="mb-5 grid gap-3 md:grid-cols-[1fr_220px]">
             <div className="border border-[#fffaf0]/10 bg-[#050806]/82 p-4 shadow-[inset_0_0_30px_rgba(0,0,0,0.48)]">
               <p className="text-[10px] font-black tracking-[0.22em] text-[#b89558]">NOW PLAYING</p>
-              <h2 className="mt-3 text-[clamp(1.45rem,4vw,2.8rem)] font-semibold leading-tight text-[#fffaf0]">
-                {selectedTrack.title}
-              </h2>
+              <div className="mt-3 overflow-hidden border border-[#d9ffd8]/20 bg-[#020403] px-3 py-3 shadow-[inset_0_0_18px_rgba(217,255,216,0.08)]">
+                <div className="np-marquee flex w-max whitespace-nowrap text-[12px] font-semibold leading-none tracking-[0.18em] text-[#d9ffd8] [text-shadow:0_0_10px_rgba(217,255,216,0.64)] md:text-sm">
+                  <span className="pr-14">{selectedTrack.title}</span>
+                  <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
+                  <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
+                </div>
+              </div>
               <p className="mt-3 text-xs font-semibold tracking-[0.16em] text-[#d9ffd8]/78">{selectedTrack.artist}</p>
             </div>
             <div className="grid content-between gap-3 border border-[#fffaf0]/10 bg-[#050806]/82 p-3">
@@ -290,6 +310,7 @@ export default function MusicRoom() {
                 ref={audioRef}
                 src={selectedTrack.audio.url}
                 preload="metadata"
+                onCanPlay={playWhenReady}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
@@ -307,7 +328,7 @@ export default function MusicRoom() {
               onClick={playAudio}
               disabled={!canUseCassetteControls}
               aria-label="Play"
-              className={`${controlHitbox} left-[19.2%] top-[74.9%] h-[11%] w-[13.2%]`}
+              className={`${controlHitbox} left-[18.6%] top-[74.4%] h-[12.2%] w-[14.2%]`}
             />
             <button
               type="button"
@@ -318,7 +339,7 @@ export default function MusicRoom() {
               onContextMenu={(event) => event.preventDefault()}
               disabled={tracks.length < 2 && !canUseCassetteControls}
               aria-label="Hold to rewind, double tap for previous track"
-              className={`${controlHitbox} left-[33.5%] top-[74.9%] h-[11%] w-[13.2%]`}
+              className={`${controlHitbox} left-[33%] top-[74.4%] h-[12.2%] w-[14.2%]`}
             />
             <button
               type="button"
@@ -329,21 +350,21 @@ export default function MusicRoom() {
               onContextMenu={(event) => event.preventDefault()}
               disabled={tracks.length < 2 && !canUseCassetteControls}
               aria-label="Hold to fast forward, double tap for next track"
-              className={`${controlHitbox} left-[48%] top-[74.9%] h-[11%] w-[13.2%]`}
+              className={`${controlHitbox} left-[47.5%] top-[74.4%] h-[12.2%] w-[14.2%]`}
             />
             <button
               type="button"
               onClick={stopAudio}
               disabled={!canUseCassetteControls}
               aria-label="Stop"
-              className={`${controlHitbox} left-[62.4%] top-[74.9%] h-[11%] w-[13.2%]`}
+              className={`${controlHitbox} left-[61.8%] top-[74.4%] h-[12.2%] w-[14.2%]`}
             />
             <button
               type="button"
               onClick={pauseAudio}
               disabled={!canUseCassetteControls}
               aria-label="Pause"
-              className={`${controlHitbox} left-[76.7%] top-[74.9%] h-[11%] w-[13.2%]`}
+              className={`${controlHitbox} left-[76.1%] top-[74.4%] h-[12.2%] w-[14.2%]`}
             />
           </div>
 
@@ -397,6 +418,21 @@ export default function MusicRoom() {
               YouTube tracks play in the embedded player. Double tap REW / FF to move between tracks.
             </p>
           )}
+          <style jsx>{`
+            .np-marquee {
+              animation: np-marquee 18s linear infinite;
+            }
+
+            @keyframes np-marquee {
+              from {
+                transform: translateX(0);
+              }
+
+              to {
+                transform: translateX(-33.333%);
+              }
+            }
+          `}</style>
         </article>
       )}
     </div>
