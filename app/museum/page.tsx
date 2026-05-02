@@ -1,4 +1,3 @@
-﻿import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
 import MuseumGallery from './components/MuseumGallery'
 
@@ -28,9 +27,6 @@ export default function MuseumPage() {
             <a href="#gallery" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08),0_18px_60px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]">
               展示を見る
             </a>
-            <Link href="/museum/admin" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#fffaf0]/24 bg-[#050806]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55">
-              管理者入口
-            </Link>
           </div>
         </div>
       </section>

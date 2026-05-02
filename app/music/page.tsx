@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
 import MusicRoom from './components/MusicRoom'
 
@@ -22,15 +21,12 @@ export default function MusicPage() {
             <span className="block">音楽室</span>
           </h1>
           <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/82 md:text-lg md:leading-9">
-            植物のそばに置きたい音、作りかけの音、ふと思いついた旋律を静かに保管する部屋です。
+            植物のそばに置いた音、作りかけの音、ふと思いついた旋律を静かに保管する部屋です。
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a href="#tracks" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08),0_18px_60px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]">
               音楽を聴く
             </a>
-            <Link href="/music/admin" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#fffaf0]/24 bg-[#050806]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55">
-              管理者入口
-            </Link>
           </div>
         </div>
       </section>

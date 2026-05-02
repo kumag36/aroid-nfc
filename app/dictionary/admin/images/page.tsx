@@ -14,6 +14,10 @@ export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: '図鑑画像 管理者入口 | ZAMAKURI.JP',
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default async function DictionaryImageAdminPage() {
@@ -36,7 +40,7 @@ export default async function DictionaryImageAdminPage() {
               <span className="block">確認して紐づける。</span>
             </h1>
             <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/82 md:text-lg md:leading-9">
-              自動判定は仮候補です。最終確認した画像だけを採用し、不要な画像は除外して、作業キューを軽く保ちます。
+              自動判定は仮候補です。管理者が最終確認した画像だけを採用し、不要な画像は除外して作業キューを軽く保ちます。
             </p>
           </div>
 
@@ -65,11 +69,11 @@ export default async function DictionaryImageAdminPage() {
           initialExclusions={exclusions}
           adminReady={getDictionaryImageAdminReady()}
         />
-        <div className="mt-10 text-center">
-          <Link
-            href="/dictionary"
-            className="text-xs font-semibold tracking-[0.2em] text-[#d8d0bf]/62 transition hover:text-[#d9ffd8]"
-          >
+        <div className="mt-10 flex flex-wrap justify-center gap-5 text-xs font-semibold tracking-[0.2em]">
+          <Link href="/admin" className="text-[#d8d0bf]/62 transition hover:text-[#d9ffd8]">
+            管理室へ戻る
+          </Link>
+          <Link href="/dictionary" className="text-[#d8d0bf]/62 transition hover:text-[#d9ffd8]">
             図鑑へ戻る
           </Link>
         </div>
