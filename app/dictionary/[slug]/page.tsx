@@ -46,6 +46,14 @@ function getTone(plant: Plant) {
 
 function buildProfile(plant: Plant) {
   const tone = getTone(plant)
+  const careFacts = [
+    plant.temperature && `適温は ${plant.temperature} を目安にする。`,
+    plant.minimumTemperature && `最低温度は ${plant.minimumTemperature} を下回らないように見る。`,
+    plant.humidity && `湿度は ${plant.humidity} を基準に、葉の硬さと展開速度を観察する。`,
+    plant.recommendedStyle && `仕立ては ${plant.recommendedStyle}。`,
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   return [
     {
@@ -61,7 +69,7 @@ function buildProfile(plant: Plant) {
     {
       label: '育成メモ',
       title: '状態を崩さず、次の葉につなげる。',
-      body: tone.care,
+      body: careFacts ? `${tone.care}${careFacts}` : tone.care,
     },
     {
       label: 'ざまくり視点',
@@ -176,6 +184,36 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
                   ))}
                 </dd>
               </div>
+              {plant.temperature && (
+                <div>
+                  <dt className="text-[11px] tracking-[0.18em] text-[#fffaf0]/44">TEMPERATURE</dt>
+                  <dd>{plant.temperature}</dd>
+                </div>
+              )}
+              {plant.minimumTemperature && (
+                <div>
+                  <dt className="text-[11px] tracking-[0.18em] text-[#fffaf0]/44">MINIMUM</dt>
+                  <dd>{plant.minimumTemperature}</dd>
+                </div>
+              )}
+              {plant.humidity && (
+                <div>
+                  <dt className="text-[11px] tracking-[0.18em] text-[#fffaf0]/44">HUMIDITY</dt>
+                  <dd>{plant.humidity}</dd>
+                </div>
+              )}
+              {plant.origin && (
+                <div>
+                  <dt className="text-[11px] tracking-[0.18em] text-[#fffaf0]/44">ORIGIN</dt>
+                  <dd>{plant.origin}</dd>
+                </div>
+              )}
+              {plant.recommendedStyle && (
+                <div>
+                  <dt className="text-[11px] tracking-[0.18em] text-[#fffaf0]/44">STYLE</dt>
+                  <dd>{plant.recommendedStyle}</dd>
+                </div>
+              )}
             </dl>
           </aside>
         </div>

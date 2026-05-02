@@ -19,8 +19,16 @@ export default function DictionaryPage() {
         plant.displayName,
         plant.tradeName,
         plant.category,
+        plant.description,
+        plant.temperature,
+        plant.minimumTemperature,
+        plant.humidity,
+        plant.recommendedStyle,
+        plant.origin,
+        plant.sourceNote,
         ...plant.tags,
       ]
+        .filter(Boolean)
         .join(' ')
         .toLowerCase()
 
