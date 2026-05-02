@@ -3,7 +3,8 @@ import NfcVerifyConsole from './NfcVerifyConsole'
 
 export const metadata = {
   title: 'NFC検証室 | ZAMAKURI.JP',
-  description: 'ざまくりプランツのNFCタグと各種DBの接続状態を確認する検証ページ。',
+  description:
+    'ざまくりプランツのNFCタグに書き込むURLと、個体管理DBの接続状態を確認する検証ページ。',
 }
 
 export default function NfcVerifyPage() {
@@ -18,10 +19,10 @@ export default function NfcVerifyPage() {
           </p>
           <h1 className="max-w-5xl text-[clamp(2.55rem,7vw,6.2rem)] font-medium leading-[1.08] tracking-normal">
             NFCタグとDBを
-            <span className="block">検証する。</span>
+            <span className="block">静かに検証する。</span>
           </h1>
           <p className="mt-8 max-w-3xl text-[15px] leading-8 text-[#eee7d7]/82 md:text-lg md:leading-9">
-            書き込み予定のNFC IDを照合し、個体ページ、登録申請導線、図鑑・音楽室・美術館DBの進捗をまとめて確認します。
+            iPhone運用では、NFC Toolsで短いURLをタグへ書き込みます。このページでは、書き込み予定URL、未登録時の案内、図鑑・音楽室・美術館DBの状態をまとめて確認できます。
           </p>
         </div>
       </section>

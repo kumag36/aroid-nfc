@@ -5,7 +5,8 @@ export const metadata = {
     default: 'ZAMAKURI.JP',
     template: '%s | ZAMAKURI.JP',
   },
-  description: 'ざまくりプランツ公式サイト。アロイド図鑑、NFC個体管理、美術館、音楽室。',
+  description:
+    'ざまくりプランツ公式サイト。アロイド図鑑、NFC個体管理DB、美術館、音楽室を静かに記録するブランドサイト。',
   applicationName: 'ZAMAKURI.JP',
   metadataBase: new URL('https://zamakuri.jp'),
   openGraph: {

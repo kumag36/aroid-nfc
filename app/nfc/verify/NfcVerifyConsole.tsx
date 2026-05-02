@@ -38,37 +38,37 @@ const defaultUid = 'ZMK-000001'
 const initialDatabase = {
   dictionary: {
     status: 'ready',
-    label: 'Aroid dictionary DB',
+    label: 'アロイド図鑑DB',
     count: 38,
-    detail: 'Dictionary entries and detail pages are implemented.',
+    detail: '品種データ、詳細ページ、画像紐づけの土台を実装済みです。',
   },
   nfcItems: {
     status: 'connected',
-    label: 'NFC individual DB',
+    label: 'NFC個体管理DB',
     count: 0,
-    detail: 'UID verification, individual pages, unregistered guidance, and registration flow are implemented.',
+    detail: 'UID検証、個体ページ、未登録時の案内、登録申請導線を実装済みです。',
   },
   music: {
     status: 'ready',
-    label: 'Music room DB',
+    label: '音楽室DB',
     count: 8,
-    detail: 'Local MP3, YouTube, and uploaded tracks are shown in one room.',
+    detail: 'ローカルMP3、YouTube情報、アップロード曲を同じ音楽室に統合しています。',
   },
   museum: {
     status: 'ready',
-    label: 'Museum DB',
+    label: '美術館DB',
     count: 0,
-    detail: 'Admin upload and gallery display are implemented.',
+    detail: '管理者アップロードとギャラリー表示を実装済みです。',
   },
 }
 
 const writeSteps = [
-  'Copy the URL below.',
-  'Open NFC Tools on iPhone.',
-  'Tap Write, Add a record, then URL / URI.',
-  'Paste the URL and tap Write.',
-  'Hold the top of the iPhone near the NFC tag until writing completes.',
-  'Read the tag with iPhone and confirm that the individual page opens.',
+  '下のURLをコピーします。',
+  'iPhoneでNFC Toolsを開きます。',
+  'Write、Add a record、URL / URI の順に選びます。',
+  'URLを貼り付けて Write を押します。',
+  'iPhone上部をNFCタグに近づけ、完了表示まで動かさずに待ちます。',
+  'タグを読み取り、個体ページが開くことを確認します。',
 ]
 
 function statusLabel(status: string) {
@@ -81,7 +81,7 @@ export default function NfcVerifyConsole() {
   const [uid, setUid] = useState(defaultUid)
   const [result, setResult] = useState<VerifyResponse | null>(null)
   const [isChecking, setIsChecking] = useState(false)
-  const [writeStatus, setWriteStatus] = useState('NFC Tools write URL is ready.')
+  const [writeStatus, setWriteStatus] = useState('NFC Toolsへ書き込むURLを準備しています。')
 
   const normalizedUid = useMemo(() => uid.trim().toUpperCase(), [uid])
   const writeUrl = useMemo(
@@ -105,7 +105,7 @@ export default function NfcVerifyConsole() {
 
   async function copyWriteUrl() {
     await navigator.clipboard.writeText(writeUrl)
-    setWriteStatus('Copied. Paste this into NFC Tools as a URL / URI record.')
+    setWriteStatus('コピーしました。NFC ToolsのURL / URIレコードへ貼り付けてください。')
   }
 
   return (
@@ -146,6 +146,9 @@ export default function NfcVerifyConsole() {
           <p className="mt-4 break-all border border-[#fffaf0]/10 bg-[#020403] px-4 py-3 text-sm leading-7 text-[#d8d0bf]/78">
             {writeUrl}
           </p>
+          <p className="mt-4 border-l border-[#b89558]/55 pl-4 text-xs leading-6 text-[#d8d0bf]/68">
+            iPhoneのSafariではWebページから直接NFCを書き込めないため、NFC ToolsでURLレコードとして書き込みます。タグにはこの短いURLだけを入れ、個体情報はWeb側のDBで管理します。
+          </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <button
               type="button"
@@ -177,7 +180,7 @@ export default function NfcVerifyConsole() {
           <p className="text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">VERIFY RESULT</p>
           {!result?.nfc ? (
             <p className="mt-4 text-[15px] leading-8 text-[#d8d0bf]/72">
-              Enter a UID and run verification before writing tags in bulk.
+              UIDを入力して検証すると、登録済み・未登録・DB接続状態を確認できます。
             </p>
           ) : (
             <div className="mt-5 grid gap-4">

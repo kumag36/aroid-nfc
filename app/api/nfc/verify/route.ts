@@ -72,7 +72,7 @@ async function fetchItem(uid: string) {
       return {
         status: 'not_registered' as const,
         code: 'PLANT_ID_NOT_REGISTERED',
-        message: 'This NFC plant ID is not registered yet.',
+        message: 'この植物IDは登録されておりません。管理局にお問い合わせください。',
         item: null,
       }
     }
@@ -80,7 +80,7 @@ async function fetchItem(uid: string) {
     return {
       status: 'registered' as const,
       code: 'PLANT_ID_REGISTERED',
-      message: 'This NFC plant ID is registered.',
+      message: 'この植物IDは登録済みです。',
       item: normalizeItem(rows[0]),
     }
   } catch {
@@ -116,27 +116,27 @@ export async function GET(request: NextRequest) {
       database: {
         dictionary: {
           status: 'ready',
-          label: 'Aroid dictionary DB',
+          label: 'アロイド図鑑DB',
           count: plants.length,
-          detail: 'Dictionary entries and detail pages are implemented.',
+          detail: '品種データ、詳細ページ、画像紐づけの土台を実装済みです。',
         },
         nfcItems: {
           status: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'connected' : 'missing_env',
-          label: 'NFC individual DB',
+          label: 'NFC個体管理DB',
           count: nfc?.item ? 1 : 0,
-          detail: 'UID verification, individual pages, unregistered guidance, and registration flow are implemented.',
+          detail: 'UID検証、個体ページ、未登録時の案内、登録申請導線を実装済みです。',
         },
         music: {
           status: 'ready',
-          label: 'Music room DB',
+          label: '音楽室DB',
           count: musicTracks.length,
-          detail: 'Local MP3, YouTube, and uploaded tracks are shown in one room.',
+          detail: 'ローカルMP3、YouTube情報、アップロード曲を同じ音楽室に統合しています。',
         },
         museum: {
           status: 'ready',
-          label: 'Museum DB',
+          label: '美術館DB',
           count: museumWorks.length,
-          detail: 'Admin upload and gallery display are implemented.',
+          detail: '管理者アップロードとギャラリー表示を実装済みです。',
         },
       },
     },
