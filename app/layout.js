@@ -1,7 +1,21 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Aroid NFC',
+  title: {
+    default: 'ZAMAKURI.JP',
+    template: '%s | ZAMAKURI.JP',
+  },
+  description: 'ざまくりプランツ公式サイト。アロイド図鑑、NFC個体管理、美術館、音楽室。',
+  applicationName: 'ZAMAKURI.JP',
+  metadataBase: new URL('https://zamakuri.jp'),
+  openGraph: {
+    title: 'ZAMAKURI.JP',
+    description: 'ざまくりプランツ公式サイト。',
+    url: 'https://zamakuri.jp',
+    siteName: 'ZAMAKURI.JP',
+    locale: 'ja_JP',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({ children }) {
