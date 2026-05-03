@@ -100,7 +100,9 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
   )
 
   const isShort = selectedTrack?.youtube?.url.includes('/shorts/') ?? false
-  const canUseCassetteControls = selectedTrack?.sourceType === 'audio' && Boolean(selectedTrack.audio)
+  const hasYoutube = Boolean(selectedTrack?.youtube)
+  const canUseLocalAudio = selectedTrack?.sourceType === 'audio' && Boolean(selectedTrack.audio)
+  const canUseCassetteControls = hasYoutube || canUseLocalAudio
 
   function clearSeekHold() {
     if (seekDelayRef.current) {
@@ -129,7 +131,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
   function playAudio() {
     const audio = audioRef.current
 
-    if (!audio || !canUseCassetteControls) return
+    if (!audio || !canUseLocalAudio) return
 
     audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
   }
@@ -151,10 +153,20 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
     setIsPlaying(false)
   }
 
+  function openYoutubePlayback(track = selectedTrack) {
+    if (!track?.youtube) return false
+
+    window.open(track.youtube.url, '_blank', 'noopener,noreferrer')
+    setIsPlaying(false)
+    return true
+  }
+
   function toggleAudio() {
+    if (openYoutubePlayback()) return
+
     const audio = audioRef.current
 
-    if (!audio || !canUseCassetteControls) return
+    if (!audio || !canUseLocalAudio) return
 
     if (audio.paused) {
       audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
@@ -167,16 +179,16 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
   function seekAudio(seconds: number) {
     const audio = audioRef.current
 
-    if (!audio || !canUseCassetteControls) return
+    if (!audio || !canUseLocalAudio) return
 
     audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + seconds))
   }
 
   function startSeekHold(direction: -1 | 1) {
-    if (!canUseCassetteControls) return
-
     clearSeekHold()
     holdActiveRef.current = false
+    if (!canUseLocalAudio) return
+
     seekDelayRef.current = setTimeout(() => {
       holdActiveRef.current = true
       seekAudio(direction * 3)
@@ -200,22 +212,38 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
 
     clearSeekHold()
     stopAudio()
-    shouldAutoplayRef.current = true
     const nextIndex = (selectedIndex + offset + tracks.length) % tracks.length
-    setSelectedId(tracks[nextIndex].id)
+    const nextTrack = tracks[nextIndex]
+    shouldAutoplayRef.current = !nextTrack.youtube
+    setSelectedId(nextTrack.id)
+    openYoutubePlayback(nextTrack)
   }
 
   function selectTrack(trackId: string, autoplay = true) {
     clearSeekHold()
 
     if (trackId === selectedTrack?.id) {
-      if (autoplay) playAudio()
+      if (autoplay && !openYoutubePlayback()) playAudio()
       return
     }
 
     stopAudio()
-    shouldAutoplayRef.current = autoplay
+    const nextTrack = tracks.find((track) => track.id === trackId)
+    shouldAutoplayRef.current = autoplay && !nextTrack?.youtube
     setSelectedId(trackId)
+    if (autoplay) openYoutubePlayback(nextTrack)
+  }
+
+  function handleTrackEnded() {
+    setIsPlaying(false)
+
+    if (tracks.length < 2) return
+
+    const nextIndex = (selectedIndex + 1) % tracks.length
+    const nextTrack = tracks[nextIndex]
+    shouldAutoplayRef.current = !nextTrack.youtube
+    setSelectedId(nextTrack.id)
+    openYoutubePlayback(nextTrack)
   }
 
   if (isLoading) {
@@ -283,9 +311,14 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
             onCanPlay={playWhenReady}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
-            onEnded={() => setIsPlaying(false)}
+            onEnded={handleTrackEnded}
           />
         ) : null}
+        <div className="pointer-events-none absolute left-[41.5%] top-[45.5%] z-10 flex h-[12%] w-[17%] items-center justify-center overflow-hidden rounded-sm bg-white/72 px-2 text-center shadow-[inset_0_0_12px_rgba(0,0,0,0.16)]">
+          <p className="overflow-hidden text-[clamp(0.34rem,1.2vw,0.62rem)] font-black leading-tight tracking-[0.04em] text-[#10291e] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+            {selectedTrack.description || selectedTrack.title}
+          </p>
+        </div>
         <button
           type="button"
           disabled
@@ -297,7 +330,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
           type="button"
           onClick={toggleAudio}
           disabled={!canUseCassetteControls}
-          aria-label="Play or pause"
+          aria-label={hasYoutube ? 'Play on YouTube' : 'Play or pause'}
           className={`${controlHitbox} left-[18.2%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
         <button
@@ -307,8 +340,8 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
           onPointerCancel={clearSeekHold}
           onPointerLeave={clearSeekHold}
           onContextMenu={(event) => event.preventDefault()}
-          disabled={tracks.length < 2 && !canUseCassetteControls}
-          aria-label="Hold to rewind, double tap for previous track"
+          disabled={tracks.length < 2}
+          aria-label="Previous track, hold to rewind local audio"
           className={`${controlHitbox} left-[32.8%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
         <button
@@ -318,14 +351,14 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
           onPointerCancel={clearSeekHold}
           onPointerLeave={clearSeekHold}
           onContextMenu={(event) => event.preventDefault()}
-          disabled={tracks.length < 2 && !canUseCassetteControls}
-          aria-label="Hold to fast forward, double tap for next track"
+          disabled={tracks.length < 2}
+          aria-label="Next track, hold to fast forward local audio"
           className={`${controlHitbox} left-[47.5%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
         <button
           type="button"
           onClick={stopAudio}
-          disabled={!canUseCassetteControls}
+          disabled={!canUseLocalAudio}
           aria-label="Stop"
           className={`${controlHitbox} left-[62%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
@@ -333,7 +366,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
           type="button"
           onClick={toggleAudio}
           disabled={!canUseCassetteControls}
-          aria-label="Play or pause"
+          aria-label={hasYoutube ? 'Play on YouTube' : 'Play or pause'}
           className={`${controlHitbox} left-[77%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
       </div>
@@ -345,14 +378,19 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
               key={track.id}
               type="button"
               onClick={() => selectTrack(track.id)}
-              className={`min-h-10 border px-2.5 text-left text-[10px] font-semibold leading-4 tracking-[0.12em] transition ${
+              className={`group/tape relative min-h-16 overflow-hidden border bg-white px-3 py-2 text-left text-[10px] font-semibold leading-4 tracking-[0.08em] shadow-[0_10px_22px_rgba(44,106,75,0.08)] transition ${
                 selectedTrack.id === track.id
-                  ? 'border-[#2c6a4b]/32 bg-white/88 text-[#10291e] shadow-[inset_3px_0_0_#b89558]'
-                  : 'border-[#2c6a4b]/10 bg-white/42 text-[#315244]/66 hover:border-[#2c6a4b]/24 hover:bg-white/72'
+                  ? 'border-[#143326] text-[#10291e] ring-1 ring-[#b89558]/70'
+                  : 'border-[#2c6a4b]/10 text-[#315244]/70 hover:border-[#b89558]/42'
               }`}
             >
-              <span className="block text-[#b89558]">TAPE {String(index + 1).padStart(2, '0')}</span>
-              <span className="block truncate">{track.title}</span>
+              <span
+                className="absolute inset-0 bg-[url('/music/cassette-tape-card.webp')] bg-cover bg-center opacity-25 grayscale transition group-hover/tape:opacity-32"
+                aria-hidden="true"
+              />
+              <span className="absolute inset-0 bg-white/72" aria-hidden="true" />
+              <span className="relative block text-[#b89558]">TAPE {String(index + 1).padStart(2, '0')}</span>
+              <span className="relative mt-1 block truncate text-[11px] leading-4">{track.title}</span>
             </button>
           ))}
         </div>
@@ -448,17 +486,22 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
                 key={track.id}
                 type="button"
                 onClick={() => selectTrack(track.id)}
-                className={`group border px-4 py-4 text-left transition duration-300 ${
+                className={`group/tape relative min-h-24 overflow-hidden border px-4 py-4 text-left shadow-[0_12px_28px_rgba(44,106,75,0.08)] transition duration-300 ${
                   selectedTrack?.id === track.id
-                    ? 'border-[#2c6a4b]/32 bg-white/88 text-[#10291e] shadow-[inset_4px_0_0_#b89558]'
-                    : 'border-[#2c6a4b]/10 bg-white/42 text-[#315244]/72 hover:border-[#2c6a4b]/26 hover:bg-white/72'
+                    ? 'border-[#143326] bg-white/90 text-[#10291e] ring-1 ring-[#b89558]/70'
+                    : 'border-[#2c6a4b]/10 bg-white/52 text-[#315244]/72 hover:border-[#b89558]/42 hover:bg-white/82'
                 }`}
               >
-                <span className="mb-3 block text-[10px] font-semibold tracking-[0.18em] text-[#b89558]">
+                <span
+                  className="absolute inset-0 bg-[url('/music/cassette-tape-card.webp')] bg-cover bg-center opacity-22 grayscale transition group-hover/tape:opacity-30"
+                  aria-hidden="true"
+                />
+                <span className="absolute inset-0 bg-white/76" aria-hidden="true" />
+                <span className="relative mb-3 block text-[10px] font-semibold tracking-[0.18em] text-[#b89558]">
                   SIDE A / {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className="block text-sm font-semibold leading-6">{track.title}</span>
-                <span className="mt-2 block text-[11px] tracking-[0.14em] text-[#315244]/48">
+                <span className="relative block text-sm font-semibold leading-6">{track.title}</span>
+                <span className="relative mt-2 block text-[11px] tracking-[0.14em] text-[#315244]/48">
                   {track.sourceType === 'audio' && track.youtube ? 'LOCAL AUDIO + YOUTUBE META' : track.sourceType === 'audio' ? 'CASSETTE AUDIO' : 'VIDEO ARCHIVE'} / {track.artist}
                 </span>
               </button>

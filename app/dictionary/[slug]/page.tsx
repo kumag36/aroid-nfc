@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
 import DictionaryPlantImage from '@/app/dictionary/components/DictionaryPlantImage'
 import { plants, type Plant } from '@/lib/dictionary-data'
@@ -103,7 +103,7 @@ export async function generateMetadata({ params }: DictionaryDetailPageProps) {
 
 function MissingPage() {
   return (
-    <main className="relative grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.82),transparent_34%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_54%,#d9ffd8_100%)] px-5 py-20 text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="relative grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.82),transparent_34%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_54%,#d9ffd8_100%)] px-5 py-20 text-[#143326] [font-family:var(--font-zamakuri)]">
       <BrandHeader />
       <section className="w-full max-w-3xl border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_24px_90px_rgba(0,0,0,0.28)] md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
@@ -145,7 +145,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
     .slice(0, 3)
 
   return (
-    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:var(--font-zamakuri)]">
       <BrandHeader />
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.82),transparent_34%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_52%,#d9ffd8_100%)] px-5 pb-16 pt-8 md:pb-24">
         <div className="relative z-10 mx-auto grid max-w-7xl gap-10 py-16 md:grid-cols-[minmax(0,1fr)_360px] md:items-end md:py-24">

@@ -1,9 +1,9 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
 
 export default function Test() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#143326] [font-family:var(--font-zamakuri)]">
       <BrandHeader />
       <section className="mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-20 pt-32">
         <div className="w-full max-w-3xl border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.26)] md:p-12">

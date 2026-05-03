@@ -57,7 +57,7 @@ export const metadata = {
 
 export default function HistoryPage() {
   return (
-    <main className="min-h-screen bg-[#fffef8] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[#fffef8] text-[#143326] [font-family:var(--font-zamakuri)]">
       <BrandHeader />
 
       <section className="relative min-h-[82vh] overflow-hidden bg-[#f1f8ed] px-5 pb-20 pt-32 md:pt-40">
@@ -93,7 +93,7 @@ export default function HistoryPage() {
           <div className="mb-16 grid gap-8 border-b border-[#2c6a4b]/10 pb-12 md:grid-cols-[1fr_420px] md:items-end">
             <div>
               <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
-                CHRONOLOGY / SINCE 2025
+                SINCE 2025 / ZAMAKURI PLANTS
               </p>
               <h2 className="max-w-4xl text-[clamp(2.2rem,5vw,5rem)] font-medium leading-tight">
                 年表として見る、判断の積み重ね。

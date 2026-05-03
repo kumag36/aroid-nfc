@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
@@ -106,7 +106,7 @@ export default function DictionaryPage() {
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f7fbf1] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen overflow-hidden bg-[#f7fbf1] text-[#143326] [font-family:var(--font-zamakuri)]">
       <BrandHeader />
 
       <section className="relative bg-[radial-gradient(circle_at_78%_18%,rgba(217,255,216,0.8),transparent_32%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_48%,#d9ffd8_100%)] px-5 pb-20 pt-32 md:pt-40">

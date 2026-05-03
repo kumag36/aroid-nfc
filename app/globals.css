@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-zamakuri: "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", "Noto Sans JP", sans-serif;
+  --font-zamakuri-accent: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
 }
 
 @theme inline {
@@ -22,10 +24,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-family: var(--font-zamakuri);
   font-size: 15px;
   line-height: 1.85;
-  letter-spacing: 0.018em;
+  letter-spacing: 0.01em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: "palt" 1;
@@ -40,20 +42,21 @@ main {
 main h1,
 main h2,
 main h3 {
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   text-wrap: balance;
+  font-family: var(--font-zamakuri);
 }
 
 main h1 {
   font-size: clamp(2.15rem, 5.4vw, 5.2rem) !important;
   line-height: 1.12 !important;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 main h2 {
   font-size: clamp(1.82rem, 3.6vw, 3.45rem) !important;
   line-height: 1.2 !important;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 main h3 {
@@ -65,7 +68,7 @@ main article h3 {
 }
 
 main p {
-  line-height: 1.95;
+  line-height: 1.92;
 }
 
 main p,
@@ -75,7 +78,8 @@ main dd {
 }
 
 main :is(a, button) {
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
+  font-weight: 700;
 }
 
 main :is(input, textarea) {

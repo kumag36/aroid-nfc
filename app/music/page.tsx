@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function MusicPage() {
   return (
-    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:var(--font-zamakuri)]">
       <BrandHeader />
 
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_82%_18%,rgba(217,255,216,0.58),transparent_29%),radial-gradient(circle_at_18%_76%,rgba(184,149,88,0.08),transparent_28%),linear-gradient(135deg,#fffef8_0%,#f8fcf2_42%,#dff5de_100%)] px-5 pb-16 pt-32 md:pb-24 md:pt-40">

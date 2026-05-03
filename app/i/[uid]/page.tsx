@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
 import ProtectedPhoneLink from './ProtectedPhoneLink'
 
@@ -125,7 +125,7 @@ function SecondaryLink({ href, children }: { href: string; children: React.React
 
 function EmptyState({ uid, error }: { uid: string; error: NfcError | null }) {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#143326] [font-family:var(--font-zamakuri)]">
       <BrandHeader />
       <section className="mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-20 pt-32">
         <div className="w-full max-w-4xl border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.28)] md:p-12">
@@ -172,7 +172,7 @@ export default async function Page({ params }: IndividualPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.10),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.10),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#143326] [font-family:var(--font-zamakuri)]">
       <BrandHeader />
       <section className="mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-20 pt-32">
         <div className="w-full max-w-5xl border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.26)] md:p-12">

@@ -32,7 +32,7 @@ const historyItems = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:var(--font-zamakuri)]">
       <BrandHeader />
 
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_82%_12%,rgba(217,255,216,0.72),transparent_30%),radial-gradient(circle_at_12%_80%,rgba(184,149,88,0.08),transparent_26%),linear-gradient(135deg,#fffef8_0%,#f8fcf2_48%,#e4f7df_100%)] px-5 pb-20 pt-32 md:pb-28 md:pt-40">
@@ -77,7 +77,7 @@ export default function Home() {
               />
               <div className="mt-5 h-px bg-gradient-to-r from-transparent via-[#b89558]/40 to-transparent" />
               <p className="mt-5 text-center text-[11px] font-semibold tracking-[0.22em] text-[#2c6a4b]/68">
-                SINCE 2025 / ZAMA
+                SINCE 2025 / ZAMAKURI PLANTS
               </p>
             </div>
           </div>
