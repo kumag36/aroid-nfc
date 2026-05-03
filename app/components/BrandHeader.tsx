@@ -33,7 +33,7 @@ export default function BrandHeader() {
         </Link>
 
         <div className="flex shrink-0 items-center gap-3 md:gap-8">
-          <nav className="hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
+          <nav className="zmk-latin hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="text-[#173b2a]/72 transition hover:text-[#2c6a4b]">
                 {item.label}

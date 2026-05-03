@@ -208,8 +208,8 @@ export default function DictionaryPage() {
                     </span>
                   </div>
 
-                  <div className="mt-20 border border-[#fffef8]/84 bg-[#fffef8]/90 p-5 shadow-[0_20px_70px_rgba(16,41,30,0.18)] backdrop-blur-md dark:border-[#d9ffd8]/16 dark:bg-[#07110c]/82">
-                    <h3 className="text-xl font-bold text-[#10291e] dark:text-[#fffef8]">{plant.displayName}</h3>
+                  <div className="mt-20 border border-[#2c6a4b]/18 bg-[#fffef8]/96 p-5 shadow-[0_22px_74px_rgba(16,41,30,0.22)] backdrop-blur-md dark:border-[#d9ffd8]/20 dark:bg-[#07110c]/90">
+                    <h3 className="zmk-scientific text-2xl text-[#10291e] dark:text-[#fffef8]">{plant.displayName}</h3>
                     <p className="mt-3 text-sm font-semibold leading-7 text-[#315244] dark:text-[#d9ffd8]/88">
                       和名 / 流通名：{plant.tradeName}
                     </p>
@@ -220,7 +220,7 @@ export default function DictionaryPage() {
                     )}
                     <div className="mt-5 flex flex-wrap gap-2">
                       {plant.tags.map((tag) => (
-                        <span key={tag} className="border border-[#2c6a4b]/14 bg-[#f7fbf1]/86 px-3 py-1 text-xs text-[#315244] dark:border-[#d9ffd8]/18 dark:bg-[#10291e]/80 dark:text-[#d9ffd8]">
+                        <span key={tag} className="zmk-pill">
                           {tag}
                         </span>
                       ))}
@@ -228,7 +228,7 @@ export default function DictionaryPage() {
                     <p className="mt-6 text-[15px] font-medium leading-8 text-[#173b2a] dark:text-[#f7fbf1]/86">
                       {plant.description}
                     </p>
-                    <Link href={`/dictionary/${plant.slug}`} className="zmk-button mt-7 w-full bg-[#fffef8]/72 backdrop-blur dark:bg-[#07110c]/58">
+                    <Link href={`/dictionary/${plant.slug}`} className="zmk-button zmk-button-primary mt-7 w-full">
                       詳細を見る
                     </Link>
                   </div>

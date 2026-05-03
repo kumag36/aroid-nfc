@@ -120,7 +120,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
       <BrandHeader />
       <PageHero
         eyebrow={`${plant.category} / VARIETY PROFILE`}
-        title={plant.displayName}
+        title={<span className="zmk-scientific block">{plant.displayName}</span>}
         lead={`和名 / 流通名：${plant.tradeName}。${plant.description}`}
         actions={
           <>
@@ -143,7 +143,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
                   className="absolute inset-0 bg-cover bg-center opacity-[0.46] saturate-[1.04] contrast-[1.04] dark:opacity-[0.36]"
                   style={{ backgroundImage: `url(${primaryImageSrc})` }}
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,254,248,0.97)_0%,rgba(255,254,248,0.90)_48%,rgba(247,251,241,0.62)_74%,rgba(217,255,216,0.30)_100%)] dark:bg-[linear-gradient(90deg,rgba(5,10,7,0.96)_0%,rgba(7,17,12,0.90)_48%,rgba(16,41,30,0.70)_76%,rgba(7,17,12,0.48)_100%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,254,248,0.985)_0%,rgba(255,254,248,0.94)_48%,rgba(247,251,241,0.70)_74%,rgba(217,255,216,0.34)_100%)] dark:bg-[linear-gradient(90deg,rgba(5,10,7,0.97)_0%,rgba(7,17,12,0.92)_48%,rgba(16,41,30,0.76)_76%,rgba(7,17,12,0.54)_100%)]" />
               </>
             ) : (
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_12%,rgba(217,255,216,0.36),transparent_32%)]" />
@@ -158,7 +158,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
                 </p>
 
                 <div className="mt-8 grid gap-4 md:grid-cols-2">
-                  <section className="border border-[#2c6a4b]/10 bg-[#fffef8]/82 p-5 backdrop-blur-md dark:border-[#d9ffd8]/14 dark:bg-[#07110c]/72">
+                  <section className="border border-[#2c6a4b]/16 bg-[#fffef8]/94 p-5 shadow-[0_18px_54px_rgba(44,106,75,0.10)] backdrop-blur-md dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/86">
                     <p className="zmk-eyebrow mb-4 text-[11px]">LOOK</p>
                     <h3 className="text-xl">観察ポイント</h3>
                     <p className="zmk-muted mt-4 text-[14px] leading-7">
@@ -166,7 +166,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
                     </p>
                   </section>
 
-                  <section className="border border-[#2c6a4b]/10 bg-[#fffef8]/82 p-5 backdrop-blur-md dark:border-[#d9ffd8]/14 dark:bg-[#07110c]/72">
+                  <section className="border border-[#2c6a4b]/16 bg-[#fffef8]/94 p-5 shadow-[0_18px_54px_rgba(44,106,75,0.10)] backdrop-blur-md dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/86">
                     <p className="zmk-eyebrow mb-4 text-[11px]">GROW</p>
                     <h3 className="text-xl">育成メモ</h3>
                     <p className="zmk-muted mt-4 text-[14px] leading-7">
@@ -176,7 +176,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
                 </div>
               </div>
 
-              <aside className="border border-[#2c6a4b]/10 bg-[#fffef8]/88 p-5 backdrop-blur-md dark:border-[#d9ffd8]/14 dark:bg-[#07110c]/78">
+              <aside className="border border-[#2c6a4b]/16 bg-[#fffef8]/94 p-5 shadow-[0_18px_54px_rgba(44,106,75,0.10)] backdrop-blur-md dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/88">
                 <p className="zmk-eyebrow mb-5 text-[11px]">QUICK FACTS</p>
                 <dl className="grid gap-4 text-sm leading-7">
                   <div>
@@ -249,7 +249,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
               {relatedPlants.map((item) => (
                 <Link key={item.slug} href={`/dictionary/${item.slug}`} className="zmk-card zmk-card-hover block p-5">
                   <p className="zmk-eyebrow mb-4 text-[11px]">{item.category}</p>
-                  <h3 className="text-xl font-bold">{item.displayName}</h3>
+                  <h3 className="zmk-scientific text-2xl">{item.displayName}</h3>
                   <p className="zmk-muted mt-3 text-sm leading-7">{item.tradeName}</p>
                 </Link>
               ))}

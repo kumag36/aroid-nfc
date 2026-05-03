@@ -22,11 +22,37 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Zamakuri PMarker";
+  src:
+    local("Arphic PMarker"),
+    local("AR PMarker"),
+    local("PMarker"),
+    url("/fonts/Zamakuri-PMarker-Fallback.ttf") format("truetype");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zamakuri Beyond Script";
+  src:
+    local("Above the Beyond Script"),
+    local("Above The Beyond Script"),
+    local("Above the Beyond"),
+    url("/fonts/Zamakuri-BeyondScript-Fallback.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #fffef8;
   --foreground: #143326;
   --font-zamakuri: "Boku2", "ぼくたちのゴシック2", "Bokutachi no Gothic 2", "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", "Noto Sans JP", sans-serif;
   --font-zamakuri-cute: "Boku2", "ぼくたちのゴシック2", "Bokutachi no Gothic 2", "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
+  --font-zamakuri-latin: "Zamakuri PMarker", "Arphic PMarker", "AR PMarker", "PMarker", "Boku2", "Bokutachi no Gothic 2", "Comic Sans MS", "Trebuchet MS", sans-serif;
+  --font-zamakuri-scientific: "Zamakuri Beyond Script", "Above the Beyond Script", "Above The Beyond Script", "Above the Beyond", "Segoe Script", "Brush Script MT", cursive;
   --font-zamakuri-accent: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
   --zmk-bg: #fffef8;
   --zmk-bg-soft: #f7fbf1;
@@ -219,9 +245,26 @@ main :is(input, textarea) {
 
 .zmk-eyebrow {
   color: var(--zmk-gold);
+  font-family: var(--font-zamakuri-latin);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.32em;
+}
+
+.zmk-latin,
+.zmk-latin-title {
+  font-family: var(--font-zamakuri-latin);
+}
+
+.zmk-latin-title {
+  letter-spacing: 0.03em;
+}
+
+.zmk-scientific {
+  font-family: var(--font-zamakuri-scientific);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .zmk-title {
@@ -286,37 +329,70 @@ main :is(input, textarea) {
   align-items: center;
   justify-content: center;
   border: 1px solid var(--zmk-border);
+  background: color-mix(in srgb, var(--zmk-card-solid) 82%, transparent);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+    0 12px 34px rgba(44, 106, 75, 0.08);
   padding: 0.75rem 1.35rem;
-  color: var(--zmk-ink);
+  color: var(--zmk-ink-strong);
+  font-family: var(--font-zamakuri-latin);
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.14em;
-  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+  text-shadow: 0 1px 0 rgba(255, 254, 248, 0.36);
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
 }
 
 .zmk-button:hover {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--zmk-gold) 56%, transparent);
+  background: var(--zmk-card-solid);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+    0 18px 48px rgba(44, 106, 75, 0.14);
 }
 
 .zmk-button-primary {
   border-color: var(--zmk-ink);
   background: var(--zmk-ink);
   color: var(--zmk-bg);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 18px 48px rgba(16, 41, 30, 0.24);
+  text-shadow: none;
 }
 
 html.dark .zmk-button-primary {
   background: #d9ffd8;
   color: #07110c;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.24),
+    0 18px 48px rgba(0, 0, 0, 0.34);
+}
+
+.zmk-hero .zmk-button:not(.zmk-button-primary) {
+  border-color: rgba(255, 254, 248, 0.34);
+  background: rgba(5, 10, 7, 0.34);
+  color: #fffef8;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 48px rgba(0, 0, 0, 0.22);
+  text-shadow: none;
+}
+
+.zmk-hero .zmk-button:not(.zmk-button-primary):hover {
+  border-color: rgba(217, 255, 216, 0.62);
+  background: rgba(7, 17, 12, 0.62);
 }
 
 .zmk-pill {
-  border: 1px solid var(--zmk-border);
+  border: 1px solid var(--zmk-border-strong);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--zmk-bg-glow) 24%, transparent);
+  background: color-mix(in srgb, var(--zmk-card-solid) 78%, var(--zmk-bg-glow));
   padding: 0.25rem 0.75rem;
-  color: var(--zmk-ink-soft);
+  color: var(--zmk-ink-strong);
   font-size: 0.75rem;
+  font-weight: 700;
 }
 
 .zmk-muted {
