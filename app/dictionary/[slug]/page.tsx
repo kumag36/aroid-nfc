@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
+import FixedCtaBar from '@/app/components/FixedCtaBar'
 import PageHero from '@/app/components/PageHero'
 import DictionaryPlantImage from '@/app/dictionary/components/DictionaryPlantImage'
 import { dictionaryImageCandidates } from '@/lib/dictionary-image-data'
@@ -119,6 +120,12 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
   return (
     <main className="zmk-page">
       <BrandHeader />
+      <FixedCtaBar
+        primaryHref={`/notify?plant=${encodeURIComponent(plant.slug)}`}
+        primaryLabel="購入する"
+        secondaryHref={`/notify?plant=${encodeURIComponent(plant.slug)}`}
+        secondaryLabel="入荷通知"
+      />
       <PageHero
         eyebrow={`${plant.category} / VARIETY PROFILE`}
         title={<span className="zmk-scientific block">{plant.displayName}</span>}
@@ -131,6 +138,9 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
             </Link>
             <Link href="/register" className="zmk-button text-[#fffef8]">
               個体登録へ
+            </Link>
+            <Link href={`/notify?plant=${encodeURIComponent(plant.slug)}`} className="zmk-button text-[#fffef8]">
+              購入する
             </Link>
           </>
         }
@@ -235,6 +245,9 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
           </div>
           <Link href="/nfc/verify" className="zmk-button zmk-button-primary">
             NFC管理を見る
+          </Link>
+          <Link href={`/notify?plant=${encodeURIComponent(plant.slug)}`} className="zmk-button">
+            入荷通知
           </Link>
         </div>
       </section>

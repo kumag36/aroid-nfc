@@ -1,4 +1,5 @@
 import './globals.css'
+import MobileBottomNav from './components/MobileBottomNav'
 import SiteFooter from './components/SiteFooter'
 
 export const metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         <SiteFooter />
+        <MobileBottomNav />
       </body>
     </html>
   )

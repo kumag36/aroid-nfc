@@ -104,7 +104,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-zamakuri);
   font-size: 15px;
-  line-height: 1.85;
+  line-height: 1.45;
   letter-spacing: 0.01em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -176,6 +176,12 @@ main :is(input, textarea) {
   background: var(--zmk-bg);
   color: var(--zmk-ink);
   font-family: var(--font-zamakuri);
+}
+
+@supports (height: 100dvh) {
+  .zmk-page {
+    min-height: 100dvh;
+  }
 }
 
 .zmk-jp,
@@ -322,6 +328,10 @@ main :is(input, textarea) {
   min-height: 68vh;
   flex-direction: column;
   justify-content: center;
+}
+
+.zmk-mobile-safe {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
 }
 
 .zmk-rule {
@@ -554,7 +564,8 @@ html.dark main ::placeholder {
 @media (max-width: 640px) {
   body {
     font-size: 14.5px;
-    line-height: 1.78;
+    line-height: 1.55;
+    padding-bottom: calc(4.2rem + env(safe-area-inset-bottom));
   }
 
   main h1,
