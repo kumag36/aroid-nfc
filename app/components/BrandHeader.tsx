@@ -1,5 +1,6 @@
 ﻿import Image from 'next/image'
 import Link from 'next/link'
+import ThemeToggle from './ThemeToggle'
 
 const navItems = [
   { href: '/', label: 'TOP' },
@@ -45,6 +46,7 @@ export default function BrandHeader() {
           >
             ADMIN
           </Link>
+          <ThemeToggle />
         </div>
       </div>
     </header>
