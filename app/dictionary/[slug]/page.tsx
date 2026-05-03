@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
 import PageHero from '@/app/components/PageHero'
+import DictionaryPlantImage from '@/app/dictionary/components/DictionaryPlantImage'
 import { dictionaryImageCandidates } from '@/lib/dictionary-image-data'
 import { listDictionaryImageAssignments, listDictionaryImageExclusions } from '@/lib/dictionary-image-storage'
 import { plants, type Plant } from '@/lib/dictionary-data'
@@ -157,6 +158,10 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
                 <p className="zmk-muted mt-7 text-[15px] leading-8">
                   {categoryNotes[plant.category]}
                 </p>
+
+                <div className="mt-8">
+                  <DictionaryPlantImage plantSlug={plant.slug} />
+                </div>
 
                 <div className="mt-8 grid gap-4 md:grid-cols-2">
                   <section className="border border-[#2c6a4b]/16 bg-[#fffef8]/94 p-5 shadow-[0_18px_54px_rgba(44,106,75,0.10)] backdrop-blur-md dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/86">
