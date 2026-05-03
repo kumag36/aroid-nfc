@@ -78,8 +78,19 @@ html.dark header button:hover {
 }
 
 html.dark main {
-  background-color: #07110c;
+  background-color: #07110c !important;
   color: #f7fbf1;
+}
+
+html.dark main section[class*="bg-["] {
+  background-image:
+    radial-gradient(circle at 78% 16%, rgba(217, 255, 216, 0.18), transparent 34%),
+    radial-gradient(circle at 10% 80%, rgba(184, 149, 88, 0.12), transparent 28%),
+    linear-gradient(135deg, #07110c 0%, #10291e 56%, #07110c 100%) !important;
+}
+
+html.dark main [class*="bg-gradient-to-t"] {
+  --tw-gradient-from: #07110c !important;
 }
 
 html.dark main :is(section, article, aside, form, figure, div)[class*="bg-white"],

@@ -32,32 +32,32 @@ const historyItems = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:var(--font-zamakuri)]">
+    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:var(--font-zamakuri)] dark:bg-[#07110c] dark:text-[#f7fbf1]">
       <BrandHeader />
 
-      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_82%_12%,rgba(217,255,216,0.72),transparent_30%),radial-gradient(circle_at_12%_80%,rgba(184,149,88,0.08),transparent_26%),linear-gradient(135deg,#fffef8_0%,#f8fcf2_48%,#e4f7df_100%)] px-5 pb-20 pt-32 md:pb-28 md:pt-40">
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f7fbf1] to-transparent" />
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_82%_12%,rgba(217,255,216,0.72),transparent_30%),radial-gradient(circle_at_12%_80%,rgba(184,149,88,0.08),transparent_26%),linear-gradient(135deg,#fffef8_0%,#f8fcf2_48%,#e4f7df_100%)] px-5 pb-20 pt-32 dark:bg-[radial-gradient(circle_at_82%_12%,rgba(217,255,216,0.18),transparent_30%),radial-gradient(circle_at_12%_80%,rgba(184,149,88,0.14),transparent_26%),linear-gradient(135deg,#07110c_0%,#10291e_54%,#07110c_100%)] md:pb-28 md:pt-40">
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f7fbf1] to-transparent dark:from-[#07110c]" />
         <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:min-h-[620px] lg:grid-cols-[minmax(0,0.86fr)_minmax(360px,0.64fr)] lg:items-center">
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
               ZAMAKURI PLANTS
             </p>
-            <h1 className="max-w-5xl text-[clamp(2.65rem,7vw,6.2rem)] font-medium leading-[1.08] tracking-normal text-[#10291e]">
+            <h1 className="max-w-5xl text-[clamp(2.65rem,7vw,6.2rem)] font-bold leading-[1.08] tracking-normal text-[#10291e] dark:text-[#f7fbf1]">
               ざまくりプランツ
             </h1>
-            <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#315244] md:text-lg md:leading-9">
+            <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#315244] dark:text-[#d9ffd8]/84 md:text-lg md:leading-9">
               モンステラとアロイドを中心に、品種・個体・育成の記録を静かに深めていく植物屋です。
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 href="/dictionary"
-                className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#2c6a4b]/28 bg-white/80 px-7 text-sm font-semibold tracking-[0.16em] text-[#173b2a] shadow-[0_18px_60px_rgba(44,106,75,0.10),inset_0_0_0_1px_rgba(255,255,255,0.72)] transition hover:-translate-y-0.5 hover:border-[#b89558]/55"
+                className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#2c6a4b]/28 bg-white/80 px-7 text-sm font-semibold tracking-[0.16em] text-[#173b2a] shadow-[0_18px_60px_rgba(44,106,75,0.10),inset_0_0_0_1px_rgba(255,255,255,0.72)] transition hover:-translate-y-0.5 hover:border-[#b89558]/55 dark:border-[#d9ffd8]/26 dark:bg-[#d9ffd8]/12 dark:text-[#f7fbf1]"
               >
                 図鑑を見る
               </Link>
               <Link
                 href="/history"
-                className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#2c6a4b]/14 bg-[#d9ffd8]/38 px-7 text-sm font-semibold tracking-[0.16em] text-[#173b2a] transition hover:-translate-y-0.5 hover:bg-[#d9ffd8]/58"
+                className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#2c6a4b]/14 bg-[#d9ffd8]/38 px-7 text-sm font-semibold tracking-[0.16em] text-[#173b2a] transition hover:-translate-y-0.5 hover:bg-[#d9ffd8]/58 dark:border-[#d9ffd8]/22 dark:bg-[#10291e]/70 dark:text-[#f7fbf1]"
               >
                 歩みを見る
               </Link>
@@ -65,8 +65,8 @@ export default function Home() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[390px]">
-            <div className="absolute -inset-6 bg-[radial-gradient(circle,rgba(217,255,216,0.72),transparent_68%)]" />
-            <div className="relative border border-[#2c6a4b]/12 bg-white/76 p-6 shadow-[0_34px_120px_rgba(44,106,75,0.14)] backdrop-blur-sm">
+            <div className="absolute -inset-6 bg-[radial-gradient(circle,rgba(217,255,216,0.72),transparent_68%)] dark:bg-[radial-gradient(circle,rgba(217,255,216,0.18),transparent_68%)]" />
+            <div className="relative border border-[#2c6a4b]/12 bg-white/76 p-6 shadow-[0_34px_120px_rgba(44,106,75,0.14)] backdrop-blur-sm dark:border-[#d9ffd8]/14 dark:bg-[#10291e]/82">
               <Image
                 src="/brand/zamakuri-shop-logo.webp"
                 alt="ざまくりプランツ"
@@ -76,7 +76,7 @@ export default function Home() {
                 className="mx-auto h-auto w-full max-w-[300px]"
               />
               <div className="mt-5 h-px bg-gradient-to-r from-transparent via-[#b89558]/40 to-transparent" />
-              <p className="mt-5 text-center text-[11px] font-semibold tracking-[0.22em] text-[#2c6a4b]/68">
+              <p className="mt-5 text-center text-[11px] font-semibold tracking-[0.22em] text-[#2c6a4b]/68 dark:text-[#d9ffd8]/76">
                 SINCE 2025 / ZAMAKURI PLANTS
               </p>
             </div>
@@ -91,22 +91,22 @@ export default function Home() {
             ['02', '個体を残す', 'NFCとDBで、一株ごとの履歴を迷子にしない管理へ。'],
             ['03', '育成を深める', '写真、環境、変化を重ねて、株の時間を記録します。'],
           ].map(([number, title, text]) => (
-            <article key={number} className="border border-[#2c6a4b]/10 bg-white/78 p-6 shadow-[0_24px_70px_rgba(44,106,75,0.08)]">
+            <article key={number} className="border border-[#2c6a4b]/10 bg-white/78 p-6 shadow-[0_24px_70px_rgba(44,106,75,0.08)] dark:border-[#d9ffd8]/12 dark:bg-[#10291e]/82">
               <p className="mb-5 text-xs font-semibold tracking-[0.22em] text-[#b89558]">{number}</p>
-              <h2 className="text-2xl font-medium leading-tight text-[#10291e]">{title}</h2>
-              <p className="mt-5 text-[15px] leading-8 text-[#315244]/76">{text}</p>
+              <h2 className="text-2xl font-bold leading-tight text-[#10291e] dark:text-[#f7fbf1]">{title}</h2>
+              <p className="mt-5 text-[15px] leading-8 text-[#315244]/76 dark:text-[#d9ffd8]/76">{text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="bg-[#fffef8] px-5 py-16 md:py-24">
+      <section className="bg-[#fffef8] px-5 py-16 dark:bg-[#0b1710] md:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,0.78fr)_420px] lg:items-start">
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
               HISTORY
             </p>
-            <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4.5rem)] font-medium leading-tight text-[#10291e]">
+            <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4.5rem)] font-bold leading-tight text-[#10291e] dark:text-[#f7fbf1]">
               開業から走り続けた、ざまくりプランツの歩み。
             </h2>
             <div className="mt-10 grid gap-4">
@@ -114,27 +114,27 @@ export default function Home() {
                 <Link
                   key={item.title}
                   href="/history"
-                  className="group grid gap-5 border border-[#2c6a4b]/10 bg-white/76 p-4 transition hover:-translate-y-0.5 hover:border-[#b89558]/35 sm:grid-cols-[132px_1fr]"
+                  className="group grid gap-5 border border-[#2c6a4b]/10 bg-white/76 p-4 transition hover:-translate-y-0.5 hover:border-[#b89558]/35 dark:border-[#d9ffd8]/12 dark:bg-[#10291e]/82 sm:grid-cols-[132px_1fr]"
                 >
-                  <div className="relative min-h-32 overflow-hidden bg-[#e4f7df]">
+                  <div className="relative min-h-32 overflow-hidden bg-[#e4f7df] dark:bg-[#07110c]">
                     <Image src={item.image} alt="" fill className="object-cover transition duration-500 group-hover:scale-[1.03]" sizes="132px" />
                   </div>
                   <div>
                     <p className="text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">{item.period}</p>
-                    <h3 className="mt-3 text-xl font-medium text-[#10291e]">{item.title}</h3>
-                    <p className="mt-3 text-[14px] leading-7 text-[#315244]/76">{item.text}</p>
+                    <h3 className="mt-3 text-xl font-bold text-[#10291e] dark:text-[#f7fbf1]">{item.title}</h3>
+                    <p className="mt-3 text-[14px] leading-7 text-[#315244]/76 dark:text-[#d9ffd8]/76">{item.text}</p>
                   </div>
                 </Link>
               ))}
             </div>
           </div>
 
-          <div className="border border-[#2c6a4b]/10 bg-[#f7fbf1]/78 p-4 shadow-[0_24px_80px_rgba(44,106,75,0.10)]">
-            <div className="mb-4 flex items-center justify-between border-b border-[#2c6a4b]/10 pb-3">
+          <div className="border border-[#2c6a4b]/10 bg-[#f7fbf1]/78 p-4 shadow-[0_24px_80px_rgba(44,106,75,0.10)] dark:border-[#d9ffd8]/12 dark:bg-[#10291e]/82">
+            <div className="mb-4 flex items-center justify-between border-b border-[#2c6a4b]/10 pb-3 dark:border-[#d9ffd8]/12">
               <p className="text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">LIVE RECORD</p>
-              <span className="text-xs text-[#315244]/60">Instagram</span>
+              <span className="text-xs text-[#315244]/60 dark:text-[#d9ffd8]/62">Instagram</span>
             </div>
-            <div className="aspect-[4/5] overflow-hidden bg-white">
+            <div className="aspect-[4/5] overflow-hidden bg-white dark:bg-[#07110c]">
               <iframe
                 src={instagramEmbedUrl}
                 title="ざまくりプランツ Instagram"
@@ -147,7 +147,7 @@ export default function Home() {
               href={instagramProfileUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-4 inline-flex min-h-11 w-full items-center justify-center border border-[#2c6a4b]/18 bg-white/70 px-5 text-xs font-semibold tracking-[0.16em] text-[#173b2a] transition hover:border-[#b89558]/45"
+              className="mt-4 inline-flex min-h-11 w-full items-center justify-center border border-[#2c6a4b]/18 bg-white/70 px-5 text-xs font-semibold tracking-[0.16em] text-[#173b2a] transition hover:border-[#b89558]/45 dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/42 dark:text-[#f7fbf1]"
             >
               Instagramで見る
             </Link>
