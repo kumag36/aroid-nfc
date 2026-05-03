@@ -2,6 +2,7 @@
 import BrandHeader from '@/app/components/BrandHeader'
 import DictionaryPlantImage from '@/app/dictionary/components/DictionaryPlantImage'
 import { plants, type Plant } from '@/lib/dictionary-data'
+import { labelNameBySlug } from '@/lib/label-name-data'
 
 type DictionaryDetailPageProps = {
   params: Promise<{
@@ -102,7 +103,7 @@ export async function generateMetadata({ params }: DictionaryDetailPageProps) {
 
 function MissingPage() {
   return (
-    <main className="relative grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] px-5 py-20 text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="relative grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.82),transparent_34%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_54%,#d9ffd8_100%)] px-5 py-20 text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
       <section className="w-full max-w-3xl border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_24px_90px_rgba(0,0,0,0.28)] md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
@@ -117,7 +118,7 @@ function MissingPage() {
           図鑑一覧から、いま記録されている品種を見てください。
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Link href="/dictionary" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08),0_18px_60px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]">
+          <Link href="/dictionary" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#143326] bg-[#143326] px-7 text-sm font-semibold tracking-[0.18em] text-[#fffef8] shadow-[0_18px_48px_rgba(44,106,75,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#2c6a4b]">
             図鑑へ戻る
           </Link>
           <Link href="/" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#2c6a4b]/55">
@@ -138,6 +139,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
   }
 
   const profile = buildProfile(plant)
+  const label = labelNameBySlug[plant.slug]
   const relatedPlants = plants
     .filter((item) => item.slug !== plant.slug && item.category === plant.category)
     .slice(0, 3)
@@ -145,7 +147,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
   return (
     <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
-      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-16 pt-8 md:pb-24">
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.82),transparent_34%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_52%,#d9ffd8_100%)] px-5 pb-16 pt-8 md:pb-24">
         <div className="relative z-10 mx-auto grid max-w-7xl gap-10 py-16 md:grid-cols-[minmax(0,1fr)_360px] md:items-end md:py-24">
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
@@ -157,6 +159,11 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
             <p className="mt-6 text-lg leading-8 text-[#315244]/86 md:text-xl">
               和名 / 流通名：{plant.tradeName}
             </p>
+            {label && (
+              <p className="mt-3 text-sm leading-7 text-[#2c6a4b]/75 md:text-base">
+                ラベル表記：{label.shortName} / {label.fullKana}
+              </p>
+            )}
             <p className="mt-8 max-w-3xl text-[15px] leading-8 text-[#315244]/78 md:text-lg md:leading-9">
               {plant.description}
             </p>
@@ -164,7 +171,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
 
           <div className="space-y-4">
             <DictionaryPlantImage plantSlug={plant.slug} />
-            <aside className="border border-[#2c6a4b]/12 bg-[#fffaf0]/6 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur">
+            <aside className="border border-[#2c6a4b]/12 bg-white/78 p-5 shadow-[0_24px_80px_rgba(44,106,75,0.12)] backdrop-blur">
             <p className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">
               QUICK FACTS
             </p>
@@ -177,11 +184,19 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
                 <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">TRADE NAME</dt>
                 <dd>{plant.tradeName}</dd>
               </div>
+              {label && (
+                <div>
+                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">LABEL</dt>
+                  <dd>{label.shortName}</dd>
+                  <dd className="text-xs text-[#315244]/58">{label.fullKana}</dd>
+                  {label.note && <dd className="text-xs text-[#b89558]">{label.note}</dd>}
+                </div>
+              )}
               <div>
                 <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">TAGS</dt>
                 <dd className="mt-2 flex flex-wrap gap-2">
                   {plant.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border border-[#2c6a4b]/12 bg-[#08140f]/60 px-3 py-1 text-xs text-[#315244]/78">
+                    <span key={tag} className="rounded-full border border-[#2c6a4b]/12 bg-[#d9ffd8]/28 px-3 py-1 text-xs text-[#315244]/78">
                       {tag}
                     </span>
                   ))}
@@ -253,7 +268,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
         ))}
       </section>
 
-      <section className="border-y border-[#2c6a4b]/10 bg-[#0b1710] px-5 py-16 md:py-20">
+      <section className="border-y border-[#2c6a4b]/10 bg-[#eef8e8] px-5 py-16 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_420px] md:items-center">
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
@@ -267,7 +282,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
-            <Link href="/register" className="inline-flex min-h-12 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08),0_18px_60px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]">
+            <Link href="/register" className="inline-flex min-h-12 items-center justify-center border border-[#143326] bg-[#143326] px-7 text-sm font-semibold tracking-[0.18em] text-[#fffef8] shadow-[0_18px_48px_rgba(44,106,75,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#2c6a4b]">
               個体登録を申請する
             </Link>
             <Link href="/i/ZMK-000001" className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#2c6a4b]/55">
@@ -316,7 +331,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
             図鑑は育てながら深くなる。品種の情報と、個体の履歴を同じ文脈で残していきます。
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/dictionary" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#191a15] bg-[#191a15] px-5 text-xs font-semibold tracking-[0.18em] text-[#143326]">
+            <Link href="/dictionary" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#143326] bg-[#143326] px-5 text-xs font-semibold tracking-[0.18em] text-[#fffef8]">
               図鑑へ戻る
             </Link>
             <Link href="/" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#191a15]/18 px-5 text-xs font-semibold tracking-[0.18em] text-[#191a15]">

@@ -364,6 +364,15 @@ export const plants: Plant[] = [
     description: '海外由来の流通名で扱われるデリシオーサ系統。詳細な同定メモを重ねたい品種。',
   },
   {
+    slug: 'monstera-deliciosa-starlight',
+    displayName: "Monstera deliciosa 'Starlight'",
+    tradeName: 'スターライト',
+    category: 'Monstera',
+    tags: ['デリシオーサ', '希少', '海外流通'],
+    description: 'ラベル整理表から追加したデリシオーサ系統。流通名と個体特徴を今後の写真・育成記録で補完したい品種。',
+    sourceNote: 'ラベル用名前整理.xlsx',
+  },
+  {
     slug: 'platycerium-paul-vespa',
     displayName: 'Platycerium Paul Vespa',
     tradeName: 'ポール ヴェスパ',

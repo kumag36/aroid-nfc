@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { categories, plants, type Category } from '@/lib/dictionary-data'
+import { labelNameBySlug } from '@/lib/label-name-data'
 import BrandHeader from '@/app/components/BrandHeader'
 
 type DictionaryImageResponse = {
@@ -69,6 +70,7 @@ export default function DictionaryPage() {
     const normalizedQuery = query.trim().toLowerCase()
 
     return plants.filter((plant) => {
+      const label = labelNameBySlug[plant.slug]
       const matchesCategory =
         activeCategory === 'All' || plant.category === activeCategory
       const searchableText = [
@@ -82,6 +84,9 @@ export default function DictionaryPage() {
         plant.recommendedStyle,
         plant.origin,
         plant.sourceNote,
+        label?.shortName,
+        label?.fullKana,
+        label?.note,
         ...plant.tags,
       ]
         .filter(Boolean)
@@ -104,7 +109,7 @@ export default function DictionaryPage() {
     <main className="min-h-screen overflow-hidden bg-[#f7fbf1] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
 
-      <section className="relative bg-[radial-gradient(circle_at_78%_18%,rgba(217,255,216,0.13),transparent_31%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-20 pt-32 md:pt-40">
+      <section className="relative bg-[radial-gradient(circle_at_78%_18%,rgba(217,255,216,0.8),transparent_32%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_48%,#d9ffd8_100%)] px-5 pb-20 pt-32 md:pt-40">
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#f7fbf1] to-transparent" />
         <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:min-h-[560px] lg:grid-cols-[minmax(0,0.88fr)_minmax(360px,0.72fr)] lg:items-center">
           <div>
@@ -122,7 +127,7 @@ export default function DictionaryPage() {
               <button
                 type="button"
                 onClick={() => focusCategory('Monstera')}
-                className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#d9ffd8]/70 bg-[#d9ffd8]/12 px-6 text-sm font-semibold tracking-[0.16em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]"
+                className="inline-flex min-h-12 min-w-52 items-center justify-center border border-[#2c6a4b]/70 bg-[#143326] px-6 text-sm font-semibold tracking-[0.16em] text-[#fffef8] shadow-[0_18px_48px_rgba(44,106,75,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#2c6a4b]"
               >
                 モンステラから見る
               </button>
@@ -167,7 +172,7 @@ export default function DictionaryPage() {
                     {['Monstera', 'Philodendron', 'Alocasia', 'NFC DB'].map((label) => (
                       <span
                         key={label}
-                        className="border border-[#d9ffd8]/18 bg-[#d9ffd8]/8 px-3 py-2 text-[10px] font-semibold tracking-[0.16em] text-[#eaffdf]"
+                        className="border border-[#2c6a4b]/12 bg-[#d9ffd8]/35 px-3 py-2 text-[10px] font-semibold tracking-[0.16em] text-[#143326]"
                       >
                         {label}
                       </span>
@@ -227,7 +232,7 @@ export default function DictionaryPage() {
             onClick={() => setActiveCategory('All')}
             className={`shrink-0 border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition ${
               activeCategory === 'All'
-                ? 'border-[#d9ffd8]/65 bg-[#d9ffd8]/12 text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08)]'
+                ? 'border-[#2c6a4b]/55 bg-[#143326] text-[#fffef8] shadow-[0_12px_34px_rgba(44,106,75,0.14)]'
                 : 'border-[#2c6a4b]/12 bg-[#fffaf0]/4 text-[#315244]/70 hover:border-[#d9ffd8]/40'
             }`}
           >
@@ -240,7 +245,7 @@ export default function DictionaryPage() {
               onClick={() => setActiveCategory(category)}
               className={`shrink-0 border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition ${
                 activeCategory === category
-                  ? 'border-[#d9ffd8]/65 bg-[#d9ffd8]/12 text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08)]'
+                  ? 'border-[#2c6a4b]/55 bg-[#143326] text-[#fffef8] shadow-[0_12px_34px_rgba(44,106,75,0.14)]'
                   : 'border-[#2c6a4b]/12 bg-[#fffaf0]/4 text-[#315244]/70 hover:border-[#d9ffd8]/40'
               }`}
             >
@@ -253,7 +258,7 @@ export default function DictionaryPage() {
           {filteredPlants.map((plant, index) => (
             <article
               key={plant.slug}
-              className="group relative flex min-h-[340px] overflow-hidden border border-[#2c6a4b]/10 bg-white/86 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.20)] transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34 hover:bg-[#0a1711]/92"
+              className="group relative flex min-h-[340px] flex-col overflow-hidden border border-[#2c6a4b]/10 bg-white/88 p-6 shadow-[0_24px_80px_rgba(44,106,75,0.12)] transition duration-300 hover:-translate-y-1 hover:border-[#b89558]/40 hover:bg-white"
             >
               {cardImages[plant.slug] && (
                 <>
@@ -261,7 +266,7 @@ export default function DictionaryPage() {
                     className="absolute inset-0 bg-cover bg-center opacity-[0.16] grayscale-[18%] saturate-[0.72] transition duration-500 group-hover:opacity-[0.22]"
                     style={{ backgroundImage: `url(${cardImages[plant.slug]})` }}
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(4,9,6,0.96)_0%,rgba(5,12,8,0.88)_48%,rgba(5,12,8,0.72)_100%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,254,248,0.98)_0%,rgba(247,251,241,0.9)_56%,rgba(217,255,216,0.74)_100%)]" />
                 </>
               )}
 
@@ -280,6 +285,11 @@ export default function DictionaryPage() {
               <p className="relative z-10 mt-3 text-sm leading-7 text-[#315244]/72">
                 和名 / 流通名：{plant.tradeName}
               </p>
+              {labelNameBySlug[plant.slug] && (
+                <p className="relative z-10 mt-2 text-xs leading-6 text-[#2c6a4b]/72">
+                  LABEL：{labelNameBySlug[plant.slug].shortName} / {labelNameBySlug[plant.slug].fullKana}
+                </p>
+              )}
 
               <div className="relative z-10 mt-5 flex flex-wrap gap-2">
                 {plant.tags.map((tag) => (
@@ -298,7 +308,7 @@ export default function DictionaryPage() {
 
               <Link
                 href={`/dictionary/${plant.slug}`}
-                className="relative z-10 mt-7 inline-flex min-h-11 items-center justify-center border border-[#2c6a4b]/18 bg-[#f7fbf1]/18 px-4 text-xs font-semibold tracking-[0.18em] text-[#143326] backdrop-blur-[2px] transition duration-300 group-hover:border-[#d9ffd8]/55 group-hover:text-[#eaffdf]"
+                className="relative z-10 mt-7 inline-flex min-h-11 items-center justify-center border border-[#2c6a4b]/18 bg-[#f7fbf1]/55 px-4 text-xs font-semibold tracking-[0.18em] text-[#143326] backdrop-blur-[2px] transition duration-300 group-hover:border-[#b89558]/45"
               >
                 詳細を見る
               </Link>
@@ -327,7 +337,7 @@ export default function DictionaryPage() {
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
               href="/"
-              className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#191a15] bg-[#191a15] px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5"
+              className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#143326] bg-[#143326] px-6 text-sm font-semibold tracking-[0.16em] text-[#fffef8] transition duration-300 hover:-translate-y-0.5"
             >
               トップへ戻る
             </Link>

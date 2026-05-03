@@ -4,7 +4,7 @@ import MusicRoom from './components/MusicRoom'
 export const metadata = {
   title: 'ざまくり音楽室 | ZAMAKURI.JP',
   description:
-    'ざまくりプランツの音源と映像を、清潔でさわやかな空気感の中に保管するオンライン音楽室。',
+    'ざまくりプランツの音源を、白と植物の緑を基調にした清潔な空間で聴ける音楽室。',
 }
 
 export default function MusicPage() {
