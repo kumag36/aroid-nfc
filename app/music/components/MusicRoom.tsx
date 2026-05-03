@@ -181,7 +181,25 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
   function openYoutubePlayback(track = selectedTrack) {
     if (!track?.youtube) return false
 
-    window.open(track.youtube.url, '_blank', 'noopener,noreferrer')
+    const videoIsShort = track.youtube.url.includes('/shorts/')
+    const popupWidth = videoIsShort ? 430 : 760
+    const popupHeight = videoIsShort ? 760 : 520
+    const left = Math.max(0, Math.round(window.screenX + (window.outerWidth - popupWidth) / 2))
+    const top = Math.max(0, Math.round(window.screenY + (window.outerHeight - popupHeight) / 2))
+    const popupFeatures = [
+      'popup=yes',
+      `width=${popupWidth}`,
+      `height=${popupHeight}`,
+      `left=${left}`,
+      `top=${top}`,
+      'resizable=yes',
+      'scrollbars=yes',
+      'noopener',
+      'noreferrer',
+    ].join(',')
+
+    const popup = window.open(track.youtube.url, `zamakuri-youtube-${track.id}`, popupFeatures)
+    popup?.focus()
     setIsPlaying(false)
     return true
   }
