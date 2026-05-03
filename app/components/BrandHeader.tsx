@@ -7,6 +7,7 @@ const navItems = [
   { href: '/', label: 'トップ' },
   { href: '/dictionary', label: '図鑑' },
   { href: '/history', label: '歩み' },
+  { href: '/owner', label: '店主より' },
   { href: '/museum', label: '漫画' },
   { href: '/music', label: '音楽室' },
   { href: '/nfc/verify', label: 'NFC' },
