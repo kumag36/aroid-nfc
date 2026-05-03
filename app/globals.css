@@ -1,10 +1,32 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Boku2";
+  src:
+    local("ぼくたちのゴシック2"),
+    local("Bokutachi no Gothic 2"),
+    url("/fonts/Boku2-Regular.woff") format("woff");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Boku2";
+  src:
+    local("ぼくたちのゴシック2 Bold"),
+    local("Bokutachi no Gothic 2 Bold"),
+    url("/fonts/Boku2-Bold.woff") format("woff");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-zamakuri: "ぼくたちのゴシック2", "Bokutachi no Gothic 2", "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", "Noto Sans JP", sans-serif;
-  --font-zamakuri-cute: "ぼくたちのゴシック2", "Bokutachi no Gothic 2", "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
+  --font-zamakuri: "Boku2", "ぼくたちのゴシック2", "Bokutachi no Gothic 2", "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", "Noto Sans JP", sans-serif;
+  --font-zamakuri-cute: "Boku2", "ぼくたちのゴシック2", "Bokutachi no Gothic 2", "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
   --font-zamakuri-accent: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
 }
 
@@ -53,6 +75,57 @@ html.dark header button {
 html.dark header a:hover,
 html.dark header button:hover {
   color: #d9ffd8;
+}
+
+html.dark main {
+  background-color: #07110c;
+  color: #f7fbf1;
+}
+
+html.dark main :is(section, article, aside, form, figure, div)[class*="bg-white"],
+html.dark main :is(section, article, aside, form, figure, div)[class*="bg-[#fff"],
+html.dark main :is(section, article, aside, form, figure, div)[class*="bg-[#f7"],
+html.dark main :is(section, article, aside, form, figure, div)[class*="bg-[#f8"],
+html.dark main :is(section, article, aside, form, figure, div)[class*="bg-[#eef"] {
+  background-color: rgba(16, 41, 30, 0.86);
+}
+
+html.dark main :is(h1, h2, h3, h4, p, span, dd, dt, li, label, input, textarea, select) {
+  color: inherit;
+}
+
+html.dark main :is(p, span, dd, dt, li, label)[class*="text-[#315244"],
+html.dark main :is(p, span, dd, dt, li, label)[class*="text-[#143326"],
+html.dark main :is(p, span, dd, dt, li, label)[class*="text-[#10291e"],
+html.dark main :is(h1, h2, h3)[class*="text-[#143326"],
+html.dark main :is(h1, h2, h3)[class*="text-[#10291e"] {
+  color: rgba(247, 251, 241, 0.9);
+}
+
+html.dark main :is(a, button)[class*="text-[#143326"],
+html.dark main :is(a, button)[class*="text-[#173b2a"],
+html.dark main :is(a, button)[class*="text-[#191a15"] {
+  color: #f7fbf1;
+}
+
+html.dark main :is(input, textarea, select) {
+  border-color: rgba(217, 255, 216, 0.2);
+  background-color: rgba(7, 17, 12, 0.72);
+  color: #f7fbf1;
+}
+
+html.dark main ::placeholder {
+  color: rgba(217, 255, 216, 0.48);
+}
+
+html.dark main :is(article, aside, form, figure, input, textarea, select, button, a)[class*="border-[#2c6a4b"] {
+  border-color: rgba(217, 255, 216, 0.18);
+}
+
+html.dark main :is(a, button)[class*="bg-[#143326"],
+html.dark main :is(a, button)[class*="bg-[#191a15"] {
+  background-color: #d9ffd8;
+  color: #07110c;
 }
 
 main {

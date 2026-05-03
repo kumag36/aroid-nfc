@@ -10,6 +10,7 @@ type DictionaryImageResponse = {
   candidates: {
     id: string
     src: string
+    suggestedPlantSlugs?: string[]
   }[]
   assignments: {
     imageId: string
@@ -52,6 +53,17 @@ export default function DictionaryPage() {
           const image = assignments[0] ? imageById.get(assignments[0].imageId) : null
           if (image) {
             nextImages[plant.slug] = image.src
+            continue
+          }
+
+          const suggestedImage = data.candidates.find(
+            (candidate) =>
+              candidate.suggestedPlantSlugs?.includes(plant.slug) &&
+              !excludedIds.has(candidate.id),
+          )
+
+          if (suggestedImage) {
+            nextImages[plant.slug] = suggestedImage.src
           }
         }
 
@@ -263,10 +275,10 @@ export default function DictionaryPage() {
               {cardImages[plant.slug] && (
                 <>
                   <div
-                    className="absolute inset-0 bg-cover bg-center opacity-[0.16] grayscale-[18%] saturate-[0.72] transition duration-500 group-hover:opacity-[0.22]"
+                    className="absolute inset-0 bg-cover bg-center opacity-[0.34] grayscale-[8%] saturate-[0.86] transition duration-500 group-hover:opacity-[0.46] dark:opacity-[0.30] dark:group-hover:opacity-[0.42]"
                     style={{ backgroundImage: `url(${cardImages[plant.slug]})` }}
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,254,248,0.98)_0%,rgba(247,251,241,0.9)_56%,rgba(217,255,216,0.74)_100%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,254,248,0.88)_0%,rgba(247,251,241,0.74)_56%,rgba(217,255,216,0.48)_100%)] dark:bg-[linear-gradient(115deg,rgba(7,17,12,0.9)_0%,rgba(16,41,30,0.78)_58%,rgba(7,17,12,0.64)_100%)]" />
                 </>
               )}
 

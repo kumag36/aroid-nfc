@@ -65,13 +65,13 @@ export default function MuseumGallery() {
   if (works.length === 0) {
     return (
       <div className="border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.22)] md:p-12">
-        <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">NO EXHIBITS YET</p>
+        <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">NO MANGA YET</p>
         <h2 className="text-[clamp(2rem,5vw,4.2rem)] font-medium leading-tight text-[#143326]">
-          まだ展示作品はありません。
+          まだ漫画作品はありません。
         </h2>
         <p className="mt-7 max-w-2xl text-[15px] leading-8 text-[#315244]/76 md:text-lg md:leading-9">
-          管理者ページから漫画をアップすると、ここに美術館の展示として並びます。
-          スマホでは縦読み、PCでは展示室のように閲覧できます。
+          管理者ページから漫画をアップすると、ここに作品として並びます。
+          スマホでは縦読み、タブレットとPCでは横読みで閲覧できます。
         </p>
       </div>
     )
@@ -82,14 +82,14 @@ export default function MuseumGallery() {
       <aside className="lg:sticky lg:top-28 lg:self-start">
         <div className="border border-[#2c6a4b]/10 bg-white/86 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
           <p className="mb-4 text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">
-            COLLECTION / {works.length}
+            MANGA LIST / {works.length}
           </p>
           <div className="grid gap-2">
             {works.map((work) => (
               <button
                 key={work.id}
                 type="button"
-                onClick={() => setSelectedId(work.id)}
+              onClick={() => setSelectedId(work.id)}
                 className={`border px-4 py-4 text-left transition duration-300 ${
                   selectedWork?.id === work.id
                     ? 'border-[#d9ffd8]/55 bg-[#d9ffd8]/10 text-[#143326]'
@@ -107,10 +107,10 @@ export default function MuseumGallery() {
       </aside>
 
       {selectedWork && (
-        <article className="border border-[#2c6a4b]/10 bg-white/86 p-4 shadow-[0_28px_90px_rgba(0,0,0,0.22)] md:p-7">
+        <article className="border border-[#2c6a4b]/10 bg-white/86 p-4 shadow-[0_28px_90px_rgba(44,106,75,0.12)] dark:border-[#d9ffd8]/14 dark:bg-[#10291e]/86 md:p-7">
           <div className="mb-7 border-b border-[#2c6a4b]/10 pb-6">
             <p className="mb-4 text-[11px] font-semibold tracking-[0.28em] text-[#b89558]">
-              SMARTOON EXHIBITION
+              MANGA READER
             </p>
             <h2 className="text-[clamp(1.9rem,4vw,3.8rem)] font-medium leading-tight text-[#143326]">
               {selectedWork.title}
@@ -122,9 +122,16 @@ export default function MuseumGallery() {
             )}
           </div>
 
-          <div className="mx-auto grid max-w-[760px] gap-3">
+          <p className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#315244]/58 dark:text-[#d9ffd8]/58 md:hidden">
+            SMARTPHONE / 縦読み
+          </p>
+          <p className="mb-4 hidden text-[11px] font-semibold tracking-[0.22em] text-[#315244]/58 dark:text-[#d9ffd8]/58 md:block">
+            TABLET・DESKTOP / 横読み
+          </p>
+
+          <div className="mx-auto grid max-w-[760px] gap-3 md:flex md:max-w-none md:snap-x md:gap-4 md:overflow-x-auto md:pb-4">
             {selectedWork.pages.map((page, index) => (
-              <figure key={page.path} className="overflow-hidden border border-[#2c6a4b]/8 bg-[#fffef8]">
+              <figure key={page.path} className="overflow-hidden border border-[#2c6a4b]/8 bg-[#fffef8] dark:border-[#d9ffd8]/12 dark:bg-[#07110c] md:w-[min(72vw,760px)] md:shrink-0 md:snap-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={page.url}
