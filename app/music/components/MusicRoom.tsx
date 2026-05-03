@@ -50,6 +50,7 @@ function VuMeter({ active }: { active: boolean }) {
 
 type MusicRoomProps = {
   variant?: 'full' | 'hero'
+  initialTracks?: MusicTrack[]
 }
 
 function getYoutubeVideoId(url?: string) {
@@ -76,15 +77,15 @@ function getTrackThumbnail(track?: MusicTrack) {
   return videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : null
 }
 
-export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
+export default function MusicRoom({ variant = 'full', initialTracks = [] }: MusicRoomProps) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const seekDelayRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const seekIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const holdActiveRef = useRef(false)
   const shouldAutoplayRef = useRef(false)
-  const [tracks, setTracks] = useState<MusicTrack[]>([])
-  const [selectedId, setSelectedId] = useState<string | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [tracks, setTracks] = useState<MusicTrack[]>(initialTracks)
+  const [selectedId, setSelectedId] = useState<string | null>(initialTracks[0]?.id ?? null)
+  const [isLoading, setIsLoading] = useState(initialTracks.length === 0)
   const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
@@ -94,8 +95,9 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
       .then((response) => response.json() as Promise<MusicResponse>)
       .then((data) => {
         if (!ignore) {
-          setTracks(data.tracks ?? [])
-          setSelectedId(data.tracks?.[0]?.id ?? null)
+          const nextTracks = data.tracks ?? []
+          setTracks(nextTracks)
+          setSelectedId((currentId) => currentId ?? nextTracks[0]?.id ?? null)
         }
       })
       .catch(() => {

@@ -54,6 +54,9 @@ export default function Home() {
             <Link href="/history" className="zmk-button text-[#fffef8]">
               歩みを見る
             </Link>
+            <Link href="/owner" className="zmk-button text-[#fffef8]">
+              店主より
+            </Link>
           </>
         }
         feature={

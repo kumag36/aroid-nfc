@@ -1,6 +1,9 @@
 import Image from 'next/image'
 import BrandHeader from '@/app/components/BrandHeader'
+import { listMusicTracks } from '@/lib/music-storage'
 import MusicRoom from './components/MusicRoom'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'ざまくり音楽室 | ZAMAKURI.JP',
@@ -8,7 +11,9 @@ export const metadata = {
     'ざまくりプランツの音源を、白と緑を基調にしたラジカセUIで聴ける音楽室。',
 }
 
-export default function MusicPage() {
+export default async function MusicPage() {
+  const initialTracks = await listMusicTracks().catch(() => [])
+
   return (
     <main className="zmk-page">
       <BrandHeader />
@@ -35,7 +40,7 @@ export default function MusicPage() {
             </div>
           </div>
           <div className="mx-auto w-full max-w-[560px] lg:ml-auto">
-            <MusicRoom variant="hero" />
+            <MusicRoom variant="hero" initialTracks={initialTracks} />
           </div>
         </div>
       </section>

@@ -12,7 +12,7 @@ const message = [
   '2025年6月の開業から走り続けた11か月。',
   'この情熱を持って、行動し、さまざまな人と出会い、結果、何を失い何を残せたのか。',
   '今一度、我が身を振り返り歩んで参ります。',
-  'いまだ若輩故、不知、不手際、不心得により、親愛なる皆様にご迷惑をお掛けする事、大きな懐でご容赦いただき、なにとぞ引き続き、ご指導ご鞭撻、ご愛顧のほど、心より宜しくお願い申し上げます。',
+  'いまだ若輩故、不知、不手際、不心得により、親愛なる皆様にご迷惑をお掛けする事、大きな懐でご容赦いただき、なにとぞ引き続き、ご指導ご鞭撻、ご愛顧のほど、お願い申し上げますとともに、皆様のさらなるご発展とご活躍を心よりお祈り申し上げます。',
 ]
 
 export default function OwnerMessagePage() {
@@ -58,7 +58,9 @@ export default function OwnerMessagePage() {
               <p className="mt-3 text-lg font-bold tracking-[0.08em] text-[var(--zmk-ink-strong)]">
                 ざまくりプランツ店主
               </p>
-              <p className="mt-2 text-2xl font-bold text-[var(--zmk-ink-strong)]">ざまくり</p>
+              <p className="mt-2 text-2xl font-bold text-[var(--zmk-ink-strong)]">
+                ざまくり こと 熊谷寿晃
+              </p>
             </div>
           </article>
         </div>
