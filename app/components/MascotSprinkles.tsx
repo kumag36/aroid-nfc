@@ -55,6 +55,24 @@ function createMascots(): Mascot[] {
   }))
 }
 
+function createReplacement(current: Mascot[], targetIndex: number): Mascot {
+  const usedSources = current
+    .filter((_, index) => index !== targetIndex)
+    .map((mascot) => mascot.src)
+  const usedPositions = current
+    .filter((_, index) => index !== targetIndex)
+    .map((mascot) => mascot.position)
+
+  return {
+    id: `${Date.now()}-${targetIndex}-${Math.random().toString(36).slice(2)}`,
+    src: pickExcept(mascotAssets, usedSources),
+    position: pickExcept(positions, usedPositions),
+    size: pick(sizes),
+    delay: `${(Math.random() * -4).toFixed(2)}s`,
+    rotate: `${Math.round(Math.random() * 16 - 8)}deg`,
+  }
+}
+
 export default function MascotSprinkles() {
   const [mascots, setMascots] = useState<Mascot[]>([])
 
@@ -68,23 +86,9 @@ export default function MascotSprinkles() {
         }
 
         const targetIndex = Math.floor(Math.random() * current.length)
-        const usedSources = current
-          .filter((_, index) => index !== targetIndex)
-          .map((mascot) => mascot.src)
 
         return current.map((mascot, index) => {
-          if (index !== targetIndex) {
-            return mascot
-          }
-
-          return {
-            ...mascot,
-            id: `${Date.now()}-${index}-${Math.random().toString(36).slice(2)}`,
-            src: pickExcept(mascotAssets, usedSources),
-            size: pick(sizes),
-            delay: `${(Math.random() * -4).toFixed(2)}s`,
-            rotate: `${Math.round(Math.random() * 16 - 8)}deg`,
-          }
+          return index === targetIndex ? createReplacement(current, targetIndex) : mascot
         })
       })
       timer = window.setTimeout(replaceOne, 1600 + Math.random() * 1800)
@@ -97,9 +101,15 @@ export default function MascotSprinkles() {
     }
   }, [])
 
+  function handleMascotClick(targetIndex: number) {
+    setMascots((current) =>
+      current.map((mascot, index) => (index === targetIndex ? createReplacement(current, targetIndex) : mascot)),
+    )
+  }
+
   return (
     <div className="pointer-events-none fixed inset-0 z-20 hidden overflow-hidden xl:block" aria-hidden="true">
-      {mascots.map((mascot) => (
+      {mascots.map((mascot, index) => (
         <div
           key={mascot.id}
           className={`zmk-mascot-sticker pointer-events-auto absolute select-none ${mascot.position} ${mascot.size}`}
@@ -109,6 +119,15 @@ export default function MascotSprinkles() {
               animationDelay: mascot.delay,
             } as CSSProperties
           }
+          role="button"
+          tabIndex={0}
+          onClick={() => handleMascotClick(index)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              handleMascotClick(index)
+            }
+          }}
         >
           <Image
             src={mascot.src}
