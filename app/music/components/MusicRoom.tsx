@@ -25,7 +25,7 @@ type MusicResponse = {
 }
 
 const controlHitbox =
-  'absolute touch-manipulation select-none rounded-[10px] border border-transparent bg-transparent text-transparent outline-none transition duration-200 enabled:hover:border-[#d9ffd8]/70 enabled:hover:bg-[#d9ffd8]/10 enabled:focus-visible:border-[#d9ffd8] enabled:focus-visible:bg-[#d9ffd8]/12 disabled:cursor-not-allowed'
+  'absolute touch-manipulation select-none rounded-[10px] border border-transparent bg-transparent text-transparent outline-none transition duration-200 enabled:hover:border-[#b89558]/70 enabled:hover:bg-[#fffef8]/18 enabled:focus-visible:border-[#b89558] enabled:focus-visible:bg-[#fffef8]/22 disabled:cursor-not-allowed'
 
 function VuMeter({ active }: { active: boolean }) {
   return (
@@ -230,7 +230,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
 
   if (isLoading) {
     return (
-      <div className="border border-[#fffaf0]/10 bg-[#07120d]/86 px-5 py-16 text-center text-[#d8d0bf]/70">
+      <div className="border border-[#2c6a4b]/12 bg-white/78 px-5 py-16 text-center text-[#315244]/70">
         Loading the cassette deck.
       </div>
     )
@@ -238,12 +238,12 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
 
   if (tracks.length === 0) {
     return (
-      <div className="border border-[#fffaf0]/10 bg-[#07120d]/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.22)] md:p-12">
+      <div className="border border-[#2c6a4b]/12 bg-white/78 p-8 shadow-[0_28px_90px_rgba(44,106,75,0.10)] md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.28em] text-[#b89558]">NO TAPES YET</p>
-        <h2 className="text-[clamp(2rem,5vw,4.2rem)] font-medium leading-tight text-[#fffaf0]">
+        <h2 className="text-[clamp(2rem,5vw,4.2rem)] font-medium leading-tight text-[#10291e]">
           No music has been added yet.
         </h2>
-        <p className="mt-7 max-w-2xl text-[15px] leading-8 text-[#d8d0bf]/76 md:text-lg md:leading-9">
+        <p className="mt-7 max-w-2xl text-[15px] leading-8 text-[#315244]/76 md:text-lg md:leading-9">
           Upload audio from the admin page and it will appear here as a cassette.
         </p>
       </div>
@@ -252,26 +252,26 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
 
   const player = selectedTrack ? (
     <article
-      className={`overflow-hidden border border-[#fffaf0]/10 bg-[radial-gradient(circle_at_50%_0%,rgba(217,255,216,0.08),transparent_36%),linear-gradient(145deg,#11170f,#050806_58%,#17150f)] shadow-[0_38px_120px_rgba(0,0,0,0.42)] ${
+      className={`overflow-hidden border border-[#2c6a4b]/14 bg-[radial-gradient(circle_at_20%_0%,rgba(255,255,255,0.92),transparent_38%),linear-gradient(145deg,rgba(255,254,248,0.96),rgba(237,248,233,0.92)_58%,rgba(217,255,216,0.74))] shadow-[0_32px_100px_rgba(44,106,75,0.14)] ${
         variant === 'hero' ? 'p-2.5 md:p-3' : 'p-3 md:p-5'
       }`}
     >
       <div className={`grid gap-3 ${variant === 'hero' ? 'mb-3' : 'mb-5 md:grid-cols-[1fr_220px]'}`}>
-        <div className={`border border-[#fffaf0]/10 bg-[#050806]/82 shadow-[inset_0_0_30px_rgba(0,0,0,0.48)] ${variant === 'hero' ? 'p-3' : 'p-4'}`}>
+        <div className={`border border-[#2c6a4b]/12 bg-white/76 shadow-[inset_0_0_28px_rgba(255,255,255,0.72)] ${variant === 'hero' ? 'p-3' : 'p-4'}`}>
           <p className="text-[10px] font-black tracking-[0.22em] text-[#b89558]">NOW PLAYING</p>
-          <div className={`mt-3 overflow-hidden border border-[#d9ffd8]/20 bg-[#020403] px-3 shadow-[inset_0_0_18px_rgba(217,255,216,0.08)] ${variant === 'hero' ? 'py-2' : 'py-3'}`}>
-            <div className="np-marquee flex w-max whitespace-nowrap text-[12px] font-semibold leading-none tracking-[0.18em] text-[#d9ffd8] [text-shadow:0_0_10px_rgba(217,255,216,0.64)] md:text-sm">
+          <div className={`mt-3 overflow-hidden border border-[#2c6a4b]/18 bg-[#f8fcf2] px-3 shadow-[inset_0_0_18px_rgba(44,106,75,0.06)] ${variant === 'hero' ? 'py-2' : 'py-3'}`}>
+            <div className="np-marquee flex w-max whitespace-nowrap text-[12px] font-semibold leading-none tracking-[0.18em] text-[#173b2a] [text-shadow:0_0_10px_rgba(184,149,88,0.22)] md:text-sm">
               <span className="pr-14">{selectedTrack.title}</span>
               <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
               <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
             </div>
           </div>
-          <p className="mt-3 text-xs font-semibold tracking-[0.16em] text-[#d9ffd8]/78">{selectedTrack.artist}</p>
+          <p className="mt-3 text-xs font-semibold tracking-[0.16em] text-[#2c6a4b]/78">{selectedTrack.artist}</p>
         </div>
-        <div className={`content-between gap-3 border border-[#fffaf0]/10 bg-[#050806]/82 p-3 ${variant === 'hero' ? 'hidden' : 'grid'}`}>
-          <p className="text-[10px] font-black tracking-[0.18em] text-[#d8d0bf]/54">LEVEL METER</p>
+        <div className={`content-between gap-3 border border-[#2c6a4b]/12 bg-white/76 p-3 ${variant === 'hero' ? 'hidden' : 'grid'}`}>
+          <p className="text-[10px] font-black tracking-[0.18em] text-[#315244]/54">LEVEL METER</p>
           <VuMeter active={isPlaying} />
-          <p className="text-[10px] tracking-[0.18em] text-[#d8d0bf]/44">{isPlaying ? 'ON AIR' : 'STAND BY'}</p>
+          <p className="text-[10px] tracking-[0.18em] text-[#315244]/44">{isPlaying ? 'ON AIR' : 'STAND BY'}</p>
         </div>
       </div>
 
@@ -357,8 +357,8 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
               onClick={() => selectTrack(track.id)}
               className={`min-h-10 border px-2.5 text-left text-[10px] font-semibold leading-4 tracking-[0.12em] transition ${
                 selectedTrack.id === track.id
-                  ? 'border-[#d9ffd8]/60 bg-[#d9ffd8]/12 text-[#fffaf0]'
-                  : 'border-[#fffaf0]/10 bg-[#fffaf0]/4 text-[#d8d0bf]/62 hover:border-[#d9ffd8]/34'
+                  ? 'border-[#2c6a4b]/32 bg-white/88 text-[#10291e] shadow-[inset_3px_0_0_#b89558]'
+                  : 'border-[#2c6a4b]/10 bg-white/42 text-[#315244]/66 hover:border-[#2c6a4b]/24 hover:bg-white/72'
               }`}
             >
               <span className="block text-[#b89558]">TAPE {String(index + 1).padStart(2, '0')}</span>
@@ -372,24 +372,24 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
         <>
           <div className="mt-6 grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-start">
             {selectedTrack.description && (
-              <p className="text-[14px] leading-7 text-[#d8d0bf]/72">{selectedTrack.description}</p>
+              <p className="text-[14px] leading-7 text-[#315244]/72">{selectedTrack.description}</p>
             )}
             {selectedTrack.youtube && (
               <a
                 href={selectedTrack.youtube.url}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center justify-center border border-[#d9ffd8]/40 px-5 text-xs font-semibold tracking-[0.16em] text-[#d9ffd8]/86 transition hover:-translate-y-0.5 hover:border-[#d9ffd8]/75 hover:text-[#eaffdf]"
+                className="inline-flex min-h-11 items-center justify-center border border-[#2c6a4b]/24 bg-white/56 px-5 text-xs font-semibold tracking-[0.16em] text-[#173b2a] transition hover:-translate-y-0.5 hover:border-[#b89558]/55 hover:bg-[#fffef8]"
               >
                 OPEN ON YOUTUBE
               </a>
             )}
           </div>
 
-          <div className="mt-5 border border-[#141711] bg-[#030504] p-3 md:p-4">
+          <div className="mt-5 border border-[#2c6a4b]/12 bg-white/54 p-3 md:p-4">
             {selectedTrack.sourceType === 'youtube' && selectedTrack.youtube ? (
               <div className={isShort ? 'mx-auto max-w-[340px]' : 'mx-auto max-w-[720px]'}>
-                <div className={`relative overflow-hidden border border-[#fffaf0]/10 bg-black ${isShort ? 'aspect-[9/16]' : 'aspect-video'}`}>
+                <div className={`relative overflow-hidden border border-[#2c6a4b]/12 bg-[#10291e] ${isShort ? 'aspect-[9/16]' : 'aspect-video'}`}>
                   <iframe
                     src={selectedTrack.youtube.embedUrl}
                     title={selectedTrack.title}
@@ -402,13 +402,13 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
                   href={selectedTrack.youtube.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-5 inline-flex text-xs font-semibold tracking-[0.18em] text-[#d9ffd8]/78 transition hover:text-[#d9ffd8]"
+                  className="mt-5 inline-flex text-xs font-semibold tracking-[0.18em] text-[#2c6a4b]/78 transition hover:text-[#10291e]"
                 >
                   OPEN ON YOUTUBE
                 </a>
               </div>
             ) : (
-              <div className="flex items-center justify-between gap-4 border border-[#fffaf0]/10 bg-[#fffaf0]/5 px-4 py-3 text-[11px] tracking-[0.16em] text-[#d8d0bf]/68">
+              <div className="flex items-center justify-between gap-4 border border-[#2c6a4b]/12 bg-white/58 px-4 py-3 text-[11px] tracking-[0.16em] text-[#315244]/68">
                 <span>{isPlaying ? 'TAPE RUNNING' : 'TAPE READY'}</span>
                 <span>MP3 AUDIO</span>
               </div>
@@ -416,7 +416,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
           </div>
 
           {!canUseCassetteControls && (
-            <p className="mt-4 text-center text-[11px] leading-5 text-[#d8d0bf]/50">
+            <p className="mt-4 text-center text-[11px] leading-5 text-[#315244]/50">
               YouTube tracks play in the embedded player. Double tap REW / FF to move between tracks.
             </p>
           )}
@@ -447,10 +447,10 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
   return (
     <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
       <aside className="lg:sticky lg:top-28 lg:self-start">
-        <div className="border border-[#fffaf0]/10 bg-[#07120d]/88 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
-          <div className="mb-4 flex items-center justify-between gap-4 border-b border-[#fffaf0]/10 pb-4">
+        <div className="border border-[#2c6a4b]/12 bg-white/76 p-4 shadow-[0_24px_70px_rgba(44,106,75,0.10)]">
+          <div className="mb-4 flex items-center justify-between gap-4 border-b border-[#2c6a4b]/12 pb-4">
             <p className="text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">TAPE CASE</p>
-            <span className="text-[11px] tracking-[0.18em] text-[#d8d0bf]/46">{tracks.length} TAPES</span>
+            <span className="text-[11px] tracking-[0.18em] text-[#315244]/46">{tracks.length} TAPES</span>
           </div>
           <div className="grid gap-2">
             {tracks.map((track, index) => (
@@ -460,15 +460,15 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
                 onClick={() => selectTrack(track.id)}
                 className={`group border px-4 py-4 text-left transition duration-300 ${
                   selectedTrack?.id === track.id
-                    ? 'border-[#d9ffd8]/60 bg-[#d9ffd8]/12 text-[#fffaf0] shadow-[inset_4px_0_0_#d9ffd8]'
-                    : 'border-[#fffaf0]/10 bg-[#fffaf0]/4 text-[#d8d0bf]/72 hover:border-[#d9ffd8]/30'
+                    ? 'border-[#2c6a4b]/32 bg-white/88 text-[#10291e] shadow-[inset_4px_0_0_#b89558]'
+                    : 'border-[#2c6a4b]/10 bg-white/42 text-[#315244]/72 hover:border-[#2c6a4b]/26 hover:bg-white/72'
                 }`}
               >
                 <span className="mb-3 block text-[10px] font-semibold tracking-[0.18em] text-[#b89558]">
                   SIDE A / {String(index + 1).padStart(2, '0')}
                 </span>
                 <span className="block text-sm font-semibold leading-6">{track.title}</span>
-                <span className="mt-2 block text-[11px] tracking-[0.14em] text-[#d8d0bf]/48">
+                <span className="mt-2 block text-[11px] tracking-[0.14em] text-[#315244]/48">
                   {track.sourceType === 'audio' && track.youtube ? 'LOCAL AUDIO + YOUTUBE META' : track.sourceType === 'audio' ? 'CASSETTE AUDIO' : 'VIDEO ARCHIVE'} / {track.artist}
                 </span>
               </button>

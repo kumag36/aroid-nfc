@@ -12,10 +12,10 @@ const navItems = [
 
 export default function BrandHeader() {
   return (
-    <header className="absolute inset-x-0 top-0 z-30 border-b border-[#fffaf0]/10 bg-[#050806]/18 px-4 py-4 text-[#fffaf0] backdrop-blur-md sm:px-5 sm:py-5">
+    <header className="absolute inset-x-0 top-0 z-30 border-b border-[#2c6a4b]/12 bg-[#fffef8]/80 px-4 py-4 text-[#173b2a] shadow-[0_12px_38px_rgba(44,106,75,0.06)] backdrop-blur-md sm:px-5 sm:py-5">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="relative block h-10 w-10 shrink-0 overflow-hidden rounded-full bg-[#d9ffd8] shadow-[0_10px_30px_rgba(0,0,0,0.22)] ring-1 ring-[#fffaf0]/45 sm:h-12 sm:w-12">
+          <span className="relative block h-10 w-10 shrink-0 overflow-hidden rounded-full bg-[#d9ffd8] shadow-[0_10px_28px_rgba(44,106,75,0.16)] ring-1 ring-[#2c6a4b]/16 sm:h-12 sm:w-12">
             <Image src="/brand/zamakuri-logo.png" alt="" fill className="object-cover" sizes="48px" />
           </span>
           <span className="min-w-0">
@@ -27,14 +27,14 @@ export default function BrandHeader() {
         <div className="flex shrink-0 items-center gap-3 md:gap-8">
           <nav className="hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className="text-[#fffaf0]/78 transition hover:text-[#d9ffd8]">
+              <Link key={item.href} href={item.href} className="text-[#173b2a]/72 transition hover:text-[#2c6a4b]">
                 {item.label}
               </Link>
             ))}
           </nav>
           <Link
             href="/admin"
-            className="inline-flex min-h-9 items-center justify-center border border-[#d9ffd8]/35 bg-[#d9ffd8]/8 px-3 text-[10px] font-semibold tracking-[0.18em] text-[#eaffdf] transition hover:border-[#d9ffd8]/70 hover:bg-[#d9ffd8] hover:text-[#07110c] sm:px-4 sm:text-[11px]"
+            className="inline-flex min-h-9 items-center justify-center border border-[#2c6a4b]/22 bg-white/60 px-3 text-[10px] font-semibold tracking-[0.18em] text-[#173b2a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] transition hover:border-[#b89558]/55 hover:bg-[#fdfaf0] hover:text-[#10291e] sm:px-4 sm:text-[11px]"
           >
             ADMIN
           </Link>
