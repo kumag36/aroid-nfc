@@ -11,47 +11,60 @@ type DictionaryDetailPageProps = {
 }
 
 const categoryNotes: Record<Plant['category'], string> = {
-  Monstera: '葉の切れ込み、穴あき、節間、斑の入り方を総合して見る。流通名だけで判断せず、株ごとの履歴と表情を残したいグループ。',
-  Philodendron: '葉色、葉形、茎の質感、展開時の色変化で印象が大きく変わる。若葉と成熟葉の違いを記録しておきたい。',
-  Alocasia: '葉脈、質感、葉裏、休眠傾向を含めて観察する。環境変化への反応が出やすいため、育成メモとの相性が良い。',
-  Platycerium: '貯水葉と胞子葉の出方、仕立て、成長点の状態で個体差が見える。時間をかけて完成度が増す植物。',
-  'Other Aroids': '比較対象や周辺ジャンルも記録し、斑入り観葉全体の見分け方に役立てるための枠。',
+  Monstera:
+    '葉の切れ込み、穴あき、節間、斑の入り方を総合して見ます。流通名だけで判断せず、一株ごとの履歴と表情を残したいグループです。',
+  Philodendron:
+    '葉色、葉形、質感、展開時の色変化で印象が大きく変わります。成葉と新葉の違いを記録しておくと見分けが深まります。',
+  Alocasia:
+    '葉脈、質感、裏面、休眠傾向まで含めて観察します。環境変化への反応が出やすいため、育成メモとの相性が良い属です。',
+  Platycerium:
+    '貯水葉と胞子葉の出方、仕立て、成長点の状態で個体差が見えます。時間をかけて完成度が増す植物です。',
+  'Other Aroids':
+    '比較対象や周辺ジャンルも記録し、斑入り観葉全体の見分け方に役立てるための枠です。',
 }
 
 function getTone(plant: Plant) {
   if (plant.tags.some((tag) => tag.includes('白斑'))) {
     return {
-      variegation: '白斑の抜け方、白勝ち部分の面積、緑との境界を確認。白が強い株ほど美しい一方、育成では緑の残り方も重要。',
-      care: '強すぎる直射は避け、明るい散光で葉焼けと徒長の両方を防ぐ。白斑部は傷みやすいため風通しを確保する。',
+      variegation:
+        '白斑は抜け方、白勝ち部分の面積、緑との境界を確認します。白が強い株ほど美しい一方、育成では緑の残り方も重要です。',
+      care:
+        '強すぎる直射は避け、明るい散光で葉焼けと徒長の両方を防ぎます。白斑部分は傷みやすいため、風通しを確保します。',
     }
   }
 
   if (plant.tags.some((tag) => tag.includes('黄斑') || tag.includes('ミント'))) {
     return {
-      variegation: '黄斑やミント斑は展開直後と硬化後で色味が変化しやすい。新葉、古葉、茎の入り方をセットで見る。',
-      care: '色味を保つために暗すぎる環境を避ける。斑の発色と葉の厚みを見ながら、光量を少しずつ調整する。',
+      variegation:
+        '黄斑やミント斑は展開直後と硬化後で色味が変わりやすい表現です。新葉、古葉、葉の厚みをセットで見ます。',
+      care:
+        '色味を保つために暗すぎる環境を避けます。斑の発色と葉の厚みを見ながら、光量を少しずつ調整します。',
     }
   }
 
   if (plant.tags.some((tag) => tag.includes('穴あき葉') || tag.includes('細葉'))) {
     return {
-      variegation: '斑よりも葉形の完成度が見どころ。切れ込み、穴の密度、葉幅、葉先の伸び方を記録する。',
-      care: '根を強く保ち、支柱や湿度で葉姿を整える。環境が安定すると、葉形の個性がよりはっきり出る。',
+      variegation:
+        '斑よりも葉形の完成度が見どころです。切れ込み、穴の密度、葉幅、葉先の伸び方を記録します。',
+      care:
+        '根を強く保ち、支柱や湿度で葉姿を整えます。環境が安定すると、葉形の個性がよりはっきり出ます。',
     }
   }
 
   return {
-    variegation: '葉色、葉形、質感、茎の表情を複合的に観察する。流通名と実物の特徴を照らし合わせて記録する。',
-    care: '乾湿のリズムを崩さず、光量と風通しを安定させる。導入直後は新しい環境に馴染むまで変化を見守る。',
+    variegation:
+      '葉色、葉形、質感、斑の表情を複合的に観察します。流通名と実物の特徴を照らし合わせて記録します。',
+    care:
+      '乾湿のリズムを崩さず、光量と風通しを安定させます。入手直後は新しい環境に慣れるまで変化を見守ります。',
   }
 }
 
 function buildProfile(plant: Plant) {
   const tone = getTone(plant)
   const careFacts = [
-    plant.temperature && `適温は ${plant.temperature} を目安にする。`,
-    plant.minimumTemperature && `最低温度は ${plant.minimumTemperature} を下回らないように見る。`,
-    plant.humidity && `湿度は ${plant.humidity} を基準に、葉の硬さと展開速度を観察する。`,
+    plant.temperature && `適温は ${plant.temperature} を目安にします。`,
+    plant.minimumTemperature && `最低温度は ${plant.minimumTemperature} を下回らないように見ます。`,
+    plant.humidity && `湿度は ${plant.humidity} を基準に、葉の硬さと展開速度を観察します。`,
     plant.recommendedStyle && `仕立ては ${plant.recommendedStyle}。`,
   ]
     .filter(Boolean)
@@ -61,10 +74,10 @@ function buildProfile(plant: Plant) {
     {
       label: '見分け方',
       title: '名前ではなく、葉と履歴で見る。',
-      body: `${plant.tradeName} は ${plant.category} の中でも、${plant.tags.join('・')} を手がかりに観察したい品種。流通名だけで断定せず、葉形、斑、茎、成長の癖を合わせて確認します。`,
+      body: `${plant.tradeName} は ${plant.category} の中でも、${plant.tags.join('・')} を手がかりに観察したい品種です。流通名だけで決めず、葉形、斑、質感、成長の癖を合わせて確認します。`,
     },
     {
-      label: '斑・葉姿',
+      label: '斑と葉姿',
       title: '美しさは、安定感まで含めて評価する。',
       body: tone.variegation,
     },
@@ -75,7 +88,7 @@ function buildProfile(plant: Plant) {
     },
     {
       label: 'ざまくり視点',
-      title: '買う前にも、育て始めた後にも残る記録へ。',
+      title: '購入前にも、育て始めた後にも残る記録へ。',
       body: '写真映えだけではなく、根、葉の厚み、展開速度、管理環境まで含めて一株を見たい。NFC個体管理とつなげることで、品種紹介から個体の履歴まで追える図鑑に育てます。',
     },
   ]
@@ -103,25 +116,24 @@ export async function generateMetadata({ params }: DictionaryDetailPageProps) {
 
 function MissingPage() {
   return (
-    <main className="relative grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.82),transparent_34%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_54%,#d9ffd8_100%)] px-5 py-20 text-[#143326] [font-family:var(--font-zamakuri)]">
+    <main className="relative grid min-h-screen place-items-center bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.82),transparent_34%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_54%,#d9ffd8_100%)] px-5 py-20 text-[#143326] [font-family:var(--font-zamakuri)] dark:bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.16),transparent_34%),linear-gradient(135deg,#07110c_0%,#10291e_54%,#07110c_100%)] dark:text-[#f7fbf1]">
       <BrandHeader />
-      <section className="w-full max-w-3xl border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_24px_90px_rgba(0,0,0,0.28)] md:p-12">
+      <section className="w-full max-w-3xl border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_24px_90px_rgba(0,0,0,0.28)] dark:border-[#d9ffd8]/14 dark:bg-[#10291e]/86 md:p-12">
         <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
           DICTIONARY DATA NOT FOUND
         </p>
-        <h1 className="text-[clamp(2.4rem,7vw,5.4rem)] font-medium leading-tight">
+        <h1 className="text-[clamp(2.4rem,7vw,5.4rem)] font-bold leading-tight">
           まだ作ってなかった
           <span className="block">ごめんね😉テヘペロ</span>
         </h1>
-        <p className="mt-7 text-[15px] leading-8 text-[#315244]/78 md:text-lg md:leading-9">
-          この品種の詳細ページは、これから育てながら深くしていきます。
-          図鑑一覧から、いま記録されている品種を見てください。
+        <p className="mt-7 text-[15px] leading-8 text-[#315244]/78 dark:text-[#d9ffd8]/78 md:text-lg md:leading-9">
+          この品種の詳細ページは、これから育てながら深くしていきます。図鑑一覧から、いま登録されている品種をご覧ください。
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Link href="/dictionary" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#143326] bg-[#143326] px-7 text-sm font-semibold tracking-[0.18em] text-[#fffef8] shadow-[0_18px_48px_rgba(44,106,75,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#2c6a4b]">
             図鑑へ戻る
           </Link>
-          <Link href="/" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#2c6a4b]/55">
+          <Link href="/" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#2c6a4b]/55 dark:border-[#d9ffd8]/18 dark:text-[#f7fbf1]">
             トップへ戻る
           </Link>
         </div>
@@ -145,108 +157,108 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
     .slice(0, 3)
 
   return (
-    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:var(--font-zamakuri)]">
+    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:var(--font-zamakuri)] dark:bg-[#07110c] dark:text-[#f7fbf1]">
       <BrandHeader />
-      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.82),transparent_34%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_52%,#d9ffd8_100%)] px-5 pb-16 pt-8 md:pb-24">
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.82),transparent_34%),linear-gradient(135deg,#fffef8_0%,#f7fbf1_52%,#d9ffd8_100%)] px-5 pb-16 pt-8 dark:bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.16),transparent_34%),linear-gradient(135deg,#07110c_0%,#10291e_54%,#07110c_100%)] md:pb-24">
         <div className="relative z-10 mx-auto grid max-w-7xl gap-10 py-16 md:grid-cols-[minmax(0,1fr)_360px] md:items-end md:py-24">
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
               {plant.category} / VARIETY PROFILE
             </p>
-            <h1 className="max-w-5xl text-[clamp(2.35rem,6vw,5.6rem)] font-medium leading-[1.08] tracking-normal">
+            <h1 className="max-w-5xl text-[clamp(2.35rem,6vw,5.6rem)] font-bold leading-[1.08] tracking-normal">
               {plant.displayName}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-[#315244]/86 md:text-xl">
+            <p className="mt-6 text-lg leading-8 text-[#315244]/86 dark:text-[#d9ffd8]/84 md:text-xl">
               和名 / 流通名：{plant.tradeName}
             </p>
             {label && (
-              <p className="mt-3 text-sm leading-7 text-[#2c6a4b]/75 md:text-base">
+              <p className="mt-3 text-sm leading-7 text-[#2c6a4b]/75 dark:text-[#d9ffd8]/72 md:text-base">
                 ラベル表記：{label.shortName} / {label.fullKana}
               </p>
             )}
-            <p className="mt-8 max-w-3xl text-[15px] leading-8 text-[#315244]/78 md:text-lg md:leading-9">
+            <p className="mt-8 max-w-3xl text-[15px] leading-8 text-[#315244]/78 dark:text-[#d9ffd8]/78 md:text-lg md:leading-9">
               {plant.description}
             </p>
           </div>
 
           <div className="space-y-4">
             <DictionaryPlantImage plantSlug={plant.slug} />
-            <aside className="border border-[#2c6a4b]/12 bg-white/78 p-5 shadow-[0_24px_80px_rgba(44,106,75,0.12)] backdrop-blur">
-            <p className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">
-              QUICK FACTS
-            </p>
-            <dl className="grid gap-4 text-sm leading-7 text-[#315244]/78">
-              <div>
-                <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">CATEGORY</dt>
-                <dd>{plant.category}</dd>
-              </div>
-              <div>
-                <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">TRADE NAME</dt>
-                <dd>{plant.tradeName}</dd>
-              </div>
-              {label && (
+            <aside className="border border-[#2c6a4b]/12 bg-white/78 p-5 shadow-[0_24px_80px_rgba(44,106,75,0.12)] backdrop-blur dark:border-[#d9ffd8]/12 dark:bg-[#10291e]/82">
+              <p className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">
+                QUICK FACTS
+              </p>
+              <dl className="grid gap-4 text-sm leading-7 text-[#315244]/78 dark:text-[#d9ffd8]/78">
                 <div>
-                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">LABEL</dt>
-                  <dd>{label.shortName}</dd>
-                  <dd className="text-xs text-[#315244]/58">{label.fullKana}</dd>
-                  {label.note && <dd className="text-xs text-[#b89558]">{label.note}</dd>}
+                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44 dark:text-[#d9ffd8]/42">CATEGORY</dt>
+                  <dd>{plant.category}</dd>
                 </div>
-              )}
-              <div>
-                <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">TAGS</dt>
-                <dd className="mt-2 flex flex-wrap gap-2">
-                  {plant.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border border-[#2c6a4b]/12 bg-[#d9ffd8]/28 px-3 py-1 text-xs text-[#315244]/78">
-                      {tag}
-                    </span>
-                  ))}
-                </dd>
-              </div>
-              {plant.temperature && (
                 <div>
-                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">TEMPERATURE</dt>
-                  <dd>{plant.temperature}</dd>
+                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44 dark:text-[#d9ffd8]/42">TRADE NAME</dt>
+                  <dd>{plant.tradeName}</dd>
                 </div>
-              )}
-              {plant.minimumTemperature && (
+                {label && (
+                  <div>
+                    <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44 dark:text-[#d9ffd8]/42">LABEL</dt>
+                    <dd>{label.shortName}</dd>
+                    <dd className="text-xs text-[#315244]/58 dark:text-[#d9ffd8]/58">{label.fullKana}</dd>
+                    {label.note && <dd className="text-xs text-[#b89558]">{label.note}</dd>}
+                  </div>
+                )}
                 <div>
-                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">MINIMUM</dt>
-                  <dd>{plant.minimumTemperature}</dd>
+                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44 dark:text-[#d9ffd8]/42">TAGS</dt>
+                  <dd className="mt-2 flex flex-wrap gap-2">
+                    {plant.tags.map((tag) => (
+                      <span key={tag} className="rounded-full border border-[#2c6a4b]/12 bg-[#d9ffd8]/28 px-3 py-1 text-xs text-[#315244]/78 dark:border-[#d9ffd8]/16 dark:text-[#f7fbf1]">
+                        {tag}
+                      </span>
+                    ))}
+                  </dd>
                 </div>
-              )}
-              {plant.humidity && (
-                <div>
-                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">HUMIDITY</dt>
-                  <dd>{plant.humidity}</dd>
-                </div>
-              )}
-              {plant.origin && (
-                <div>
-                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">ORIGIN</dt>
-                  <dd>{plant.origin}</dd>
-                </div>
-              )}
-              {plant.recommendedStyle && (
-                <div>
-                  <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44">STYLE</dt>
-                  <dd>{plant.recommendedStyle}</dd>
-                </div>
-              )}
-            </dl>
+                {plant.temperature && (
+                  <div>
+                    <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44 dark:text-[#d9ffd8]/42">TEMPERATURE</dt>
+                    <dd>{plant.temperature}</dd>
+                  </div>
+                )}
+                {plant.minimumTemperature && (
+                  <div>
+                    <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44 dark:text-[#d9ffd8]/42">MINIMUM</dt>
+                    <dd>{plant.minimumTemperature}</dd>
+                  </div>
+                )}
+                {plant.humidity && (
+                  <div>
+                    <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44 dark:text-[#d9ffd8]/42">HUMIDITY</dt>
+                    <dd>{plant.humidity}</dd>
+                  </div>
+                )}
+                {plant.origin && (
+                  <div>
+                    <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44 dark:text-[#d9ffd8]/42">ORIGIN</dt>
+                    <dd>{plant.origin}</dd>
+                  </div>
+                )}
+                {plant.recommendedStyle && (
+                  <div>
+                    <dt className="text-[11px] tracking-[0.18em] text-[#143326]/44 dark:text-[#d9ffd8]/42">STYLE</dt>
+                    <dd>{plant.recommendedStyle}</dd>
+                  </div>
+                )}
+              </dl>
             </aside>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-10 border-b border-[#2c6a4b]/10 px-5 py-16 md:grid-cols-[240px_1fr] md:py-24">
+      <section className="mx-auto grid max-w-7xl gap-10 border-b border-[#2c6a4b]/10 px-5 py-16 dark:border-[#d9ffd8]/12 md:grid-cols-[240px_1fr] md:py-24">
         <p className="text-xs font-bold tracking-[0.28em] text-[#b89558]">
           IDENTIFICATION
         </p>
         <div>
-          <h2 className="text-[clamp(2rem,4vw,3.6rem)] font-medium leading-tight">
+          <h2 className="text-[clamp(2rem,4vw,3.6rem)] font-bold leading-tight">
             品種名の奥にある、見分けるための記録。
           </h2>
-          <p className="mt-8 max-w-4xl text-[15px] leading-8 text-[#315244]/78 md:text-lg md:leading-9">
+          <p className="mt-8 max-w-4xl text-[15px] leading-8 text-[#315244]/78 dark:text-[#d9ffd8]/78 md:text-lg md:leading-9">
             {categoryNotes[plant.category]}
           </p>
         </div>
@@ -254,38 +266,38 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
 
       <section className="mx-auto grid max-w-7xl gap-4 px-5 py-16 md:grid-cols-2 md:py-24">
         {profile.map((section) => (
-          <article key={section.label} className="min-h-[260px] border border-[#2c6a4b]/10 bg-white/86 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34 md:p-8">
+          <article key={section.label} className="min-h-[260px] border border-[#2c6a4b]/10 bg-white/86 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34 dark:border-[#d9ffd8]/12 dark:bg-[#10291e]/82 md:p-8">
             <p className="mb-5 text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">
               {section.label}
             </p>
-            <h3 className="text-2xl font-medium leading-tight text-[#143326]">
+            <h3 className="text-2xl font-bold leading-tight text-[#143326] dark:text-[#f7fbf1]">
               {section.title}
             </h3>
-            <p className="mt-6 text-[15px] leading-8 text-[#315244]/76">
+            <p className="mt-6 text-[15px] leading-8 text-[#315244]/76 dark:text-[#d9ffd8]/76">
               {section.body}
             </p>
           </article>
         ))}
       </section>
 
-      <section className="border-y border-[#2c6a4b]/10 bg-[#eef8e8] px-5 py-16 md:py-20">
+      <section className="border-y border-[#2c6a4b]/10 bg-[#eef8e8] px-5 py-16 dark:border-[#d9ffd8]/12 dark:bg-[#0b1710] md:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_420px] md:items-center">
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
               NFC INDIVIDUAL DATABASE
             </p>
-            <h2 className="text-[clamp(2rem,4vw,3.8rem)] font-medium leading-tight">
+            <h2 className="text-[clamp(2rem,4vw,3.8rem)] font-bold leading-tight">
               品種紹介から、一株ごとの履歴へ。
             </h2>
-            <p className="mt-7 max-w-3xl text-[15px] leading-8 text-[#315244]/78">
-              同じ品種名でも、斑の入り方、根の状態、育成環境は一株ずつ違います。NFCタグとつなぐことで、図鑑の知識を個体管理の記録へ広げていきます。
+            <p className="mt-7 max-w-3xl text-[15px] leading-8 text-[#315244]/78 dark:text-[#d9ffd8]/78">
+              同じ品種名でも、斑の入り方、根の状態、育成環境は一株ずつ違います。NFCタグとつなぐことで、図鑑の知識を個体管理の記録へ広げます。
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
             <Link href="/register" className="inline-flex min-h-12 items-center justify-center border border-[#143326] bg-[#143326] px-7 text-sm font-semibold tracking-[0.18em] text-[#fffef8] shadow-[0_18px_48px_rgba(44,106,75,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#2c6a4b]">
               個体登録を申請する
             </Link>
-            <Link href="/i/ZMK-000001" className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#2c6a4b]/55">
+            <Link href="/nfc/verify" className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#2c6a4b]/55 dark:border-[#d9ffd8]/18 dark:text-[#f7fbf1]">
               NFC個体管理を見る
             </Link>
           </div>
@@ -299,24 +311,24 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
               <p className="mb-4 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
                 RELATED VARIETIES
               </p>
-              <h2 className="text-[clamp(1.8rem,3.5vw,3.2rem)] font-medium leading-tight">
+              <h2 className="text-[clamp(1.8rem,3.5vw,3.2rem)] font-bold leading-tight">
                 近いカテゴリの品種
               </h2>
             </div>
-            <Link href="/dictionary" className="hidden text-xs font-semibold tracking-[0.2em] text-[#315244]/68 md:block">
+            <Link href="/dictionary" className="hidden text-xs font-semibold tracking-[0.2em] text-[#315244]/68 dark:text-[#d9ffd8]/70 md:block">
               ALL DICTIONARY
             </Link>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {relatedPlants.map((item) => (
-              <Link key={item.slug} href={`/dictionary/${item.slug}`} className="group border border-[#2c6a4b]/10 bg-white/86 p-5 transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34">
+              <Link key={item.slug} href={`/dictionary/${item.slug}`} className="group border border-[#2c6a4b]/10 bg-white/86 p-5 transition duration-300 hover:-translate-y-1 hover:border-[#d9ffd8]/34 dark:border-[#d9ffd8]/12 dark:bg-[#10291e]/82">
                 <p className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">
                   {item.category}
                 </p>
-                <h3 className="text-xl font-medium leading-snug text-[#143326]">
+                <h3 className="text-xl font-bold leading-snug text-[#143326] dark:text-[#f7fbf1]">
                   {item.displayName}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-[#315244]/72">
+                <p className="mt-3 text-sm leading-7 text-[#315244]/72 dark:text-[#d9ffd8]/72">
                   {item.tradeName}
                 </p>
               </Link>
@@ -325,16 +337,16 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
         </section>
       )}
 
-      <section className="bg-[#f7fbf1] px-5 py-16 text-[#191a15] md:py-20">
+      <section className="bg-[#f7fbf1] px-5 py-16 text-[#191a15] dark:bg-[#07110c] dark:text-[#f7fbf1] md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[15px] leading-8 text-[#665f55]">
+          <p className="text-[15px] leading-8 text-[#665f55] dark:text-[#d9ffd8]/78">
             図鑑は育てながら深くなる。品種の情報と、個体の履歴を同じ文脈で残していきます。
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/dictionary" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#143326] bg-[#143326] px-5 text-xs font-semibold tracking-[0.18em] text-[#fffef8]">
               図鑑へ戻る
             </Link>
-            <Link href="/" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#191a15]/18 px-5 text-xs font-semibold tracking-[0.18em] text-[#191a15]">
+            <Link href="/" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#191a15]/18 px-5 text-xs font-semibold tracking-[0.18em] text-[#191a15] dark:border-[#d9ffd8]/18 dark:text-[#f7fbf1]">
               トップへ戻る
             </Link>
           </div>
@@ -343,11 +355,3 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
     </main>
   )
 }
-
-
-
-
-
-
-
-

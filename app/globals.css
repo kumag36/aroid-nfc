@@ -23,11 +23,41 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffef8;
+  --foreground: #143326;
   --font-zamakuri: "Boku2", "ぼくたちのゴシック2", "Bokutachi no Gothic 2", "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", "Noto Sans JP", sans-serif;
   --font-zamakuri-cute: "Boku2", "ぼくたちのゴシック2", "Bokutachi no Gothic 2", "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
   --font-zamakuri-accent: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  --zmk-bg: #fffef8;
+  --zmk-bg-soft: #f7fbf1;
+  --zmk-bg-glow: #d9ffd8;
+  --zmk-ink: #143326;
+  --zmk-ink-strong: #10291e;
+  --zmk-ink-soft: #315244;
+  --zmk-card: rgba(255, 255, 255, 0.86);
+  --zmk-card-solid: #ffffff;
+  --zmk-border: rgba(44, 106, 75, 0.12);
+  --zmk-border-strong: rgba(44, 106, 75, 0.28);
+  --zmk-gold: #b89558;
+  --zmk-shadow: 0 28px 90px rgba(44, 106, 75, 0.12);
+  --zmk-hero-overlay: linear-gradient(90deg, rgba(5, 10, 7, 0.94) 0%, rgba(8, 16, 12, 0.76) 48%, rgba(8, 16, 12, 0.28) 100%);
+}
+
+html.dark {
+  --background: #07110c;
+  --foreground: #f7fbf1;
+  --zmk-bg: #07110c;
+  --zmk-bg-soft: #0b1710;
+  --zmk-bg-glow: #10291e;
+  --zmk-ink: #f7fbf1;
+  --zmk-ink-strong: #fffef8;
+  --zmk-ink-soft: rgba(217, 255, 216, 0.78);
+  --zmk-card: rgba(16, 41, 30, 0.86);
+  --zmk-card-solid: #10291e;
+  --zmk-border: rgba(217, 255, 216, 0.16);
+  --zmk-border-strong: rgba(217, 255, 216, 0.32);
+  --zmk-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+  --zmk-hero-overlay: linear-gradient(90deg, rgba(5, 10, 7, 0.98) 0%, rgba(8, 16, 12, 0.88) 52%, rgba(8, 16, 12, 0.38) 100%);
 }
 
 @theme inline {
@@ -37,11 +67,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -56,87 +85,9 @@ body {
   font-feature-settings: "palt" 1;
 }
 
-html.dark body {
-  background: #07110c;
-  color: #f7fbf1;
-}
-
-html.dark header {
-  border-color: rgba(217, 255, 216, 0.16);
-  background: rgba(7, 17, 12, 0.88);
-  color: #f7fbf1;
-}
-
-html.dark header a,
-html.dark header button {
-  color: #f7fbf1;
-}
-
-html.dark header a:hover,
-html.dark header button:hover {
-  color: #d9ffd8;
-}
-
-html.dark main {
-  background-color: #07110c !important;
-  color: #f7fbf1;
-}
-
-html.dark main section[class*="bg-["] {
-  background-image:
-    radial-gradient(circle at 78% 16%, rgba(217, 255, 216, 0.18), transparent 34%),
-    radial-gradient(circle at 10% 80%, rgba(184, 149, 88, 0.12), transparent 28%),
-    linear-gradient(135deg, #07110c 0%, #10291e 56%, #07110c 100%) !important;
-}
-
-html.dark main [class*="bg-gradient-to-t"] {
-  --tw-gradient-from: #07110c !important;
-}
-
-html.dark main :is(section, article, aside, form, figure, div)[class*="bg-white"],
-html.dark main :is(section, article, aside, form, figure, div)[class*="bg-[#fff"],
-html.dark main :is(section, article, aside, form, figure, div)[class*="bg-[#f7"],
-html.dark main :is(section, article, aside, form, figure, div)[class*="bg-[#f8"],
-html.dark main :is(section, article, aside, form, figure, div)[class*="bg-[#eef"] {
-  background-color: rgba(16, 41, 30, 0.86);
-}
-
-html.dark main :is(h1, h2, h3, h4, p, span, dd, dt, li, label, input, textarea, select) {
-  color: inherit;
-}
-
-html.dark main :is(p, span, dd, dt, li, label)[class*="text-[#315244"],
-html.dark main :is(p, span, dd, dt, li, label)[class*="text-[#143326"],
-html.dark main :is(p, span, dd, dt, li, label)[class*="text-[#10291e"],
-html.dark main :is(h1, h2, h3)[class*="text-[#143326"],
-html.dark main :is(h1, h2, h3)[class*="text-[#10291e"] {
-  color: rgba(247, 251, 241, 0.9);
-}
-
-html.dark main :is(a, button)[class*="text-[#143326"],
-html.dark main :is(a, button)[class*="text-[#173b2a"],
-html.dark main :is(a, button)[class*="text-[#191a15"] {
-  color: #f7fbf1;
-}
-
-html.dark main :is(input, textarea, select) {
-  border-color: rgba(217, 255, 216, 0.2);
-  background-color: rgba(7, 17, 12, 0.72);
-  color: #f7fbf1;
-}
-
-html.dark main ::placeholder {
-  color: rgba(217, 255, 216, 0.48);
-}
-
-html.dark main :is(article, aside, form, figure, input, textarea, select, button, a)[class*="border-[#2c6a4b"] {
-  border-color: rgba(217, 255, 216, 0.18);
-}
-
-html.dark main :is(a, button)[class*="bg-[#143326"],
-html.dark main :is(a, button)[class*="bg-[#191a15"] {
-  background-color: #d9ffd8;
-  color: #07110c;
+::selection {
+  background: rgba(217, 255, 216, 0.28);
+  color: #fffaf0;
 }
 
 main {
@@ -192,24 +143,237 @@ main :is(input, textarea) {
   letter-spacing: 0.03em;
 }
 
-::selection {
-  background: rgba(217, 255, 216, 0.28);
-  color: #fffaf0;
+.zmk-page {
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--zmk-bg);
+  color: var(--zmk-ink);
+  font-family: var(--font-zamakuri);
+}
+
+.zmk-container {
+  width: min(100%, 80rem);
+  margin-inline: auto;
+}
+
+.zmk-hero {
+  position: relative;
+  min-height: 82vh;
+  overflow: hidden;
+  padding: 8rem 1.25rem 5rem;
+  background: var(--zmk-bg-soft);
+}
+
+.zmk-hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.42;
+  filter: saturate(0.9);
+}
+
+.zmk-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: var(--zmk-hero-overlay);
+}
+
+.zmk-hero-fade {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 10rem;
+  background: linear-gradient(to top, var(--zmk-bg), transparent);
+}
+
+.zmk-hero-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 68vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.zmk-rule {
+  width: 7rem;
+  height: 1px;
+  margin-bottom: 2rem;
+  background: rgba(217, 255, 216, 0.5);
+}
+
+.zmk-eyebrow {
+  color: var(--zmk-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+}
+
+.zmk-title {
+  max-width: 64rem;
+  color: var(--zmk-ink-strong);
+  font-size: clamp(2.6rem, 6.4vw, 6.2rem) !important;
+  font-weight: 700;
+  line-height: 1.08 !important;
+}
+
+.zmk-hero .zmk-title {
+  color: #fffef8;
+  text-shadow: 0 16px 60px rgba(0, 0, 0, 0.28);
+}
+
+.zmk-lead {
+  max-width: 44rem;
+  color: var(--zmk-ink-soft);
+  font-size: clamp(0.98rem, 1.2vw, 1.125rem);
+  line-height: 2;
+}
+
+.zmk-hero .zmk-lead {
+  color: rgba(247, 251, 241, 0.84);
+}
+
+.zmk-section {
+  padding: 5rem 1.25rem;
+  background: var(--zmk-bg);
+}
+
+.zmk-section-soft {
+  background: var(--zmk-bg-soft);
+}
+
+.zmk-split-head {
+  display: grid;
+  gap: 2rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--zmk-border);
+}
+
+.zmk-card {
+  border: 1px solid var(--zmk-border);
+  background: var(--zmk-card);
+  box-shadow: var(--zmk-shadow);
+}
+
+.zmk-card-hover {
+  transition: transform 240ms ease, border-color 240ms ease, background 240ms ease;
+}
+
+.zmk-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--zmk-gold) 44%, transparent);
+}
+
+.zmk-button {
+  display: inline-flex;
+  min-height: 2.85rem;
+  min-width: 10rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--zmk-border);
+  padding: 0.75rem 1.35rem;
+  color: var(--zmk-ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.zmk-button:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--zmk-gold) 56%, transparent);
+}
+
+.zmk-button-primary {
+  border-color: var(--zmk-ink);
+  background: var(--zmk-ink);
+  color: var(--zmk-bg);
+}
+
+html.dark .zmk-button-primary {
+  background: #d9ffd8;
+  color: #07110c;
+}
+
+.zmk-pill {
+  border: 1px solid var(--zmk-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--zmk-bg-glow) 24%, transparent);
+  padding: 0.25rem 0.75rem;
+  color: var(--zmk-ink-soft);
+  font-size: 0.75rem;
+}
+
+.zmk-muted {
+  color: var(--zmk-ink-soft);
+}
+
+.zmk-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.zmk-table th,
+.zmk-table td {
+  border-bottom: 1px solid var(--zmk-border);
+  padding: 1rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.zmk-table th {
+  width: 13rem;
+  color: var(--zmk-gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+}
+
+html.dark header {
+  border-color: var(--zmk-border);
+  background: rgba(7, 17, 12, 0.88);
+  color: var(--zmk-ink);
+}
+
+html.dark header a,
+html.dark header button {
+  color: var(--zmk-ink);
+}
+
+html.dark main :is(input, textarea, select) {
+  border-color: var(--zmk-border);
+  background-color: rgba(7, 17, 12, 0.72);
+  color: var(--zmk-ink);
+}
+
+html.dark main ::placeholder {
+  color: rgba(217, 255, 216, 0.48);
+}
+
+@media (min-width: 768px) {
+  .zmk-hero {
+    padding-top: 10rem;
+  }
+
+  .zmk-section {
+    padding-block: 7rem;
+  }
+
+  .zmk-split-head {
+    grid-template-columns: minmax(0, 1fr) 26rem;
+    align-items: end;
+  }
 }
 
 @media (max-width: 640px) {
-  html,
-  body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
   body {
     font-size: 14.5px;
     line-height: 1.78;
   }
 
-  main h1 {
+  main h1,
+  .zmk-title {
     font-size: clamp(2rem, 13vw, 3.55rem) !important;
     line-height: 1.08 !important;
   }
@@ -249,5 +413,22 @@ main :is(input, textarea) {
 
   main [class*="min-w-"] {
     min-width: 0 !important;
+  }
+
+  .zmk-table,
+  .zmk-table tbody,
+  .zmk-table tr,
+  .zmk-table th,
+  .zmk-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .zmk-table th {
+    padding-bottom: 0.25rem;
+  }
+
+  .zmk-table td {
+    padding-top: 0;
   }
 }

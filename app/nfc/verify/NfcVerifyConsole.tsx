@@ -39,26 +39,26 @@ const initialDatabase = {
   dictionary: {
     status: 'ready',
     label: 'アロイド図鑑DB',
-    count: 38,
+    count: 39,
     detail: '品種データ、詳細ページ、画像紐づけの土台を実装済みです。',
   },
   nfcItems: {
     status: 'connected',
     label: 'NFC個体管理DB',
     count: 0,
-    detail: 'UID検証、個体ページ、未登録時の案内、登録申請導線を実装済みです。',
+    detail: 'UID検証、個体ページ、未登録時の案内、登録申請導線を確認します。',
   },
   music: {
     status: 'ready',
     label: '音楽室DB',
-    count: 8,
-    detail: 'ローカルMP3、YouTube情報、アップロード曲を同じ音楽室に統合しています。',
+    count: 4,
+    detail: 'ローカルMP3、YouTubeメタ情報、アップロード導線を統合しています。',
   },
   museum: {
     status: 'ready',
-    label: '美術館DB',
+    label: '漫画室DB',
     count: 0,
-    detail: '管理者アップロードとギャラリー表示を実装済みです。',
+    detail: '管理アップロードとギャラリー表示をここから点検します。',
   },
 }
 
@@ -67,7 +67,7 @@ const writeSteps = [
   'iPhoneでNFC Toolsを開きます。',
   'Write、Add a record、URL / URI の順に選びます。',
   'URLを貼り付けて Write を押します。',
-  'iPhone上部をNFCタグに近づけ、完了表示まで動かさずに待ちます。',
+  'iPhone上部をNFCタグに近づけ、完了表示まで待ちます。',
   'タグを読み取り、個体ページが開くことを確認します。',
 ]
 
@@ -110,16 +110,16 @@ export default function NfcVerifyConsole() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_420px]">
-      <section className="border border-[#2c6a4b]/10 bg-white/88 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.26)] md:p-8">
+      <section className="border border-[#2c6a4b]/10 bg-white/88 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.14)] dark:border-[#d9ffd8]/12 dark:bg-[#10291e]/82 md:p-8">
         <p className="mb-5 text-xs font-semibold tracking-[0.28em] text-[#b89558]">NFC TOOLS LAB</p>
         <label className="block">
-          <span className="mb-3 block text-sm leading-7 text-[#315244]/72">
+          <span className="mb-3 block text-sm leading-7 text-[#315244]/72 dark:text-[#d9ffd8]/72">
             NFC ID
           </span>
           <input
             value={uid}
             onChange={(event) => setUid(event.target.value)}
-            className="min-h-14 w-full border border-[#2c6a4b]/14 bg-[#020403] px-4 text-lg tracking-[0.12em] text-[#143326] outline-none transition focus:border-[#d9ffd8]/55"
+            className="min-h-14 w-full border border-[#2c6a4b]/14 bg-white px-4 text-lg tracking-[0.12em] text-[#143326] outline-none transition focus:border-[#2c6a4b]/55 dark:border-[#d9ffd8]/16 dark:bg-[#07110c] dark:text-[#f7fbf1] dark:focus:border-[#d9ffd8]/55"
             placeholder="ZMK-000001"
           />
         </label>
@@ -129,31 +129,31 @@ export default function NfcVerifyConsole() {
             type="button"
             onClick={verify}
             disabled={!normalizedUid || isChecking}
-            className="inline-flex min-h-12 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c] disabled:cursor-not-allowed disabled:opacity-45"
+            className="inline-flex min-h-12 items-center justify-center border border-[#143326] bg-[#143326] px-7 text-sm font-semibold tracking-[0.18em] text-[#fffef8] transition duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-45 dark:border-[#d9ffd8]/65 dark:bg-[#d9ffd8]/10 dark:text-[#eaffdf] dark:hover:bg-[#d9ffd8] dark:hover:text-[#07110c]"
           >
             {isChecking ? 'CHECKING' : 'VERIFY'}
           </button>
           <Link
             href={`/i/${encodeURIComponent(normalizedUid || defaultUid)}`}
-            className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-7 text-sm font-semibold tracking-[0.18em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55"
+            className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-7 text-sm font-semibold tracking-[0.18em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#2c6a4b]/55 dark:border-[#d9ffd8]/18 dark:text-[#f7fbf1] dark:hover:border-[#d9ffd8]/55"
           >
             OPEN PAGE
           </Link>
         </div>
 
-        <div className="mt-8 border border-[#2c6a4b]/10 bg-[#fffaf0]/5 p-5">
+        <div className="mt-8 border border-[#2c6a4b]/10 bg-[#fffaf0]/55 p-5 dark:border-[#d9ffd8]/12 dark:bg-[#07110c]/44">
           <p className="text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">WRITE THIS URL TO NFC TAG</p>
-          <p className="mt-4 break-all border border-[#2c6a4b]/10 bg-[#020403] px-4 py-3 text-sm leading-7 text-[#315244]/78">
+          <p className="mt-4 break-all border border-[#2c6a4b]/10 bg-white px-4 py-3 text-sm leading-7 text-[#315244]/78 dark:border-[#d9ffd8]/12 dark:bg-[#020403] dark:text-[#d9ffd8]/78">
             {writeUrl}
           </p>
-          <p className="mt-4 border-l border-[#b89558]/55 pl-4 text-xs leading-6 text-[#315244]/68">
+          <p className="mt-4 border-l border-[#b89558]/55 pl-4 text-xs leading-6 text-[#315244]/68 dark:text-[#d9ffd8]/68">
             iPhoneのSafariではWebページから直接NFCを書き込めないため、NFC ToolsでURLレコードとして書き込みます。タグにはこの短いURLだけを入れ、個体情報はWeb側のDBで管理します。
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <button
               type="button"
               onClick={copyWriteUrl}
-              className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition hover:border-[#d9ffd8]/55"
+              className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition hover:border-[#2c6a4b]/55 dark:border-[#d9ffd8]/18 dark:text-[#f7fbf1] dark:hover:border-[#d9ffd8]/55"
             >
               COPY URL
             </button>
@@ -166,43 +166,43 @@ export default function NfcVerifyConsole() {
               OPEN NFC TOOLS
             </a>
           </div>
-          <p className="mt-4 text-xs leading-6 text-[#315244]/62">{writeStatus}</p>
-          <ol className="mt-5 grid gap-3 text-[13px] leading-7 text-[#315244]/76">
+          <p className="mt-4 text-xs leading-6 text-[#315244]/62 dark:text-[#d9ffd8]/62">{writeStatus}</p>
+          <ol className="mt-5 grid gap-3 text-[13px] leading-7 text-[#315244]/76 dark:text-[#d9ffd8]/76">
             {writeSteps.map((step, index) => (
-              <li key={step} className="border-l border-[#d9ffd8]/30 pl-4">
+              <li key={step} className="border-l border-[#2c6a4b]/22 pl-4 dark:border-[#d9ffd8]/30">
                 {index + 1}. {step}
               </li>
             ))}
           </ol>
         </div>
 
-        <div className="mt-8 border border-[#2c6a4b]/10 bg-[#fffaf0]/5 p-5">
+        <div className="mt-8 border border-[#2c6a4b]/10 bg-[#fffaf0]/55 p-5 dark:border-[#d9ffd8]/12 dark:bg-[#07110c]/44">
           <p className="text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">VERIFY RESULT</p>
           {!result?.nfc ? (
-            <p className="mt-4 text-[15px] leading-8 text-[#315244]/72">
+            <p className="mt-4 text-[15px] leading-8 text-[#315244]/72 dark:text-[#d9ffd8]/72">
               UIDを入力して検証すると、登録済み・未登録・DB接続状態を確認できます。
             </p>
           ) : (
             <div className="mt-5 grid gap-4">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="border border-[#d9ffd8]/30 bg-[#d9ffd8]/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-[#d9ffd8]">
+                <span className="border border-[#2c6a4b]/30 bg-[#d9ffd8]/26 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-[#143326] dark:border-[#d9ffd8]/30 dark:bg-[#d9ffd8]/10 dark:text-[#d9ffd8]">
                   {statusLabel(result.nfc.status)}
                 </span>
-                <span className="text-sm tracking-[0.12em] text-[#315244]/68">{result.nfc.code}</span>
+                <span className="text-sm tracking-[0.12em] text-[#315244]/68 dark:text-[#d9ffd8]/68">{result.nfc.code}</span>
               </div>
-              <p className="text-[15px] leading-8 text-[#315244]/78">{result.nfc.message}</p>
+              <p className="text-[15px] leading-8 text-[#315244]/78 dark:text-[#d9ffd8]/78">{result.nfc.message}</p>
               {result.nfc.item && (
-                <div className="border-l border-[#d9ffd8]/35 pl-4 text-[15px] leading-8 text-[#143326]">
+                <div className="border-l border-[#2c6a4b]/35 pl-4 text-[15px] leading-8 text-[#143326] dark:border-[#d9ffd8]/35 dark:text-[#f7fbf1]">
                   <p>{result.nfc.item.name_en || result.nfc.item.name_jp || result.uid}</p>
-                  {result.nfc.item.name_jp && <p className="text-[#315244]/70">Trade name: {result.nfc.item.name_jp}</p>}
+                  {result.nfc.item.name_jp && <p className="text-[#315244]/70 dark:text-[#d9ffd8]/70">Trade name: {result.nfc.item.name_jp}</p>}
                 </div>
               )}
               {result.urls && (
                 <div className="flex flex-wrap gap-3 pt-2">
-                  <Link href={result.urls.individual} className="text-sm font-semibold tracking-[0.14em] text-[#d9ffd8] underline underline-offset-4">
+                  <Link href={result.urls.individual} className="text-sm font-semibold tracking-[0.14em] text-[#2c6a4b] underline underline-offset-4 dark:text-[#d9ffd8]">
                     /i/{result.uid}
                   </Link>
-                  <Link href={result.urls.registration} className="text-sm font-semibold tracking-[0.14em] text-[#d9ffd8] underline underline-offset-4">
+                  <Link href={result.urls.registration} className="text-sm font-semibold tracking-[0.14em] text-[#2c6a4b] underline underline-offset-4 dark:text-[#d9ffd8]">
                     registration
                   </Link>
                 </div>
@@ -214,13 +214,13 @@ export default function NfcVerifyConsole() {
 
       <aside className="grid gap-3">
         {Object.entries(result?.database ?? initialDatabase).map(([key, value]) => (
-          <article key={key} className="border border-[#2c6a4b]/10 bg-white/86 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.2)]">
+          <article key={key} className="border border-[#2c6a4b]/10 bg-white/86 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.10)] dark:border-[#d9ffd8]/12 dark:bg-[#10291e]/82">
             <div className="mb-4 flex items-center justify-between gap-4">
               <p className="text-[11px] font-semibold tracking-[0.18em] text-[#b89558]">{value.label}</p>
-              <span className="text-[11px] tracking-[0.14em] text-[#d9ffd8]/72">{statusLabel(value.status)}</span>
+              <span className="text-[11px] tracking-[0.14em] text-[#315244]/72 dark:text-[#d9ffd8]/72">{statusLabel(value.status)}</span>
             </div>
-            <p className="text-3xl font-medium text-[#143326]">{value.count}</p>
-            <p className="mt-4 text-[13px] leading-7 text-[#315244]/70">{value.detail}</p>
+            <p className="text-3xl font-bold text-[#143326] dark:text-[#f7fbf1]">{value.count}</p>
+            <p className="mt-4 text-[13px] leading-7 text-[#315244]/70 dark:text-[#d9ffd8]/70">{value.detail}</p>
           </article>
         ))}
       </aside>

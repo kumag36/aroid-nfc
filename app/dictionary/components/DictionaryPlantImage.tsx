@@ -82,7 +82,7 @@ export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string 
           <p className="mb-3 text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">
             IMAGE AWAITING SELECTION
           </p>
-          <p className="text-sm leading-7 text-[#315244]/72">
+          <p className="text-sm leading-7 text-[#d9ffd8]/72">
             この品種の画像は、管理者が確認してから表示されます。
           </p>
         </div>

@@ -5,7 +5,7 @@ import BrandHeader from '@/app/components/BrandHeader'
 const history = [
   {
     period: 'Before 2025',
-    title: '原点｜観察する目が育つ',
+    title: '原点・観察する目が育つ',
     image: '/history/origin.jpg',
     lead: '好きから始まり、いつしか「状態を読む」習慣になった時間。',
     text: `メダカ、観賞魚、爬虫類、昆虫、タランチュラ。ジャンルは違っても、向き合っていたのはいつも「生きているものの変化」でした。
@@ -16,7 +16,7 @@ const history = [
     period: 'Immersion',
     title: 'モンステラへの没入',
     image: '/history/plants.jpg',
-    lead: '希少品種を集めるだけではなく、違いを見分ける段階へ。',
+    lead: '希少品種を集めるだけではなく、差を見分ける段階へ。',
     text: `タイコンステレーション、ホワイトタイガー、イエローマリリン、ホワイトモンスター。希少な名前に触れるほど、品種名だけでは語れない個体差が見えてきました。
 
 斑の入り方、葉の厚み、節間、根の強さ、展開の癖。美しさは一枚の写真ではなく、育つ過程の中にあります。`,
@@ -25,7 +25,7 @@ const history = [
     period: 'Opening / 0 Month',
     title: 'ざまくりプランツ始動',
     image: '/history/opening.jpg',
-    lead: '神奈川県座間市、平屋の軒先から始まった小さな植物屋。',
+    lead: '神奈川県座間市。平屋の軒先から始まった小さな植物屋。',
     text: `大きな店舗も、派手な看板も、過剰な在庫もない。最初にあったのは、確実に良いと思える株だけを届けたいという判断でした。
 
 小さく始めることは、妥協ではありません。仕入れ、管理、手渡し、説明。その一つひとつに目が届く大きさで始めることを選びました。`,
@@ -43,8 +43,8 @@ const history = [
     period: 'Asia / 9 Months',
     title: '海外との接点、基準が上がる',
     image: '/history/overseas.jpg',
-    lead: 'タイ、中国、ベトナム。熱量の高い現場に触れ、扱う覚悟を更新する。',
-    text: `アジアを代表するナーセリーや、世界中のマニアが集まる流通の現場。そこには、想像以上のスピードと熱量がありました。
+    lead: 'タイ、中国、ベトナム。熱量の高い現場に触れ、基準を更新する。',
+    text: `アジアを代表するナーセリーや、世界中のマニアが集まる流通の現場。そこには、画像以上のスピードと熱量がありました。
 
 入ってくる株のレベル、選別の基準、情報の流れ。希少性だけに流されず、本物として扱うためには、見る目も管理もさらに上げる必要がある。`,
   },
@@ -57,49 +57,42 @@ export const metadata = {
 
 export default function HistoryPage() {
   return (
-    <main className="min-h-screen bg-[#fffef8] text-[#143326] [font-family:var(--font-zamakuri)]">
+    <main className="zmk-page">
       <BrandHeader />
 
-      <section className="relative min-h-[82vh] overflow-hidden bg-[#f1f8ed] px-5 pb-20 pt-32 md:pt-40">
+      <section className="zmk-hero">
         <Image
           src="/history/hero-botanical.png"
           alt=""
           fill
           priority
-          className="object-cover opacity-[0.42] saturate-[0.9]"
+          className="zmk-hero-media"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,10,7,0.97)_0%,rgba(8,16,12,0.84)_48%,rgba(8,16,12,0.34)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#fffef8] to-transparent" />
+        <div className="zmk-hero-shade" />
+        <div className="zmk-hero-fade" />
 
-        <div className="relative z-10 mx-auto flex min-h-[68vh] max-w-7xl flex-col justify-center">
-          <div className="mb-8 h-px w-28 bg-[#d9ffd8]/50" />
-          <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
-            ZAMAKURI PLANTS HISTORY
-          </p>
-          <h1 className="max-w-5xl text-[clamp(2.6rem,6.4vw,6.2rem)] font-medium leading-[1.08] tracking-normal">
+        <div className="zmk-container zmk-hero-body">
+          <div className="zmk-rule" />
+          <p className="zmk-eyebrow mb-5">ZAMAKURI PLANTS HISTORY</p>
+          <h1 className="zmk-title">
             ざまくりプランツ
             <span className="block">1年の歩み</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#315244]/85 md:text-lg md:leading-9">
+          <p className="zmk-lead mt-8">
             開業から走り続けた11か月。約1年分の熱量を、小さな植物屋の記録として静かに残します。
           </p>
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-5 py-20 md:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_10%,rgba(217,255,216,0.10),transparent_30%)]" />
-        <div className="relative mx-auto max-w-7xl">
-          <div className="mb-16 grid gap-8 border-b border-[#2c6a4b]/10 pb-12 md:grid-cols-[1fr_420px] md:items-end">
+      <section className="zmk-section">
+        <div className="zmk-container">
+          <div className="zmk-split-head mb-16">
             <div>
-              <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
-                SINCE 2025 / ZAMAKURI PLANTS
-              </p>
-              <h2 className="max-w-4xl text-[clamp(2.2rem,5vw,5rem)] font-medium leading-tight">
-                年表として見る、判断の積み重ね。
-              </h2>
+              <p className="zmk-eyebrow mb-5">SINCE 2025 / ZAMAKURI PLANTS</p>
+              <h2>年表として見る、判断の積み重ね。</h2>
             </div>
-            <p className="text-[15px] leading-8 text-[#315244]/72">
+            <p className="zmk-muted text-[15px] leading-8">
               販売記録ではなく、植物と向き合う判断、現場で得た信頼、そして次の基準へ進むための記録です。
             </p>
           </div>
@@ -108,25 +101,23 @@ export default function HistoryPage() {
             {history.map((item, index) => (
               <article
                 key={item.title}
-                className="group grid gap-8 border border-[#2c6a4b]/10 bg-white/86 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.22)] transition duration-300 hover:border-[#d9ffd8]/30 md:grid-cols-[120px_minmax(0,1fr)_420px] md:items-stretch md:p-7"
+                className="zmk-card zmk-card-hover group grid gap-8 p-5 md:grid-cols-[120px_minmax(0,1fr)_420px] md:items-stretch md:p-7"
               >
-                <div className="flex items-start justify-between gap-4 border-b border-[#2c6a4b]/10 pb-5 md:block md:border-b-0 md:border-r md:pb-0 md:pr-7">
-                  <p className="text-3xl font-medium leading-none text-[#d9ffd8]/82">
+                <div className="flex items-start justify-between gap-4 border-b border-[var(--zmk-border)] pb-5 md:block md:border-b-0 md:border-r md:pb-0 md:pr-7">
+                  <p className="text-3xl font-bold leading-none text-[#b89558]">
                     {String(index + 1).padStart(2, '0')}
                   </p>
-                  <p className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-[#315244]/48 md:mt-5">
+                  <p className="zmk-muted mt-1 text-[11px] font-semibold tracking-[0.18em] md:mt-5">
                     {item.period}
                   </p>
                 </div>
 
                 <div className="flex flex-col justify-center md:py-3">
-                  <h3 className="text-[clamp(1.55rem,3vw,2.5rem)] font-medium leading-tight text-[#143326]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-5 border-l border-[#d9ffd8]/35 pl-4 text-[15px] leading-8 text-[#315244]/86">
+                  <h3 className="font-bold text-[var(--zmk-ink-strong)]">{item.title}</h3>
+                  <p className="mt-5 border-l border-[#b89558]/45 pl-4 text-[15px] leading-8 text-[var(--zmk-ink)]">
                     {item.lead}
                   </p>
-                  <p className="mt-6 whitespace-pre-line text-[15px] leading-8 text-[#315244]/72">
+                  <p className="zmk-muted mt-6 whitespace-pre-line text-[15px] leading-8">
                     {item.text}
                   </p>
                 </div>
@@ -147,16 +138,16 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      <section className="border-t border-[#2c6a4b]/10 bg-[#f7fbf1] px-5 py-16 text-[#191a15] md:py-20">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-2xl text-[15px] leading-8 text-[#665f55]">
+      <section className="zmk-section zmk-section-soft">
+        <div className="zmk-container flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="zmk-muted max-w-2xl text-[15px] leading-8">
             ここから、図鑑とNFC個体管理へ。品種の知識と、一株ごとの履歴をつなげていきます。
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/dictionary" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#191a15] bg-[#191a15] px-5 text-xs font-semibold tracking-[0.18em] text-[#143326]">
+            <Link href="/dictionary" className="zmk-button zmk-button-primary">
               図鑑を見る
             </Link>
-            <Link href="/" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#191a15]/18 px-5 text-xs font-semibold tracking-[0.18em] text-[#191a15]">
+            <Link href="/" className="zmk-button">
               トップへ戻る
             </Link>
           </div>

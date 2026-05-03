@@ -1,4 +1,5 @@
 import './globals.css'
+import SiteFooter from './components/SiteFooter'
 
 export const metadata = {
   title: {
@@ -6,7 +7,7 @@ export const metadata = {
     template: '%s | ZAMAKURI.JP',
   },
   description:
-    'ざまくりプランツ公式サイト。アロイド図鑑、NFC個体管理DB、美術館、音楽室を静かに記録するブランドサイト。',
+    'ざまくりプランツ公式サイト。アロイド図鑑、NFC個体管理DB、漫画室、音楽室を静かに記録するブランドサイト。',
   applicationName: 'ZAMAKURI.JP',
   metadataBase: new URL('https://zamakuri.jp'),
   openGraph: {
@@ -22,7 +23,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja" translate="no">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   )
 }
