@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
 import BrandHeader from '@/app/components/BrandHeader'
+import PageHero from '@/app/components/PageHero'
 
 type LegalShellProps = {
   eyebrow: string
@@ -14,24 +14,7 @@ export default function LegalShell({ eyebrow, title, lead, children }: LegalShel
   return (
     <main className="zmk-page">
       <BrandHeader />
-      <section className="zmk-hero">
-        <Image
-          src="/history/hero-botanical.png"
-          alt=""
-          fill
-          priority
-          className="zmk-hero-media"
-          sizes="100vw"
-        />
-        <div className="zmk-hero-shade" />
-        <div className="zmk-hero-fade" />
-        <div className="zmk-container zmk-hero-body">
-          <div className="zmk-rule" />
-          <p className="zmk-eyebrow mb-5">{eyebrow}</p>
-          <h1 className="zmk-title">{title}</h1>
-          <p className="zmk-lead mt-8">{lead}</p>
-        </div>
-      </section>
+      <PageHero eyebrow={eyebrow} title={title} lead={lead} />
 
       <section className="zmk-section">
         <div className="zmk-container max-w-5xl">

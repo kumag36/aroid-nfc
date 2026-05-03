@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
+import PageHero from '@/app/components/PageHero'
 
 const instagramProfileUrl =
   process.env.NEXT_PUBLIC_INSTAGRAM_PROFILE_URL ??
@@ -38,23 +38,16 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
     <main className="zmk-page">
       <BrandHeader />
 
-      <section className="zmk-hero">
-        <Image src="/history/hero-botanical.png" alt="" fill priority className="zmk-hero-media" sizes="100vw" />
-        <div className="zmk-hero-shade" />
-        <div className="zmk-hero-fade" />
-        <div className="zmk-container relative z-10 grid gap-10 lg:min-h-[68vh] lg:grid-cols-[minmax(0,1fr)_380px] lg:items-end">
-          <div>
-            <div className="zmk-rule" />
-            <p className="zmk-eyebrow mb-5">NFC REGISTRATION REQUEST</p>
-            <h1 className="zmk-title">
-              NFC個体管理DBへ
-              <span className="block">登録申請する。</span>
-            </h1>
-            <p className="zmk-lead mt-8">
-              NFCタグは、品種名だけでは見えない一株ごとの履歴を残す入口です。未登録IDは、管理局で確認してから個体ページへ反映します。
-            </p>
-          </div>
-
+      <PageHero
+        eyebrow="NFC REGISTRATION REQUEST"
+        title={
+          <>
+            NFC個体管理DBへ
+            <span className="block">登録申請する。</span>
+          </>
+        }
+        lead="NFCタグは、品種名だけでは見えない一株ごとの履歴を残す入口です。未登録IDは、管理局で確認してから個体ページへ反映します。"
+        actions={
           <aside className="zmk-card p-5 backdrop-blur">
             <p className="zmk-eyebrow mb-4 text-[11px]">SEND TO</p>
             <div className="grid gap-3">
@@ -69,8 +62,8 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
               {uid ? `植物ID ${uid} を申請本文に入れています。` : '迷ったらURLをそのまま送ってください。こちらでIDを確認します。'}
             </p>
           </aside>
-        </div>
-      </section>
+        }
+      />
 
       <section className="zmk-section">
         <div className="zmk-container grid gap-4 md:grid-cols-3">

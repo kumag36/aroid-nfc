@@ -158,10 +158,21 @@ main :is(input, textarea) {
 
 .zmk-hero {
   position: relative;
+  isolation: isolate;
   min-height: 82vh;
   overflow: hidden;
   padding: 8rem 1.25rem 5rem;
   background: var(--zmk-bg-soft);
+}
+
+.zmk-hero::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background:
+    radial-gradient(circle at 22% 48%, rgba(5, 10, 7, 0.58), transparent 38%),
+    linear-gradient(90deg, rgba(5, 10, 7, 0.34), transparent 66%);
 }
 
 .zmk-hero-media {
@@ -176,12 +187,14 @@ main :is(input, textarea) {
 
 .zmk-hero-shade {
   position: absolute;
+  z-index: 0;
   inset: 0;
   background: var(--zmk-hero-overlay);
 }
 
 .zmk-hero-fade {
   position: absolute;
+  z-index: 0;
   inset-inline: 0;
   bottom: 0;
   height: 10rem;

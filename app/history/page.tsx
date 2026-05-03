@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
+import PageHero from '@/app/components/PageHero'
 
 const history = [
   {
@@ -60,30 +61,16 @@ export default function HistoryPage() {
     <main className="zmk-page">
       <BrandHeader />
 
-      <section className="zmk-hero">
-        <Image
-          src="/history/hero-botanical.png"
-          alt=""
-          fill
-          priority
-          className="zmk-hero-media"
-          sizes="100vw"
-        />
-        <div className="zmk-hero-shade" />
-        <div className="zmk-hero-fade" />
-
-        <div className="zmk-container zmk-hero-body">
-          <div className="zmk-rule" />
-          <p className="zmk-eyebrow mb-5">ZAMAKURI PLANTS HISTORY</p>
-          <h1 className="zmk-title">
+      <PageHero
+        eyebrow="ZAMAKURI PLANTS HISTORY"
+        title={
+          <>
             ざまくりプランツ
             <span className="block">1年の歩み</span>
-          </h1>
-          <p className="zmk-lead mt-8">
-            開業から走り続けた11か月。約1年分の熱量を、小さな植物屋の記録として静かに残します。
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        lead="開業から走り続けた11か月。約1年分の熱量を、小さな植物屋の記録として静かに残します。"
+      />
 
       <section className="zmk-section">
         <div className="zmk-container">

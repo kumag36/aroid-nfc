@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
+import PageHero from '@/app/components/PageHero'
 import { plants } from '@/lib/dictionary-data'
 import { dictionaryImageCandidates } from '@/lib/dictionary-image-data'
 import {
@@ -78,22 +78,16 @@ export default async function AdminPage() {
     <main className="zmk-page">
       <BrandHeader />
 
-      <section className="zmk-hero">
-        <Image src="/history/hero-botanical.png" alt="" fill priority className="zmk-hero-media" sizes="100vw" />
-        <div className="zmk-hero-shade" />
-        <div className="zmk-hero-fade" />
-        <div className="zmk-container zmk-hero-body">
-          <div className="zmk-rule" />
-          <p className="zmk-eyebrow mb-5">HIDDEN ADMIN ROOM</p>
-          <h1 className="zmk-title">
+      <PageHero
+        eyebrow="HIDDEN ADMIN ROOM"
+        title={
+          <>
             管理機能を
             <span className="block">ここに集約する。</span>
-          </h1>
-          <p className="zmk-lead mt-8">
-            表のサイトには出さない、ざまくりプランツの作業室です。図鑑写真、音楽室、漫画室、NFC検証、開示情報をここから扱います。
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        lead="表のサイトには出さない、ざまくりプランツの作業室です。図鑑写真、音楽室、漫画室、NFC検証、開示情報をここから扱います。"
+      />
 
       <section className="zmk-section">
         <div className="zmk-container">

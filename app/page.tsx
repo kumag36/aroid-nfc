@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import BrandHeader from './components/BrandHeader'
+import PageHero from './components/PageHero'
 
 const instagramEmbedUrl =
   process.env.NEXT_PUBLIC_INSTAGRAM_EMBED_URL ??
@@ -41,34 +42,21 @@ export default function Home() {
     <main className="zmk-page">
       <BrandHeader />
 
-      <section className="zmk-hero">
-        <Image
-          src="/history/hero-botanical.png"
-          alt=""
-          fill
-          priority
-          className="zmk-hero-media"
-          sizes="100vw"
-        />
-        <div className="zmk-hero-shade" />
-        <div className="zmk-hero-fade" />
-        <div className="zmk-container zmk-hero-body">
-          <div className="zmk-rule" />
-          <p className="zmk-eyebrow mb-5">ZAMAKURI PLANTS</p>
-          <h1 className="zmk-title">ざまくりプランツ</h1>
-          <p className="zmk-lead mt-8">
-            モンステラとアロイドを中心に、品種・個体・育成の記録を静かに深めていく植物屋です。
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
+      <PageHero
+        eyebrow="ZAMAKURI PLANTS"
+        title="ざまくりプランツ"
+        lead="モンステラとアロイドを中心に、品種・個体・育成の記録を静かに深めていく植物屋です。"
+        actions={
+          <>
             <Link href="/dictionary" className="zmk-button zmk-button-primary">
               図鑑を見る
             </Link>
             <Link href="/history" className="zmk-button text-[#fffef8]">
               歩みを見る
             </Link>
-          </div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       <section className="zmk-section">
         <div className="zmk-container grid gap-4 md:grid-cols-3">

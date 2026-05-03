@@ -1,9 +1,9 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import BrandHeader from '@/app/components/BrandHeader'
+import PageHero from '@/app/components/PageHero'
 import { categories, plants, type Category } from '@/lib/dictionary-data'
 import { labelNameBySlug } from '@/lib/label-name-data'
 
@@ -113,30 +113,26 @@ export default function DictionaryPage() {
     <main className="zmk-page">
       <BrandHeader />
 
-      <section className="zmk-hero">
-        <Image src="/history/hero-botanical.png" alt="" fill priority className="zmk-hero-media" sizes="100vw" />
-        <div className="zmk-hero-shade" />
-        <div className="zmk-hero-fade" />
-        <div className="zmk-container zmk-hero-body">
-          <div className="zmk-rule" />
-          <p className="zmk-eyebrow mb-5">ZAMAKURI AROID DICTIONARY</p>
-          <h1 className="zmk-title">
+      <PageHero
+        eyebrow="ZAMAKURI AROID DICTIONARY"
+        title={
+          <>
             ざまくり
             <span className="block">アロイド図鑑</span>
-          </h1>
-          <p className="zmk-lead mt-8">
-            モンステラを中心に、アロイドの品種・特徴・見分け方を静かに深く記録するWEB図鑑。
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
+          </>
+        }
+        lead="モンステラを中心に、アロイドの品種・特徴・見分け方を静かに深く記録するWEB図鑑。"
+        actions={
+          <>
             <button type="button" onClick={() => focusCategory('Monstera')} className="zmk-button zmk-button-primary">
               モンステラから見る
             </button>
             <button type="button" onClick={() => focusCategory('All')} className="zmk-button text-[#fffef8]">
               全品種を見る
             </button>
-          </div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       <section className="zmk-section">
         <div className="zmk-container zmk-split-head">
