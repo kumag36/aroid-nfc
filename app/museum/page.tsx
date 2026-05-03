@@ -3,9 +3,9 @@ import PageHero from '@/app/components/PageHero'
 import MuseumGallery from './components/MuseumGallery'
 
 export const metadata = {
-  title: 'ざまくり漫画室 | ZAMAKURI.JP',
+  title: 'ざまくり漫画部屋 | ZAMAKURI.JP',
   description:
-    'ざまくりプランツの漫画作品を、スマホは縦読み、タブレットとPCは横読みで楽しめる漫画室。',
+    'ざまくりプランツの漫画作品を、スマホは縦読み、タブレットとPCは横読みで楽しめる漫画部屋。',
 }
 
 export default function MuseumPage() {
@@ -14,11 +14,11 @@ export default function MuseumPage() {
       <BrandHeader />
 
       <PageHero
-        eyebrow="ZAMAKURI MANGA ROOM"
+        eyebrow="ざまくり 漫画部屋"
         title={
           <>
             ざまくり
-            <span className="block">漫画室</span>
+            <span className="block">漫画部屋</span>
           </>
         }
         lead="気ままに描いた漫画を、ピッコマのように軽く読める部屋です。スマホは縦読み、タブレットとPCは横読みで表示します。"

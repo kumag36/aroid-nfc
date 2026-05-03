@@ -21,7 +21,7 @@ export default function NfcVerifyPage() {
             <span className="block">静かに検証する。</span>
           </>
         }
-        lead="iPhone運用では、NFC Toolsで短いURLをタグへ書き込みます。書き込み予定URL、未登録時の案内、図鑑・音楽室・漫画室DBの状態をまとめて確認できます。"
+        lead="iPhone運用では、NFC Toolsで短いURLをタグへ書き込みます。書き込み予定URL、未登録時の案内、図鑑・音楽室・漫画部屋DBの状態をまとめて確認できます。"
       />
 
       <section className="zmk-section">
