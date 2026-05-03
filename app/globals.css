@@ -179,15 +179,15 @@ main :is(input, textarea) {
 }
 
 .zmk-jp,
-.zmk-brand-title {
+.zmk-brand-title,
+.zmk-nav,
+.zmk-admin-link,
+.zmk-theme-toggle {
   font-family: var(--font-zamakuri-cute);
 }
 
 .zmk-ui,
-.zmk-nav,
 .zmk-brand-subtitle,
-.zmk-admin-link,
-.zmk-theme-toggle,
 .zmk-eyebrow,
 .zmk-button,
 .zmk-pill,
@@ -205,18 +205,40 @@ main :is(input, textarea) {
   font-family: var(--font-zamakuri);
 }
 
-.zmk-page :is(.zmk-ui, .zmk-nav, .zmk-brand-subtitle, .zmk-admin-link, .zmk-theme-toggle, .zmk-eyebrow, .zmk-button, .zmk-pill),
+.zmk-page :is(.zmk-ui, .zmk-brand-subtitle, .zmk-eyebrow, .zmk-button, .zmk-pill),
 .zmk-page :is(p, span, div, dt, th, label)[class*="tracking-"] {
   font-family: var(--font-zamakuri-latin);
 }
 
-.zmk-page :is(.zmk-jp, .zmk-brand-title) {
+.zmk-page :is(.zmk-jp, .zmk-brand-title, .zmk-nav, .zmk-admin-link, .zmk-theme-toggle) {
   font-family: var(--font-zamakuri-cute);
 }
 
 .zmk-page .zmk-scientific,
 .zmk-page .zmk-scientific * {
   font-family: var(--font-zamakuri-scientific);
+}
+
+.zmk-mascot-float {
+  animation: zmkMascotFloat 9s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes zmkMascotFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(1.4deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zmk-mascot-float {
+    animation: none;
+  }
 }
 
 .zmk-container {

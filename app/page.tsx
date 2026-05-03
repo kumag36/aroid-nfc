@@ -56,6 +56,23 @@ export default function Home() {
             </Link>
           </>
         }
+        feature={
+          <div className="relative mx-auto max-w-[360px] border border-[#d9ffd8]/18 bg-[#fffef8]/92 p-5 shadow-[0_34px_110px_rgba(0,0,0,0.26)] backdrop-blur">
+            <div className="relative aspect-square overflow-hidden bg-white">
+              <Image
+                src="/brand/zamakuri-shop-logo.webp"
+                alt="ざまくりプランツ"
+                fill
+                priority
+                className="object-contain"
+                sizes="360px"
+              />
+            </div>
+            <p className="zmk-ui mt-5 text-center text-[11px] tracking-[0.24em] text-[#d9ffd8]">
+              SINCE 2025 / ZAMAKURI PLANTS
+            </p>
+          </div>
+        }
       />
 
       <section className="zmk-section">

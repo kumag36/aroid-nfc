@@ -7,6 +7,7 @@ type PageHeroProps = {
   lead: ReactNode
   actions?: ReactNode
   imageSrc?: string
+  feature?: ReactNode
 }
 
 export default function PageHero({
@@ -15,6 +16,7 @@ export default function PageHero({
   lead,
   actions,
   imageSrc = '/history/hero-botanical.png',
+  feature,
 }: PageHeroProps) {
   return (
     <section className="zmk-hero">
@@ -22,11 +24,16 @@ export default function PageHero({
       <div className="zmk-hero-shade" />
       <div className="zmk-hero-fade" />
       <div className="zmk-container zmk-hero-body">
-        <div className="zmk-rule" />
-        <p className="zmk-eyebrow mb-5">{eyebrow}</p>
-        <h1 className="zmk-title">{title}</h1>
-        <p className="zmk-lead mt-8">{lead}</p>
-        {actions ? <div className="mt-10 flex flex-wrap gap-3">{actions}</div> : null}
+        <div className={feature ? 'grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-center' : ''}>
+          <div>
+            <div className="zmk-rule" />
+            <p className="zmk-eyebrow mb-5">{eyebrow}</p>
+            <h1 className="zmk-title">{title}</h1>
+            <p className="zmk-lead mt-8">{lead}</p>
+            {actions ? <div className="mt-10 flex flex-wrap gap-3">{actions}</div> : null}
+          </div>
+          {feature ? <div className="relative hidden lg:block">{feature}</div> : null}
+        </div>
       </div>
     </section>
   )

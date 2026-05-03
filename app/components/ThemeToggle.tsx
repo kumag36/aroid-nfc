@@ -6,9 +6,9 @@ const storageKey = 'zamakuri-theme'
 type ThemeMode = 'auto' | 'light' | 'dark'
 
 const themeOptions: { mode: ThemeMode; label: string }[] = [
-  { mode: 'auto', label: 'AUTO' },
-  { mode: 'light', label: 'LIGHT' },
-  { mode: 'dark', label: 'DARK' },
+  { mode: 'auto', label: '自動' },
+  { mode: 'light', label: '明' },
+  { mode: 'dark', label: '暗' },
 ]
 
 function resolveTheme(mode: ThemeMode) {
