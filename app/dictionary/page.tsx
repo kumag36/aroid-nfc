@@ -187,40 +187,52 @@ export default function DictionaryPage() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {filteredPlants.map((plant, index) => (
-              <article key={plant.slug} className="zmk-card zmk-card-hover group relative flex min-h-[380px] flex-col overflow-hidden p-6 shadow-[0_28px_90px_rgba(44,106,75,0.12)]">
+              <article key={plant.slug} className="zmk-card zmk-card-hover group relative flex min-h-[430px] flex-col overflow-hidden p-0 shadow-[0_28px_90px_rgba(44,106,75,0.12)]">
                 {cardImages[plant.slug] && (
                   <>
                     <div
-                      className="absolute inset-0 scale-[1.02] bg-cover bg-center opacity-[0.58] saturate-[0.98] contrast-[1.04] transition duration-500 group-hover:scale-[1.06] group-hover:opacity-[0.72] dark:opacity-[0.42] dark:group-hover:opacity-[0.56]"
+                      className="absolute inset-0 scale-[1.02] bg-cover bg-center opacity-[0.82] saturate-[1.05] contrast-[1.03] transition duration-500 group-hover:scale-[1.06] group-hover:opacity-[0.92] dark:opacity-[0.64] dark:group-hover:opacity-[0.76]"
                       style={{ backgroundImage: `url(${cardImages[plant.slug]})` }}
                     />
-                    <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,254,248,0.98)_0%,rgba(255,254,248,0.92)_46%,rgba(247,251,241,0.78)_68%,rgba(217,255,216,0.44)_100%)] dark:bg-[linear-gradient(115deg,rgba(5,10,7,0.96)_0%,rgba(7,17,12,0.88)_46%,rgba(16,41,30,0.72)_72%,rgba(7,17,12,0.54)_100%)]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_86%_18%,rgba(217,255,216,0.16),transparent_34%),linear-gradient(180deg,transparent_0%,rgba(255,254,248,0.34)_100%)] dark:bg-[radial-gradient(circle_at_86%_18%,rgba(217,255,216,0.10),transparent_34%),linear-gradient(180deg,transparent_0%,rgba(5,10,7,0.42)_100%)]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,254,248,0.08)_0%,rgba(255,254,248,0.16)_36%,rgba(255,254,248,0.72)_100%)] dark:bg-[linear-gradient(180deg,rgba(5,10,7,0.18)_0%,rgba(5,10,7,0.36)_42%,rgba(5,10,7,0.82)_100%)]" />
                   </>
                 )}
 
-                <div className="relative z-10 mb-6 flex items-start justify-between gap-4">
-                  <p className="zmk-eyebrow text-[11px]">{plant.category}</p>
-                  <span className="text-xs font-semibold text-[#315244]/70 dark:text-[#d9ffd8]/72">{String(index + 1).padStart(2, '0')}</span>
-                </div>
-                <h3 className="relative z-10 text-xl font-bold text-[#10291e] drop-shadow-[0_1px_0_rgba(255,254,248,0.5)] dark:text-[#fffef8] dark:drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">{plant.displayName}</h3>
-                <p className="relative z-10 mt-3 text-sm leading-7 text-[#315244] dark:text-[#d9ffd8]/88">和名 / 流通名：{plant.tradeName}</p>
-                {labelNameBySlug[plant.slug] && (
-                  <p className="relative z-10 mt-2 text-xs leading-6 text-[#315244]/82 dark:text-[#d9ffd8]/74">
-                    LABEL：{labelNameBySlug[plant.slug].shortName} / {labelNameBySlug[plant.slug].fullKana}
-                  </p>
-                )}
-                <div className="relative z-10 mt-5 flex flex-wrap gap-2">
-                  {plant.tags.map((tag) => (
-                    <span key={tag} className="zmk-pill">
-                      {tag}
+                <div className="relative z-10 flex min-h-[430px] flex-col justify-between p-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <p className="border border-[#fffef8]/72 bg-[#fffef8]/82 px-3 py-1 text-[11px] font-bold tracking-[0.28em] text-[#b89558] shadow-[0_10px_28px_rgba(0,0,0,0.08)] backdrop-blur dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/72">
+                      {plant.category}
+                    </p>
+                    <span className="border border-[#fffef8]/70 bg-[#fffef8]/78 px-2 py-1 text-xs font-semibold text-[#315244]/76 backdrop-blur dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/70 dark:text-[#d9ffd8]/78">
+                      {String(index + 1).padStart(2, '0')}
                     </span>
-                  ))}
+                  </div>
+
+                  <div className="mt-20 border border-[#fffef8]/84 bg-[#fffef8]/90 p-5 shadow-[0_20px_70px_rgba(16,41,30,0.18)] backdrop-blur-md dark:border-[#d9ffd8]/16 dark:bg-[#07110c]/82">
+                    <h3 className="text-xl font-bold text-[#10291e] dark:text-[#fffef8]">{plant.displayName}</h3>
+                    <p className="mt-3 text-sm font-semibold leading-7 text-[#315244] dark:text-[#d9ffd8]/88">
+                      和名 / 流通名：{plant.tradeName}
+                    </p>
+                    {labelNameBySlug[plant.slug] && (
+                      <p className="mt-2 text-xs leading-6 text-[#315244]/78 dark:text-[#d9ffd8]/70">
+                        LABEL：{labelNameBySlug[plant.slug].shortName} / {labelNameBySlug[plant.slug].fullKana}
+                      </p>
+                    )}
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {plant.tags.map((tag) => (
+                        <span key={tag} className="border border-[#2c6a4b]/14 bg-[#f7fbf1]/86 px-3 py-1 text-xs text-[#315244] dark:border-[#d9ffd8]/18 dark:bg-[#10291e]/80 dark:text-[#d9ffd8]">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-6 text-[15px] font-medium leading-8 text-[#173b2a] dark:text-[#f7fbf1]/86">
+                      {plant.description}
+                    </p>
+                    <Link href={`/dictionary/${plant.slug}`} className="zmk-button mt-7 w-full bg-[#fffef8]/72 backdrop-blur dark:bg-[#07110c]/58">
+                      詳細を見る
+                    </Link>
+                  </div>
                 </div>
-                <p className="relative z-10 mt-6 flex-1 text-[15px] font-medium leading-8 text-[#173b2a] dark:text-[#f7fbf1]/86">{plant.description}</p>
-                <Link href={`/dictionary/${plant.slug}`} className="zmk-button relative z-10 mt-7 bg-[#fffef8]/72 backdrop-blur dark:bg-[#07110c]/58">
-                  詳細を見る
-                </Link>
               </article>
             ))}
           </div>

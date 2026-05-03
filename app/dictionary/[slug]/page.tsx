@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
 import PageHero from '@/app/components/PageHero'
-import DictionaryPlantImage from '@/app/dictionary/components/DictionaryPlantImage'
+import { dictionaryImageCandidates } from '@/lib/dictionary-image-data'
+import { listDictionaryImageAssignments, listDictionaryImageExclusions } from '@/lib/dictionary-image-storage'
 import { plants, type Plant } from '@/lib/dictionary-data'
 import { labelNameBySlug } from '@/lib/label-name-data'
 
@@ -26,12 +27,29 @@ const categoryNotes: Record<Plant['category'], string> = {
 
 function buildCareFacts(plant: Plant) {
   return [
-    plant.temperature ? `適温：${plant.temperature}` : null,
-    plant.minimumTemperature ? `最低温度：${plant.minimumTemperature}` : null,
-    plant.humidity ? `湿度：${plant.humidity}` : null,
-    plant.recommendedStyle ? `おすすめ管理：${plant.recommendedStyle}` : null,
-    plant.origin ? `由来：${plant.origin}` : null,
-  ].filter(Boolean)
+    plant.temperature ? ['適温', plant.temperature] : null,
+    plant.minimumTemperature ? ['最低温度', plant.minimumTemperature] : null,
+    plant.humidity ? ['湿度', plant.humidity] : null,
+    plant.recommendedStyle ? ['おすすめ管理', plant.recommendedStyle] : null,
+    plant.origin ? ['由来', plant.origin] : null,
+  ].filter((item): item is [string, string] => Boolean(item))
+}
+
+async function getPrimaryImageSrc(plantSlug: string) {
+  const [assignments, exclusions] = await Promise.all([
+    listDictionaryImageAssignments(),
+    listDictionaryImageExclusions(),
+  ])
+  const excludedIds = new Set(exclusions.map((item) => item.imageId))
+  const imageById = new Map(dictionaryImageCandidates.map((candidate) => [candidate.id, candidate]))
+  const assignment = assignments
+    .filter((item) => item.plantSlug === plantSlug && !excludedIds.has(item.imageId))
+    .sort((a, b) => {
+      if (a.role !== b.role) return a.role === 'primary' ? -1 : 1
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    })[0]
+
+  return assignment ? imageById.get(assignment.imageId)?.src ?? null : null
 }
 
 function MissingPage() {
@@ -90,6 +108,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
     return <MissingPage />
   }
 
+  const [primaryImageSrc] = await Promise.all([getPrimaryImageSrc(plant.slug)])
   const label = labelNameBySlug[plant.slug]
   const facts = buildCareFacts(plant)
   const relatedPlants = plants
@@ -116,72 +135,86 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
       />
 
       <section className="zmk-section">
-        <div className="zmk-container grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_420px] lg:items-start">
-          <div>
-            <p className="zmk-eyebrow mb-5">IDENTIFICATION</p>
-            <h2>名前ではなく、葉と履歴で見分ける。</h2>
-            <p className="zmk-muted mt-8 max-w-4xl text-[15px] leading-8">
-              {categoryNotes[plant.category]}
-            </p>
+        <div className="zmk-container">
+          <article className="relative overflow-hidden border border-[var(--zmk-border)] bg-[var(--zmk-card)] shadow-[0_32px_110px_rgba(44,106,75,0.14)]">
+            {primaryImageSrc ? (
+              <>
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-[0.46] saturate-[1.04] contrast-[1.04] dark:opacity-[0.36]"
+                  style={{ backgroundImage: `url(${primaryImageSrc})` }}
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,254,248,0.97)_0%,rgba(255,254,248,0.90)_48%,rgba(247,251,241,0.62)_74%,rgba(217,255,216,0.30)_100%)] dark:bg-[linear-gradient(90deg,rgba(5,10,7,0.96)_0%,rgba(7,17,12,0.90)_48%,rgba(16,41,30,0.70)_76%,rgba(7,17,12,0.48)_100%)]" />
+              </>
+            ) : (
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_12%,rgba(217,255,216,0.36),transparent_32%)]" />
+            )}
 
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
-              <article className="zmk-card p-6">
-                <p className="zmk-eyebrow mb-4 text-[11px]">LOOK</p>
-                <h3 className="text-2xl">観察ポイント</h3>
-                <p className="zmk-muted mt-5 text-[15px] leading-8">
-                  葉形、斑の入り方、葉脈、節間、展開後の変化をあわせて見ます。写真映えだけでなく、育つ途中の揺らぎも品種理解の材料になります。
+            <div className="relative z-10 grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:p-10">
+              <div className="max-w-4xl">
+                <p className="zmk-eyebrow mb-5">SPECIMEN NOTE</p>
+                <h2 className="max-w-3xl">名前ではなく、葉と履歴で見分ける。</h2>
+                <p className="zmk-muted mt-7 text-[15px] leading-8">
+                  {categoryNotes[plant.category]}
                 </p>
-              </article>
-              <article className="zmk-card p-6">
-                <p className="zmk-eyebrow mb-4 text-[11px]">GROW</p>
-                <h3 className="text-2xl">育成メモ</h3>
-                <p className="zmk-muted mt-5 text-[15px] leading-8">
-                  光量、湿度、用土、支柱、根の状態を記録すると、同じ品種でも一株ごとの違いが見えます。NFC管理と組み合わせるほど価値が増します。
-                </p>
-              </article>
-            </div>
-          </div>
 
-          <aside className="space-y-4">
-            <DictionaryPlantImage plantSlug={plant.slug} />
-            <div className="zmk-card p-5">
-              <p className="zmk-eyebrow mb-4 text-[11px]">QUICK FACTS</p>
-              <dl className="zmk-muted grid gap-4 text-sm leading-7">
-                <div>
-                  <dt className="zmk-eyebrow text-[10px]">CATEGORY</dt>
-                  <dd>{plant.category}</dd>
+                <div className="mt-8 grid gap-4 md:grid-cols-2">
+                  <section className="border border-[#2c6a4b]/10 bg-[#fffef8]/82 p-5 backdrop-blur-md dark:border-[#d9ffd8]/14 dark:bg-[#07110c]/72">
+                    <p className="zmk-eyebrow mb-4 text-[11px]">LOOK</p>
+                    <h3 className="text-xl">観察ポイント</h3>
+                    <p className="zmk-muted mt-4 text-[14px] leading-7">
+                      葉形、斑の入り方、葉脈、節間、展開後の変化をあわせて見ます。写真映えだけでなく、育つ途中の揺らぎも品種理解の材料になります。
+                    </p>
+                  </section>
+
+                  <section className="border border-[#2c6a4b]/10 bg-[#fffef8]/82 p-5 backdrop-blur-md dark:border-[#d9ffd8]/14 dark:bg-[#07110c]/72">
+                    <p className="zmk-eyebrow mb-4 text-[11px]">GROW</p>
+                    <h3 className="text-xl">育成メモ</h3>
+                    <p className="zmk-muted mt-4 text-[14px] leading-7">
+                      光量、湿度、用土、支柱、根の状態を記録すると、同じ品種でも一株ごとの違いが見えます。NFC管理と組み合わせるほど価値が増します。
+                    </p>
+                  </section>
                 </div>
-                <div>
-                  <dt className="zmk-eyebrow text-[10px]">TRADE NAME</dt>
-                  <dd>{plant.tradeName}</dd>
-                </div>
-                {label ? (
+              </div>
+
+              <aside className="border border-[#2c6a4b]/10 bg-[#fffef8]/88 p-5 backdrop-blur-md dark:border-[#d9ffd8]/14 dark:bg-[#07110c]/78">
+                <p className="zmk-eyebrow mb-5 text-[11px]">QUICK FACTS</p>
+                <dl className="grid gap-4 text-sm leading-7">
                   <div>
-                    <dt className="zmk-eyebrow text-[10px]">LABEL</dt>
-                    <dd>{label.shortName}</dd>
-                    <dd className="text-xs">{label.fullKana}</dd>
-                    {label.note ? <dd className="text-xs text-[#b89558]">{label.note}</dd> : null}
+                    <dt className="zmk-eyebrow text-[10px]">CATEGORY</dt>
+                    <dd className="zmk-muted">{plant.category}</dd>
                   </div>
-                ) : null}
-                <div>
-                  <dt className="zmk-eyebrow text-[10px]">TAGS</dt>
-                  <dd className="mt-2 flex flex-wrap gap-2">
-                    {plant.tags.map((tag) => (
-                      <span key={tag} className="zmk-pill">
-                        {tag}
-                      </span>
-                    ))}
-                  </dd>
-                </div>
-                {facts.map((fact) => (
-                  <div key={fact}>
-                    <dt className="zmk-eyebrow text-[10px]">MEMO</dt>
-                    <dd>{fact}</dd>
+                  <div>
+                    <dt className="zmk-eyebrow text-[10px]">TRADE NAME</dt>
+                    <dd className="zmk-muted">{plant.tradeName}</dd>
                   </div>
-                ))}
-              </dl>
+                  {label ? (
+                    <div>
+                      <dt className="zmk-eyebrow text-[10px]">LABEL</dt>
+                      <dd className="zmk-muted">{label.shortName}</dd>
+                      <dd className="zmk-muted text-xs">{label.fullKana}</dd>
+                      {label.note ? <dd className="text-xs text-[#b89558]">{label.note}</dd> : null}
+                    </div>
+                  ) : null}
+                  <div>
+                    <dt className="zmk-eyebrow text-[10px]">TAGS</dt>
+                    <dd className="mt-2 flex flex-wrap gap-2">
+                      {plant.tags.map((tag) => (
+                        <span key={tag} className="zmk-pill">
+                          {tag}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                  {facts.map(([name, value]) => (
+                    <div key={name}>
+                      <dt className="zmk-eyebrow text-[10px]">{name}</dt>
+                      <dd className="zmk-muted">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </aside>
             </div>
-          </aside>
+          </article>
         </div>
       </section>
 
