@@ -76,13 +76,13 @@ export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string 
 
   if (!primary) {
     return (
-      <div className="relative flex aspect-[4/5] min-h-[360px] items-end overflow-hidden border border-[#fffaf0]/12 bg-[radial-gradient(circle_at_50%_18%,rgba(217,255,216,0.11),transparent_36%),linear-gradient(160deg,#0b1710,#030604)] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
-        <div className="absolute inset-6 border border-[#fffaf0]/8" />
+      <div className="relative flex aspect-[4/5] min-h-[360px] items-end overflow-hidden border border-[#2c6a4b]/12 bg-[radial-gradient(circle_at_50%_18%,rgba(217,255,216,0.11),transparent_36%),linear-gradient(160deg,#0b1710,#030604)] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+        <div className="absolute inset-6 border border-[#2c6a4b]/8" />
         <div className="relative">
           <p className="mb-3 text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">
             IMAGE AWAITING SELECTION
           </p>
-          <p className="text-sm leading-7 text-[#d8d0bf]/72">
+          <p className="text-sm leading-7 text-[#315244]/72">
             この品種の画像は、管理者が確認してから表示されます。
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string 
   }
 
   return (
-    <figure className="overflow-hidden border border-[#fffaf0]/12 bg-[#020503] shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+    <figure className="overflow-hidden border border-[#2c6a4b]/12 bg-[#020503] shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
       <div className="aspect-[4/5]">
         <Image
           src={primary.image.src}
@@ -103,12 +103,12 @@ export default function DictionaryPlantImage({ plantSlug }: { plantSlug: string 
           loading="lazy"
         />
       </div>
-      <figcaption className="border-t border-[#fffaf0]/10 bg-[#07120d]/92 px-4 py-3 text-[11px] leading-6 text-[#d8d0bf]/62">
+      <figcaption className="border-t border-[#2c6a4b]/10 bg-white/92 px-4 py-3 text-[11px] leading-6 text-[#315244]/62">
         管理者確認済み画像 / {primary.image.source}
       </figcaption>
 
       {gallery.length > 0 && (
-        <div className="grid grid-cols-3 gap-1 border-t border-[#fffaf0]/10 bg-[#07120d] p-1">
+        <div className="grid grid-cols-3 gap-1 border-t border-[#2c6a4b]/10 bg-white p-1">
           {gallery.slice(0, 6).map(({ assignment, image }) => (
             <div key={assignment.id} className="relative aspect-square overflow-hidden bg-[#020503]">
               <Image

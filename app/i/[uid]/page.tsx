@@ -116,7 +116,7 @@ function SecondaryLink({ href, children }: { href: string; children: React.React
   return (
     <Link
       href={href}
-      className="inline-flex min-h-12 items-center justify-center border border-[#fffaf0]/22 bg-[#050806]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55"
+      className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 bg-[#fffef8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55"
     >
       {children}
     </Link>
@@ -125,10 +125,10 @@ function SecondaryLink({ href, children }: { href: string; children: React.React
 
 function EmptyState({ uid, error }: { uid: string; error: NfcError | null }) {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
       <section className="mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-20 pt-32">
-        <div className="w-full max-w-4xl border border-[#fffaf0]/10 bg-[#07120d]/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.28)] md:p-12">
+        <div className="w-full max-w-4xl border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.28)] md:p-12">
           <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
             NFC DATA NOT REGISTERED / {uid}
           </p>
@@ -136,7 +136,7 @@ function EmptyState({ uid, error }: { uid: string; error: NfcError | null }) {
             この植物IDは登録されておりません。
             <span className="block">管理局にお問い合わせください。</span>
           </h1>
-          <div className="mt-8 border-l border-[#d9ffd8]/35 pl-5 text-[15px] leading-8 text-[#d8d0bf]/80 md:text-lg md:leading-9">
+          <div className="mt-8 border-l border-[#d9ffd8]/35 pl-5 text-[15px] leading-8 text-[#315244]/80 md:text-lg md:leading-9">
             <p>登録画面から植物IDと個体情報を登録すると、このページに個体管理情報が表示されます。</p>
             <p className="mt-3">登録時は NFC ID: {uid} を管理局へ共有してください。</p>
           </div>
@@ -148,7 +148,7 @@ function EmptyState({ uid, error }: { uid: string; error: NfcError | null }) {
             <SecondaryLink href="/">トップへ戻る</SecondaryLink>
           </div>
 
-          <div className="mt-8 border border-[#fffaf0]/10 bg-[#fffaf0]/5 p-4 text-xs leading-6 text-[#d8d0bf]/64">
+          <div className="mt-8 border border-[#2c6a4b]/10 bg-[#fffaf0]/5 p-4 text-xs leading-6 text-[#315244]/64">
             <p className="font-semibold tracking-[0.16em] text-[#b89558]">ERROR DETAIL</p>
             <dl className="mt-3 grid gap-2 sm:grid-cols-[140px_1fr]">
               <dt>本来のエラーコード</dt>
@@ -172,10 +172,10 @@ export default async function Page({ params }: IndividualPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.10),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_75%_20%,rgba(217,255,216,0.10),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_54%,#07110c_100%)] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
       <section className="mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-20 pt-32">
-        <div className="w-full max-w-5xl border border-[#fffaf0]/10 bg-[#07120d]/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.26)] md:p-12">
+        <div className="w-full max-w-5xl border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.26)] md:p-12">
           <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
             NFC INDIVIDUAL / {uid}
           </p>
@@ -183,7 +183,7 @@ export default async function Page({ params }: IndividualPageProps) {
             {item.name_en || item.name_jp || uid}
           </h1>
           {item.name_jp && (
-            <p className="mt-5 text-lg leading-8 text-[#d8d0bf]/82">
+            <p className="mt-5 text-lg leading-8 text-[#315244]/82">
               和名 / 流通名：{item.name_jp}
             </p>
           )}

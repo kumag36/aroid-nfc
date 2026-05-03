@@ -34,7 +34,7 @@ export default function ProtectedPhoneLink() {
       </a>
       <a
         href={`mailto:${emailAddress}?subject=${encodeURIComponent('植物ID登録依頼')}`}
-        className="inline-flex min-h-12 items-center justify-center border border-[#fffaf0]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#fffaf0]/55"
+        className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#2c6a4b]/55"
         rel="nofollow"
       >
         Gmailで送る

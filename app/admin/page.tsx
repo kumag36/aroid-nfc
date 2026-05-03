@@ -50,10 +50,10 @@ const adminLinks = [
 
 function StatCard({ label, value, detail }: { label: string; value: string | number; detail: string }) {
   return (
-    <article className="border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.2)]">
+    <article className="border border-[#2c6a4b]/10 bg-white/86 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.2)]">
       <p className="text-[11px] font-semibold tracking-[0.2em] text-[#b89558]">{label}</p>
-      <p className="mt-4 text-3xl font-medium text-[#fffaf0]">{value}</p>
-      <p className="mt-3 text-[13px] leading-7 text-[#d8d0bf]/70">{detail}</p>
+      <p className="mt-4 text-3xl font-medium text-[#143326]">{value}</p>
+      <p className="mt-3 text-[13px] leading-7 text-[#315244]/70">{detail}</p>
     </article>
   )
 }
@@ -68,7 +68,7 @@ export default async function AdminPage() {
   const pendingImages = Math.max(dictionaryImageCandidates.length - assignments.length - exclusions.length, 0)
 
   return (
-    <main className="min-h-screen bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
 
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_82%_18%,rgba(217,255,216,0.12),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-14 pt-32 md:pb-20 md:pt-40">
@@ -78,7 +78,7 @@ export default async function AdminPage() {
             管理機能を
             <span className="block">ここに集約する。</span>
           </h1>
-          <p className="mt-8 max-w-3xl text-[15px] leading-8 text-[#eee7d7]/82 md:text-lg md:leading-9">
+          <p className="mt-8 max-w-3xl text-[15px] leading-8 text-[#315244]/82 md:text-lg md:leading-9">
             表のサイトには出さない、ざまくりプランツの作業室です。図鑑写真の区分け、音楽室、美術館、NFC検証をここから直接扱えます。
           </p>
         </div>
@@ -108,12 +108,12 @@ export default async function AdminPage() {
                 'group block border p-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-1',
                 item.primary
                   ? 'border-[#d9ffd8]/45 bg-[#d9ffd8]/10'
-                  : 'border-[#fffaf0]/10 bg-[#07120d]/86 hover:border-[#d9ffd8]/35',
+                  : 'border-[#2c6a4b]/10 bg-white/86 hover:border-[#d9ffd8]/35',
               ].join(' ')}
             >
               <p className="text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">{item.eyebrow}</p>
-              <h2 className="mt-5 text-2xl font-medium leading-tight text-[#fffaf0] md:text-3xl">{item.title}</h2>
-              <p className="mt-5 text-[15px] leading-8 text-[#d8d0bf]/76">{item.body}</p>
+              <h2 className="mt-5 text-2xl font-medium leading-tight text-[#143326] md:text-3xl">{item.title}</h2>
+              <p className="mt-5 text-[15px] leading-8 text-[#315244]/76">{item.body}</p>
               <p className="mt-8 text-xs font-semibold tracking-[0.2em] text-[#d9ffd8] transition group-hover:translate-x-1">
                 OPEN
               </p>

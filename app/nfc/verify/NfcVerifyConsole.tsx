@@ -110,16 +110,16 @@ export default function NfcVerifyConsole() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_420px]">
-      <section className="border border-[#fffaf0]/10 bg-[#07120d]/88 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.26)] md:p-8">
+      <section className="border border-[#2c6a4b]/10 bg-white/88 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.26)] md:p-8">
         <p className="mb-5 text-xs font-semibold tracking-[0.28em] text-[#b89558]">NFC TOOLS LAB</p>
         <label className="block">
-          <span className="mb-3 block text-sm leading-7 text-[#d8d0bf]/72">
+          <span className="mb-3 block text-sm leading-7 text-[#315244]/72">
             NFC ID
           </span>
           <input
             value={uid}
             onChange={(event) => setUid(event.target.value)}
-            className="min-h-14 w-full border border-[#fffaf0]/14 bg-[#020403] px-4 text-lg tracking-[0.12em] text-[#fffaf0] outline-none transition focus:border-[#d9ffd8]/55"
+            className="min-h-14 w-full border border-[#2c6a4b]/14 bg-[#020403] px-4 text-lg tracking-[0.12em] text-[#143326] outline-none transition focus:border-[#d9ffd8]/55"
             placeholder="ZMK-000001"
           />
         </label>
@@ -135,25 +135,25 @@ export default function NfcVerifyConsole() {
           </button>
           <Link
             href={`/i/${encodeURIComponent(normalizedUid || defaultUid)}`}
-            className="inline-flex min-h-12 items-center justify-center border border-[#fffaf0]/22 px-7 text-sm font-semibold tracking-[0.18em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55"
+            className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-7 text-sm font-semibold tracking-[0.18em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55"
           >
             OPEN PAGE
           </Link>
         </div>
 
-        <div className="mt-8 border border-[#fffaf0]/10 bg-[#fffaf0]/5 p-5">
+        <div className="mt-8 border border-[#2c6a4b]/10 bg-[#fffaf0]/5 p-5">
           <p className="text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">WRITE THIS URL TO NFC TAG</p>
-          <p className="mt-4 break-all border border-[#fffaf0]/10 bg-[#020403] px-4 py-3 text-sm leading-7 text-[#d8d0bf]/78">
+          <p className="mt-4 break-all border border-[#2c6a4b]/10 bg-[#020403] px-4 py-3 text-sm leading-7 text-[#315244]/78">
             {writeUrl}
           </p>
-          <p className="mt-4 border-l border-[#b89558]/55 pl-4 text-xs leading-6 text-[#d8d0bf]/68">
+          <p className="mt-4 border-l border-[#b89558]/55 pl-4 text-xs leading-6 text-[#315244]/68">
             iPhoneのSafariではWebページから直接NFCを書き込めないため、NFC ToolsでURLレコードとして書き込みます。タグにはこの短いURLだけを入れ、個体情報はWeb側のDBで管理します。
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <button
               type="button"
               onClick={copyWriteUrl}
-              className="inline-flex min-h-12 items-center justify-center border border-[#fffaf0]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition hover:border-[#d9ffd8]/55"
+              className="inline-flex min-h-12 items-center justify-center border border-[#2c6a4b]/22 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition hover:border-[#d9ffd8]/55"
             >
               COPY URL
             </button>
@@ -166,8 +166,8 @@ export default function NfcVerifyConsole() {
               OPEN NFC TOOLS
             </a>
           </div>
-          <p className="mt-4 text-xs leading-6 text-[#d8d0bf]/62">{writeStatus}</p>
-          <ol className="mt-5 grid gap-3 text-[13px] leading-7 text-[#d8d0bf]/76">
+          <p className="mt-4 text-xs leading-6 text-[#315244]/62">{writeStatus}</p>
+          <ol className="mt-5 grid gap-3 text-[13px] leading-7 text-[#315244]/76">
             {writeSteps.map((step, index) => (
               <li key={step} className="border-l border-[#d9ffd8]/30 pl-4">
                 {index + 1}. {step}
@@ -176,10 +176,10 @@ export default function NfcVerifyConsole() {
           </ol>
         </div>
 
-        <div className="mt-8 border border-[#fffaf0]/10 bg-[#fffaf0]/5 p-5">
+        <div className="mt-8 border border-[#2c6a4b]/10 bg-[#fffaf0]/5 p-5">
           <p className="text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">VERIFY RESULT</p>
           {!result?.nfc ? (
-            <p className="mt-4 text-[15px] leading-8 text-[#d8d0bf]/72">
+            <p className="mt-4 text-[15px] leading-8 text-[#315244]/72">
               UIDを入力して検証すると、登録済み・未登録・DB接続状態を確認できます。
             </p>
           ) : (
@@ -188,13 +188,13 @@ export default function NfcVerifyConsole() {
                 <span className="border border-[#d9ffd8]/30 bg-[#d9ffd8]/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-[#d9ffd8]">
                   {statusLabel(result.nfc.status)}
                 </span>
-                <span className="text-sm tracking-[0.12em] text-[#d8d0bf]/68">{result.nfc.code}</span>
+                <span className="text-sm tracking-[0.12em] text-[#315244]/68">{result.nfc.code}</span>
               </div>
-              <p className="text-[15px] leading-8 text-[#d8d0bf]/78">{result.nfc.message}</p>
+              <p className="text-[15px] leading-8 text-[#315244]/78">{result.nfc.message}</p>
               {result.nfc.item && (
-                <div className="border-l border-[#d9ffd8]/35 pl-4 text-[15px] leading-8 text-[#fffaf0]">
+                <div className="border-l border-[#d9ffd8]/35 pl-4 text-[15px] leading-8 text-[#143326]">
                   <p>{result.nfc.item.name_en || result.nfc.item.name_jp || result.uid}</p>
-                  {result.nfc.item.name_jp && <p className="text-[#d8d0bf]/70">Trade name: {result.nfc.item.name_jp}</p>}
+                  {result.nfc.item.name_jp && <p className="text-[#315244]/70">Trade name: {result.nfc.item.name_jp}</p>}
                 </div>
               )}
               {result.urls && (
@@ -214,13 +214,13 @@ export default function NfcVerifyConsole() {
 
       <aside className="grid gap-3">
         {Object.entries(result?.database ?? initialDatabase).map(([key, value]) => (
-          <article key={key} className="border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.2)]">
+          <article key={key} className="border border-[#2c6a4b]/10 bg-white/86 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.2)]">
             <div className="mb-4 flex items-center justify-between gap-4">
               <p className="text-[11px] font-semibold tracking-[0.18em] text-[#b89558]">{value.label}</p>
               <span className="text-[11px] tracking-[0.14em] text-[#d9ffd8]/72">{statusLabel(value.status)}</span>
             </div>
-            <p className="text-3xl font-medium text-[#fffaf0]">{value.count}</p>
-            <p className="mt-4 text-[13px] leading-7 text-[#d8d0bf]/70">{value.detail}</p>
+            <p className="text-3xl font-medium text-[#143326]">{value.count}</p>
+            <p className="mt-4 text-[13px] leading-7 text-[#315244]/70">{value.detail}</p>
           </article>
         ))}
       </aside>

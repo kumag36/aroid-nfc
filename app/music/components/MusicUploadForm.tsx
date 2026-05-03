@@ -36,14 +36,14 @@ export default function MusicUploadForm() {
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="grid gap-5 border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.22)] md:p-8">
+    <form ref={formRef} onSubmit={handleSubmit} className="grid gap-5 border border-[#2c6a4b]/10 bg-white/86 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.22)] md:p-8">
       <label className="grid gap-2">
         <span className="text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">ADMIN PASSWORD</span>
         <input
           name="password"
           type="password"
           required
-          className="h-12 border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none transition focus:border-[#d9ffd8]/60"
+          className="h-12 border border-[#2c6a4b]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#143326] outline-none transition focus:border-[#d9ffd8]/60"
         />
       </label>
 
@@ -52,7 +52,7 @@ export default function MusicUploadForm() {
         <input
           name="title"
           required
-          className="h-12 border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none transition focus:border-[#d9ffd8]/60"
+          className="h-12 border border-[#2c6a4b]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#143326] outline-none transition focus:border-[#d9ffd8]/60"
         />
       </label>
 
@@ -61,7 +61,7 @@ export default function MusicUploadForm() {
         <input
           name="artist"
           placeholder="ZAMAKURI PLANTS"
-          className="h-12 border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none transition placeholder:text-[#d8d0bf]/35 focus:border-[#d9ffd8]/60"
+          className="h-12 border border-[#2c6a4b]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#143326] outline-none transition placeholder:text-[#315244]/35 focus:border-[#d9ffd8]/60"
         />
       </label>
 
@@ -70,7 +70,7 @@ export default function MusicUploadForm() {
         <textarea
           name="description"
           rows={4}
-          className="border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 py-3 text-sm leading-7 text-[#fffaf0] outline-none transition focus:border-[#d9ffd8]/60"
+          className="border border-[#2c6a4b]/14 bg-[#fffaf0]/6 px-4 py-3 text-sm leading-7 text-[#143326] outline-none transition focus:border-[#d9ffd8]/60"
         />
       </label>
 
@@ -81,9 +81,9 @@ export default function MusicUploadForm() {
           type="file"
           accept="audio/*"
           required
-          className="border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 py-4 text-sm text-[#d8d0bf]/80 file:mr-4 file:border-0 file:bg-[#d9ffd8]/12 file:px-4 file:py-2 file:text-[#eaffdf]"
+          className="border border-[#2c6a4b]/14 bg-[#fffaf0]/6 px-4 py-4 text-sm text-[#315244]/80 file:mr-4 file:border-0 file:bg-[#d9ffd8]/12 file:px-4 file:py-2 file:text-[#eaffdf]"
         />
-        <span className="text-xs leading-6 text-[#d8d0bf]/54">
+        <span className="text-xs leading-6 text-[#315244]/54">
           MP3、WAV、M4A、OGGなどの音源をアップできます。
         </span>
       </label>
@@ -96,7 +96,7 @@ export default function MusicUploadForm() {
         {isUploading ? '音楽室へ搬入中' : '音楽室に展示する'}
       </button>
 
-      {message && <p className="text-sm leading-7 text-[#d8d0bf]/78">{message}</p>}
+      {message && <p className="text-sm leading-7 text-[#315244]/78">{message}</p>}
     </form>
   )
 }

@@ -71,7 +71,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#d9ffd8] text-[#191a15] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
 
-      <section className="relative min-h-[92vh] overflow-hidden bg-[#08100c] text-[#fffaf0]">
+      <section className="relative min-h-[92vh] overflow-hidden bg-[#f1f8ed] text-[#143326]">
         <Image
           src="/history/hero-botanical.png"
           alt=""
@@ -81,7 +81,7 @@ export default function Home() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,10,7,0.97)_0%,rgba(8,16,12,0.84)_48%,rgba(8,16,12,0.34)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#08100c] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f1f8ed] to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-5 pb-20 pt-28">
           <div className="mb-8 h-px w-28 bg-[#d9ffd8]/50" />
@@ -92,7 +92,7 @@ export default function Home() {
             ざまくりプランツ
             <span className="block">1年の歩み</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/85">
+          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#315244]/85">
             開業から走り続けた11か月。約1年分の熱量を、静かな記録として。
             <br />
             平屋の軒先から始まった小さな植物屋が、全国の植物好きとつながる場所へ育つまで。
@@ -106,7 +106,7 @@ export default function Home() {
             </a>
             <Link
               href="/dictionary"
-              className="inline-flex min-h-12 min-w-48 items-center justify-center border border-[#fffaf0]/28 bg-[#050806]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55"
+              className="inline-flex min-h-12 min-w-48 items-center justify-center border border-[#2c6a4b]/28 bg-[#fffef8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/55"
             >
               図鑑を見る
             </Link>
@@ -159,19 +159,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#050806] px-5 py-20 text-[#fffaf0] md:py-24">
-        <div className="mx-auto grid max-w-7xl gap-4 border-y border-[#fffaf0]/10 py-8 md:grid-cols-3">
+      <section className="bg-[#fffef8] px-5 py-20 text-[#143326] md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-4 border-y border-[#2c6a4b]/10 py-8 md:grid-cols-3">
           {[
             ['01', '状態を見て渡す', '株の表情、根、葉の動きを見て、納得できるものだけを届けます。'],
             ['02', '育成まで見据える', '買って終わりではなく、環境に馴染むまでを植物の時間として捉えます。'],
             ['03', '個体を記録する', 'NFCと図鑑で、品種名だけでは見えない一株ごとの情報を残します。'],
           ].map(([number, title, text]) => (
-            <article key={number} className="border-[#fffaf0]/10 py-4 md:border-l md:px-8 md:first:border-l-0">
+            <article key={number} className="border-[#2c6a4b]/10 py-4 md:border-l md:px-8 md:first:border-l-0">
               <p className="mb-4 text-xs font-semibold tracking-[0.22em] text-[#b89558]">
                 {number}
               </p>
               <h3 className="text-2xl font-medium leading-tight">{title}</h3>
-              <p className="mt-4 text-[15px] leading-8 text-[#eee7d7]/72">
+              <p className="mt-4 text-[15px] leading-8 text-[#315244]/72">
                 {text}
               </p>
             </article>
@@ -193,10 +193,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="history" className="relative overflow-hidden bg-[#050806] px-5 py-20 text-[#fffaf0] md:py-28">
+      <section id="history" className="relative overflow-hidden bg-[#fffef8] px-5 py-20 text-[#143326] md:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_10%,rgba(217,255,216,0.10),transparent_30%)]" />
         <div className="relative mx-auto max-w-7xl">
-          <div className="mb-16 grid gap-8 border-b border-[#fffaf0]/10 pb-12 md:grid-cols-[1fr_420px] md:items-end">
+          <div className="mb-16 grid gap-8 border-b border-[#2c6a4b]/10 pb-12 md:grid-cols-[1fr_420px] md:items-end">
             <div>
               <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
                 CHRONOLOGY / SINCE 2025
@@ -205,7 +205,7 @@ export default function Home() {
                 ざまくりプランツ年表
               </h2>
             </div>
-            <p className="text-[15px] leading-8 text-[#eee7d7]/72">
+            <p className="text-[15px] leading-8 text-[#315244]/72">
               開業から走り続けた11か月。販売記録ではなく、植物と向き合う判断、現場で得た信頼、そして次の基準へ進むための記録です。
             </p>
           </div>
@@ -214,25 +214,25 @@ export default function Home() {
             {history.map((item, index) => (
               <article
                 key={item.title}
-                className="group grid gap-8 border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.22)] transition duration-300 hover:border-[#d9ffd8]/30 md:grid-cols-[120px_minmax(0,1fr)_420px] md:items-stretch md:p-7"
+                className="group grid gap-8 border border-[#2c6a4b]/10 bg-white/86 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.22)] transition duration-300 hover:border-[#d9ffd8]/30 md:grid-cols-[120px_minmax(0,1fr)_420px] md:items-stretch md:p-7"
               >
-                <div className="flex items-start justify-between gap-4 border-b border-[#fffaf0]/10 pb-5 md:block md:border-b-0 md:border-r md:pb-0 md:pr-7">
+                <div className="flex items-start justify-between gap-4 border-b border-[#2c6a4b]/10 pb-5 md:block md:border-b-0 md:border-r md:pb-0 md:pr-7">
                   <p className="text-3xl font-medium leading-none text-[#d9ffd8]/82">
                     {String(index + 1).padStart(2, '0')}
                   </p>
-                  <p className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-[#eee7d7]/48 md:mt-5">
+                  <p className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-[#315244]/48 md:mt-5">
                     {item.period}
                   </p>
                 </div>
 
                 <div className="flex flex-col justify-center md:py-3">
-                  <h3 className="text-[clamp(1.55rem,3vw,2.5rem)] font-medium leading-tight text-[#fffaf0]">
+                  <h3 className="text-[clamp(1.55rem,3vw,2.5rem)] font-medium leading-tight text-[#143326]">
                     {item.title}
                   </h3>
-                  <p className="mt-5 border-l border-[#d9ffd8]/35 pl-4 text-[15px] leading-8 text-[#eee7d7]/86">
+                  <p className="mt-5 border-l border-[#d9ffd8]/35 pl-4 text-[15px] leading-8 text-[#315244]/86">
                     {item.lead}
                   </p>
-                  <p className="mt-6 whitespace-pre-line text-[15px] leading-8 text-[#d8d0bf]/72">
+                  <p className="mt-6 whitespace-pre-line text-[15px] leading-8 text-[#315244]/72">
                     {item.text}
                   </p>
                 </div>
@@ -253,7 +253,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="future" className="bg-[#111d17] text-[#fffaf0]">
+      <section id="future" className="bg-[#111d17] text-[#143326]">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-[0.9fr_1fr] md:items-center md:py-28">
           <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-[#263b2f]">
             <Image
@@ -273,7 +273,7 @@ export default function Home() {
             <h2 className="text-[clamp(2rem,4vw,3.6rem)] font-medium leading-tight">
               これからが、本番です。
             </h2>
-            <p className="mt-8 max-w-2xl whitespace-pre-line text-[15px] leading-8 text-[#eee7d7]/82">
+            <p className="mt-8 max-w-2xl whitespace-pre-line text-[15px] leading-8 text-[#315244]/82">
               {`ただ売るだけの植物屋では終わりません。
 
 品種を知る。違いが分かる。育てられる。

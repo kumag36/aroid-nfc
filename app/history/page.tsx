@@ -57,10 +57,10 @@ export const metadata = {
 
 export default function HistoryPage() {
   return (
-    <main className="min-h-screen bg-[#050806] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[#fffef8] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
 
-      <section className="relative min-h-[82vh] overflow-hidden bg-[#08100c] px-5 pb-20 pt-32 md:pt-40">
+      <section className="relative min-h-[82vh] overflow-hidden bg-[#f1f8ed] px-5 pb-20 pt-32 md:pt-40">
         <Image
           src="/history/hero-botanical.png"
           alt=""
@@ -70,7 +70,7 @@ export default function HistoryPage() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,10,7,0.97)_0%,rgba(8,16,12,0.84)_48%,rgba(8,16,12,0.34)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#050806] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#fffef8] to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[68vh] max-w-7xl flex-col justify-center">
           <div className="mb-8 h-px w-28 bg-[#d9ffd8]/50" />
@@ -81,7 +81,7 @@ export default function HistoryPage() {
             ざまくりプランツ
             <span className="block">1年の歩み</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/85 md:text-lg md:leading-9">
+          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#315244]/85 md:text-lg md:leading-9">
             開業から走り続けた11か月。約1年分の熱量を、小さな植物屋の記録として静かに残します。
           </p>
         </div>
@@ -90,7 +90,7 @@ export default function HistoryPage() {
       <section className="relative overflow-hidden px-5 py-20 md:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_10%,rgba(217,255,216,0.10),transparent_30%)]" />
         <div className="relative mx-auto max-w-7xl">
-          <div className="mb-16 grid gap-8 border-b border-[#fffaf0]/10 pb-12 md:grid-cols-[1fr_420px] md:items-end">
+          <div className="mb-16 grid gap-8 border-b border-[#2c6a4b]/10 pb-12 md:grid-cols-[1fr_420px] md:items-end">
             <div>
               <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
                 CHRONOLOGY / SINCE 2025
@@ -99,7 +99,7 @@ export default function HistoryPage() {
                 年表として見る、判断の積み重ね。
               </h2>
             </div>
-            <p className="text-[15px] leading-8 text-[#eee7d7]/72">
+            <p className="text-[15px] leading-8 text-[#315244]/72">
               販売記録ではなく、植物と向き合う判断、現場で得た信頼、そして次の基準へ進むための記録です。
             </p>
           </div>
@@ -108,25 +108,25 @@ export default function HistoryPage() {
             {history.map((item, index) => (
               <article
                 key={item.title}
-                className="group grid gap-8 border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.22)] transition duration-300 hover:border-[#d9ffd8]/30 md:grid-cols-[120px_minmax(0,1fr)_420px] md:items-stretch md:p-7"
+                className="group grid gap-8 border border-[#2c6a4b]/10 bg-white/86 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.22)] transition duration-300 hover:border-[#d9ffd8]/30 md:grid-cols-[120px_minmax(0,1fr)_420px] md:items-stretch md:p-7"
               >
-                <div className="flex items-start justify-between gap-4 border-b border-[#fffaf0]/10 pb-5 md:block md:border-b-0 md:border-r md:pb-0 md:pr-7">
+                <div className="flex items-start justify-between gap-4 border-b border-[#2c6a4b]/10 pb-5 md:block md:border-b-0 md:border-r md:pb-0 md:pr-7">
                   <p className="text-3xl font-medium leading-none text-[#d9ffd8]/82">
                     {String(index + 1).padStart(2, '0')}
                   </p>
-                  <p className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-[#eee7d7]/48 md:mt-5">
+                  <p className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-[#315244]/48 md:mt-5">
                     {item.period}
                   </p>
                 </div>
 
                 <div className="flex flex-col justify-center md:py-3">
-                  <h3 className="text-[clamp(1.55rem,3vw,2.5rem)] font-medium leading-tight text-[#fffaf0]">
+                  <h3 className="text-[clamp(1.55rem,3vw,2.5rem)] font-medium leading-tight text-[#143326]">
                     {item.title}
                   </h3>
-                  <p className="mt-5 border-l border-[#d9ffd8]/35 pl-4 text-[15px] leading-8 text-[#eee7d7]/86">
+                  <p className="mt-5 border-l border-[#d9ffd8]/35 pl-4 text-[15px] leading-8 text-[#315244]/86">
                     {item.lead}
                   </p>
-                  <p className="mt-6 whitespace-pre-line text-[15px] leading-8 text-[#d8d0bf]/72">
+                  <p className="mt-6 whitespace-pre-line text-[15px] leading-8 text-[#315244]/72">
                     {item.text}
                   </p>
                 </div>
@@ -147,13 +147,13 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      <section className="border-t border-[#fffaf0]/10 bg-[#f7fbf1] px-5 py-16 text-[#191a15] md:py-20">
+      <section className="border-t border-[#2c6a4b]/10 bg-[#f7fbf1] px-5 py-16 text-[#191a15] md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-[15px] leading-8 text-[#665f55]">
             ここから、図鑑とNFC個体管理へ。品種の知識と、一株ごとの履歴をつなげていきます。
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/dictionary" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#191a15] bg-[#191a15] px-5 text-xs font-semibold tracking-[0.18em] text-[#fffaf0]">
+            <Link href="/dictionary" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#191a15] bg-[#191a15] px-5 text-xs font-semibold tracking-[0.18em] text-[#143326]">
               図鑑を見る
             </Link>
             <Link href="/" className="inline-flex min-h-11 min-w-40 items-center justify-center border border-[#191a15]/18 px-5 text-xs font-semibold tracking-[0.18em] text-[#191a15]">

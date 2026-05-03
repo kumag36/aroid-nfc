@@ -267,11 +267,11 @@ export default function DictionaryImageAdmin({
 
   return (
     <div className="space-y-8">
-      <div className="border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
+      <div className="border border-[#2c6a4b]/10 bg-white/86 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
         <p className="text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">
           IMAGE REVIEW QUEUE
         </p>
-        <p className="mt-4 text-[14px] leading-8 text-[#d8d0bf]/76">
+        <p className="mt-4 text-[14px] leading-8 text-[#315244]/76">
           自動判定は仮候補です。品種は確定しません。最終確認で紐づけた画像だけが採用済みになり、作業キューから消えます。不要な画像は除外できます。
         </p>
         {!adminReady && (
@@ -341,7 +341,7 @@ export default function DictionaryImageAdmin({
             className={`shrink-0 border px-4 py-2 text-xs font-semibold tracking-[0.14em] transition ${
               queueFilter === value
                 ? 'border-[#d9ffd8]/65 bg-[#d9ffd8]/12 text-[#eaffdf]'
-                : 'border-[#fffaf0]/12 bg-[#fffaf0]/4 text-[#eee7d7]/70 hover:border-[#d9ffd8]/40'
+                : 'border-[#2c6a4b]/12 bg-[#fffaf0]/4 text-[#315244]/70 hover:border-[#d9ffd8]/40'
             }`}
           >
             {label}
@@ -349,7 +349,7 @@ export default function DictionaryImageAdmin({
         ))}
       </div>
 
-      <div className="sticky top-3 z-20 flex flex-col gap-3 border border-[#fffaf0]/10 bg-[#06100b]/92 p-3 shadow-[0_20px_80px_rgba(0,0,0,0.28)] backdrop-blur md:flex-row md:items-center md:justify-between">
+      <div className="sticky top-3 z-20 flex flex-col gap-3 border border-[#2c6a4b]/10 bg-[#f7fbf1]/92 p-3 shadow-[0_20px_80px_rgba(0,0,0,0.28)] backdrop-blur md:flex-row md:items-center md:justify-between">
         <label className="flex min-h-11 items-center gap-3 text-sm text-[#eaffdf]">
           <input
             type="checkbox"
@@ -358,7 +358,7 @@ export default function DictionaryImageAdmin({
             className="h-4 w-4 accent-[#d9ffd8]"
           />
           表示中を選択
-          <span className="text-xs text-[#d8d0bf]/64">
+          <span className="text-xs text-[#315244]/64">
             選択中 {selectedIds.length} 枚
           </span>
         </label>
@@ -367,7 +367,7 @@ export default function DictionaryImageAdmin({
             type="button"
             onClick={() => setSelectedIds([])}
             disabled={selectedIds.length === 0 || isBulkExcluding}
-            className="min-h-11 border border-[#fffaf0]/14 px-4 text-xs font-semibold tracking-[0.16em] text-[#d8d0bf] disabled:opacity-40"
+            className="min-h-11 border border-[#2c6a4b]/14 px-4 text-xs font-semibold tracking-[0.16em] text-[#315244] disabled:opacity-40"
           >
             選択解除
           </button>
@@ -383,7 +383,7 @@ export default function DictionaryImageAdmin({
       </div>
 
       {message && (
-        <div className="border border-[#fffaf0]/12 bg-[#fffaf0]/6 px-4 py-3 text-sm text-[#eaffdf]">
+        <div className="border border-[#2c6a4b]/12 bg-[#fffaf0]/6 px-4 py-3 text-sm text-[#eaffdf]">
           {message}
         </div>
       )}
@@ -413,7 +413,7 @@ export default function DictionaryImageAdmin({
       </div>
 
       {visibleCandidates.length === 0 && (
-        <div className="border border-[#fffaf0]/12 bg-[#fffaf0]/5 px-5 py-12 text-center text-[#d8d0bf]/72">
+        <div className="border border-[#2c6a4b]/12 bg-[#fffaf0]/5 px-5 py-12 text-center text-[#315244]/72">
           この条件の画像候補はありません。
         </div>
       )}
@@ -434,16 +434,16 @@ function FilterSelect({
 }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#d8d0bf]/64">
+      <span className="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-[#315244]/64">
         {label}
       </span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-12 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#fffaf0] outline-none"
+        className="h-12 w-full border border-[#2c6a4b]/14 bg-[#fffaf0]/6 px-4 text-sm text-[#143326] outline-none"
       >
         {options.map(([optionValue, optionLabel]) => (
-          <option className="bg-[#07120d]" key={optionValue} value={optionValue}>
+          <option className="bg-white" key={optionValue} value={optionValue}>
             {optionLabel}
           </option>
         ))}
@@ -486,7 +486,7 @@ function CandidateCard({
     linkedAssignment ? plants.find((plant) => plant.slug === linkedAssignment.plantSlug) : null
 
   return (
-    <article className={`overflow-hidden border bg-[#07120d]/86 shadow-[0_24px_80px_rgba(0,0,0,0.2)] ${selected ? 'border-[#d9ffd8]/70' : 'border-[#fffaf0]/10'}`}>
+    <article className={`overflow-hidden border bg-white/86 shadow-[0_24px_80px_rgba(0,0,0,0.2)] ${selected ? 'border-[#d9ffd8]/70' : 'border-[#2c6a4b]/10'}`}>
       <div className="relative aspect-[4/5] bg-[#020503]">
         <Image
           src={candidate.src}
@@ -496,7 +496,7 @@ function CandidateCard({
           className="object-cover"
           loading="lazy"
         />
-        <label className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center border border-[#fffaf0]/30 bg-[#06100b]/80 backdrop-blur">
+        <label className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center border border-[#2c6a4b]/30 bg-[#f7fbf1]/80 backdrop-blur">
           <input
             type="checkbox"
             checked={selected}
@@ -504,19 +504,19 @@ function CandidateCard({
             className="h-4 w-4 accent-[#d9ffd8]"
           />
         </label>
-        <div className="absolute left-3 top-3 rounded-full border border-[#d9ffd8]/30 bg-[#06100b]/80 px-3 py-1 text-[11px] text-[#eaffdf] backdrop-blur">
+        <div className="absolute left-3 top-3 rounded-full border border-[#d9ffd8]/30 bg-[#f7fbf1]/80 px-3 py-1 text-[11px] text-[#eaffdf] backdrop-blur">
           PLANT {Math.round(candidate.plantCheck.confidence * 100)}%
         </div>
       </div>
       <div className="space-y-4 p-4">
         <div>
-          <p className="break-all text-sm leading-6 text-[#fffaf0]">
+          <p className="break-all text-sm leading-6 text-[#143326]">
             {candidate.originalName}
           </p>
-          <p className="mt-2 text-xs leading-6 text-[#d8d0bf]/62">
+          <p className="mt-2 text-xs leading-6 text-[#315244]/62">
             {candidate.width}x{candidate.height} / {candidate.sizeKb}KB
           </p>
-          <p className="mt-2 text-xs leading-6 text-[#d8d0bf]/62">
+          <p className="mt-2 text-xs leading-6 text-[#315244]/62">
             {candidate.plantCheck.reason}
           </p>
         </div>
@@ -545,7 +545,7 @@ function CandidateCard({
               )
             })}
             {linkedAssignment && (
-              <label className="mt-3 flex min-h-10 items-center gap-3 border border-[#d9ffd8]/20 bg-[#07120d]/70 px-3 text-[12px] font-semibold tracking-[0.12em] text-[#eaffdf]">
+              <label className="mt-3 flex min-h-10 items-center gap-3 border border-[#d9ffd8]/20 bg-white/70 px-3 text-[12px] font-semibold tracking-[0.12em] text-[#eaffdf]">
                 <input
                   type="checkbox"
                   checked={linkedAssignment.role === 'primary'}
@@ -560,7 +560,7 @@ function CandidateCard({
                   className="h-4 w-4 accent-[#d9ffd8]"
                 />
                 代表画像
-                <span className="ml-auto text-[10px] font-normal tracking-[0.08em] text-[#d8d0bf]/62">
+                <span className="ml-auto text-[10px] font-normal tracking-[0.08em] text-[#315244]/62">
                   {linkedPlant?.tradeName ?? linkedAssignment.plantSlug}
                 </span>
               </label>
@@ -577,13 +577,13 @@ function CandidateCard({
         <select
           value={plantSlug}
           onChange={(event) => setPlantSlug(event.target.value)}
-          className="h-11 w-full border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-3 text-sm text-[#fffaf0] outline-none"
+          className="h-11 w-full border border-[#2c6a4b]/14 bg-[#fffaf0]/6 px-3 text-sm text-[#143326] outline-none"
         >
-          <option className="bg-[#07120d]" value="">
+          <option className="bg-white" value="">
             品種を選ぶ
           </option>
           {plants.map((plant) => (
-            <option className="bg-[#07120d]" key={plant.slug} value={plant.slug}>
+            <option className="bg-white" key={plant.slug} value={plant.slug}>
               {plant.tradeName}
             </option>
           ))}
@@ -596,7 +596,7 @@ function CandidateCard({
             className={`min-h-10 border text-xs font-semibold tracking-[0.14em] ${
               role === 'primary'
                 ? 'border-[#d9ffd8]/60 bg-[#d9ffd8]/12 text-[#eaffdf]'
-                : 'border-[#fffaf0]/12 text-[#d8d0bf]/64'
+                : 'border-[#2c6a4b]/12 text-[#315244]/64'
             }`}
           >
             PRIMARY
@@ -607,7 +607,7 @@ function CandidateCard({
             className={`min-h-10 border text-xs font-semibold tracking-[0.14em] ${
               role === 'gallery'
                 ? 'border-[#d9ffd8]/60 bg-[#d9ffd8]/12 text-[#eaffdf]'
-                : 'border-[#fffaf0]/12 text-[#d8d0bf]/64'
+                : 'border-[#2c6a4b]/12 text-[#315244]/64'
             }`}
           >
             GALLERY

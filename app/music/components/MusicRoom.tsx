@@ -57,8 +57,6 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
   const seekDelayRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const seekIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const holdActiveRef = useRef(false)
-  const lastRewindTapRef = useRef(0)
-  const lastForwardTapRef = useRef(0)
   const shouldAutoplayRef = useRef(false)
   const [tracks, setTracks] = useState<MusicTrack[]>([])
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -186,7 +184,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
     }, 260)
   }
 
-  function finishSeekPress(direction: -1 | 1, eventTime: number) {
+  function finishSeekPress(direction: -1 | 1) {
     const wasHolding = holdActiveRef.current
 
     clearSeekHold()
@@ -194,15 +192,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
 
     if (wasHolding) return
 
-    const lastTapRef = direction === -1 ? lastRewindTapRef : lastForwardTapRef
-
-    if (eventTime - lastTapRef.current < 360) {
-      lastTapRef.current = 0
-      selectRelativeTrack(direction)
-      return
-    }
-
-    lastTapRef.current = eventTime
+    selectRelativeTrack(direction)
   }
 
   function selectRelativeTrack(offset: -1 | 1) {
@@ -313,7 +303,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
         <button
           type="button"
           onPointerDown={() => startSeekHold(-1)}
-          onPointerUp={(event) => finishSeekPress(-1, event.timeStamp)}
+          onPointerUp={() => finishSeekPress(-1)}
           onPointerCancel={clearSeekHold}
           onPointerLeave={clearSeekHold}
           onContextMenu={(event) => event.preventDefault()}
@@ -324,7 +314,7 @@ export default function MusicRoom({ variant = 'full' }: MusicRoomProps) {
         <button
           type="button"
           onPointerDown={() => startSeekHold(1)}
-          onPointerUp={(event) => finishSeekPress(1, event.timeStamp)}
+          onPointerUp={() => finishSeekPress(1)}
           onPointerCancel={clearSeekHold}
           onPointerLeave={clearSeekHold}
           onContextMenu={(event) => event.preventDefault()}

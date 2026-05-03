@@ -26,7 +26,7 @@ export default async function DictionaryImageAdminPage() {
   const pendingCount = dictionaryImageCandidates.length - assignments.length - exclusions.length
 
   return (
-    <main className="min-h-screen bg-[#06100b] text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="min-h-screen bg-[#f7fbf1] text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
 
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_80%_18%,rgba(217,255,216,0.11),transparent_34%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 pb-16 pt-32 md:pb-24 md:pt-40">
@@ -39,12 +39,12 @@ export default async function DictionaryImageAdminPage() {
               画像候補を
               <span className="block">確認して紐づける。</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#eee7d7]/82 md:text-lg md:leading-9">
+            <p className="mt-8 max-w-2xl text-[15px] leading-8 text-[#315244]/82 md:text-lg md:leading-9">
               自動判定は仮候補です。管理者が最終確認した画像だけを採用し、不要な画像は除外して作業キューを軽く保ちます。
             </p>
           </div>
 
-          <div className="border border-[#fffaf0]/10 bg-[#07120d]/86 p-5 text-[13px] leading-7 text-[#d8d0bf]/70">
+          <div className="border border-[#2c6a4b]/10 bg-white/86 p-5 text-[13px] leading-7 text-[#315244]/70">
             <p className="text-[11px] font-semibold tracking-[0.22em] text-[#b89558]">
               CURRENT QUEUE
             </p>
@@ -70,10 +70,10 @@ export default async function DictionaryImageAdminPage() {
           adminReady={getDictionaryImageAdminReady()}
         />
         <div className="mt-10 flex flex-wrap justify-center gap-5 text-xs font-semibold tracking-[0.2em]">
-          <Link href="/admin" className="text-[#d8d0bf]/62 transition hover:text-[#d9ffd8]">
+          <Link href="/admin" className="text-[#315244]/62 transition hover:text-[#d9ffd8]">
             管理室へ戻る
           </Link>
-          <Link href="/dictionary" className="text-[#d8d0bf]/62 transition hover:text-[#d9ffd8]">
+          <Link href="/dictionary" className="text-[#315244]/62 transition hover:text-[#d9ffd8]">
             図鑑へ戻る
           </Link>
         </div>

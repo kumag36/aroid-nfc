@@ -3,9 +3,9 @@ import BrandHeader from '@/app/components/BrandHeader'
 
 export default function NotFound() {
   return (
-    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-[radial-gradient(circle_at_72%_18%,rgba(217,255,216,0.10),transparent_28%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 py-16 text-[#fffaf0] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
+    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-[radial-gradient(circle_at_72%_18%,rgba(217,255,216,0.10),transparent_28%),linear-gradient(135deg,#050806_0%,#0d1d14_52%,#07110c_100%)] px-5 py-16 text-[#143326] [font-family:'Yu_Mincho','Hiragino_Mincho_ProN','Noto_Serif_JP',serif]">
       <BrandHeader />
-      <section className="relative w-full max-w-4xl border border-[#fffaf0]/12 bg-[#08140f]/84 p-7 text-center shadow-[0_30px_100px_rgba(0,0,0,0.32)] md:p-12">
+      <section className="relative w-full max-w-4xl border border-[#2c6a4b]/12 bg-[#08140f]/84 p-7 text-center shadow-[0_30px_100px_rgba(0,0,0,0.32)] md:p-12">
         <div className="mx-auto mb-8 h-px w-24 bg-[#d9ffd8]/55" />
 
         <p className="mb-4 text-xs font-semibold tracking-[0.32em] text-[#b89558]">
@@ -15,7 +15,7 @@ export default function NotFound() {
           そのページ、
           <span className="block">まだ芽吹いてない。</span>
         </h1>
-        <p className="mx-auto mt-7 max-w-2xl text-[15px] leading-8 text-[#d8d0bf]/80 md:text-lg md:leading-9">
+        <p className="mx-auto mt-7 max-w-2xl text-[15px] leading-8 text-[#315244]/80 md:text-lg md:leading-9">
           探してくれてありがとう。ここはまだ準備中の小さな鉢です。
           図鑑かトップに戻れば、いま育っているページたちに会えます。
         </p>
@@ -24,15 +24,15 @@ export default function NotFound() {
           <Link href="/dictionary" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#d9ffd8]/65 bg-[#d9ffd8]/10 px-7 text-sm font-semibold tracking-[0.18em] text-[#eaffdf] shadow-[inset_0_0_0_1px_rgba(217,255,216,0.08),0_18px_60px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d9ffd8] hover:text-[#07110c]">
             図鑑へ戻る
           </Link>
-          <Link href="/" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#fffaf0]/24 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#fffaf0]/55">
+          <Link href="/" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#2c6a4b]/24 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#2c6a4b]/55">
             トップへ戻る
           </Link>
-          <Link href="/register" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#fffaf0]/14 bg-[#fffaf0]/6 px-6 text-sm font-semibold tracking-[0.16em] text-[#fffaf0] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/34">
+          <Link href="/register" className="inline-flex min-h-12 min-w-44 items-center justify-center border border-[#2c6a4b]/14 bg-[#fffaf0]/6 px-6 text-sm font-semibold tracking-[0.16em] text-[#143326] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9ffd8]/34">
             NFC登録へ
           </Link>
         </div>
 
-        <div className="mt-10 border-t border-[#fffaf0]/10 pt-6 text-xs leading-6 text-[#d8d0bf]/58">
+        <div className="mt-10 border-t border-[#2c6a4b]/10 pt-6 text-xs leading-6 text-[#315244]/58">
           Page not found. でも、これは終わりじゃなくて、これから育つ場所です。
         </div>
       </section>

@@ -15,8 +15,15 @@ export default function BrandHeader() {
     <header className="absolute inset-x-0 top-0 z-30 border-b border-[#2c6a4b]/12 bg-[#fffef8]/80 px-4 py-4 text-[#173b2a] shadow-[0_12px_38px_rgba(44,106,75,0.06)] backdrop-blur-md sm:px-5 sm:py-5">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="relative block h-10 w-10 shrink-0 overflow-hidden rounded-full bg-[#d9ffd8] shadow-[0_10px_28px_rgba(44,106,75,0.16)] ring-1 ring-[#2c6a4b]/16 sm:h-12 sm:w-12">
-            <Image src="/brand/zamakuri-logo.png" alt="" fill className="object-cover" sizes="48px" />
+          <span className="relative block h-12 w-11 shrink-0 overflow-hidden bg-white/40 sm:h-14 sm:w-12">
+            <Image
+              src="/brand/zamakuri-shop-logo.webp"
+              alt="ざまくりプランツ"
+              fill
+              priority
+              className="object-contain"
+              sizes="56px"
+            />
           </span>
           <span className="min-w-0">
             <span className="block truncate text-[13px] font-semibold tracking-[0.14em] sm:text-sm sm:tracking-[0.18em]">ざまくりプランツ</span>
