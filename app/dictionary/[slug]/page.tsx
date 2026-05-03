@@ -122,6 +122,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
         eyebrow={`${plant.category} / VARIETY PROFILE`}
         title={<span className="zmk-scientific block">{plant.displayName}</span>}
         lead={`和名 / 流通名：${plant.tradeName}。${plant.description}`}
+        imageSrc={primaryImageSrc ?? undefined}
         actions={
           <>
             <Link href="/dictionary" className="zmk-button zmk-button-primary">
