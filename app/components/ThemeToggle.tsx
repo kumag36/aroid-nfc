@@ -62,7 +62,7 @@ export default function ThemeToggle() {
 
   return (
     <div
-      className="inline-flex overflow-hidden border border-[#2c6a4b]/22 bg-white/52 p-0.5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/52"
+      className="zmk-theme-toggle inline-flex overflow-hidden border border-[#2c6a4b]/22 bg-white/52 p-0.5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/52"
       role="group"
       aria-label={`表示モード選択。現在は${mode === 'auto' ? `AUTO ${theme.toUpperCase()}` : mode.toUpperCase()}です。`}
     >
@@ -76,7 +76,7 @@ export default function ThemeToggle() {
             onClick={() => selectTheme(option.mode)}
             aria-pressed={active}
             className={[
-              'min-h-8 px-2.5 text-[10px] font-semibold tracking-[0.12em] transition sm:px-3 sm:text-[11px]',
+              'zmk-ui min-h-8 px-2.5 text-[10px] font-semibold tracking-[0.12em] transition sm:px-3 sm:text-[11px]',
               active
                 ? 'bg-[#143326] text-[#fffef8] shadow-[0_8px_24px_rgba(44,106,75,0.18)] dark:bg-[#d9ffd8] dark:text-[#07110c]'
                 : 'text-[#173b2a]/66 hover:bg-[#fdfaf0] hover:text-[#10291e] dark:text-[#f7fbf1]/68 dark:hover:bg-[#d9ffd8]/10 dark:hover:text-[#f7fbf1]',

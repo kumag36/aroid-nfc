@@ -122,9 +122,9 @@ main {
   overflow-x: clip;
 }
 
-main h1,
-main h2,
-main h3 {
+main h1:not(.zmk-scientific):not(.zmk-latin-title),
+main h2:not(.zmk-scientific):not(.zmk-latin-title),
+main h3:not(.zmk-scientific):not(.zmk-latin-title) {
   letter-spacing: 0.02em;
   text-wrap: balance;
   font-family: var(--font-zamakuri-cute);
@@ -161,6 +161,7 @@ main dd {
 }
 
 main :is(a, button) {
+  font-family: var(--font-zamakuri-latin);
   letter-spacing: 0.06em;
   font-weight: 700;
 }
@@ -174,6 +175,33 @@ main :is(input, textarea) {
   overflow: hidden;
   background: var(--zmk-bg);
   color: var(--zmk-ink);
+  font-family: var(--font-zamakuri);
+}
+
+.zmk-jp,
+.zmk-brand-title {
+  font-family: var(--font-zamakuri-cute);
+}
+
+.zmk-ui,
+.zmk-nav,
+.zmk-brand-subtitle,
+.zmk-admin-link,
+.zmk-theme-toggle,
+.zmk-eyebrow,
+.zmk-button,
+.zmk-pill,
+.zmk-table th {
+  font-family: var(--font-zamakuri-latin);
+}
+
+.zmk-page :is(nav, button, select, input[type="button"], input[type="submit"]),
+.zmk-page :is(label > span:first-child, dt, th),
+.zmk-page [class*="tracking-"] {
+  font-family: var(--font-zamakuri-latin);
+}
+
+.zmk-page :is(p, li, dd, td, textarea, input:not([type="button"]):not([type="submit"])) {
   font-family: var(--font-zamakuri);
 }
 
@@ -245,7 +273,6 @@ main :is(input, textarea) {
 
 .zmk-eyebrow {
   color: var(--zmk-gold);
-  font-family: var(--font-zamakuri-latin);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.32em;
@@ -262,9 +289,19 @@ main :is(input, textarea) {
 
 .zmk-scientific {
   font-family: var(--font-zamakuri-scientific);
+  font-synthesis: none;
   font-style: normal;
   font-weight: 500;
+  line-height: 1.05;
   letter-spacing: 0.02em;
+}
+
+.zmk-scientific * {
+  font-family: inherit;
+}
+
+.zmk-title .zmk-scientific {
+  font-size: 1.08em;
 }
 
 .zmk-title {
@@ -335,7 +372,6 @@ main :is(input, textarea) {
     0 12px 34px rgba(44, 106, 75, 0.08);
   padding: 0.75rem 1.35rem;
   color: var(--zmk-ink-strong);
-  font-family: var(--font-zamakuri-latin);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.14em;

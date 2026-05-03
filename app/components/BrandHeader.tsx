@@ -27,13 +27,13 @@ export default function BrandHeader() {
             />
           </span>
           <span className="min-w-0">
-            <span className="block truncate text-[13px] font-semibold tracking-[0.14em] sm:text-sm sm:tracking-[0.18em]">ざまくりプランツ</span>
-            <span className="block truncate text-[9px] tracking-[0.16em] opacity-75 sm:text-[10px] sm:tracking-[0.2em]">ZAMAKURI PLANTS</span>
+            <span className="zmk-brand-title block truncate text-[13px] font-semibold tracking-[0.14em] sm:text-sm sm:tracking-[0.18em]">ざまくりプランツ</span>
+            <span className="zmk-brand-subtitle block truncate text-[9px] tracking-[0.16em] opacity-75 sm:text-[10px] sm:tracking-[0.2em]">ZAMAKURI PLANTS</span>
           </span>
         </Link>
 
         <div className="flex shrink-0 items-center gap-3 md:gap-8">
-          <nav className="zmk-latin hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
+          <nav className="zmk-nav hidden items-center gap-8 text-[11px] tracking-[0.22em] md:flex">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="text-[#173b2a]/72 transition hover:text-[#2c6a4b]">
                 {item.label}
@@ -42,7 +42,7 @@ export default function BrandHeader() {
           </nav>
           <Link
             href="/admin"
-            className="inline-flex min-h-9 items-center justify-center border border-[#2c6a4b]/22 bg-white/60 px-3 text-[10px] font-semibold tracking-[0.18em] text-[#173b2a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] transition hover:border-[#b89558]/55 hover:bg-[#fdfaf0] hover:text-[#10291e] sm:px-4 sm:text-[11px]"
+            className="zmk-admin-link inline-flex min-h-9 items-center justify-center border border-[#2c6a4b]/22 bg-white/60 px-3 text-[10px] font-semibold tracking-[0.18em] text-[#173b2a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] transition hover:border-[#b89558]/55 hover:bg-[#fdfaf0] hover:text-[#10291e] sm:px-4 sm:text-[11px]"
           >
             ADMIN
           </Link>

@@ -200,10 +200,10 @@ export default function DictionaryPage() {
 
                 <div className="relative z-10 flex min-h-[430px] flex-col justify-between p-5">
                   <div className="flex items-start justify-between gap-4">
-                    <p className="border border-[#fffef8]/72 bg-[#fffef8]/82 px-3 py-1 text-[11px] font-bold tracking-[0.28em] text-[#b89558] shadow-[0_10px_28px_rgba(0,0,0,0.08)] backdrop-blur dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/72">
+                    <p className="zmk-eyebrow border border-[#fffef8]/72 bg-[#fffef8]/82 px-3 py-1 text-[11px] shadow-[0_10px_28px_rgba(0,0,0,0.08)] backdrop-blur dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/72">
                       {plant.category}
                     </p>
-                    <span className="border border-[#fffef8]/70 bg-[#fffef8]/78 px-2 py-1 text-xs font-semibold text-[#315244]/76 backdrop-blur dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/70 dark:text-[#d9ffd8]/78">
+                    <span className="zmk-ui border border-[#fffef8]/70 bg-[#fffef8]/78 px-2 py-1 text-xs font-semibold text-[#315244]/76 backdrop-blur dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/70 dark:text-[#d9ffd8]/78">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
