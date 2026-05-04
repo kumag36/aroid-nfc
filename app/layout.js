@@ -7,8 +7,7 @@ export const metadata = {
     default: 'ZAMAKURI.JP',
     template: '%s | ZAMAKURI.JP',
   },
-  description:
-    'ざまくりプランツ公式サイト。アロイド図鑑、NFC個体管理DB、漫画室、音楽室を静かに記録するブランドサイト。',
+  description: 'ざまくりプランツの公式サイト。アロイド図鑑、NFC個体管理、漫画部屋、ショップ情報を静かに記録するブランドサイトです。',
   applicationName: 'ZAMAKURI.JP',
   metadataBase: new URL('https://zamakuri.jp'),
   icons: {
@@ -24,7 +23,7 @@ export const metadata = {
   manifest: '/site.webmanifest?v=20260504',
   openGraph: {
     title: 'ZAMAKURI.JP',
-    description: 'ざまくりプランツ公式サイト。',
+    description: 'ざまくりプランツの公式サイト。',
     url: 'https://zamakuri.jp',
     siteName: 'ZAMAKURI.JP',
     locale: 'ja_JP',

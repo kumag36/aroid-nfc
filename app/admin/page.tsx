@@ -38,7 +38,7 @@ const adminLinks = [
   {
     href: '/museum/admin',
     eyebrow: 'MANGA UPLOAD',
-    title: '漫画室へ作品を追加',
+    title: '漫画部屋へ作品を追加',
     body: '漫画や画像作品をアップロードし、スマホでも読みやすい展示へ並べます。',
   },
   {
@@ -86,7 +86,7 @@ export default async function AdminPage() {
             <span className="block">ここに集約する。</span>
           </>
         }
-        lead="表のサイトには出さない、ざまくりプランツの作業室です。図鑑写真、音楽室、漫画室、NFC検証、開示情報をここから扱います。"
+        lead="表のサイトには出さない、ざまくりプランツの作業室です。図鑑写真、音楽室、漫画部屋、NFC検証、開示情報をここから扱います。"
       />
 
       <section className="zmk-section">
@@ -96,7 +96,7 @@ export default async function AdminPage() {
             <StatCard label="写真 採用済み" value={assignments.length} detail="図鑑へ紐づけ済みの画像。" />
             <StatCard label="図鑑 品種" value={plants.length} detail="現在公開中の品種データ。" />
             <StatCard label="音楽室" value={musicTracks.length} detail="登録済みトラック数。" />
-            <StatCard label="漫画室" value={museumWorks.length} detail="展示中の作品数。" />
+            <StatCard label="漫画部屋" value={museumWorks.length} detail="展示中の作品数。" />
           </div>
 
           {!getDictionaryImageAdminReady() && (

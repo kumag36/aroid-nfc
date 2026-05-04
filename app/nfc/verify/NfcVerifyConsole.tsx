@@ -57,7 +57,7 @@ const initialDatabase = {
   },
   museum: {
     status: 'ready',
-    label: '漫画室DB',
+    label: '漫画部屋DB',
     count: 0,
     detail: '管理アップロードとギャラリー表示を確認します。',
   },

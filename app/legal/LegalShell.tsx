@@ -15,17 +15,12 @@ export default function LegalShell({ eyebrow, title, lead, children }: LegalShel
     <main className="zmk-page">
       <BrandHeader />
       <PageHero eyebrow={eyebrow} title={title} lead={lead} />
-
       <section className="zmk-section">
         <div className="zmk-container max-w-5xl">
           {children}
           <div className="mt-12 flex flex-wrap gap-3">
-            <Link href="/" className="zmk-button zmk-button-primary">
-              トップへ戻る
-            </Link>
-            <Link href="/legal" className="zmk-button">
-              ショップ情報へ
-            </Link>
+            <Link href="/" className="zmk-button zmk-button-primary">トップへ戻る</Link>
+            <Link href="/about" className="zmk-button">ショップ情報へ</Link>
           </div>
         </div>
       </section>

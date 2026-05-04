@@ -116,15 +116,16 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
   const relatedPlants = plants
     .filter((item) => item.slug !== plant.slug && item.category === plant.category)
     .slice(0, 3)
+  const contactHref = `mailto:kumajuko@gmail.com?subject=` + encodeURIComponent(`お問い合わせ: ${plant.tradeName}`)
 
   return (
     <main className="zmk-page">
       <BrandHeader />
       <FixedCtaBar
-        primaryHref={`/notify?plant=${encodeURIComponent(plant.slug)}`}
+        primaryHref={contactHref}
         primaryLabel="購入する"
-        secondaryHref={`/notify?plant=${encodeURIComponent(plant.slug)}`}
-        secondaryLabel="入荷通知"
+        secondaryHref={contactHref}
+        secondaryLabel="お問い合わせ"
       />
       <PageHero
         eyebrow={`${plant.category} / VARIETY PROFILE`}
@@ -139,7 +140,7 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
             <Link href="/register" className="zmk-button text-[#fffef8]">
               個体登録へ
             </Link>
-            <Link href={`/notify?plant=${encodeURIComponent(plant.slug)}`} className="zmk-button text-[#fffef8]">
+            <Link href={contactHref} className="zmk-button text-[#fffef8]">
               購入する
             </Link>
           </>
@@ -246,8 +247,8 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
           <Link href="/nfc/verify" className="zmk-button zmk-button-primary">
             NFC管理を見る
           </Link>
-          <Link href={`/notify?plant=${encodeURIComponent(plant.slug)}`} className="zmk-button">
-            入荷通知
+          <Link href={contactHref} className="zmk-button">
+            お問い合わせ
           </Link>
         </div>
       </section>
