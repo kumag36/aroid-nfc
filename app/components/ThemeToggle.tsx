@@ -12,10 +12,7 @@ const themeOptions: { mode: ThemeMode; label: string }[] = [
 ]
 
 function resolveTheme(mode: ThemeMode) {
-  if (mode === 'auto') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  }
-
+  if (mode === 'auto') return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   return mode
 }
 
@@ -42,12 +39,10 @@ export default function ThemeToggle() {
     }
 
     sync(initialMode)
-
     const handleChange = () => {
       const currentMode = (window.localStorage.getItem(storageKey) as ThemeMode | null) ?? 'auto'
       if (currentMode === 'auto') sync('auto')
     }
-
     media.addEventListener('change', handleChange)
     return () => media.removeEventListener('change', handleChange)
   }, [])
@@ -61,14 +56,9 @@ export default function ThemeToggle() {
   }
 
   return (
-    <div
-      className="zmk-theme-toggle inline-flex overflow-hidden border border-[#2c6a4b]/22 bg-white/52 p-0.5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/52"
-      role="group"
-      aria-label={`表示モード選択。現在は${mode === 'auto' ? `AUTO ${theme.toUpperCase()}` : mode.toUpperCase()}です。`}
-    >
+    <div className="zmk-theme-toggle inline-flex shrink-0 gap-1 border border-[#10291e]/18 bg-white/75 p-1 dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/70" role="group" aria-label={`表示モード選択。現在は${mode === 'auto' ? `自動 ${theme}` : mode}です`}>
       {themeOptions.map((option) => {
         const active = mode === option.mode
-
         return (
           <button
             key={option.mode}
@@ -76,12 +66,10 @@ export default function ThemeToggle() {
             onClick={() => selectTheme(option.mode)}
             aria-pressed={active}
             className={[
-              'zmk-ui min-h-8 px-2.5 text-[10px] font-semibold tracking-[0.12em] transition sm:px-3 sm:text-[11px]',
-              active
-                ? 'bg-[#143326] text-[#fffef8] shadow-[0_8px_24px_rgba(44,106,75,0.18)] dark:bg-[#d9ffd8] dark:text-[#07110c]'
-                : 'text-[#173b2a]/66 hover:bg-[#fdfaf0] hover:text-[#10291e] dark:text-[#f7fbf1]/68 dark:hover:bg-[#d9ffd8]/10 dark:hover:text-[#f7fbf1]',
+              'min-h-8 min-w-8 px-2 text-[11px] font-extrabold leading-none transition sm:min-w-10',
+              active ? 'bg-[#123d2b] text-white dark:bg-[#d9ffd8] dark:text-[#07110c]' : 'text-[#10291e] dark:text-[#f7fbf1]',
             ].join(' ')}
-            title={option.mode === 'auto' ? `AUTO: ${theme.toUpperCase()}` : option.label}
+            title={option.mode === 'auto' ? `自動: ${theme}` : option.label}
           >
             {option.label}
           </button>

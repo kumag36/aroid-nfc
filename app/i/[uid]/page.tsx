@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
 import PageHero from '@/app/components/PageHero'
-import ProtectedPhoneLink from './ProtectedPhoneLink'
+
+type PageProps = {
+  params: Promise<{ uid: string }>
+}
 
 type ItemRow = {
   id?: string
@@ -15,179 +18,103 @@ type ItemRow = {
   slug?: string | null
 }
 
-type NfcError = {
-  code: string
-  message: string
-}
-
-type IndividualPageProps = {
-  params: Promise<{
-    uid: string
-  }>
-}
-
 export const dynamic = 'force-dynamic'
 
-function normalizeItem(row: ItemRow): ItemRow {
-  return {
-    id: row.id ?? row.uid ?? row.plant_id,
-    name_en: row.name_en ?? row.scientific_name ?? row.name,
-    name_jp: row.name_jp ?? row.trade_name,
-    slug: row.slug,
-  }
-}
-
-async function fetchItem(uid: string): Promise<{
-  item: ItemRow | null
-  error: NfcError | null
-}> {
+async function fetchItem(uid: string) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-  if (!supabaseUrl || !supabaseAnonKey) {
-    return {
-      item: null,
-      error: {
-        code: 'SUPABASE_ENV_MISSING',
-        message: 'Debug: Supabase environment variables are missing.',
-      },
-    }
-  }
+  if (!supabaseUrl || !supabaseAnonKey) return { status: 'error' as const, code: 'SUPABASE_ENV_MISSING', message: 'Debug: fetch failed', item: null }
 
   try {
     const endpoint = new URL('/rest/v1/items', supabaseUrl)
     endpoint.searchParams.set('id', `eq.${uid}`)
     endpoint.searchParams.set('select', '*')
-
     const response = await fetch(endpoint.toString(), {
-      headers: {
-        apikey: supabaseAnonKey,
-        Authorization: `Bearer ${supabaseAnonKey}`,
-      },
+      headers: { apikey: supabaseAnonKey, Authorization: `Bearer ${supabaseAnonKey}` },
       cache: 'no-store',
     })
-
-    if (!response.ok) {
-      const detail = await response.text().catch(() => '')
-      return {
-        item: null,
-        error: {
-          code: `SUPABASE_HTTP_${response.status}`,
-          message: detail
-            ? `Debug: Supabase returned ${response.status}: ${detail}`
-            : `Debug: Supabase returned ${response.status}.`,
-        },
-      }
-    }
-
-    const data = (await response.json()) as ItemRow[]
-
-    if (!data[0]) {
-      return {
-        item: null,
-        error: {
-          code: 'PLANT_ID_NOT_REGISTERED',
-          message: `Debug: plant id ${uid} is not registered.`,
-        },
-      }
-    }
-
-    return { item: normalizeItem(data[0]), error: null }
+    if (!response.ok) return { status: 'error' as const, code: `SUPABASE_HTTP_${response.status}`, message: 'Debug: fetch failed', item: null }
+    const rows = (await response.json()) as ItemRow[]
+    if (!rows[0]) return { status: 'not_registered' as const, code: 'PLANT_ID_NOT_REGISTERED', message: 'この植物IDは登録されておりません。管理局にお問い合わせください。', item: null }
+    return { status: 'registered' as const, code: 'PLANT_ID_REGISTERED', message: 'この植物IDは登録済みです。', item: rows[0] }
   } catch {
-    return {
-      item: null,
-      error: {
-        code: 'FETCH_FAILED',
-        message: 'Debug: fetch failed',
-      },
-    }
+    return { status: 'error' as const, code: 'FETCH_FAILED', message: 'Debug: fetch failed', item: null }
   }
 }
 
-function ErrorDetail({ error }: { error: NfcError | null }) {
+function DataRow({ label, value }: { label: string; value?: string | null }) {
+  if (!value) return null
   return (
-    <div className="zmk-card mt-8 p-5 text-xs leading-6">
-      <p className="zmk-eyebrow text-[11px]">ERROR DETAIL</p>
-      <dl className="zmk-muted mt-4 grid gap-2 sm:grid-cols-[150px_1fr]">
-        <dt>本来のエラーコード</dt>
-        <dd>{error?.code ?? 'UNKNOWN_ERROR'}</dd>
-        <dt>メッセージ</dt>
-        <dd>{error?.message ?? 'Debug: unknown error'}</dd>
-      </dl>
+    <div className="grid gap-1 border-b border-[var(--zmk-border)] py-3 last:border-b-0 sm:grid-cols-[10rem_1fr] sm:gap-5">
+      <dt className="zmk-eyebrow text-[11px]">{label}</dt>
+      <dd className="text-[15px] font-bold leading-7 text-[var(--zmk-ink)]">{value}</dd>
     </div>
   )
 }
 
-function EmptyState({ uid, error }: { uid: string; error: NfcError | null }) {
-  return (
-    <main className="zmk-page">
-      <BrandHeader />
-      <PageHero
-        eyebrow={`NFC DATA NOT REGISTERED / ${uid}`}
-        title={
-          <>
-            この植物IDは
-            <span className="block">登録されておりません。</span>
-          </>
-        }
-        lead="管理局にお問い合わせください。登録画面から植物IDと個体情報を送ると、このページに個体管理情報が表示されます。"
-        actions={
-          <>
-            <ProtectedPhoneLink />
-            <Link href={`/admin/items/new?id=${encodeURIComponent(uid)}`} className="zmk-button zmk-button-primary">
-              登録画面へ進む
-            </Link>
-            <Link href="/dictionary" className="zmk-button text-[#fffef8]">
-              図鑑を見る
-            </Link>
-            <Link href="/" className="zmk-button text-[#fffef8]">
-              トップへ戻る
-            </Link>
-          </>
-        }
-      />
-
-      <section className="zmk-section">
-        <div className="zmk-container max-w-4xl">
-          <ErrorDetail error={error} />
-        </div>
-      </section>
-    </main>
-  )
-}
-
-export default async function Page({ params }: IndividualPageProps) {
+export default async function IndividualPage({ params }: PageProps) {
   const { uid } = await params
-  const { item, error } = await fetchItem(uid)
+  const normalizedUid = decodeURIComponent(uid).trim().toUpperCase()
+  const result = await fetchItem(normalizedUid)
+  const item = result.item
+  const displayName = item?.name_jp || item?.trade_name || item?.name_en || item?.scientific_name || item?.name || normalizedUid
+  const contactHref = `mailto:kumajuko@gmail.com?subject=${encodeURIComponent(`植物ID問い合わせ: ${normalizedUid}`)}`
 
   if (!item) {
-    return <EmptyState uid={uid} error={error} />
+    return (
+      <main className="zmk-page">
+        <BrandHeader />
+        <PageHero
+          eyebrow="PLANT ID CHECK"
+          title={<>この植物IDは<span className="block">登録されておりません。</span></>}
+          lead={`${result.message} エラーコード: ${result.code} / メッセージ: ${result.message}`}
+          actions={
+            <>
+              <a href={contactHref} className="zmk-button zmk-button-primary">Gmailで問い合わせ</a>
+              <Link href="/about" className="zmk-button">ショップ情報へ</Link>
+            </>
+          }
+        />
+        <section className="zmk-section">
+          <div className="zmk-container zmk-card p-5 sm:p-7">
+            <p className="zmk-eyebrow mb-4">DEBUG</p>
+            <dl>
+              <DataRow label="植物ID" value={normalizedUid} />
+              <DataRow label="本来のエラーコード" value={result.code} />
+              <DataRow label="メッセージ" value={result.message} />
+            </dl>
+          </div>
+        </section>
+      </main>
+    )
   }
 
   return (
     <main className="zmk-page">
       <BrandHeader />
       <PageHero
-        eyebrow={`NFC INDIVIDUAL / ${uid}`}
-        title={item.name_en || item.name_jp || uid}
-        lead={
-          item.name_jp
-            ? `和名 / 流通名：${item.name_jp}`
-            : 'NFCタグから呼び出された個体管理ページです。'
-        }
+        eyebrow="PLANT RECORD"
+        title={displayName}
+        lead={`NFCタグから呼び出された個体管理ページです。植物ID ${normalizedUid} の基本情報を表示しています。`}
         actions={
           <>
-            {item.slug ? (
-              <Link href={`/dictionary/${item.slug}`} className="zmk-button zmk-button-primary">
-                図鑑詳細へ
-              </Link>
-            ) : null}
-            <Link href="/dictionary" className="zmk-button text-[#fffef8]">
-              図鑑へ戻る
-            </Link>
+            {item.slug ? <Link href={`/dictionary/${item.slug}`} className="zmk-button zmk-button-primary">図鑑詳細へ</Link> : null}
+            <Link href="/dictionary" className="zmk-button">図鑑へ戻る</Link>
           </>
         }
       />
+      <section className="zmk-section">
+        <div className="zmk-container zmk-card p-5 sm:p-7">
+          <p className="zmk-eyebrow mb-5">INDIVIDUAL DATA</p>
+          <dl>
+            <DataRow label="植物ID" value={normalizedUid} />
+            <DataRow label="表示名" value={displayName} />
+            <DataRow label="学名" value={item.name_en || item.scientific_name} />
+            <DataRow label="流通名" value={item.trade_name || item.name_jp} />
+            <DataRow label="図鑑Slug" value={item.slug} />
+          </dl>
+        </div>
+      </section>
     </main>
   )
 }

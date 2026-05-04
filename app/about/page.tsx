@@ -5,7 +5,7 @@ import PageHero from '@/app/components/PageHero'
 
 export const metadata = {
   title: 'ショップ情報 | ZAMAKURI.JP',
-  description: 'ざまくりプランツの基本情報、店主の思い、活動内容をまとめたショップ情報ページです。',
+  description: 'ざまくりプランツの基本情報、店主の想い、活動内容をまとめたショップ情報ページです。',
 }
 
 const shopFacts = [
@@ -44,7 +44,7 @@ const activities = [
 ]
 
 const photoSlots = [
-  { label: '店主写真', image: '/brand/zamakuri-shop-logo.webp' },
+  { label: '店主・ショップロゴ', image: '/brand/zamakuri-shop-logo.webp' },
   { label: '作業風景', image: '/history/opening.jpg' },
   { label: '実際の株', image: '/history/plants.jpg' },
   { label: 'イベント出店風景', image: '/history/event.jpg' },
@@ -52,11 +52,11 @@ const photoSlots = [
 
 function InfoTable() {
   return (
-    <dl className="grid gap-0 overflow-hidden border border-[var(--zmk-border)] bg-[var(--zmk-card)]">
+    <dl className="grid gap-0 overflow-hidden border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]">
       {shopFacts.map(([label, value]) => (
-        <div key={label} className="grid gap-2 border-b border-[var(--zmk-border)] p-4 last:border-b-0 sm:grid-cols-[160px_1fr] sm:gap-6">
-          <dt className="zmk-eyebrow text-[11px] text-[#b89558]">{label}</dt>
-          <dd className="text-[15px] font-bold leading-7 text-[var(--zmk-ink-strong)]">{value}</dd>
+        <div key={label} className="grid gap-2 border-b border-[var(--zmk-border)] p-4 last:border-b-0 sm:grid-cols-[150px_1fr] sm:gap-6">
+          <dt className="zmk-eyebrow text-[11px]">{label}</dt>
+          <dd className="text-[15px] font-bold leading-7 text-[var(--zmk-ink)]">{value}</dd>
         </div>
       ))}
     </dl>
@@ -70,11 +70,11 @@ export default function AboutPage() {
       <PageHero
         eyebrow="SHOP INFORMATION"
         title="ショップ情報"
-        lead="小さな植物店だからこそ、扱う株も、伝える言葉も、顔の見える距離感で整えていきます。"
+        lead="小さな植物店だからこそ、顔が見える距離感と、安心して相談できる余白を大切にしています。"
         actions={
           <>
             <Link href="/dictionary" className="zmk-button zmk-button-primary">図鑑を見る</Link>
-            <a href="mailto:kumajuko@gmail.com" className="zmk-button text-[#fffef8]">お問い合わせ</a>
+            <a href="mailto:kumajuko@gmail.com" className="zmk-button">お問い合わせ</a>
           </>
         }
       />
@@ -83,7 +83,7 @@ export default function AboutPage() {
           <div>
             <p className="zmk-eyebrow mb-5">ABOUT ZAMAKURI PLANTS</p>
             <h2>実在する人が、植物と向き合う場所。</h2>
-            <div className="mt-8 space-y-6 text-[16px] leading-9 text-[var(--zmk-ink)]">
+            <div className="mt-7 space-y-5 text-[15px] font-bold leading-8 text-[var(--zmk-ink)] sm:text-[16px]">
               {storyParagraphs.map((text) => <p key={text}>{text}</p>)}
             </div>
           </div>
@@ -95,37 +95,36 @@ export default function AboutPage() {
           <div>
             <p className="zmk-eyebrow mb-5">FOR YOU</p>
             <h2>届けたい人</h2>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap gap-3">
               {audiences.map((item) => <span key={item} className="zmk-pill">{item}</span>)}
             </div>
           </div>
           <div>
             <p className="zmk-eyebrow mb-5">ACTIVITY</p>
             <h2>活動実績</h2>
-            <ul className="mt-8 grid gap-3 text-[15px] leading-8 text-[var(--zmk-ink)]">
-              {activities.map((item) => <li key={item} className="border-l border-[#b89558]/55 bg-[var(--zmk-card)] px-5 py-3">{item}</li>)}
+            <ul className="mt-7 grid gap-3 text-[15px] font-bold leading-7 text-[var(--zmk-ink)]">
+              {activities.map((item) => <li key={item} className="border-l border-[#b89558]/55 bg-[var(--zmk-bg-card)] px-5 py-3">{item}</li>)}
             </ul>
-            <p className="zmk-muted mt-5 text-sm leading-7">イベント出店回数は、現時点で正確な数値が確定していないため推測せず「各種イベント出店」と表記しています。</p>
+            <p className="zmk-muted mt-5 text-sm font-bold leading-7">イベント出店回数は正確な数値が確定していないため、推測せず「各種イベント出店」と表記しています。</p>
           </div>
         </div>
       </section>
       <section className="zmk-section">
         <div className="zmk-container">
-          <div className="zmk-split-head mb-10">
+          <div className="mb-8 grid gap-4 md:grid-cols-[1fr_26rem] md:items-end">
             <div>
               <p className="zmk-eyebrow mb-5">PHOTO RECORD</p>
               <h2>顔が見える記録</h2>
             </div>
-            <p className="zmk-muted text-[15px] leading-8">未設定の写真は、差し替えやすい枠として残します。店主、作業、株、イベントの実在感をここに蓄積します。</p>
+            <p className="zmk-muted text-[15px] font-bold leading-8">未設定の写真は差し替えやすい枠として残しています。店主、作業、株、イベントの実在感をここに蓄積します。</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {photoSlots.map((slot) => (
               <figure key={slot.label} className="zmk-card overflow-hidden">
                 <div className="relative aspect-[4/5] bg-[#10291e]">
                   <Image src={slot.image} alt={slot.label} fill className="object-cover" sizes="(min-width: 1024px) 25vw, 50vw" />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,10,7,0.04),rgba(5,10,7,0.34))]" />
                 </div>
-                <figcaption className="p-4 text-sm font-bold text-[var(--zmk-ink-strong)]">{slot.label}</figcaption>
+                <figcaption className="p-4 text-sm font-bold text-[var(--zmk-ink)]">{slot.label}</figcaption>
               </figure>
             ))}
           </div>

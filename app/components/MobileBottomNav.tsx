@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const items = [
-  { href: '/about', label: 'ショップ情報' },
+  { href: '/about', label: '店情報' },
   { href: '/dictionary', label: '図鑑' },
   { href: '/lab', label: '物置' },
 ]
@@ -17,7 +17,9 @@ export default function MobileBottomNav() {
         {items.map((item) => {
           const active = pathname === item.href || pathname.startsWith(`${item.href}/`)
           return (
-            <Link key={item.href} href={item.href} className={['flex min-h-11 items-center justify-center rounded-[8px] px-1 text-center text-[11px] font-bold leading-tight tracking-[0.01em]', active ? 'bg-[#10291e] text-white' : 'text-[#10291e]'].join(' ')}>{item.label}</Link>
+            <Link key={item.href} href={item.href} className={['flex min-h-11 items-center justify-center rounded-[8px] px-1 text-center text-[12px] font-extrabold leading-tight', active ? 'bg-[#123d2b] text-white' : 'text-[#10291e]'].join(' ')}>
+              {item.label}
+            </Link>
           )
         })}
       </div>

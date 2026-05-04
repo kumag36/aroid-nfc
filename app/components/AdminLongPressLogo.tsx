@@ -42,26 +42,15 @@ export default function AdminLongPressLogo() {
       onPointerUp={clearTimer}
       onPointerCancel={clearTimer}
       onPointerLeave={clearTimer}
-      className="flex min-w-0 items-center gap-3"
+      className="flex min-w-0 items-center gap-2 sm:gap-3"
       aria-label="ざまくりプランツ ホーム"
     >
-      <span className="relative block h-12 w-11 shrink-0 overflow-hidden bg-white/40 sm:h-14 sm:w-12">
-        <Image
-          src="/brand/zamakuri-shop-logo.webp"
-          alt="ざまくりプランツ"
-          fill
-          priority
-          className="object-contain"
-          sizes="56px"
-        />
+      <span className="relative block h-11 w-10 shrink-0 overflow-hidden bg-white/70 sm:h-13 sm:w-12">
+        <Image src="/brand/zamakuri-shop-logo.webp" alt="ざまくりプランツ" fill priority className="object-contain" sizes="52px" />
       </span>
-      <span className="min-w-0">
-        <span className="zmk-brand-title block truncate text-[13px] font-semibold tracking-[0.14em] sm:text-sm sm:tracking-[0.18em]">
-          ざまくりプランツ
-        </span>
-        <span className="zmk-brand-subtitle block truncate text-[9px] tracking-[0.16em] opacity-75 sm:text-[10px] sm:tracking-[0.2em]">
-          ZAMAKURI PLANTS
-        </span>
+      <span className="min-w-0 max-w-[9.5rem] sm:max-w-none">
+        <span className="zmk-brand-title block truncate text-[12px] font-extrabold tracking-[0.1em] sm:text-sm sm:tracking-[0.16em]">ざまくりプランツ</span>
+        <span className="zmk-brand-subtitle block truncate text-[8px] tracking-[0.12em] opacity-75 sm:text-[10px] sm:tracking-[0.18em]">ZAMAKURI PLANTS</span>
       </span>
     </Link>
   )
