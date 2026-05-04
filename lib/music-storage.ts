@@ -180,14 +180,8 @@ export async function listMusicTracks(): Promise<MusicTrack[]> {
 export function getMusicAdminReady() {
   return Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL &&
-      process.env.SUPABASE_SERVICE_ROLE_KEY &&
-      (process.env.MUSIC_ADMIN_PASSWORD || process.env.MUSEUM_ADMIN_PASSWORD),
+      process.env.SUPABASE_SERVICE_ROLE_KEY,
   )
-}
-
-export function verifyMusicPassword(password: string) {
-  const expected = process.env.MUSIC_ADMIN_PASSWORD || process.env.MUSEUM_ADMIN_PASSWORD
-  return Boolean(expected && password === expected)
 }
 
 export function getMusicUploadClient() {

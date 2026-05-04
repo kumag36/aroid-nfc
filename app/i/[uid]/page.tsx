@@ -134,7 +134,7 @@ function EmptyState({ uid, error }: { uid: string; error: NfcError | null }) {
         actions={
           <>
             <ProtectedPhoneLink />
-            <Link href={`/register?uid=${encodeURIComponent(uid)}`} className="zmk-button zmk-button-primary">
+            <Link href={`/admin/items/new?id=${encodeURIComponent(uid)}`} className="zmk-button zmk-button-primary">
               登録画面へ進む
             </Link>
             <Link href="/dictionary" className="zmk-button text-[#fffef8]">

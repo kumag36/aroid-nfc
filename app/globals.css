@@ -628,3 +628,71 @@ html.dark main ::placeholder {
     padding-top: 0;
   }
 }
+
+/* 2026-05 lightweight public UI pass */
+.zmk-page {
+  background: #f8fbf2;
+  color: #10291e;
+}
+
+.zmk-hero {
+  min-height: 54vh;
+  padding: 7.5rem 1.25rem 3.5rem;
+  background: #f8fbf2;
+}
+
+.zmk-hero::before {
+  display: none;
+}
+
+.zmk-hero-media {
+  opacity: 0.16;
+  filter: none;
+}
+
+.zmk-hero-shade {
+  background: linear-gradient(90deg, rgba(248, 251, 242, 0.98) 0%, rgba(248, 251, 242, 0.9) 62%, rgba(248, 251, 242, 0.64) 100%);
+}
+
+.zmk-hero-fade {
+  height: 5rem;
+  background: linear-gradient(to top, var(--zmk-bg), transparent);
+}
+
+.zmk-hero-body {
+  min-height: 42vh;
+}
+
+.zmk-hero .zmk-title,
+.zmk-hero .zmk-lead {
+  color: #10291e;
+  text-shadow: none;
+}
+
+.zmk-hero .zmk-lead {
+  color: #315244;
+  font-weight: 700;
+}
+
+.zmk-section {
+  padding: 3.5rem 1.25rem;
+}
+
+.zmk-card {
+  box-shadow: 0 12px 34px rgba(44, 106, 75, 0.08);
+}
+
+.zmk-card-hover,
+.zmk-button {
+  transition: border-color 120ms ease, background 120ms ease, opacity 120ms ease, transform 120ms ease;
+}
+
+.zmk-card-hover:hover {
+  transform: none;
+}
+
+@media (min-width: 768px) {
+  .zmk-section {
+    padding-block: 4.5rem;
+  }
+}

@@ -1,41 +1,21 @@
 import Link from 'next/link'
-import BrandHeader from '@/app/components/BrandHeader'
-import PageHero from '@/app/components/PageHero'
 import MuseumUploadForm from '../components/MuseumUploadForm'
 
 export const metadata = {
-  title: '漫画部屋 管理者入口 | ZAMAKURI.JP',
-  robots: {
-    index: false,
-    follow: false,
-  },
+  title: '漫画部屋管理 | ZAMAKURI.JP',
+  robots: { index: false, follow: false },
 }
 
 export default function MuseumAdminPage() {
   return (
-    <main className="zmk-page">
-      <BrandHeader />
-      <PageHero
-        eyebrow="MANGA ADMIN"
-        title={
-          <>
-            展示作品を
-            <span className="block">追加する。</span>
-          </>
-        }
-        lead="管理者だけの入口です。漫画ページをまとめて選ぶと、ざまくり漫画部屋でスマホ向けに縦読み展示されます。"
-      />
-
-      <section className="zmk-section">
-        <div className="zmk-container max-w-3xl">
-          <MuseumUploadForm />
-          <div className="mt-8 text-center">
-            <Link href="/museum" className="zmk-button">
-              漫画部屋へ戻る
-            </Link>
-          </div>
+    <main className="min-h-[100dvh] bg-[#f8fbf2] px-4 py-5 text-[#10291e]">
+      <div className="mx-auto max-w-3xl">
+        <div className="mb-5 flex items-center justify-between gap-3">
+          <div><p className="zmk-eyebrow text-[10px] text-[#b89558]">MANGA ADMIN</p><h1 className="mt-1 text-2xl font-bold">漫画を追加</h1></div>
+          <Link href="/admin" className="min-h-10 border border-[#10291e]/18 bg-white px-4 py-2 text-sm font-bold">管理へ</Link>
         </div>
-      </section>
+        <MuseumUploadForm />
+      </div>
     </main>
   )
 }

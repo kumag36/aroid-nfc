@@ -4,7 +4,6 @@ import {
   getMusicAdminReady,
   getMusicUploadClient,
   musicBucket,
-  verifyMusicPassword,
 } from '@/lib/music-storage'
 
 export const runtime = 'nodejs'
@@ -36,18 +35,13 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        message: 'Music upload is not configured. Set SUPABASE_SERVICE_ROLE_KEY and an admin password.',
+        message: 'Music upload is not configured. Set SUPABASE_SERVICE_ROLE_KEY.',
       },
       { status: 503 },
     )
   }
 
   const formData = await request.formData()
-  const password = String(formData.get('password') ?? '')
-
-  if (!verifyMusicPassword(password)) {
-    return NextResponse.json({ ok: false, message: '管理者パスワードが違います。' }, { status: 401 })
-  }
 
   const title = String(formData.get('title') ?? '').trim()
   const artist = String(formData.get('artist') ?? '').trim()

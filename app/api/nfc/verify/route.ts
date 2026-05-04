@@ -72,7 +72,7 @@ async function fetchItem(uid: string) {
       return {
         status: 'not_registered' as const,
         code: 'PLANT_ID_NOT_REGISTERED',
-        message: 'この植物IDは登録されておりません。管理局にお問い合わせください。',
+        message: 'この植物IDは登録されておりません。管理画面から登録してください。',
         item: null,
       }
     }
@@ -108,35 +108,34 @@ export async function GET(request: NextRequest) {
       urls: uid
         ? {
             individual: `/i/${encodeURIComponent(uid)}`,
-            legacy: `/nfc/${encodeURIComponent(uid)}`,
-            registration: `/register?uid=${encodeURIComponent(uid)}`,
+            registration: `/admin/items/new?id=${encodeURIComponent(uid)}`,
             writeUrl: `https://zamakuri.jp/i/${encodeURIComponent(uid)}`,
           }
         : null,
       database: {
         dictionary: {
           status: 'ready',
-          label: 'アロイド図鑑DB',
+          label: '図鑑DB',
           count: plants.length,
-          detail: '品種データ、詳細ページ、画像紐づけの土台を実装済みです。',
+          detail: '品種データと図鑑ページを管理しています。',
         },
         nfcItems: {
           status: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'connected' : 'missing_env',
-          label: 'NFC個体管理DB',
+          label: 'NFC個体DB',
           count: nfc?.item ? 1 : 0,
-          detail: 'UID検証、個体ページ、未登録時の案内、登録申請導線を実装済みです。',
+          detail: 'UID確認、個体ページ、未登録時の登録導線を確認します。',
         },
         music: {
           status: 'ready',
-          label: '音楽室DB',
+          label: '音楽DB',
           count: musicTracks.length,
-          detail: 'ローカルMP3、YouTube情報、アップロード曲を同じ音楽室に統合しています。',
+          detail: '音楽室の登録トラックを確認します。',
         },
         museum: {
           status: 'ready',
-          label: '美術館DB',
+          label: '漫画部屋DB',
           count: museumWorks.length,
-          detail: '管理者アップロードとギャラリー表示を実装済みです。',
+          detail: '管理アップロードとギャラリー表示を確認します。',
         },
       },
     },

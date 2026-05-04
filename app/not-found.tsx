@@ -23,7 +23,7 @@ export default function NotFound() {
             <Link href="/" className="zmk-button text-[#fffef8]">
               トップへ戻る
             </Link>
-            <Link href="/register" className="zmk-button text-[#fffef8]">
+            <Link href="/about" className="zmk-button text-[#fffef8]">
               NFC登録へ
             </Link>
           </>

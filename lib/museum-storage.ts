@@ -1,4 +1,4 @@
-﻿import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js'
 
 export type MuseumWork = {
   id: string
@@ -103,14 +103,8 @@ export async function listMuseumWorks(): Promise<MuseumWork[]> {
 export function getMuseumAdminReady() {
   return Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL &&
-      process.env.SUPABASE_SERVICE_ROLE_KEY &&
-      process.env.MUSEUM_ADMIN_PASSWORD,
+      process.env.SUPABASE_SERVICE_ROLE_KEY,
   )
-}
-
-export function verifyMuseumPassword(password: string) {
-  const expected = process.env.MUSEUM_ADMIN_PASSWORD
-  return Boolean(expected && password === expected)
 }
 
 export function getMuseumUploadClient() {

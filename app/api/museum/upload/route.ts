@@ -1,9 +1,8 @@
-﻿import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import {
   getMuseumAdminReady,
   getMuseumUploadClient,
   museumBucket,
-  verifyMuseumPassword,
 } from '@/lib/museum-storage'
 
 export const runtime = 'nodejs'
@@ -33,18 +32,13 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        message: 'Museum upload is not configured. Set MUSEUM_ADMIN_PASSWORD and SUPABASE_SERVICE_ROLE_KEY.',
+        message: 'Museum upload is not configured. Set SUPABASE_SERVICE_ROLE_KEY.',
       },
       { status: 503 },
     )
   }
 
   const formData = await request.formData()
-  const password = String(formData.get('password') ?? '')
-
-  if (!verifyMuseumPassword(password)) {
-    return NextResponse.json({ ok: false, message: '管理者パスワードが違います。' }, { status: 401 })
-  }
 
   const title = String(formData.get('title') ?? '').trim()
   const description = String(formData.get('description') ?? '').trim()

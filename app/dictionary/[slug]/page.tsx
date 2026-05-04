@@ -123,9 +123,9 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
       <BrandHeader />
       <FixedCtaBar
         primaryHref={contactHref}
-        primaryLabel="購入する"
-        secondaryHref={contactHref}
-        secondaryLabel="お問い合わせ"
+        primaryLabel="お問い合わせ"
+        secondaryHref="/about"
+        secondaryLabel="ショップ情報"
       />
       <PageHero
         eyebrow={`${plant.category} / VARIETY PROFILE`}
@@ -137,11 +137,11 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
             <Link href="/dictionary" className="zmk-button zmk-button-primary">
               図鑑へ戻る
             </Link>
-            <Link href="/register" className="zmk-button text-[#fffef8]">
-              個体登録へ
+            <Link href="/about" className="zmk-button text-[#fffef8]">
+              ショップ情報
             </Link>
             <Link href={contactHref} className="zmk-button text-[#fffef8]">
-              購入する
+              お問い合わせ
             </Link>
           </>
         }
@@ -238,17 +238,17 @@ export default async function DictionaryDetailPage({ params }: DictionaryDetailP
       <section className="zmk-section zmk-section-soft">
         <div className="zmk-container flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="zmk-eyebrow mb-4">NFC INDIVIDUAL DATABASE</p>
-            <h2 className="max-w-3xl">品種紹介から、一株ごとの履歴へ。</h2>
+            <p className="zmk-eyebrow mb-4">CONSULTATION</p>
+            <h2 className="max-w-3xl">気になる品種は、まず相談から。</h2>
             <p className="zmk-muted mt-6 max-w-2xl text-[15px] leading-8">
-              同じ品種名でも、斑の入り方、根の状態、育成環境は一株ずつ違います。NFCタグとつなぐことで、図鑑の知識を個体管理の記録へ広げます。
+              状態、育て方、似た品種との違いを確認したい場合は、メールでお問い合わせください。販売導線は準備が整うまで公開しません。
             </p>
           </div>
-          <Link href="/nfc/verify" className="zmk-button zmk-button-primary">
-            NFC管理を見る
-          </Link>
-          <Link href={contactHref} className="zmk-button">
+          <Link href={contactHref} className="zmk-button zmk-button-primary">
             お問い合わせ
+          </Link>
+          <Link href="/about" className="zmk-button">
+              ショップ情報
           </Link>
         </div>
       </section>
