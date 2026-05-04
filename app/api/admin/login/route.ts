@@ -1,5 +1,14 @@
 import { NextResponse } from 'next/server'
-import { adminAccessCookie, adminCookieOptions, adminRefreshCookie, getSupabaseAuthClient } from '@/lib/admin-auth'
+import {
+  adminAccessCookie,
+  adminCookieOptions,
+  adminRefreshCookie,
+  adminSessionCookie,
+  createAdminSessionToken,
+  getAdminCredentialEmail,
+  getAdminCredentialPassword,
+  getSupabaseAuthClient,
+} from '@/lib/admin-auth'
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null)
@@ -10,9 +19,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, message: 'メールアドレスとパスワードを入力してください。' }, { status: 400 })
   }
 
+  if (email === getAdminCredentialEmail() && password === getAdminCredentialPassword()) {
+    const response = NextResponse.json({ ok: true })
+    response.cookies.set(adminSessionCookie, await createAdminSessionToken(email), {
+      ...adminCookieOptions,
+      maxAge: 60 * 60 * 24 * 30,
+    })
+    response.cookies.delete(adminAccessCookie)
+    response.cookies.delete(adminRefreshCookie)
+    return response
+  }
+
   const client = getSupabaseAuthClient()
   if (!client) {
-    return NextResponse.json({ ok: false, message: 'Supabase Auth が未設定です。' }, { status: 503 })
+    return NextResponse.json({ ok: false, message: 'ログインできませんでした。メールとパスワードを確認してください。' }, { status: 401 })
   }
 
   const { data, error } = await client.auth.signInWithPassword({ email, password })
@@ -30,6 +50,7 @@ export async function POST(request: Request) {
     ...adminCookieOptions,
     maxAge: 60 * 60 * 24 * 30,
   })
+  response.cookies.delete(adminSessionCookie)
 
   return response
 }

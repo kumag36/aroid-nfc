@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { adminAccessCookie, adminRefreshCookie, getSupabaseAuthClient } from './lib/admin-auth'
+import {
+  adminAccessCookie,
+  adminRefreshCookie,
+  adminSessionCookie,
+  getSupabaseAuthClient,
+  verifyAdminSessionToken,
+} from './lib/admin-auth'
 
 const protectedPrefixes = [
   '/admin',
@@ -25,6 +31,11 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   if (!isProtected(pathname)) {
+    return NextResponse.next()
+  }
+
+  const adminSessionToken = request.cookies.get(adminSessionCookie)?.value
+  if (await verifyAdminSessionToken(adminSessionToken)) {
     return NextResponse.next()
   }
 
@@ -68,9 +79,16 @@ export async function middleware(request: NextRequest) {
   const response = redirectToLogin(request)
   response.cookies.delete(adminAccessCookie)
   response.cookies.delete(adminRefreshCookie)
+  response.cookies.delete(adminSessionCookie)
   return response
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/api/dictionary/images/:path*', '/api/museum/upload/:path*', '/api/music/upload/:path*', '/api/nfc/verify/:path*'],
+  matcher: [
+    '/admin/:path*',
+    '/api/dictionary/images/:path*',
+    '/api/museum/upload/:path*',
+    '/api/music/upload/:path*',
+    '/api/nfc/verify/:path*',
+  ],
 }
