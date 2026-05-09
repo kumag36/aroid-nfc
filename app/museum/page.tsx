@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import BrandHeader from '@/app/components/BrandHeader'
 import MuseumGallery from '@/app/museum/components/MuseumGallery'
 import { listMuseumWorks } from '@/lib/museum-storage'
@@ -16,24 +15,16 @@ export default async function MuseumPage() {
   return (
     <main className="zmk-page">
       <BrandHeader />
-      <section className="zmk-public-hero px-5 pb-10 pt-32 sm:pt-40">
+      <section className="zmk-public-hero px-5 pb-5 pt-28 sm:pb-10 sm:pt-40">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="zmk-eyebrow mb-4">MANGA ROOM</p>
-          <h1>漫画部屋</h1>
-          <p className="mx-auto mt-4 max-w-xl text-[15px] font-bold leading-8 text-[var(--zmk-ink-soft)]">
+          <p className="zmk-eyebrow mb-3">MANGA ROOM</p>
+          <h1 className="text-[clamp(3.2rem,16vw,8rem)]">漫画部屋</h1>
+          <p className="mx-auto mt-3 max-w-xl text-[14px] font-bold leading-7 text-[var(--zmk-ink-soft)] sm:text-[15px] sm:leading-8">
             植物のつまずきや世話のコツを、ゆるく読めるマンガで置いています。
           </p>
-          <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Link href="/shokuchudoku" className="zmk-button zmk-button-primary">
-              植中毒へ
-            </Link>
-            <Link href="/lab" className="zmk-button">
-              音楽へ
-            </Link>
-          </div>
         </div>
       </section>
-      <section className="bg-[var(--zmk-bg-card)] px-5 py-12">
+      <section className="bg-[var(--zmk-bg-card)] px-4 py-6 sm:px-5 sm:py-12">
         <div className="mx-auto max-w-6xl">
           <MuseumGallery initialWorks={works} />
         </div>

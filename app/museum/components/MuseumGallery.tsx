@@ -156,8 +156,8 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-8">
-      <aside className="lg:sticky lg:top-28 lg:self-start">
+    <div className="grid min-w-0 gap-6 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-8">
+      <aside className="order-2 min-w-0 lg:order-1 lg:sticky lg:top-28 lg:self-start">
         <div className="border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/86 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <p className="zmk-eyebrow text-[11px] font-semibold">
@@ -188,8 +188,8 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
       </aside>
 
       {selectedWork && (
-        <article className="border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/86 p-3 shadow-[0_28px_90px_rgba(44,106,75,0.12)] min-[430px]:p-4 md:p-6">
-          <div className="mb-3 border-b border-[var(--zmk-border)] pb-3 md:mb-5 md:pb-5">
+        <article className="order-1 min-w-0 overflow-hidden border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/86 p-3 shadow-[0_28px_90px_rgba(44,106,75,0.12)] min-[430px]:p-4 md:p-6 lg:order-2">
+          <div className="mb-3 min-w-0 border-b border-[var(--zmk-border)] pb-3 md:mb-5 md:pb-5">
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="zmk-eyebrow text-[11px] font-semibold">
                 MANGA READER
@@ -198,7 +198,7 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
                 {readingMode === 'horizontal' ? `← ${pageIndex + 1}/${selectedWork.pages.length} →` : `${selectedWork.pages.length} PAGES`}
               </p>
             </div>
-            <div className="mb-4 grid grid-cols-2 gap-2 rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)] p-1">
+            <div className="mb-3 grid min-w-0 grid-cols-2 gap-2 rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)] p-1 md:mb-4">
               <button
                 type="button"
                 onClick={() => changeReadingMode('horizontal')}
@@ -214,11 +214,11 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
                 縦スクロール
               </button>
             </div>
-            <h2 className="text-[clamp(1.35rem,4vw,3.2rem)] font-medium leading-tight">
+            <h2 className="hidden break-words text-[1.35rem] font-black leading-tight md:block md:text-[clamp(1.8rem,4vw,3.2rem)]">
               {selectedWork.title}
             </h2>
             {selectedWork.description && (
-              <p className="mt-2 line-clamp-2 max-w-3xl text-[12px] font-bold leading-6 text-[var(--zmk-ink-soft)] md:mt-4 md:line-clamp-none md:text-[15px] md:leading-8">
+              <p className="mt-2 hidden max-w-3xl text-[12px] font-bold leading-6 text-[var(--zmk-ink-soft)] md:mt-4 md:block md:text-[15px] md:leading-8">
                 {selectedWork.description}
               </p>
             )}
