@@ -20,7 +20,7 @@ export default function LegalShell({ eyebrow, title, lead, children }: LegalShel
           {children}
           <div className="mt-12 flex flex-wrap gap-3">
             <Link href="/" className="zmk-button zmk-button-primary">トップへ戻る</Link>
-            <Link href="/about" className="zmk-button">ショップ情報へ</Link>
+            <Link href="/shokuchudoku" className="zmk-button">植中毒へ</Link>
           </div>
         </div>
       </section>
