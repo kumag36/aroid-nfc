@@ -32,6 +32,8 @@ yarn-error.log*
 dev-server*.log
 prod-server*.log
 shot-*.png
+.codex-*.png
+.next-start-*.log
 chrome-tmp*/
 
 # env files (can opt-in for committing if needed)
