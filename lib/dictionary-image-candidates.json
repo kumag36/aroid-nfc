@@ -3336,5 +3336,138 @@
       "confidence": 0.9,
       "reason": "Plant candidate from filename/folder token. Variety is not auto-confirmed."
     }
+  },
+  {
+    "id": "183-alocasia-black-velvet-pink-01",
+    "src": "/dictionary/candidates/183-alocasia-black-velvet-pink-01.jpg",
+    "originalName": "IMG_3395.JPG",
+    "relativePath": "iCloud Photos\\Photos\\IMG_3395.JPG",
+    "width": 1400,
+    "height": 1050,
+    "sizeKb": 321,
+    "source": "ZAMAKURI photo record",
+    "suggestedPlantSlugs": [
+      "alocasia-black-velvet-pink-albo"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.98,
+      "reason": "User-provided Alocasia Black Velvet Pink photo."
+    }
+  },
+  {
+    "id": "184-alocasia-black-velvet-pink-02",
+    "src": "/dictionary/candidates/184-alocasia-black-velvet-pink-02.jpg",
+    "originalName": "IMG_3396.JPG",
+    "relativePath": "iCloud Photos\\Photos\\IMG_3396.JPG",
+    "width": 1400,
+    "height": 1050,
+    "sizeKb": 402,
+    "source": "ZAMAKURI photo record",
+    "suggestedPlantSlugs": [
+      "alocasia-black-velvet-pink-albo"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.98,
+      "reason": "User-provided Alocasia Black Velvet Pink photo."
+    }
+  },
+  {
+    "id": "185-alocasia-black-velvet-pink-03",
+    "src": "/dictionary/candidates/185-alocasia-black-velvet-pink-03.jpg",
+    "originalName": "IMG_3391.JPG",
+    "relativePath": "iCloud Photos\\Photos\\IMG_3391.JPG",
+    "width": 1400,
+    "height": 1050,
+    "sizeKb": 163,
+    "source": "ZAMAKURI photo record",
+    "suggestedPlantSlugs": [
+      "alocasia-black-velvet-pink-albo"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.98,
+      "reason": "User-provided Alocasia Black Velvet Pink photo."
+    }
+  },
+  {
+    "id": "186-alocasia-black-velvet-pink-04",
+    "src": "/dictionary/candidates/186-alocasia-black-velvet-pink-04.jpg",
+    "originalName": "IMG_3388.JPG",
+    "relativePath": "iCloud Photos\\Photos\\IMG_3388.JPG",
+    "width": 1400,
+    "height": 1050,
+    "sizeKb": 201,
+    "source": "ZAMAKURI photo record",
+    "suggestedPlantSlugs": [
+      "alocasia-black-velvet-pink-albo"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.98,
+      "reason": "User-provided Alocasia Black Velvet Pink photo."
+    }
+  },
+  {
+    "id": "187-alocasia-black-velvet-pink-05",
+    "src": "/dictionary/candidates/187-alocasia-black-velvet-pink-05.jpg",
+    "originalName": "IMG_3389.JPG",
+    "relativePath": "iCloud Photos\\Photos\\IMG_3389.JPG",
+    "width": 1400,
+    "height": 1050,
+    "sizeKb": 215,
+    "source": "ZAMAKURI photo record",
+    "suggestedPlantSlugs": [
+      "alocasia-black-velvet-pink-albo"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.98,
+      "reason": "User-provided Alocasia Black Velvet Pink photo."
+    }
+  },
+  {
+    "id": "188-alocasia-black-velvet-pink-06",
+    "src": "/dictionary/candidates/188-alocasia-black-velvet-pink-06.jpg",
+    "originalName": "IMG_3387.JPG",
+    "relativePath": "iCloud Photos\\Photos\\IMG_3387.JPG",
+    "width": 1400,
+    "height": 1050,
+    "sizeKb": 242,
+    "source": "ZAMAKURI photo record",
+    "suggestedPlantSlugs": [
+      "alocasia-black-velvet-pink-albo"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.98,
+      "reason": "User-provided Alocasia Black Velvet Pink photo."
+    }
+  },
+  {
+    "id": "189-alocasia-black-velvet-pink-07",
+    "src": "/dictionary/candidates/189-alocasia-black-velvet-pink-07.jpg",
+    "originalName": "IMG_3386.JPG",
+    "relativePath": "iCloud Photos\\Photos\\IMG_3386.JPG",
+    "width": 1400,
+    "height": 1050,
+    "sizeKb": 259,
+    "source": "ZAMAKURI photo record",
+    "suggestedPlantSlugs": [
+      "alocasia-black-velvet-pink-albo"
+    ],
+    "status": "candidate",
+    "plantCheck": {
+      "isLikelyPlant": true,
+      "confidence": 0.98,
+      "reason": "User-provided Alocasia Black Velvet Pink photo."
+    }
   }
 ]

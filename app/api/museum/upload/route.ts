@@ -90,7 +90,7 @@ export async function POST(request: Request) {
   const { error: manifestError } = await client.storage
     .from(museumBucket)
     .upload(`works/${id}/manifest.json`, JSON.stringify(manifest, null, 2), {
-      contentType: 'application/json; charset=utf-8',
+      contentType: 'application/json',
       upsert: false,
     })
 

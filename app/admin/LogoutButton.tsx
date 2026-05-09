@@ -12,7 +12,7 @@ export default function LogoutButton() {
   }
 
   return (
-    <button type="button" onClick={logout} className="min-h-10 border border-[#10291e]/18 bg-white px-4 text-sm font-bold text-[#10291e]">
+    <button type="button" onClick={logout} className="min-h-10 border border-[var(--zmk-border-strong)] bg-[var(--zmk-bg-card)] px-4 text-sm font-bold text-[var(--zmk-ink)]">
       ログアウト
     </button>
   )

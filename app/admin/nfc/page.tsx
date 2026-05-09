@@ -8,18 +8,18 @@ export const metadata = {
 
 export default function AdminNfcPage() {
   return (
-    <main className="min-h-[100dvh] bg-[#f8fbf2] px-4 py-5 text-[#10291e]">
+    <main className="zmk-admin-page px-4 py-5">
       <div className="mx-auto max-w-5xl">
         <div className="mb-5 flex items-center justify-between gap-3">
           <div>
-            <p className="zmk-eyebrow text-[10px] text-[#b89558]">NFC ADMIN</p>
+            <p className="zmk-eyebrow text-[10px]">NFC ADMIN</p>
             <h1 className="mt-1 text-2xl font-bold">NFC管理</h1>
           </div>
-          <Link href="/admin" className="min-h-10 border border-[#10291e]/18 bg-white px-4 py-2 text-sm font-bold">管理へ</Link>
+          <Link href="/admin" className="zmk-admin-link min-h-10 px-4 py-2 text-sm">管理へ</Link>
         </div>
         <div className="mb-4 grid gap-2 sm:grid-cols-2">
-          <Link href="/admin/items/new" className="min-h-11 border border-[#10291e]/12 bg-white px-4 py-3 text-sm font-bold">新規登録 ›</Link>
-          <Link href="/admin/nfc/rewrite" className="min-h-11 border border-[#10291e]/12 bg-white px-4 py-3 text-sm font-bold">NFC書き込み ›</Link>
+          <Link href="/admin/items/new" className="zmk-admin-link min-h-11 px-4 py-3 text-sm">新規登録 ›</Link>
+          <Link href="/admin/nfc/rewrite" className="zmk-admin-link min-h-11 px-4 py-3 text-sm">NFC書き込み ›</Link>
         </div>
         <NfcVerifyConsole />
       </div>

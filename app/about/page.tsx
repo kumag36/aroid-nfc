@@ -103,7 +103,7 @@ export default function AboutPage() {
             <p className="zmk-eyebrow mb-5">ACTIVITY</p>
             <h2>活動実績</h2>
             <ul className="mt-7 grid gap-3 text-[15px] font-bold leading-7 text-[var(--zmk-ink)]">
-              {activities.map((item) => <li key={item} className="border-l border-[#b89558]/55 bg-[var(--zmk-bg-card)] px-5 py-3">{item}</li>)}
+              {activities.map((item) => <li key={item} className="border-l border-[var(--zmk-gold)] bg-[var(--zmk-bg-card)] px-5 py-3">{item}</li>)}
             </ul>
             <p className="zmk-muted mt-5 text-sm font-bold leading-7">イベント出店回数は正確な数値が確定していないため、推測せず「各種イベント出店」と表記しています。</p>
           </div>

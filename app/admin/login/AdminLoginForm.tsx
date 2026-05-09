@@ -36,30 +36,30 @@ export default function AdminLoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 border border-[var(--zmk-border)] bg-white p-5 shadow-[0_18px_50px_rgba(16,41,30,0.08)]">
-      <label className="grid gap-2 text-sm font-bold text-[#10291e]">
+    <form onSubmit={handleSubmit} className="zmk-admin-card grid gap-4 p-5">
+      <label className="zmk-admin-label grid gap-2">
         メールアドレス
         <input
           type="email"
           autoComplete="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="min-h-12 border border-[#10291e]/18 bg-[#fffef8] px-3 text-base outline-none focus:border-[#10291e]"
+          className="zmk-admin-input text-base"
           required
         />
       </label>
-      <label className="grid gap-2 text-sm font-bold text-[#10291e]">
+      <label className="zmk-admin-label grid gap-2">
         パスワード
         <input
           type="password"
           autoComplete="current-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-          className="min-h-12 border border-[#10291e]/18 bg-[#fffef8] px-3 text-base outline-none focus:border-[#10291e]"
+          className="zmk-admin-input text-base"
           required
         />
       </label>
-      {message ? <p className="text-sm font-bold text-red-700">{message}</p> : null}
+      {message ? <p className="zmk-admin-error text-sm font-bold">{message}</p> : null}
       <button type="submit" disabled={isSubmitting} className="zmk-button zmk-button-primary w-full disabled:opacity-60">
         {isSubmitting ? '確認中...' : 'ログイン'}
       </button>

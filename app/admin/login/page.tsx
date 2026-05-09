@@ -9,18 +9,18 @@ export const metadata = {
 
 export default function AdminLoginPage() {
   return (
-    <main className="zmk-page bg-[#f8fbf2]">
+    <main className="zmk-page">
       <BrandHeader />
       <section className="px-5 pb-16 pt-32 sm:pt-40">
         <div className="mx-auto grid max-w-md gap-6">
           <div>
-            <p className="zmk-eyebrow mb-4 text-[#b89558]">ADMIN LOGIN</p>
-            <h1 className="text-4xl font-bold text-[#10291e]">管理ログイン</h1>
-            <p className="mt-4 text-sm leading-7 text-[#315244]">
+            <p className="zmk-eyebrow mb-4">ADMIN LOGIN</p>
+            <h1 className="text-4xl font-bold">管理ログイン</h1>
+            <p className="zmk-admin-muted mt-4 text-sm leading-7">
               管理機能はログイン後に表示します。Supabase Auth のメールとパスワードで入室してください。
             </p>
           </div>
-          <Suspense fallback={<div className="border border-[#2c6a4b]/12 bg-white p-5 text-sm text-[#173b2a]">読み込み中です。</div>}>
+          <Suspense fallback={<div className="zmk-admin-card p-5 text-sm">読み込み中です。</div>}>
             <AdminLoginForm />
           </Suspense>
         </div>

@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 import BrandHeader from '@/app/components/BrandHeader'
 import PageHero from '@/app/components/PageHero'
+import ScientificName from '@/app/components/ScientificName'
 
 type PageProps = {
   params: Promise<{ uid: string }>
@@ -42,7 +44,7 @@ async function fetchItem(uid: string) {
   }
 }
 
-function DataRow({ label, value }: { label: string; value?: string | null }) {
+function DataRow({ label, value }: { label: string; value?: ReactNode }) {
   if (!value) return null
   return (
     <div className="grid gap-1 border-b border-[var(--zmk-border)] py-3 last:border-b-0 sm:grid-cols-[10rem_1fr] sm:gap-5">
@@ -109,7 +111,7 @@ export default async function IndividualPage({ params }: PageProps) {
           <dl>
             <DataRow label="植物ID" value={normalizedUid} />
             <DataRow label="表示名" value={displayName} />
-            <DataRow label="学名" value={item.name_en || item.scientific_name} />
+            <DataRow label="学名" value={item.name_en || item.scientific_name ? <span className="zmk-scientific"><ScientificName name={(item.name_en || item.scientific_name) as string} /></span> : null} />
             <DataRow label="流通名" value={item.trade_name || item.name_jp} />
             <DataRow label="図鑑Slug" value={item.slug} />
           </dl>

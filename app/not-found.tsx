@@ -9,12 +9,11 @@ export default function NotFound() {
       <PageHero
         eyebrow="404"
         title={<>そのページ、<span className="block">まだ芽吹いてないみたい。</span></>}
-        lead="探してくれてありがとう。ここはまだ準備中の小さな鉢です。図鑑かトップへ戻ると、いま育っているページたちに会えます。"
+        lead="探してくれてありがとう。いま開いている入口だけ、静かに並べています。"
         actions={
           <>
-            <Link href="/dictionary" className="zmk-button zmk-button-primary">図鑑へ戻る</Link>
-            <Link href="/" className="zmk-button">トップへ戻る</Link>
-            <Link href="/about" className="zmk-button">ショップ情報へ</Link>
+            <Link href="/shokuchudoku" className="zmk-button zmk-button-primary">植中毒へ</Link>
+            <Link href="/lab" className="zmk-button">音楽へ</Link>
           </>
         }
       />

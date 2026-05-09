@@ -1,6 +1,6 @@
-﻿'use client'
+'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 type MuseumWork = {
   id: string
@@ -17,25 +17,50 @@ type MuseumResponse = {
   works: MuseumWork[]
 }
 
-export default function MuseumGallery() {
-  const [works, setWorks] = useState<MuseumWork[]>([])
-  const [selectedId, setSelectedId] = useState<string | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
+type MuseumGalleryProps = {
+  initialWorks?: MuseumWork[]
+}
+
+type ReadingMode = 'horizontal' | 'vertical'
+
+export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps) {
+  const [works, setWorks] = useState<MuseumWork[]>(initialWorks)
+  const [selectedId, setSelectedId] = useState<string | null>(initialWorks[0]?.id ?? null)
+  const [pageIndex, setPageIndex] = useState(0)
+  const [readingMode, setReadingMode] = useState<ReadingMode>('horizontal')
+  const [isLoading, setIsLoading] = useState(initialWorks.length === 0)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [reloadKey, setReloadKey] = useState(0)
+  const readerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     let ignore = false
 
     fetch('/api/museum', { cache: 'no-store' })
-      .then((response) => response.json() as Promise<MuseumResponse>)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`museum api ${response.status}`)
+        }
+        return response.json() as Promise<MuseumResponse>
+      })
       .then((data) => {
         if (!ignore) {
-          setWorks(data.works ?? [])
-          setSelectedId(data.works?.[0]?.id ?? null)
+          const nextWorks = data.works ?? []
+          setWorks(nextWorks)
+          setSelectedId((currentId) => {
+            if (currentId && nextWorks.some((work) => work.id === currentId)) {
+              return currentId
+            }
+            return nextWorks[0]?.id ?? null
+          })
+          setErrorMessage(null)
         }
       })
-      .catch(() => {
+      .catch((error) => {
         if (!ignore) {
           setWorks([])
+          setSelectedId(null)
+          setErrorMessage(error instanceof Error ? error.message : 'museum api error')
         }
       })
       .finally(() => {
@@ -47,16 +72,58 @@ export default function MuseumGallery() {
     return () => {
       ignore = true
     }
-  }, [])
+  }, [reloadKey])
 
   const selectedWork = useMemo(
     () => works.find((work) => work.id === selectedId) ?? works[0],
     [selectedId, works],
   )
 
+  useEffect(() => {
+    readerRef.current?.scrollTo({ left: 0, behavior: 'instant' })
+  }, [selectedId])
+
+  function selectWork(id: string) {
+    setPageIndex(0)
+    setSelectedId(id)
+  }
+
+  function changeReadingMode(mode: ReadingMode) {
+    setReadingMode(mode)
+    setPageIndex(0)
+    readerRef.current?.scrollTo({ left: 0, behavior: 'instant' })
+  }
+
+  function scrollToPage(index: number) {
+    if (!selectedWork) return
+
+    const nextIndex = Math.min(Math.max(index, 0), selectedWork.pages.length - 1)
+    const item = readerRef.current?.children.item(nextIndex) as HTMLElement | null
+
+    item?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+    setPageIndex(nextIndex)
+  }
+
+  function updatePageIndexFromScroll() {
+    const reader = readerRef.current
+    if (!reader) return
+
+    const readerCenter = reader.scrollLeft + reader.clientWidth / 2
+    const children = Array.from(reader.children) as HTMLElement[]
+    const nextIndex = children.reduce((closestIndex, child, index) => {
+      const childCenter = child.offsetLeft + child.clientWidth / 2
+      const closestChild = children[closestIndex]
+      const closestCenter = closestChild.offsetLeft + closestChild.clientWidth / 2
+
+      return Math.abs(childCenter - readerCenter) < Math.abs(closestCenter - readerCenter) ? index : closestIndex
+    }, 0)
+
+    setPageIndex(nextIndex)
+  }
+
   if (isLoading) {
     return (
-      <div className="border border-[#2c6a4b]/10 bg-white/86 px-5 py-16 text-center text-[#315244]/70">
+      <div className="border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/86 px-5 py-16 text-center text-[var(--zmk-ink-soft)]">
         展示室を整えています。
       </div>
     )
@@ -64,40 +131,54 @@ export default function MuseumGallery() {
 
   if (works.length === 0) {
     return (
-      <div className="border border-[#2c6a4b]/10 bg-white/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.22)] md:p-12">
-        <p className="mb-5 text-xs font-semibold tracking-[0.32em] text-[#b89558]">NO MANGA YET</p>
-        <h2 className="text-[clamp(2rem,5vw,4.2rem)] font-medium leading-tight text-[#143326]">
-          まだ漫画作品はありません。
+      <div className="border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/86 p-8 shadow-[0_28px_90px_rgba(0,0,0,0.22)] md:p-12">
+        <p className="zmk-eyebrow mb-5 text-xs font-semibold">{errorMessage ? 'MANGA CHECK / ERROR' : 'NO MANGA YET'}</p>
+        <h2 className="text-[clamp(2rem,5vw,4.2rem)] font-medium leading-tight">
+          {errorMessage ? '漫画データを確認できません。' : 'まだ漫画作品はありません。'}
         </h2>
-        <p className="mt-7 max-w-2xl text-[15px] leading-8 text-[#315244]/76 md:text-lg md:leading-9">
-          管理者ページから漫画をアップすると、ここに作品として並びます。
-          スマホでは縦読み、タブレットとPCでは横読みで閲覧できます。
+        <p className="mt-7 max-w-2xl text-[15px] leading-8 text-[var(--zmk-ink-soft)] md:text-lg md:leading-9">
+          {errorMessage
+            ? `API応答: ${errorMessage}。通信が戻ったら再確認してください。`
+            : '管理者ページから漫画をアップすると、ここに作品として並びます。作品もページも左右スライドで読めます。'}
         </p>
+        <button
+          type="button"
+          onClick={() => {
+            setIsLoading(true)
+            setReloadKey((key) => key + 1)
+          }}
+          className="zmk-button mt-7"
+        >
+          再確認
+        </button>
       </div>
     )
   }
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
+    <div className="grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-8">
       <aside className="lg:sticky lg:top-28 lg:self-start">
-        <div className="border border-[#2c6a4b]/10 bg-white/86 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
-          <p className="mb-4 text-[11px] font-semibold tracking-[0.24em] text-[#b89558]">
-            MANGA LIST / {works.length}
-          </p>
-          <div className="grid gap-2">
+        <div className="border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/86 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <p className="zmk-eyebrow text-[11px] font-semibold">
+              MANGA LIST / {works.length}
+            </p>
+            <p className="text-[11px] font-black tracking-[0.16em] text-[var(--zmk-ink-soft)]">← SLIDE →</p>
+          </div>
+          <div className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:snap-none lg:overflow-visible lg:px-0 lg:pb-0">
             {works.map((work) => (
               <button
                 key={work.id}
                 type="button"
-              onClick={() => setSelectedId(work.id)}
-                className={`border px-4 py-4 text-left transition duration-300 ${
+                onClick={() => selectWork(work.id)}
+                className={`min-w-[76vw] max-w-[22rem] snap-start border px-4 py-4 text-left transition duration-300 lg:min-w-0 lg:max-w-none ${
                   selectedWork?.id === work.id
-                    ? 'border-[#d9ffd8]/55 bg-[#d9ffd8]/10 text-[#143326]'
-                    : 'border-[#2c6a4b]/10 bg-[#fffaf0]/4 text-[#315244]/72 hover:border-[#d9ffd8]/30'
+                    ? 'border-[var(--zmk-border-strong)] bg-[var(--zmk-bg-soft)] text-[var(--zmk-ink)]'
+                    : 'border-[var(--zmk-border)] bg-[var(--zmk-bg-card)] text-[var(--zmk-ink-soft)] hover:border-[var(--zmk-border-strong)]'
                 }`}
               >
                 <span className="block text-sm font-semibold leading-6">{work.title}</span>
-                <span className="mt-2 block text-[11px] tracking-[0.14em] text-[#315244]/48">
+                <span className="mt-2 block text-[11px] text-[var(--zmk-ink-soft)]">
                   {work.pages.length} PAGES
                 </span>
               </button>
@@ -107,41 +188,110 @@ export default function MuseumGallery() {
       </aside>
 
       {selectedWork && (
-        <article className="border border-[#2c6a4b]/10 bg-white/86 p-4 shadow-[0_28px_90px_rgba(44,106,75,0.12)] dark:border-[#d9ffd8]/14 dark:bg-[#10291e]/86 md:p-7">
-          <div className="mb-7 border-b border-[#2c6a4b]/10 pb-6">
-            <p className="mb-4 text-[11px] font-semibold tracking-[0.28em] text-[#b89558]">
-              MANGA READER
-            </p>
-            <h2 className="text-[clamp(1.9rem,4vw,3.8rem)] font-medium leading-tight text-[#143326]">
+        <article className="border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/86 p-3 shadow-[0_28px_90px_rgba(44,106,75,0.12)] min-[430px]:p-4 md:p-6">
+          <div className="mb-3 border-b border-[var(--zmk-border)] pb-3 md:mb-5 md:pb-5">
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <p className="zmk-eyebrow text-[11px] font-semibold">
+                MANGA READER
+              </p>
+              <p className="text-[11px] font-black tracking-[0.18em] text-[var(--zmk-ink-soft)]">
+                {readingMode === 'horizontal' ? `← ${pageIndex + 1}/${selectedWork.pages.length} →` : `${selectedWork.pages.length} PAGES`}
+              </p>
+            </div>
+            <div className="mb-4 grid grid-cols-2 gap-2 rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)] p-1">
+              <button
+                type="button"
+                onClick={() => changeReadingMode('horizontal')}
+                className={`min-h-10 rounded-full text-sm font-black transition ${readingMode === 'horizontal' ? 'bg-[var(--zmk-ink)] text-[var(--zmk-bg)]' : 'text-[var(--zmk-ink-soft)]'}`}
+              >
+                横スライド
+              </button>
+              <button
+                type="button"
+                onClick={() => changeReadingMode('vertical')}
+                className={`min-h-10 rounded-full text-sm font-black transition ${readingMode === 'vertical' ? 'bg-[var(--zmk-ink)] text-[var(--zmk-bg)]' : 'text-[var(--zmk-ink-soft)]'}`}
+              >
+                縦スクロール
+              </button>
+            </div>
+            <h2 className="text-[clamp(1.35rem,4vw,3.2rem)] font-medium leading-tight">
               {selectedWork.title}
             </h2>
             {selectedWork.description && (
-              <p className="mt-5 max-w-3xl text-[15px] leading-8 text-[#315244]/76">
+              <p className="mt-2 line-clamp-2 max-w-3xl text-[12px] font-bold leading-6 text-[var(--zmk-ink-soft)] md:mt-4 md:line-clamp-none md:text-[15px] md:leading-8">
                 {selectedWork.description}
               </p>
             )}
           </div>
 
-          <p className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#315244]/58 dark:text-[#d9ffd8]/58 md:hidden">
-            SMARTPHONE / 縦読み
-          </p>
-          <p className="mb-4 hidden text-[11px] font-semibold tracking-[0.22em] text-[#315244]/58 dark:text-[#d9ffd8]/58 md:block">
-            TABLET・DESKTOP / 横読み
-          </p>
+          {readingMode === 'horizontal' ? (
+          <div className="relative">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[var(--zmk-bg-card)] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[var(--zmk-bg-card)] to-transparent" />
+            <button
+              type="button"
+              onClick={() => scrollToPage(pageIndex - 1)}
+              disabled={pageIndex === 0}
+              aria-label="前のページ"
+              className="absolute left-2 top-1/2 z-20 grid h-11 w-11 -translate-y-1/2 place-items-center border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/92 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToPage(pageIndex + 1)}
+              disabled={pageIndex >= selectedWork.pages.length - 1}
+              aria-label="次のページ"
+              className="absolute right-2 top-1/2 z-20 grid h-11 w-11 -translate-y-1/2 place-items-center border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/92 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
+            >
+              →
+            </button>
 
-          <div className="mx-auto grid max-w-[760px] gap-3 md:flex md:max-w-none md:snap-x md:gap-4 md:overflow-x-auto md:pb-4">
-            {selectedWork.pages.map((page, index) => (
-              <figure key={page.path} className="overflow-hidden border border-[#2c6a4b]/8 bg-[#fffef8] dark:border-[#d9ffd8]/12 dark:bg-[#07110c] md:w-[min(72vw,760px)] md:shrink-0 md:snap-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={page.url}
-                  alt={`${selectedWork.title} ${index + 1}ページ`}
-                  className="h-auto w-full object-contain"
-                  loading={index === 0 ? 'eager' : 'lazy'}
+            <div
+              ref={readerRef}
+              onScroll={updatePageIndexFromScroll}
+              className="-mx-3 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-smooth px-3 pb-4 min-[430px]:-mx-4 min-[430px]:gap-4 min-[430px]:px-4 md:mx-0 md:px-0"
+            >
+              {selectedWork.pages.map((page, index) => (
+                <figure key={page.path} className="flex h-[min(64dvh,680px)] w-full shrink-0 snap-center items-center justify-center overflow-hidden border border-[#2c6a4b]/8 bg-[#fffef8] dark:border-[#d9ffd8]/12 dark:bg-[#07110c] md:h-[min(74dvh,860px)] md:w-[min(76vw,780px)]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={page.url}
+                    alt={`${selectedWork.title} ${index + 1}ページ`}
+                    className="h-full w-full object-contain"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                  />
+                </figure>
+              ))}
+            </div>
+
+            <div className="mt-1 flex justify-center gap-2">
+              {selectedWork.pages.map((page, index) => (
+                <button
+                  key={`${page.path}-dot`}
+                  type="button"
+                  onClick={() => scrollToPage(index)}
+                  aria-label={`${index + 1}ページへ`}
+                  className={`h-2.5 rounded-full transition-all ${index === pageIndex ? 'w-8 bg-[var(--zmk-ink)]' : 'w-2.5 bg-[var(--zmk-border-strong)]/45'}`}
                 />
-              </figure>
-            ))}
+              ))}
+            </div>
           </div>
+          ) : (
+            <div className="mx-auto grid max-w-[760px] gap-3">
+              {selectedWork.pages.map((page, index) => (
+                <figure key={page.path} className="flex h-[min(72dvh,760px)] items-center justify-center overflow-hidden border border-[#2c6a4b]/8 bg-[#fffef8] dark:border-[#d9ffd8]/12 dark:bg-[#07110c] md:h-auto">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={page.url}
+                    alt={`${selectedWork.title} ${index + 1}ページ`}
+                    className="h-full w-full object-contain md:h-auto"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                  />
+                </figure>
+              ))}
+            </div>
+          )}
         </article>
       )}
     </div>

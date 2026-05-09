@@ -1,7 +1,12 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import type { ReactNode } from 'react'
 import BrandHeader from '@/app/components/BrandHeader'
 import PageHero from '@/app/components/PageHero'
+import ScientificName from '@/app/components/ScientificName'
 import { plants } from '@/lib/dictionary-data'
+import { dictionaryImageCandidates } from '@/lib/dictionary-image-data'
+import { listDictionaryImageAssignments, listDictionaryImageExclusions } from '@/lib/dictionary-image-storage'
 import { labelNameBySlug } from '@/lib/label-name-data'
 
 type PageProps = {
@@ -27,14 +32,32 @@ export async function generateMetadata({ params }: PageProps) {
   }
 }
 
-function DetailRow({ label, value }: { label: string; value?: string | null }) {
+function DetailRow({ label, value }: { label: string; value?: ReactNode }) {
   if (!value) return null
   return (
-    <div className="grid gap-1 border-b border-[var(--zmk-border)] py-3 last:border-b-0">
+    <div className="zmk-detail-fact-row">
       <dt className="zmk-eyebrow text-[11px]">{label}</dt>
       <dd className="text-[15px] font-bold leading-7 text-[var(--zmk-ink)]">{value}</dd>
     </div>
   )
+}
+
+async function getPlantImages(plantSlug: string) {
+  const [assignments, exclusions] = await Promise.all([
+    listDictionaryImageAssignments(),
+    listDictionaryImageExclusions(),
+  ])
+  const excludedIds = new Set(exclusions.map((item) => item.imageId))
+  const imageById = new Map(dictionaryImageCandidates.map((candidate) => [candidate.id, candidate]))
+
+  return assignments
+    .filter((assignment) => assignment.plantSlug === plantSlug && !excludedIds.has(assignment.imageId))
+    .sort((a, b) => {
+      if (a.role !== b.role) return a.role === 'primary' ? -1 : 1
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    })
+    .map((assignment) => imageById.get(assignment.imageId))
+    .filter((image): image is NonNullable<typeof image> => Boolean(image))
 }
 
 export default async function DictionaryDetailPage({ params }: PageProps) {
@@ -56,86 +79,95 @@ export default async function DictionaryDetailPage({ params }: PageProps) {
   }
 
   const label = labelNameBySlug[plant.slug]
+  const plantImages = await getPlantImages(plant.slug)
+  const primaryImage = plantImages[0]
   const contactHref = `mailto:kumajuko@gmail.com?subject=${encodeURIComponent(`お問い合わせ: ${plant.tradeName}`)}`
 
   return (
     <main className="zmk-page">
       <BrandHeader />
-      <PageHero
-        eyebrow={`${plant.category} / VARIETY PROFILE`}
-        title={<span className="zmk-scientific">{plant.displayName}</span>}
-        lead={`和名 / 流通名：${plant.tradeName}。${plant.description}`}
-        actions={
-          <>
-            <Link href="/dictionary" className="zmk-button zmk-button-primary">図鑑へ戻る</Link>
-            <a href={contactHref} className="zmk-button">お問い合わせ</a>
-          </>
-        }
-      />
-
-      <section className="zmk-section">
-        <div className="zmk-container grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
-          <div className="grid gap-6">
-            <section className="zmk-card p-5 sm:p-7">
-              <p className="zmk-eyebrow mb-4">SPECIMEN NOTE</p>
-              <h2>名前だけでなく、葉と履歴で見分ける。</h2>
-              <p className="mt-5 text-[15px] font-bold leading-8 text-[var(--zmk-ink-soft)]">
-                葉の切れ込み、穴あき、節間、斑の入り方を総合して見ます。流通名だけで判断せず、一株ごとの履歴と表情を残したいグループです。
-              </p>
-            </section>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              <section className="zmk-card p-5 sm:p-7">
-                <p className="zmk-eyebrow mb-4">LOOK</p>
-                <h3>観察ポイント</h3>
-                <p className="mt-4 text-sm font-bold leading-8 text-[var(--zmk-ink-soft)]">
-                  葉形、斑の入り方、葉脈、節間、展開後の変化をあわせて見ます。写真映えだけでなく、育つ途中の揺らぎも品種理解の材料になります。
-                </p>
-              </section>
-              <section className="zmk-card p-5 sm:p-7">
-                <p className="zmk-eyebrow mb-4">GROW</p>
-                <h3>育成メモ</h3>
-                <p className="mt-4 text-sm font-bold leading-8 text-[var(--zmk-ink-soft)]">
-                  光量、湿度、用土、支柱、根の状態を記録すると、同じ品種でも一株ごとの違いが見えます。育成メモと写真を重ねるほど価値が増します。
-                </p>
-              </section>
+      <section className="zmk-detail-hero">
+        <div className="zmk-container">
+          <Link href="/dictionary" className="zmk-detail-back">図鑑へ戻る</Link>
+          <div className="zmk-detail-hero-grid">
+            <div className="zmk-detail-copy">
+              <p className="zmk-eyebrow">{plant.category} / VARIETY PROFILE</p>
+              <h1 className="zmk-detail-title zmk-scientific"><ScientificName name={plant.displayName} /></h1>
+              <p className="zmk-detail-trade">和名 / 流通名：{plant.tradeName}</p>
+              <p className="zmk-detail-lead">{plant.description}</p>
+              <div className="zmk-detail-tags">
+                {plant.tags.map((tag) => <span key={tag} className="zmk-pill">{tag}</span>)}
+              </div>
+            </div>
+            <div className="zmk-detail-image-frame">
+              {primaryImage ? (
+                <Image
+                  src={primaryImage.src}
+                  alt={plant.tradeName}
+                  fill
+                  priority
+                  className="zmk-detail-image"
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                />
+              ) : (
+                <div className="zmk-detail-image-empty">No image</div>
+              )}
             </div>
           </div>
+        </div>
+      </section>
 
-          <aside className="zmk-card p-5 sm:p-6">
-            <p className="zmk-eyebrow mb-5">QUICK FACTS</p>
-            <dl>
-              <DetailRow label="カテゴリ" value={plant.category} />
+      <section className="zmk-detail-section">
+        <div className="zmk-container zmk-detail-layout">
+          <section className="zmk-detail-panel">
+            <p className="zmk-eyebrow">QUICK FACTS</p>
+            <dl className="zmk-detail-facts">
+              <DetailRow label="学名" value={<span className="zmk-scientific"><ScientificName name={plant.displayName} /></span>} />
               <DetailRow label="流通名" value={plant.tradeName} />
               <DetailRow label="ラベル" value={label?.shortName ? `${label.shortName} / ${label.fullKana}` : plant.tradeName} />
+              <DetailRow label="由来" value={plant.origin} />
+            </dl>
+          </section>
+
+          <section className="zmk-detail-panel">
+            <p className="zmk-eyebrow">GROW</p>
+            <dl className="zmk-detail-facts">
               <DetailRow label="適温" value={plant.temperature} />
               <DetailRow label="最低温度" value={plant.minimumTemperature} />
               <DetailRow label="湿度" value={plant.humidity} />
               <DetailRow label="おすすめ管理" value={plant.recommendedStyle} />
-              <DetailRow label="由来" value={plant.origin} />
             </dl>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {plant.tags.map((tag) => <span key={tag} className="zmk-pill">{tag}</span>)}
+          </section>
+
+          <section className="zmk-detail-note">
+            <div>
+              <p className="zmk-eyebrow">OBSERVE</p>
+              <h2>葉と履歴で見る。</h2>
+              <p>
+                葉形、斑の入り方、葉脈、節間、展開後の変化をあわせて見ます。流通名だけで判断せず、一株ごとの履歴と表情を残したい品種です。
+              </p>
             </div>
-          </aside>
+            <a href={contactHref} className="zmk-button zmk-button-primary">お問い合わせ</a>
+          </section>
         </div>
       </section>
 
-      <section className="zmk-section zmk-section-soft">
-        <div className="zmk-container flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="zmk-eyebrow mb-4">CONSULTATION</p>
-            <h2>気になる品種は、まず相談から。</h2>
-            <p className="zmk-muted mt-4 max-w-2xl text-[15px] font-bold leading-8">
-              状態、育て方、似た品種との違いを確認したい場合は、メールでお問い合わせください。販売導線は準備が整うまで公開しません。
-            </p>
+      {plantImages.length > 1 ? (
+        <section className="zmk-detail-gallery-section">
+          <div className="zmk-container">
+            <p className="zmk-eyebrow mb-4">GALLERY</p>
+            <div className="zmk-detail-gallery-wrap">
+              <div className="zmk-detail-gallery">
+              {plantImages.slice(0, 8).map((image) => (
+                <div key={image.id} className="zmk-detail-gallery-item">
+                  <Image src={image.src} alt={plant.tradeName} fill className="zmk-detail-image" sizes="42vw" />
+                </div>
+              ))}
+              </div>
+            </div>
           </div>
-          <div className="grid gap-3 sm:w-auto sm:min-w-[220px]">
-            <a href={contactHref} className="zmk-button zmk-button-primary">お問い合わせ</a>
-            <Link href="/about" className="zmk-button">ショップ情報</Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
     </main>
   )
 }

@@ -95,7 +95,7 @@ export async function POST(request: Request) {
   const { error: manifestError } = await client.storage
     .from(musicBucket)
     .upload(`tracks/${id}/manifest.json`, JSON.stringify(manifest, null, 2), {
-      contentType: 'application/json; charset=utf-8',
+      contentType: 'application/json',
       upsert: false,
     })
 

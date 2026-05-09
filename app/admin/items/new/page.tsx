@@ -41,9 +41,9 @@ export default async function NewItemPage({ searchParams }: NewItemPageProps) {
         <div className="zmk-container max-w-3xl">
           <div className="zmk-card p-6">
             <p className="zmk-eyebrow">NEW ITEM</p>
-            <div className="mt-6 rounded-[12px] border border-[#10291e]/12 bg-white p-4">
-              <p className="text-xs font-bold text-[#10291e]">登録予定ID</p>
-              <p className="mt-2 text-3xl font-black text-[#10291e]">{id || '未指定'}</p>
+            <div className="zmk-admin-panel mt-6 rounded-[8px] p-4">
+              <p className="text-xs font-bold">登録予定ID</p>
+              <p className="mt-2 text-3xl font-black">{id || '未指定'}</p>
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <Link href={`/nfc/rewrite?id=${encodeURIComponent(id)}`} className="zmk-button zmk-button-primary">

@@ -1,0 +1,2506 @@
+[
+  {
+    "id": "stamp-full-01-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-01-greeting-happy.png",
+    "source": "stamp-full",
+    "title": "おはよう",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 146,
+    "height": 131
+  },
+  {
+    "id": "stamp-full-02-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-02-greeting-happy.png",
+    "source": "stamp-full",
+    "title": "こんにちは",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 146,
+    "height": 149
+  },
+  {
+    "id": "stamp-full-03-greeting-calm",
+    "src": "/shokuchudoku/icon-library/stamp-full-03-greeting-calm.png",
+    "source": "stamp-full",
+    "title": "こんばんは",
+    "category": "greeting",
+    "mood": "calm",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "calm"
+    ],
+    "width": 147,
+    "height": 135
+  },
+  {
+    "id": "stamp-full-04-greeting-calm",
+    "src": "/shokuchudoku/icon-library/stamp-full-04-greeting-calm.png",
+    "source": "stamp-full",
+    "title": "おつかれさま",
+    "category": "greeting",
+    "mood": "calm",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "calm"
+    ],
+    "width": 146,
+    "height": 149
+  },
+  {
+    "id": "stamp-full-05-greeting-love",
+    "src": "/shokuchudoku/icon-library/stamp-full-05-greeting-love.png",
+    "source": "stamp-full",
+    "title": "ありがとう",
+    "category": "greeting",
+    "mood": "love",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "love"
+    ],
+    "width": 147,
+    "height": 143
+  },
+  {
+    "id": "stamp-full-06-greeting-thanks",
+    "src": "/shokuchudoku/icon-library/stamp-full-06-greeting-thanks.png",
+    "source": "stamp-full",
+    "title": "よろしく",
+    "category": "greeting",
+    "mood": "thanks",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "thanks"
+    ],
+    "width": 145,
+    "height": 130
+  },
+  {
+    "id": "stamp-full-07-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-07-greeting-happy.png",
+    "source": "stamp-full",
+    "title": "またね",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 146,
+    "height": 149
+  },
+  {
+    "id": "stamp-full-08-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-08-greeting-happy.png",
+    "source": "stamp-full",
+    "title": "いってきます",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 136,
+    "height": 148
+  },
+  {
+    "id": "stamp-full-09-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-09-greeting-happy.png",
+    "source": "stamp-full",
+    "title": "いってらっしゃい",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 146,
+    "height": 168
+  },
+  {
+    "id": "stamp-full-10-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-10-greeting-happy.png",
+    "source": "stamp-full",
+    "title": "おかえり",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 146,
+    "height": 146
+  },
+  {
+    "id": "stamp-full-11-reaction-ok",
+    "src": "/shokuchudoku/icon-library/stamp-full-11-reaction-ok.png",
+    "source": "stamp-full",
+    "title": "了解",
+    "category": "reaction",
+    "mood": "ok",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "ok"
+    ],
+    "width": 146,
+    "height": 137
+  },
+  {
+    "id": "stamp-full-12-reaction-ok",
+    "src": "/shokuchudoku/icon-library/stamp-full-12-reaction-ok.png",
+    "source": "stamp-full",
+    "title": "OK",
+    "category": "reaction",
+    "mood": "ok",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "ok"
+    ],
+    "width": 146,
+    "height": 123
+  },
+  {
+    "id": "stamp-full-13-reaction-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-13-reaction-happy.png",
+    "source": "stamp-full",
+    "title": "いいね",
+    "category": "reaction",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "happy"
+    ],
+    "width": 147,
+    "height": 135
+  },
+  {
+    "id": "stamp-full-14-reaction-surprise",
+    "src": "/shokuchudoku/icon-library/stamp-full-14-reaction-surprise.png",
+    "source": "stamp-full",
+    "title": "すごい",
+    "category": "reaction",
+    "mood": "surprise",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "surprise"
+    ],
+    "width": 146,
+    "height": 142
+  },
+  {
+    "id": "stamp-full-15-reaction-surprise",
+    "src": "/shokuchudoku/icon-library/stamp-full-15-reaction-surprise.png",
+    "source": "stamp-full",
+    "title": "えっ",
+    "category": "reaction",
+    "mood": "surprise",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "surprise"
+    ],
+    "width": 143,
+    "height": 136
+  },
+  {
+    "id": "stamp-full-16-reaction-surprise",
+    "src": "/shokuchudoku/icon-library/stamp-full-16-reaction-surprise.png",
+    "source": "stamp-full",
+    "title": "マジで",
+    "category": "reaction",
+    "mood": "surprise",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "surprise"
+    ],
+    "width": 126,
+    "height": 138
+  },
+  {
+    "id": "stamp-full-17-reaction-thinking",
+    "src": "/shokuchudoku/icon-library/stamp-full-17-reaction-thinking.png",
+    "source": "stamp-full",
+    "title": "なるほど",
+    "category": "reaction",
+    "mood": "thinking",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "thinking"
+    ],
+    "width": 141,
+    "height": 136
+  },
+  {
+    "id": "stamp-full-18-reaction-thinking",
+    "src": "/shokuchudoku/icon-library/stamp-full-18-reaction-thinking.png",
+    "source": "stamp-full",
+    "title": "たしかに",
+    "category": "reaction",
+    "mood": "thinking",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "thinking"
+    ],
+    "width": 143,
+    "height": 136
+  },
+  {
+    "id": "stamp-full-19-reaction-calm",
+    "src": "/shokuchudoku/icon-library/stamp-full-19-reaction-calm.png",
+    "source": "stamp-full",
+    "title": "それな",
+    "category": "reaction",
+    "mood": "calm",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "calm"
+    ],
+    "width": 145,
+    "height": 141
+  },
+  {
+    "id": "stamp-full-20-reaction-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-20-reaction-happy.png",
+    "source": "stamp-full",
+    "title": "やった",
+    "category": "reaction",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "happy"
+    ],
+    "width": 147,
+    "height": 137
+  },
+  {
+    "id": "stamp-full-21-emotion-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-21-emotion-happy.png",
+    "source": "stamp-full",
+    "title": "うれしい",
+    "category": "emotion",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "happy"
+    ],
+    "width": 146,
+    "height": 130
+  },
+  {
+    "id": "stamp-full-22-emotion-sad",
+    "src": "/shokuchudoku/icon-library/stamp-full-22-emotion-sad.png",
+    "source": "stamp-full",
+    "title": "かなしい",
+    "category": "emotion",
+    "mood": "sad",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "sad"
+    ],
+    "width": 138,
+    "height": 132
+  },
+  {
+    "id": "stamp-full-23-emotion-sad",
+    "src": "/shokuchudoku/icon-library/stamp-full-23-emotion-sad.png",
+    "source": "stamp-full",
+    "title": "ぴえん",
+    "category": "emotion",
+    "mood": "sad",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "sad"
+    ],
+    "width": 128,
+    "height": 127
+  },
+  {
+    "id": "stamp-full-24-emotion-sad",
+    "src": "/shokuchudoku/icon-library/stamp-full-24-emotion-sad.png",
+    "source": "stamp-full",
+    "title": "ごめん",
+    "category": "emotion",
+    "mood": "sad",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "sad"
+    ],
+    "width": 130,
+    "height": 124
+  },
+  {
+    "id": "stamp-full-25-emotion-thanks",
+    "src": "/shokuchudoku/icon-library/stamp-full-25-emotion-thanks.png",
+    "source": "stamp-full",
+    "title": "ありがとう",
+    "category": "emotion",
+    "mood": "thanks",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "thanks"
+    ],
+    "width": 147,
+    "height": 132
+  },
+  {
+    "id": "stamp-full-26-emotion-love",
+    "src": "/shokuchudoku/icon-library/stamp-full-26-emotion-love.png",
+    "source": "stamp-full",
+    "title": "だいすき",
+    "category": "emotion",
+    "mood": "love",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "love"
+    ],
+    "width": 146,
+    "height": 131
+  },
+  {
+    "id": "stamp-full-27-emotion-angry",
+    "src": "/shokuchudoku/icon-library/stamp-full-27-emotion-angry.png",
+    "source": "stamp-full",
+    "title": "イライラ",
+    "category": "emotion",
+    "mood": "angry",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "angry"
+    ],
+    "width": 131,
+    "height": 131
+  },
+  {
+    "id": "stamp-full-28-emotion-sad",
+    "src": "/shokuchudoku/icon-library/stamp-full-28-emotion-sad.png",
+    "source": "stamp-full",
+    "title": "つらい",
+    "category": "emotion",
+    "mood": "sad",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "sad"
+    ],
+    "width": 147,
+    "height": 127
+  },
+  {
+    "id": "stamp-full-29-emotion-fired",
+    "src": "/shokuchudoku/icon-library/stamp-full-29-emotion-fired.png",
+    "source": "stamp-full",
+    "title": "がんばる",
+    "category": "emotion",
+    "mood": "fired",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "fired"
+    ],
+    "width": 143,
+    "height": 132
+  },
+  {
+    "id": "stamp-full-30-emotion-cheer",
+    "src": "/shokuchudoku/icon-library/stamp-full-30-emotion-cheer.png",
+    "source": "stamp-full",
+    "title": "応援してる",
+    "category": "emotion",
+    "mood": "cheer",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "cheer"
+    ],
+    "width": 146,
+    "height": 128
+  },
+  {
+    "id": "stamp-full-31-daily-wait",
+    "src": "/shokuchudoku/icon-library/stamp-full-31-daily-wait.png",
+    "source": "stamp-full",
+    "title": "ちょっと待って",
+    "category": "daily",
+    "mood": "wait",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "wait"
+    ],
+    "width": 142,
+    "height": 116
+  },
+  {
+    "id": "stamp-full-32-daily-move",
+    "src": "/shokuchudoku/icon-library/stamp-full-32-daily-move.png",
+    "source": "stamp-full",
+    "title": "今向かってる",
+    "category": "daily",
+    "mood": "move",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "move"
+    ],
+    "width": 146,
+    "height": 125
+  },
+  {
+    "id": "stamp-full-33-daily-later",
+    "src": "/shokuchudoku/icon-library/stamp-full-33-daily-later.png",
+    "source": "stamp-full",
+    "title": "後で返す",
+    "category": "daily",
+    "mood": "later",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "later"
+    ],
+    "width": 137,
+    "height": 127
+  },
+  {
+    "id": "stamp-full-34-daily-tired",
+    "src": "/shokuchudoku/icon-library/stamp-full-34-daily-tired.png",
+    "source": "stamp-full",
+    "title": "無理です",
+    "category": "daily",
+    "mood": "tired",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "tired"
+    ],
+    "width": 132,
+    "height": 123
+  },
+  {
+    "id": "stamp-full-35-daily-ok",
+    "src": "/shokuchudoku/icon-library/stamp-full-35-daily-ok.png",
+    "source": "stamp-full",
+    "title": "大丈夫",
+    "category": "daily",
+    "mood": "ok",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "ok"
+    ],
+    "width": 147,
+    "height": 125
+  },
+  {
+    "id": "stamp-full-36-daily-ok",
+    "src": "/shokuchudoku/icon-library/stamp-full-36-daily-ok.png",
+    "source": "stamp-full",
+    "title": "任せて",
+    "category": "daily",
+    "mood": "ok",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "ok"
+    ],
+    "width": 146,
+    "height": 127
+  },
+  {
+    "id": "stamp-full-37-daily-sleepy",
+    "src": "/shokuchudoku/icon-library/stamp-full-37-daily-sleepy.png",
+    "source": "stamp-full",
+    "title": "眠い",
+    "category": "daily",
+    "mood": "sleepy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "sleepy"
+    ],
+    "width": 146,
+    "height": 126
+  },
+  {
+    "id": "stamp-full-38-daily-break",
+    "src": "/shokuchudoku/icon-library/stamp-full-38-daily-break.png",
+    "source": "stamp-full",
+    "title": "休憩中",
+    "category": "daily",
+    "mood": "break",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "break"
+    ],
+    "width": 144,
+    "height": 124
+  },
+  {
+    "id": "stamp-full-39-daily-sleepy",
+    "src": "/shokuchudoku/icon-library/stamp-full-39-daily-sleepy.png",
+    "source": "stamp-full",
+    "title": "おやすみ",
+    "category": "daily",
+    "mood": "sleepy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "sleepy"
+    ],
+    "width": 146,
+    "height": 113
+  },
+  {
+    "id": "stamp-full-40-daily-happy",
+    "src": "/shokuchudoku/icon-library/stamp-full-40-daily-happy.png",
+    "source": "stamp-full",
+    "title": "今日もいい日",
+    "category": "daily",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "happy"
+    ],
+    "width": 138,
+    "height": 106
+  },
+  {
+    "id": "stamp-duo-01-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-01-greeting-happy.png",
+    "source": "stamp-duo",
+    "title": "おはよう",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 145,
+    "height": 115
+  },
+  {
+    "id": "stamp-duo-02-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-02-greeting-happy.png",
+    "source": "stamp-duo",
+    "title": "こんにちは",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 143,
+    "height": 101
+  },
+  {
+    "id": "stamp-duo-03-greeting-calm",
+    "src": "/shokuchudoku/icon-library/stamp-duo-03-greeting-calm.png",
+    "source": "stamp-duo",
+    "title": "こんばんは",
+    "category": "greeting",
+    "mood": "calm",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "calm"
+    ],
+    "width": 139,
+    "height": 116
+  },
+  {
+    "id": "stamp-duo-04-greeting-calm",
+    "src": "/shokuchudoku/icon-library/stamp-duo-04-greeting-calm.png",
+    "source": "stamp-duo",
+    "title": "おつかれさま",
+    "category": "greeting",
+    "mood": "calm",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "calm"
+    ],
+    "width": 132,
+    "height": 105
+  },
+  {
+    "id": "stamp-duo-05-greeting-love",
+    "src": "/shokuchudoku/icon-library/stamp-duo-05-greeting-love.png",
+    "source": "stamp-duo",
+    "title": "ありがとう",
+    "category": "greeting",
+    "mood": "love",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "love"
+    ],
+    "width": 147,
+    "height": 122
+  },
+  {
+    "id": "stamp-duo-06-greeting-thanks",
+    "src": "/shokuchudoku/icon-library/stamp-duo-06-greeting-thanks.png",
+    "source": "stamp-duo",
+    "title": "よろしく",
+    "category": "greeting",
+    "mood": "thanks",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "thanks"
+    ],
+    "width": 146,
+    "height": 114
+  },
+  {
+    "id": "stamp-duo-07-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-07-greeting-happy.png",
+    "source": "stamp-duo",
+    "title": "またね",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 146,
+    "height": 110
+  },
+  {
+    "id": "stamp-duo-08-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-08-greeting-happy.png",
+    "source": "stamp-duo",
+    "title": "いってきます",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 133,
+    "height": 111
+  },
+  {
+    "id": "stamp-duo-09-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-09-greeting-happy.png",
+    "source": "stamp-duo",
+    "title": "いってらっしゃい",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 127,
+    "height": 109
+  },
+  {
+    "id": "stamp-duo-10-greeting-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-10-greeting-happy.png",
+    "source": "stamp-duo",
+    "title": "おかえり",
+    "category": "greeting",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "greeting",
+      "happy"
+    ],
+    "width": 136,
+    "height": 103
+  },
+  {
+    "id": "stamp-duo-11-reaction-ok",
+    "src": "/shokuchudoku/icon-library/stamp-duo-11-reaction-ok.png",
+    "source": "stamp-duo",
+    "title": "了解",
+    "category": "reaction",
+    "mood": "ok",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "ok"
+    ],
+    "width": 146,
+    "height": 121
+  },
+  {
+    "id": "stamp-duo-12-reaction-ok",
+    "src": "/shokuchudoku/icon-library/stamp-duo-12-reaction-ok.png",
+    "source": "stamp-duo",
+    "title": "OK",
+    "category": "reaction",
+    "mood": "ok",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "ok"
+    ],
+    "width": 146,
+    "height": 114
+  },
+  {
+    "id": "stamp-duo-13-reaction-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-13-reaction-happy.png",
+    "source": "stamp-duo",
+    "title": "いいね",
+    "category": "reaction",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "happy"
+    ],
+    "width": 141,
+    "height": 107
+  },
+  {
+    "id": "stamp-duo-14-reaction-surprise",
+    "src": "/shokuchudoku/icon-library/stamp-duo-14-reaction-surprise.png",
+    "source": "stamp-duo",
+    "title": "すごい",
+    "category": "reaction",
+    "mood": "surprise",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "surprise"
+    ],
+    "width": 140,
+    "height": 111
+  },
+  {
+    "id": "stamp-duo-15-reaction-surprise",
+    "src": "/shokuchudoku/icon-library/stamp-duo-15-reaction-surprise.png",
+    "source": "stamp-duo",
+    "title": "えっ",
+    "category": "reaction",
+    "mood": "surprise",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "surprise"
+    ],
+    "width": 129,
+    "height": 111
+  },
+  {
+    "id": "stamp-duo-16-reaction-surprise",
+    "src": "/shokuchudoku/icon-library/stamp-duo-16-reaction-surprise.png",
+    "source": "stamp-duo",
+    "title": "マジで",
+    "category": "reaction",
+    "mood": "surprise",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "surprise"
+    ],
+    "width": 129,
+    "height": 138
+  },
+  {
+    "id": "stamp-duo-17-reaction-thinking",
+    "src": "/shokuchudoku/icon-library/stamp-duo-17-reaction-thinking.png",
+    "source": "stamp-duo",
+    "title": "なるほど",
+    "category": "reaction",
+    "mood": "thinking",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "thinking"
+    ],
+    "width": 126,
+    "height": 110
+  },
+  {
+    "id": "stamp-duo-18-reaction-thinking",
+    "src": "/shokuchudoku/icon-library/stamp-duo-18-reaction-thinking.png",
+    "source": "stamp-duo",
+    "title": "たしかに",
+    "category": "reaction",
+    "mood": "thinking",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "thinking"
+    ],
+    "width": 132,
+    "height": 110
+  },
+  {
+    "id": "stamp-duo-19-reaction-calm",
+    "src": "/shokuchudoku/icon-library/stamp-duo-19-reaction-calm.png",
+    "source": "stamp-duo",
+    "title": "それな",
+    "category": "reaction",
+    "mood": "calm",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "calm"
+    ],
+    "width": 129,
+    "height": 127
+  },
+  {
+    "id": "stamp-duo-20-reaction-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-20-reaction-happy.png",
+    "source": "stamp-duo",
+    "title": "やった",
+    "category": "reaction",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "reaction",
+      "happy"
+    ],
+    "width": 138,
+    "height": 106
+  },
+  {
+    "id": "stamp-duo-21-emotion-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-21-emotion-happy.png",
+    "source": "stamp-duo",
+    "title": "うれしい",
+    "category": "emotion",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "happy"
+    ],
+    "width": 146,
+    "height": 107
+  },
+  {
+    "id": "stamp-duo-22-emotion-sad",
+    "src": "/shokuchudoku/icon-library/stamp-duo-22-emotion-sad.png",
+    "source": "stamp-duo",
+    "title": "かなしい",
+    "category": "emotion",
+    "mood": "sad",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "sad"
+    ],
+    "width": 146,
+    "height": 108
+  },
+  {
+    "id": "stamp-duo-23-emotion-sad",
+    "src": "/shokuchudoku/icon-library/stamp-duo-23-emotion-sad.png",
+    "source": "stamp-duo",
+    "title": "ぴえん",
+    "category": "emotion",
+    "mood": "sad",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "sad"
+    ],
+    "width": 136,
+    "height": 97
+  },
+  {
+    "id": "stamp-duo-24-emotion-sad",
+    "src": "/shokuchudoku/icon-library/stamp-duo-24-emotion-sad.png",
+    "source": "stamp-duo",
+    "title": "ごめん",
+    "category": "emotion",
+    "mood": "sad",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "sad"
+    ],
+    "width": 137,
+    "height": 95
+  },
+  {
+    "id": "stamp-duo-25-emotion-thanks",
+    "src": "/shokuchudoku/icon-library/stamp-duo-25-emotion-thanks.png",
+    "source": "stamp-duo",
+    "title": "ありがとう",
+    "category": "emotion",
+    "mood": "thanks",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "thanks"
+    ],
+    "width": 132,
+    "height": 97
+  },
+  {
+    "id": "stamp-duo-26-emotion-love",
+    "src": "/shokuchudoku/icon-library/stamp-duo-26-emotion-love.png",
+    "source": "stamp-duo",
+    "title": "だいすき",
+    "category": "emotion",
+    "mood": "love",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "love"
+    ],
+    "width": 123,
+    "height": 104
+  },
+  {
+    "id": "stamp-duo-27-emotion-angry",
+    "src": "/shokuchudoku/icon-library/stamp-duo-27-emotion-angry.png",
+    "source": "stamp-duo",
+    "title": "イライラ",
+    "category": "emotion",
+    "mood": "angry",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "angry"
+    ],
+    "width": 127,
+    "height": 96
+  },
+  {
+    "id": "stamp-duo-28-emotion-sad",
+    "src": "/shokuchudoku/icon-library/stamp-duo-28-emotion-sad.png",
+    "source": "stamp-duo",
+    "title": "つらい",
+    "category": "emotion",
+    "mood": "sad",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "sad"
+    ],
+    "width": 136,
+    "height": 92
+  },
+  {
+    "id": "stamp-duo-29-emotion-fired",
+    "src": "/shokuchudoku/icon-library/stamp-duo-29-emotion-fired.png",
+    "source": "stamp-duo",
+    "title": "がんばる",
+    "category": "emotion",
+    "mood": "fired",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "fired"
+    ],
+    "width": 139,
+    "height": 121
+  },
+  {
+    "id": "stamp-duo-30-emotion-cheer",
+    "src": "/shokuchudoku/icon-library/stamp-duo-30-emotion-cheer.png",
+    "source": "stamp-duo",
+    "title": "応援してる",
+    "category": "emotion",
+    "mood": "cheer",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "emotion",
+      "cheer"
+    ],
+    "width": 140,
+    "height": 99
+  },
+  {
+    "id": "stamp-duo-31-daily-wait",
+    "src": "/shokuchudoku/icon-library/stamp-duo-31-daily-wait.png",
+    "source": "stamp-duo",
+    "title": "ちょっと待って",
+    "category": "daily",
+    "mood": "wait",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "wait"
+    ],
+    "width": 144,
+    "height": 113
+  },
+  {
+    "id": "stamp-duo-32-daily-move",
+    "src": "/shokuchudoku/icon-library/stamp-duo-32-daily-move.png",
+    "source": "stamp-duo",
+    "title": "今向かってる",
+    "category": "daily",
+    "mood": "move",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "move"
+    ],
+    "width": 146,
+    "height": 117
+  },
+  {
+    "id": "stamp-duo-33-daily-later",
+    "src": "/shokuchudoku/icon-library/stamp-duo-33-daily-later.png",
+    "source": "stamp-duo",
+    "title": "後で返す",
+    "category": "daily",
+    "mood": "later",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "later"
+    ],
+    "width": 139,
+    "height": 117
+  },
+  {
+    "id": "stamp-duo-34-daily-tired",
+    "src": "/shokuchudoku/icon-library/stamp-duo-34-daily-tired.png",
+    "source": "stamp-duo",
+    "title": "無理です",
+    "category": "daily",
+    "mood": "tired",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "tired"
+    ],
+    "width": 137,
+    "height": 109
+  },
+  {
+    "id": "stamp-duo-35-daily-ok",
+    "src": "/shokuchudoku/icon-library/stamp-duo-35-daily-ok.png",
+    "source": "stamp-duo",
+    "title": "大丈夫",
+    "category": "daily",
+    "mood": "ok",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "ok"
+    ],
+    "width": 137,
+    "height": 108
+  },
+  {
+    "id": "stamp-duo-36-daily-ok",
+    "src": "/shokuchudoku/icon-library/stamp-duo-36-daily-ok.png",
+    "source": "stamp-duo",
+    "title": "任せて",
+    "category": "daily",
+    "mood": "ok",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "ok"
+    ],
+    "width": 136,
+    "height": 110
+  },
+  {
+    "id": "stamp-duo-37-daily-sleepy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-37-daily-sleepy.png",
+    "source": "stamp-duo",
+    "title": "眠い",
+    "category": "daily",
+    "mood": "sleepy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "sleepy"
+    ],
+    "width": 136,
+    "height": 100
+  },
+  {
+    "id": "stamp-duo-38-daily-break",
+    "src": "/shokuchudoku/icon-library/stamp-duo-38-daily-break.png",
+    "source": "stamp-duo",
+    "title": "休憩中",
+    "category": "daily",
+    "mood": "break",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "break"
+    ],
+    "width": 135,
+    "height": 100
+  },
+  {
+    "id": "stamp-duo-39-daily-sleepy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-39-daily-sleepy.png",
+    "source": "stamp-duo",
+    "title": "おやすみ",
+    "category": "daily",
+    "mood": "sleepy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "sleepy"
+    ],
+    "width": 146,
+    "height": 107
+  },
+  {
+    "id": "stamp-duo-40-daily-happy",
+    "src": "/shokuchudoku/icon-library/stamp-duo-40-daily-happy.png",
+    "source": "stamp-duo",
+    "title": "今日もいい日",
+    "category": "daily",
+    "mood": "happy",
+    "kind": "stamp",
+    "group": "frog+cat",
+    "characters": [
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "daily",
+      "happy"
+    ],
+    "width": 142,
+    "height": 110
+  },
+  {
+    "id": "expression-01-expression-happy",
+    "src": "/shokuchudoku/icon-library/expression-01-expression-happy.png",
+    "source": "expression",
+    "title": "にっこり",
+    "category": "expression",
+    "mood": "happy",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "happy"
+    ],
+    "width": 124,
+    "height": 166
+  },
+  {
+    "id": "expression-02-expression-happy",
+    "src": "/shokuchudoku/icon-library/expression-02-expression-happy.png",
+    "source": "expression",
+    "title": "笑顔",
+    "category": "expression",
+    "mood": "happy",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "happy"
+    ],
+    "width": 127,
+    "height": 166
+  },
+  {
+    "id": "expression-03-expression-laugh",
+    "src": "/shokuchudoku/icon-library/expression-03-expression-laugh.png",
+    "source": "expression",
+    "title": "大笑い",
+    "category": "expression",
+    "mood": "laugh",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "laugh"
+    ],
+    "width": 127,
+    "height": 166
+  },
+  {
+    "id": "expression-04-expression-surprise",
+    "src": "/shokuchudoku/icon-library/expression-04-expression-surprise.png",
+    "source": "expression",
+    "title": "驚き",
+    "category": "expression",
+    "mood": "surprise",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "surprise"
+    ],
+    "width": 127,
+    "height": 166
+  },
+  {
+    "id": "expression-05-expression-thinking",
+    "src": "/shokuchudoku/icon-library/expression-05-expression-thinking.png",
+    "source": "expression",
+    "title": "考え中",
+    "category": "expression",
+    "mood": "thinking",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "thinking"
+    ],
+    "width": 128,
+    "height": 166
+  },
+  {
+    "id": "expression-06-expression-wink",
+    "src": "/shokuchudoku/icon-library/expression-06-expression-wink.png",
+    "source": "expression",
+    "title": "ウインク",
+    "category": "expression",
+    "mood": "wink",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "wink"
+    ],
+    "width": 127,
+    "height": 166
+  },
+  {
+    "id": "expression-07-expression-thanks",
+    "src": "/shokuchudoku/icon-library/expression-07-expression-thanks.png",
+    "source": "expression",
+    "title": "感動",
+    "category": "expression",
+    "mood": "thanks",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "thanks"
+    ],
+    "width": 127,
+    "height": 166
+  },
+  {
+    "id": "expression-08-expression-worry",
+    "src": "/shokuchudoku/icon-library/expression-08-expression-worry.png",
+    "source": "expression",
+    "title": "焦り",
+    "category": "expression",
+    "mood": "worry",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "worry"
+    ],
+    "width": 127,
+    "height": 166
+  },
+  {
+    "id": "expression-09-expression-angry",
+    "src": "/shokuchudoku/icon-library/expression-09-expression-angry.png",
+    "source": "expression",
+    "title": "ぷんぷん",
+    "category": "expression",
+    "mood": "angry",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "angry"
+    ],
+    "width": 127,
+    "height": 166
+  },
+  {
+    "id": "expression-10-expression-sleepy",
+    "src": "/shokuchudoku/icon-library/expression-10-expression-sleepy.png",
+    "source": "expression",
+    "title": "ぐっすり",
+    "category": "expression",
+    "mood": "sleepy",
+    "kind": "expression",
+    "group": "zamakuri",
+    "characters": [
+      "zamakuri"
+    ],
+    "status": [
+      "expression",
+      "sleepy"
+    ],
+    "width": 128,
+    "height": 157
+  },
+  {
+    "id": "expression-11-expression-happy",
+    "src": "/shokuchudoku/icon-library/expression-11-expression-happy.png",
+    "source": "expression",
+    "title": "にっこり",
+    "category": "expression",
+    "mood": "happy",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "happy"
+    ],
+    "width": 127,
+    "height": 133
+  },
+  {
+    "id": "expression-12-expression-happy",
+    "src": "/shokuchudoku/icon-library/expression-12-expression-happy.png",
+    "source": "expression",
+    "title": "笑顔",
+    "category": "expression",
+    "mood": "happy",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "happy"
+    ],
+    "width": 127,
+    "height": 144
+  },
+  {
+    "id": "expression-13-expression-laugh",
+    "src": "/shokuchudoku/icon-library/expression-13-expression-laugh.png",
+    "source": "expression",
+    "title": "大笑い",
+    "category": "expression",
+    "mood": "laugh",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "laugh"
+    ],
+    "width": 127,
+    "height": 136
+  },
+  {
+    "id": "expression-14-expression-surprise",
+    "src": "/shokuchudoku/icon-library/expression-14-expression-surprise.png",
+    "source": "expression",
+    "title": "驚き",
+    "category": "expression",
+    "mood": "surprise",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "surprise"
+    ],
+    "width": 94,
+    "height": 136
+  },
+  {
+    "id": "expression-15-expression-thinking",
+    "src": "/shokuchudoku/icon-library/expression-15-expression-thinking.png",
+    "source": "expression",
+    "title": "考え中",
+    "category": "expression",
+    "mood": "thinking",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "thinking"
+    ],
+    "width": 101,
+    "height": 132
+  },
+  {
+    "id": "expression-16-expression-wink",
+    "src": "/shokuchudoku/icon-library/expression-16-expression-wink.png",
+    "source": "expression",
+    "title": "ウインク",
+    "category": "expression",
+    "mood": "wink",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "wink"
+    ],
+    "width": 108,
+    "height": 132
+  },
+  {
+    "id": "expression-17-expression-thanks",
+    "src": "/shokuchudoku/icon-library/expression-17-expression-thanks.png",
+    "source": "expression",
+    "title": "感動",
+    "category": "expression",
+    "mood": "thanks",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "thanks"
+    ],
+    "width": 105,
+    "height": 127
+  },
+  {
+    "id": "expression-18-expression-worry",
+    "src": "/shokuchudoku/icon-library/expression-18-expression-worry.png",
+    "source": "expression",
+    "title": "焦り",
+    "category": "expression",
+    "mood": "worry",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "worry"
+    ],
+    "width": 107,
+    "height": 127
+  },
+  {
+    "id": "expression-19-expression-angry",
+    "src": "/shokuchudoku/icon-library/expression-19-expression-angry.png",
+    "source": "expression",
+    "title": "ぷんぷん",
+    "category": "expression",
+    "mood": "angry",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "angry"
+    ],
+    "width": 127,
+    "height": 125
+  },
+  {
+    "id": "expression-20-expression-sleepy",
+    "src": "/shokuchudoku/icon-library/expression-20-expression-sleepy.png",
+    "source": "expression",
+    "title": "ぐっすり",
+    "category": "expression",
+    "mood": "sleepy",
+    "kind": "expression",
+    "group": "frog",
+    "characters": [
+      "frog"
+    ],
+    "status": [
+      "expression",
+      "sleepy"
+    ],
+    "width": 128,
+    "height": 104
+  },
+  {
+    "id": "expression-21-expression-happy",
+    "src": "/shokuchudoku/icon-library/expression-21-expression-happy.png",
+    "source": "expression",
+    "title": "にっこり",
+    "category": "expression",
+    "mood": "happy",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "happy"
+    ],
+    "width": 127,
+    "height": 127
+  },
+  {
+    "id": "expression-22-expression-happy",
+    "src": "/shokuchudoku/icon-library/expression-22-expression-happy.png",
+    "source": "expression",
+    "title": "笑顔",
+    "category": "expression",
+    "mood": "happy",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "happy"
+    ],
+    "width": 126,
+    "height": 127
+  },
+  {
+    "id": "expression-23-expression-laugh",
+    "src": "/shokuchudoku/icon-library/expression-23-expression-laugh.png",
+    "source": "expression",
+    "title": "大笑い",
+    "category": "expression",
+    "mood": "laugh",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "laugh"
+    ],
+    "width": 122,
+    "height": 127
+  },
+  {
+    "id": "expression-24-expression-surprise",
+    "src": "/shokuchudoku/icon-library/expression-24-expression-surprise.png",
+    "source": "expression",
+    "title": "驚き",
+    "category": "expression",
+    "mood": "surprise",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "surprise"
+    ],
+    "width": 127,
+    "height": 127
+  },
+  {
+    "id": "expression-25-expression-thinking",
+    "src": "/shokuchudoku/icon-library/expression-25-expression-thinking.png",
+    "source": "expression",
+    "title": "考え中",
+    "category": "expression",
+    "mood": "thinking",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "thinking"
+    ],
+    "width": 123,
+    "height": 127
+  },
+  {
+    "id": "expression-26-expression-wink",
+    "src": "/shokuchudoku/icon-library/expression-26-expression-wink.png",
+    "source": "expression",
+    "title": "ウインク",
+    "category": "expression",
+    "mood": "wink",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "wink"
+    ],
+    "width": 117,
+    "height": 127
+  },
+  {
+    "id": "expression-27-expression-thanks",
+    "src": "/shokuchudoku/icon-library/expression-27-expression-thanks.png",
+    "source": "expression",
+    "title": "感動",
+    "category": "expression",
+    "mood": "thanks",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "thanks"
+    ],
+    "width": 112,
+    "height": 127
+  },
+  {
+    "id": "expression-28-expression-worry",
+    "src": "/shokuchudoku/icon-library/expression-28-expression-worry.png",
+    "source": "expression",
+    "title": "焦り",
+    "category": "expression",
+    "mood": "worry",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "worry"
+    ],
+    "width": 124,
+    "height": 127
+  },
+  {
+    "id": "expression-29-expression-angry",
+    "src": "/shokuchudoku/icon-library/expression-29-expression-angry.png",
+    "source": "expression",
+    "title": "ぷんぷん",
+    "category": "expression",
+    "mood": "angry",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "angry"
+    ],
+    "width": 127,
+    "height": 127
+  },
+  {
+    "id": "expression-30-expression-sleepy",
+    "src": "/shokuchudoku/icon-library/expression-30-expression-sleepy.png",
+    "source": "expression",
+    "title": "ぐっすり",
+    "category": "expression",
+    "mood": "sleepy",
+    "kind": "expression",
+    "group": "cat",
+    "characters": [
+      "cat"
+    ],
+    "status": [
+      "expression",
+      "sleepy"
+    ],
+    "width": 128,
+    "height": 88
+  },
+  {
+    "id": "expression-combo-01-combo-happy",
+    "src": "/shokuchudoku/icon-library/expression-combo-01-combo-happy.png",
+    "source": "expression-combo",
+    "title": "仲良し",
+    "category": "combo",
+    "mood": "happy",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "combo",
+      "happy"
+    ],
+    "width": 135,
+    "height": 135
+  },
+  {
+    "id": "expression-combo-02-combo-happy",
+    "src": "/shokuchudoku/icon-library/expression-combo-02-combo-happy.png",
+    "source": "expression-combo",
+    "title": "わーい",
+    "category": "combo",
+    "mood": "happy",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "combo",
+      "happy"
+    ],
+    "width": 140,
+    "height": 135
+  },
+  {
+    "id": "expression-combo-03-combo-surprise",
+    "src": "/shokuchudoku/icon-library/expression-combo-03-combo-surprise.png",
+    "source": "expression-combo",
+    "title": "びっくり",
+    "category": "combo",
+    "mood": "surprise",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "combo",
+      "surprise"
+    ],
+    "width": 140,
+    "height": 132
+  },
+  {
+    "id": "expression-combo-04-combo-calm",
+    "src": "/shokuchudoku/icon-library/expression-combo-04-combo-calm.png",
+    "source": "expression-combo",
+    "title": "お疲れさま",
+    "category": "combo",
+    "mood": "calm",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "combo",
+      "calm"
+    ],
+    "width": 145,
+    "height": 136
+  },
+  {
+    "id": "expression-combo-05-combo-thanks",
+    "src": "/shokuchudoku/icon-library/expression-combo-05-combo-thanks.png",
+    "source": "expression-combo",
+    "title": "ありがとう",
+    "category": "combo",
+    "mood": "thanks",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "combo",
+      "thanks"
+    ],
+    "width": 140,
+    "height": 141
+  },
+  {
+    "id": "expression-combo-06-combo-sleepy",
+    "src": "/shokuchudoku/icon-library/expression-combo-06-combo-sleepy.png",
+    "source": "expression-combo",
+    "title": "おやすみ",
+    "category": "combo",
+    "mood": "sleepy",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "combo",
+      "sleepy"
+    ],
+    "width": 150,
+    "height": 153
+  },
+  {
+    "id": "pose-group-01-pose-calm",
+    "src": "/shokuchudoku/icon-library/pose-group-01-pose-calm.png",
+    "source": "pose-group",
+    "title": "基本",
+    "category": "pose",
+    "mood": "calm",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "pose",
+      "calm"
+    ],
+    "width": 386,
+    "height": 337
+  },
+  {
+    "id": "pose-group-02-pose-happy",
+    "src": "/shokuchudoku/icon-library/pose-group-02-pose-happy.png",
+    "source": "pose-group",
+    "title": "おはよう",
+    "category": "pose",
+    "mood": "happy",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "pose",
+      "happy"
+    ],
+    "width": 386,
+    "height": 344
+  },
+  {
+    "id": "pose-group-03-pose-plant",
+    "src": "/shokuchudoku/icon-library/pose-group-03-pose-plant.png",
+    "source": "pose-group",
+    "title": "植物といっしょ",
+    "category": "pose",
+    "mood": "plant",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "pose",
+      "plant"
+    ],
+    "width": 376,
+    "height": 339
+  },
+  {
+    "id": "pose-group-04-pose-thinking",
+    "src": "/shokuchudoku/icon-library/pose-group-04-pose-thinking.png",
+    "source": "pose-group",
+    "title": "考え中",
+    "category": "pose",
+    "mood": "thinking",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "pose",
+      "thinking"
+    ],
+    "width": 279,
+    "height": 341
+  },
+  {
+    "id": "pose-group-06-pose-happy",
+    "src": "/shokuchudoku/icon-library/pose-group-06-pose-happy.png",
+    "source": "pose-group",
+    "title": "ジャンプ",
+    "category": "pose",
+    "mood": "happy",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "pose",
+      "happy"
+    ],
+    "width": 376,
+    "height": 192
+  },
+  {
+    "id": "pose-group-07-pose-tired",
+    "src": "/shokuchudoku/icon-library/pose-group-07-pose-tired.png",
+    "source": "pose-group",
+    "title": "おつかれさま",
+    "category": "pose",
+    "mood": "tired",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "pose",
+      "tired"
+    ],
+    "width": 386,
+    "height": 192
+  },
+  {
+    "id": "pose-group-08-pose-move",
+    "src": "/shokuchudoku/icon-library/pose-group-08-pose-move.png",
+    "source": "pose-group",
+    "title": "お出かけ",
+    "category": "pose",
+    "mood": "move",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "pose",
+      "move"
+    ],
+    "width": 386,
+    "height": 192
+  },
+  {
+    "id": "pose-group-09-pose-thanks",
+    "src": "/shokuchudoku/icon-library/pose-group-09-pose-thanks.png",
+    "source": "pose-group",
+    "title": "ありがとう",
+    "category": "pose",
+    "mood": "thanks",
+    "kind": "group",
+    "group": "zamakuri+frog+cat",
+    "characters": [
+      "zamakuri",
+      "frog",
+      "cat"
+    ],
+    "status": [
+      "pose",
+      "thanks"
+    ],
+    "width": 281,
+    "height": 175
+  }
+]

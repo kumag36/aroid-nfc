@@ -9,10 +9,44 @@ import {
 
 const protectedPrefixes = [
   '/admin',
+  '/dictionary/admin',
+  '/museum/admin',
+  '/music/admin',
   '/api/dictionary/images',
   '/api/museum/upload',
   '/api/music/upload',
   '/api/nfc/verify',
+]
+
+const publicOpenPaths = ['/_not-found', '/shokuchudoku', '/lab', '/music']
+
+const publicOpenPrefixes = [
+  '/_next',
+  '/api/analytics',
+  '/api/admin',
+  '/api/dictionary/images',
+  '/api/museum',
+  '/api/music',
+  '/api/nfc/verify',
+  '/api/shokuchudoku',
+  '/admin',
+  '/dictionary/admin',
+  '/museum/admin',
+  '/music/admin',
+  '/fonts',
+  '/music',
+  '/shokuchudoku',
+]
+
+const publicOpenFiles = [
+  '/apple-icon.png',
+  '/favicon.ico',
+  '/favicon-16x16.png',
+  '/favicon-32x32.png',
+  '/favicon-48x48.png',
+  '/icon.png',
+  '/robots.txt',
+  '/site.webmanifest',
 ]
 
 function isProtected(pathname: string) {
@@ -20,28 +54,57 @@ function isProtected(pathname: string) {
   return protectedPrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))
 }
 
+function isPublicOpen(pathname: string) {
+  if (publicOpenPaths.includes(pathname) || publicOpenFiles.includes(pathname)) return true
+  return publicOpenPrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))
+}
+
 function redirectToLogin(request: NextRequest) {
   const url = request.nextUrl.clone()
   url.pathname = '/admin/login'
   url.searchParams.set('next', `${request.nextUrl.pathname}${request.nextUrl.search}`)
-  return NextResponse.redirect(url)
+  return withSecurityHeaders(NextResponse.redirect(url))
 }
 
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+function withSecurityHeaders(response: NextResponse) {
+  response.headers.set('X-Content-Type-Options', 'nosniff')
+  response.headers.set('X-Frame-Options', 'DENY')
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(), usb=()')
+  response.headers.set(
+    'Content-Security-Policy',
+    [
+      "default-src 'self'",
+      "base-uri 'self'",
+      "object-src 'none'",
+      "frame-ancestors 'none'",
+      "form-action 'self'",
+      "img-src 'self' data: blob: https://i.ytimg.com https://upload.wikimedia.org",
+      "media-src 'self' blob:",
+      "font-src 'self' data:",
+      "script-src 'self' 'unsafe-inline'",
+      "style-src 'self' 'unsafe-inline'",
+      "connect-src 'self'",
+      "frame-src https://www.youtube.com https://youtube.com",
+    ].join('; '),
+  )
 
-  if (!isProtected(pathname)) {
-    return NextResponse.next()
+  if (process.env.NODE_ENV === 'production') {
+    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload')
   }
 
+  return response
+}
+
+async function getAdminSessionResponse(request: NextRequest) {
   const adminSessionToken = request.cookies.get(adminSessionCookie)?.value
   if (await verifyAdminSessionToken(adminSessionToken)) {
-    return NextResponse.next()
+    return withSecurityHeaders(NextResponse.next())
   }
 
   const client = getSupabaseAuthClient()
   if (!client) {
-    return redirectToLogin(request)
+    return null
   }
 
   const accessToken = request.cookies.get(adminAccessCookie)?.value
@@ -49,7 +112,7 @@ export async function middleware(request: NextRequest) {
   if (accessToken) {
     const { data } = await client.auth.getUser(accessToken)
     if (data.user) {
-      return NextResponse.next()
+      return withSecurityHeaders(NextResponse.next())
     }
   }
 
@@ -57,7 +120,7 @@ export async function middleware(request: NextRequest) {
   if (refreshToken) {
     const { data } = await client.auth.refreshSession({ refresh_token: refreshToken })
     if (data.session?.access_token && data.session.refresh_token) {
-      const response = NextResponse.next()
+      const response = withSecurityHeaders(NextResponse.next())
       response.cookies.set(adminAccessCookie, data.session.access_token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
@@ -76,6 +139,33 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  return null
+}
+
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  if (pathname === '/api/dictionary/images' && request.method === 'GET') {
+    return withSecurityHeaders(NextResponse.next())
+  }
+
+  const adminResponse = await getAdminSessionResponse(request)
+
+  if (!isProtected(pathname)) {
+    if (isPublicOpen(pathname) || adminResponse) {
+      return adminResponse ?? withSecurityHeaders(NextResponse.next())
+    }
+
+    const url = request.nextUrl.clone()
+    url.pathname = '/_not-found'
+    url.search = ''
+    return withSecurityHeaders(NextResponse.rewrite(url, { status: 404 }))
+  }
+
+  if (adminResponse) {
+    return adminResponse
+  }
+
   const response = redirectToLogin(request)
   response.cookies.delete(adminAccessCookie)
   response.cookies.delete(adminRefreshCookie)
@@ -85,7 +175,11 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    '/((?!.*\\.).*)',
     '/admin/:path*',
+    '/dictionary/admin/:path*',
+    '/museum/admin/:path*',
+    '/music/admin/:path*',
     '/api/dictionary/images/:path*',
     '/api/museum/upload/:path*',
     '/api/music/upload/:path*',

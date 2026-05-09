@@ -9,9 +9,18 @@ import {
   getAdminCredentialPassword,
   getSupabaseAuthClient,
 } from '@/lib/admin-auth'
+import { checkRateLimit, readJsonBody } from '@/lib/request-security'
+
+type LoginBody = {
+  email?: unknown
+  password?: unknown
+}
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null)
+  const rateLimited = checkRateLimit(request, 'admin-login', 6, 10 * 60 * 1000)
+  if (rateLimited) return rateLimited
+
+  const body = await readJsonBody<LoginBody>(request, 2048)
   const email = typeof body?.email === 'string' ? body.email.trim() : ''
   const password = typeof body?.password === 'string' ? body.password : ''
 

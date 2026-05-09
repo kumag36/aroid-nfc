@@ -21,6 +21,88 @@ type MuseumManifest = {
 
 export const museumBucket = process.env.SUPABASE_MUSEUM_BUCKET ?? 'museum'
 
+function bundledPages(slug: string, count: number, extension = 'webp') {
+  return Array.from({ length: count }, (_, index) => {
+    const filename = `${String(index + 1).padStart(2, '0')}-${slug}.${extension}`
+    return {
+      path: `/museum/${slug}/${filename}`,
+      url: `/museum/${slug}/${filename}`,
+    }
+  })
+}
+
+const bundledMuseumWorks: MuseumWork[] = [
+  {
+    id: 'episode-009-fertilizer-is-not-medicine',
+    title: '第9話｜肥料は元気の薬じゃない',
+    description:
+      '肥料は弱った時の薬ではなく、生育期を支えるごはん。まず土の乾き、置き場所、根と葉を確認し、濃さと回数はラベル通りにします。',
+    createdAt: '2026-05-08T05:22:09.000Z',
+    pages: bundledPages('episode-009-fertilizer-is-not-medicine', 5, 'png'),
+  },
+  {
+    id: 'episode-008-leaf-clean',
+    title: '第8話｜水垢にはリーフクリン',
+    description:
+      'モンステラの白い跡は水垢かもしれません。リーフクリンは缶をよく振り、葉から適度に離して表面へスプレー。拭き取らず自然に乾くまで待つのがコツです。',
+    createdAt: '2026-05-07T06:16:57.000Z',
+    pages: bundledPages('episode-008-leaf-clean', 5, 'png'),
+  },
+  {
+    id: 'monstera-leaf-mist',
+    title: '第6話｜モンステラの葉水',
+    description:
+      'モンステラの葉水は、朝に軽く。ほこり、乾いた空気、葉の元気を見て、細かい霧を葉の表へ軽くかけます。夜は乾きにくく水が残りやすいので、びしょびしょにしないことが大切です。',
+    createdAt: '2026-05-06T07:54:26.000Z',
+    pages: bundledPages('monstera-leaf-mist', 5, 'png'),
+  },
+  {
+    id: 'monstera-weekend-watering',
+    title: '第5話｜水やりは土日で整える',
+    description:
+      'モンステラの水やりを土日のサイクルで整える話。土をさわる、鉢を持つ、葉を見る。平日は追加せず見守り、次の土日に乾きと鉢の軽さを確認して、乾いていたらたっぷり水やりします。',
+    createdAt: '2026-05-05T07:04:11.000Z',
+    pages: bundledPages('monstera-weekend-watering', 5, 'png'),
+  },
+  {
+    id: 'monstera-repotting',
+    title: '第4話｜モンステラの植え替え',
+    description:
+      'モンステラの植え替えサインを見つける話。鉢が乾かない、新芽が止まる、根がちらりと見える。根詰まりで土のすき間や水の逃げ道がなくなったら、一回り大きい鉢と新しい土で整えます。',
+    createdAt: '2026-05-03T16:47:37.000Z',
+    pages: bundledPages('monstera-repotting', 5),
+  },
+  {
+    id: 'episode-003-yellow-leaves',
+    title: '第3話｜葉が黄色くなるサイン',
+    description:
+      'モンステラの葉が黄色くなると焦りますが、黄色い葉は終わりとは限りません。下葉だけ、全体が薄い、葉先だけなど場所を見て、水・光・寒さ・根のストレスを順に確認します。',
+    createdAt: '2026-05-08T23:46:32.000Z',
+    pages: bundledPages('episode-003-yellow-leaves', 5, 'png'),
+  },
+  {
+    id: 'episode-002-overwatering',
+    title: '第2話｜水をあげすぎる理由',
+    description:
+      '植物が心配で、つい水を足したくなることがあります。でも根には水だけでなく空気も必要です。土がずっと湿っていたり、鉢が重いままなら、今日は待つ日かもしれません。',
+    createdAt: '2026-05-02T13:39:54.000Z',
+    pages: bundledPages('episode-002-overwatering', 5, 'png'),
+  },
+  {
+    id: 'episode-001-why-plants-die',
+    title: '第1話｜植物が枯れる本当の理由',
+    description:
+      '植物をすぐ枯らしてしまうと、自分には向いてないのかなと思ってしまいますよね。でも、枯れるのは才能の問題ではなく、光・水・風・土のどこかに理由があることが多いです。まず見るのは、葉の元気、土の乾き、新芽の動き。植物は言葉の代わりに、小さな変化で返事をしています。',
+    createdAt: '2026-05-01T09:55:35.000Z',
+    pages: bundledPages('episode-001-why-plants-die', 5, 'png'),
+  },
+]
+
+function getEpisodeNumber(work: MuseumWork) {
+  const match = work.title.match(/第(\d+)話/)
+  return match ? Number(match[1]) : null
+}
+
 function getMuseumClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -47,7 +129,7 @@ export async function listMuseumWorks(): Promise<MuseumWork[]> {
   const client = getMuseumClient()
 
   if (!client) {
-    return []
+    return bundledMuseumWorks
   }
 
   const { data: folders, error } = await client.storage.from(museumBucket).list('works', {
@@ -56,7 +138,7 @@ export async function listMuseumWorks(): Promise<MuseumWork[]> {
   })
 
   if (error || !folders) {
-    return []
+    return bundledMuseumWorks
   }
 
   const works = await Promise.all(
@@ -95,9 +177,18 @@ export async function listMuseumWorks(): Promise<MuseumWork[]> {
       }),
   )
 
-  return works
+  return [...bundledMuseumWorks, ...works]
     .filter((work): work is MuseumWork => Boolean(work && work.pages.length > 0))
-    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+    .sort((a, b) => {
+      const episodeA = getEpisodeNumber(a)
+      const episodeB = getEpisodeNumber(b)
+
+      if (episodeA && episodeB && episodeA !== episodeB) {
+        return episodeB - episodeA
+      }
+
+      return b.createdAt.localeCompare(a.createdAt)
+    })
 }
 
 export function getMuseumAdminReady() {

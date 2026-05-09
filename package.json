@@ -3,15 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run check:encoding && next dev",
+    "dev": "npm run check:encoding && next dev --webpack --disable-source-maps --hostname 127.0.0.1",
+    "dev:turbo": "npm run check:encoding && next dev --turbo --hostname 127.0.0.1",
+    "clean:next": "node scripts/clean-next-dev-cache.mjs",
     "check:encoding": "node scripts/check-text-encoding.mjs",
+    "check:admin-colors": "node scripts/check-admin-colors.mjs",
     "build": "npm run check:encoding && next build",
     "start": "next start",
-    "lint": "npm run check:encoding && eslint"
+    "lint": "npm run check:encoding && npm run check:admin-colors && eslint"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.101.1",
-    "next": "16.2.1",
+    "next": "^16.2.5",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -21,8 +24,12 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.1",
+    "eslint-config-next": "^16.2.5",
+    "postcss": "^8.5.10",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "$postcss"
   }
 }

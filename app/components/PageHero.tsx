@@ -19,7 +19,7 @@ export default function PageHero({
   feature,
 }: PageHeroProps) {
   return (
-    <section className="zmk-hero">
+    <section className="zmk-hero zmk-public-hero">
       <Image src={imageSrc} alt="" fill priority className="zmk-hero-media" sizes="100vw" />
       <div className="zmk-hero-shade" />
       <div className="zmk-hero-fade" />
@@ -29,8 +29,8 @@ export default function PageHero({
             <div className="zmk-rule" />
             <p className="zmk-eyebrow mb-5">{eyebrow}</p>
             <h1 className="zmk-title">{title}</h1>
-            <p className="zmk-lead mt-8">{lead}</p>
-            {actions ? <div className="mt-10 flex flex-wrap gap-3">{actions}</div> : null}
+            <p className="zmk-lead mt-6">{lead}</p>
+            {actions ? <div className="mt-7 flex flex-wrap gap-3">{actions}</div> : null}
           </div>
           {feature ? <div className="relative hidden lg:block">{feature}</div> : null}
         </div>

@@ -56,7 +56,7 @@ export default function ThemeToggle() {
   }
 
   return (
-    <div className="zmk-theme-toggle inline-flex shrink-0 gap-1 border border-[#10291e]/18 bg-white/75 p-1 dark:border-[#d9ffd8]/18 dark:bg-[#07110c]/70" role="group" aria-label={`表示モード選択。現在は${mode === 'auto' ? `自動 ${theme}` : mode}です`}>
+    <div className="zmk-theme-toggle inline-flex shrink-0 gap-1 border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/75 p-1 dark:bg-[#07110c]/70" role="group" aria-label={`表示モード選択。現在は${mode === 'auto' ? `自動 ${theme}` : mode}です`}>
       {themeOptions.map((option) => {
         const active = mode === option.mode
         return (
@@ -67,7 +67,7 @@ export default function ThemeToggle() {
             aria-pressed={active}
             className={[
               'min-h-8 min-w-8 px-2 text-[11px] font-extrabold leading-none transition sm:min-w-10',
-              active ? 'bg-[#123d2b] text-white dark:bg-[#d9ffd8] dark:text-[#07110c]' : 'text-[#10291e] dark:text-[#f7fbf1]',
+              active ? 'bg-[#123d2b] text-white dark:bg-[#d9ffd8] dark:text-[#07110c]' : 'text-[var(--zmk-ink)]',
             ].join(' ')}
             title={option.mode === 'auto' ? `自動: ${theme}` : option.label}
           >

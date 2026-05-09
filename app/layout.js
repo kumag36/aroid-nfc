@@ -1,5 +1,6 @@
 import './globals.css'
 import MobileBottomNav from './components/MobileBottomNav'
+import PageViewTracker from './components/PageViewTracker'
 import SiteFooter from './components/SiteFooter'
 
 export const metadata = {
@@ -34,7 +35,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja" translate="no">
+      <head>
+        <link rel="preload" href="/fonts/Boku2-Regular.woff" as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Boku2-Bold.woff" as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Zamakuri-PMarker-Fallback.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+      </head>
       <body>
+        <PageViewTracker />
         {children}
         <SiteFooter />
         <MobileBottomNav />

@@ -23,7 +23,7 @@ export default function LegalPage() {
         <dl>
           {rows.map(([label, value]) => (
             <div key={label} className="grid gap-2 border-b border-[var(--zmk-border)] p-4 last:border-b-0 sm:grid-cols-[180px_1fr] sm:gap-7 sm:p-5">
-              <dt className="zmk-eyebrow text-[11px] text-[#b89558]">{label}</dt>
+              <dt className="zmk-eyebrow text-[11px]">{label}</dt>
               <dd className="text-[15px] font-bold leading-8 text-[var(--zmk-ink-strong)]">{value}</dd>
             </div>
           ))}

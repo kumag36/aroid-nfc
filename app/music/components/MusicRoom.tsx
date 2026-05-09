@@ -25,7 +25,7 @@ type MusicResponse = {
 }
 
 const controlHitbox =
-  'absolute touch-manipulation select-none rounded-[10px] border border-transparent bg-transparent text-transparent outline-none transition duration-200 enabled:hover:border-[#b89558]/70 enabled:hover:bg-[#fffef8]/18 enabled:focus-visible:border-[#b89558] enabled:focus-visible:bg-[#fffef8]/22 disabled:cursor-not-allowed'
+  'absolute [touch-action:pan-y] select-none rounded-[10px] border border-transparent bg-transparent text-transparent outline-none transition duration-200 enabled:hover:border-[#b89558]/70 enabled:hover:bg-[#fffef8]/18 enabled:focus-visible:border-[#b89558] enabled:focus-visible:bg-[#fffef8]/22 disabled:cursor-not-allowed'
 
 function VuMeter({ active }: { active: boolean }) {
   return (
@@ -206,6 +206,22 @@ export default function MusicRoom({ variant = 'full', initialTracks = [] }: Musi
     return true
   }
 
+  function downloadSelectedAudio() {
+    if (!selectedTrack?.audio) return
+
+    const extension = selectedTrack.audio.url.split('?')[0]?.split('.').pop() || 'mp3'
+    const safeTitle = selectedTrack.title
+      .replace(/[\\/:*?"<>|]/g, '')
+      .replace(/\s+/g, '-')
+      .toLowerCase()
+    const link = document.createElement('a')
+    link.href = selectedTrack.audio.url
+    link.download = `${safeTitle || selectedTrack.id}.${extension}`
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+  }
+
   function toggleAudio() {
     const audio = audioRef.current
 
@@ -283,7 +299,9 @@ export default function MusicRoom({ variant = 'full', initialTracks = [] }: Musi
   function openTrackSource(track: MusicTrack) {
     setSelectedId(track.id)
     stopAudio()
-    openYoutubePlayback(track)
+    if (!openYoutubePlayback(track)) {
+      selectTrack(track.id, false)
+    }
   }
 
   function handleTrackEnded() {
@@ -326,24 +344,16 @@ export default function MusicRoom({ variant = 'full', initialTracks = [] }: Musi
         variant === 'hero' ? 'p-2.5 md:p-3' : 'p-3 md:p-5'
       }`}
     >
-      <div className={`grid gap-3 ${variant === 'hero' ? 'mb-3' : 'mb-5 md:grid-cols-[1fr_220px]'}`}>
-        <div className={`border border-[#2c6a4b]/12 bg-white/76 shadow-[inset_0_0_28px_rgba(255,255,255,0.72)] ${variant === 'hero' ? 'p-3' : 'p-4'}`}>
-          <p className="text-[10px] font-black tracking-[0.22em] text-[#b89558]">NOW PLAYING</p>
-          <div className={`mt-3 overflow-hidden border border-[#2c6a4b]/18 bg-[#f8fcf2] px-3 shadow-[inset_0_0_18px_rgba(44,106,75,0.06)] ${variant === 'hero' ? 'py-2' : 'py-3'}`}>
-            <div className="np-marquee flex w-max whitespace-nowrap text-[12px] font-semibold leading-none tracking-[0.18em] text-[#173b2a] [text-shadow:0_0_10px_rgba(184,149,88,0.22)] md:text-sm">
-              <span className="pr-14">{selectedTrack.title}</span>
-              <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
-              <span className="pr-14" aria-hidden="true">{selectedTrack.title}</span>
-            </div>
-          </div>
-          <p className="mt-3 text-xs font-semibold tracking-[0.16em] text-[#2c6a4b]/78">{selectedTrack.artist}</p>
-        </div>
-        <div className={`content-between gap-3 border border-[#2c6a4b]/12 bg-white/76 p-3 ${variant === 'hero' ? 'hidden' : 'grid'}`}>
+      {variant === 'hero' ? null : (
+        <div className="mb-5 grid gap-3 md:grid-cols-[1fr_220px]">
+          <div />
+          <div className="grid content-between gap-3 border border-[#2c6a4b]/12 bg-white/76 p-3">
           <p className="text-[10px] font-black tracking-[0.18em] text-[#315244]/54">LEVEL METER</p>
           <VuMeter active={isPlaying} />
           <p className="text-[10px] tracking-[0.18em] text-[#315244]/44">{isPlaying ? 'ON AIR' : 'STAND BY'}</p>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className={`relative mx-auto aspect-[1085/869] overflow-hidden ${variant === 'hero' ? 'max-w-[420px]' : 'max-w-[780px]'}`}>
         <Image
@@ -355,6 +365,13 @@ export default function MusicRoom({ variant = 'full', initialTracks = [] }: Musi
           sizes={variant === 'hero' ? '(max-width: 768px) 94vw, 420px' : '(max-width: 768px) 94vw, 780px'}
           priority={variant === 'hero'}
         />
+        <div className="pointer-events-none absolute left-[17.2%] top-[20.9%] z-10 h-[13.2%] w-[55.2%] overflow-hidden border-[3px] border-black bg-[#fffef8] px-2 shadow-[inset_0_0_8px_rgba(44,106,75,0.12)]">
+          <div className="np-marquee flex h-full w-max items-center whitespace-nowrap text-[clamp(0.58rem,1.95vw,1.08rem)] font-black leading-none tracking-[0.18em] text-[#173b2a]">
+            <span className="pr-10">{selectedTrack.title}</span>
+            <span className="pr-10" aria-hidden="true">{selectedTrack.title}</span>
+            <span className="pr-10" aria-hidden="true">{selectedTrack.title}</span>
+          </div>
+        </div>
         {selectedTrack.sourceType === 'audio' && selectedTrack.audio ? (
           <audio
             ref={audioRef}
@@ -367,34 +384,31 @@ export default function MusicRoom({ variant = 'full', initialTracks = [] }: Musi
           />
         ) : null}
         <div
-          className="pointer-events-none absolute left-[39.6%] top-[41.8%] z-10 h-[20.5%] w-[20.8%] overflow-hidden rounded-[2px] border border-black/40 bg-[#111] text-center shadow-[inset_0_0_12px_rgba(0,0,0,0.55),0_0_12px_rgba(0,0,0,0.25)]"
-          style={
-            selectedThumbnail
-              ? {
-                  backgroundImage: `linear-gradient(180deg,rgba(5,8,6,0.05),rgba(5,8,6,0.62)),url(${selectedThumbnail})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }
-              : undefined
-          }
+          className="pointer-events-none absolute left-[33.6%] top-[44.5%] z-10 h-[31.5%] w-[32.8%] overflow-hidden rounded-[2px] border border-black/40 bg-[#111] text-center shadow-[inset_0_0_12px_rgba(0,0,0,0.55),0_0_12px_rgba(0,0,0,0.25)]"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.14),transparent_58%)]" />
-          <p className="absolute inset-x-1 bottom-1 overflow-hidden bg-black/56 px-1 py-0.5 text-[clamp(0.32rem,1.05vw,0.54rem)] font-black leading-tight tracking-[0.02em] text-white [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
-            {selectedTrack.title}
-          </p>
+          <Image
+            src={selectedThumbnail ?? '/music/cassette-tape-card.webp'}
+            alt=""
+            fill
+            className="object-cover"
+            sizes={variant === 'hero' ? '140px' : '260px'}
+            unoptimized={Boolean(selectedThumbnail)}
+          />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.08),transparent_64%)]" />
         </div>
         <button
           type="button"
-          disabled
-          aria-label="Record is disabled"
-          title="Recording is disabled"
+          onClick={downloadSelectedAudio}
+          disabled={!selectedTrack.audio}
+          aria-label="再生中の曲をダウンロード"
+          title="再生中の曲をダウンロード"
           className={`${controlHitbox} left-[2.2%] top-[81%] h-[14.6%] w-[15.4%]`}
         />
         <button
           type="button"
           onClick={toggleAudio}
           disabled={!canUseCassetteControls}
-          aria-label={hasYoutube ? 'Play on YouTube' : 'Play or pause'}
+          aria-label={canUseLocalAudio ? 'ローカル音源を再生または一時停止' : 'YouTubeをポップアップで開く'}
           className={`${controlHitbox} left-[18.2%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
         <button
@@ -430,52 +444,38 @@ export default function MusicRoom({ variant = 'full', initialTracks = [] }: Musi
           type="button"
           onClick={toggleAudio}
           disabled={!canUseCassetteControls}
-          aria-label={hasYoutube ? 'Play on YouTube' : 'Play or pause'}
+          aria-label={canUseLocalAudio ? 'ローカル音源を再生または一時停止' : 'YouTubeをポップアップで開く'}
           className={`${controlHitbox} left-[77%] top-[80.8%] h-[15.4%] w-[14.4%]`}
         />
       </div>
 
       {variant === 'hero' && (
-        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4" aria-label="テープ選択">
           {tracks.map((track, index) => {
-            const thumbnail = getTrackThumbnail(track)
-
             return (
-            <a
-              key={track.id}
-              href={track.youtube?.url ?? '#'}
-              target={track.youtube ? '_blank' : undefined}
-              rel={track.youtube ? 'noreferrer' : undefined}
-              onClick={(event) => {
-                event.preventDefault()
+              <button
+                type="button"
+                key={track.id}
+                onClick={() => {
+                  if (!track.youtube) {
+                    selectTrack(track.id)
+                    return
+                  }
 
-                if (!track.youtube) {
-                  selectTrack(track.id)
-                  return
-                }
-
-                openTrackSource(track)
-              }}
-              className={`group/tape relative min-h-16 overflow-hidden border bg-white px-3 py-2 text-left text-[10px] font-semibold leading-4 tracking-[0.08em] shadow-[0_10px_22px_rgba(44,106,75,0.08)] transition ${
-                selectedTrack.id === track.id
-                  ? 'border-[#143326] text-[#10291e] ring-1 ring-[#b89558]/70'
-                  : 'border-[#2c6a4b]/10 text-[#315244]/70 hover:border-[#b89558]/42'
-              }`}
-            >
-              <span
-                className="absolute inset-0 bg-cover bg-center opacity-32 grayscale-[20%] saturate-[0.95] transition group-hover/tape:opacity-44"
-                style={{
-                  backgroundImage: thumbnail
-                    ? `linear-gradient(180deg,rgba(255,255,255,0.2),rgba(255,255,255,0.16)),url(${thumbnail})`
-                    : "url('/music/cassette-tape-card.webp')",
+                  openTrackSource(track)
                 }}
-                aria-hidden="true"
-              />
-              <span className="absolute inset-0 bg-white/70" aria-hidden="true" />
-              <span className="relative block text-[#b89558]">TAPE {String(index + 1).padStart(2, '0')}</span>
-              <span className="relative mt-1 block truncate text-[11px] leading-4">{track.title}</span>
-            </a>
-          )})}
+                className={`min-w-0 border px-3 py-2 text-left shadow-[0_10px_22px_rgba(44,106,75,0.08)] transition ${
+                  selectedTrack.id === track.id
+                    ? 'border-[#143326] bg-[#fffef8] text-[#10291e] ring-1 ring-[#b89558]/70'
+                    : 'border-[#2c6a4b]/26 bg-[#fffef8] text-[#10291e] hover:border-[#b89558]/70 hover:bg-white'
+                }`}
+                aria-label={`${track.title} を選択`}
+              >
+                <span className="block text-[10px] font-black tracking-[0.16em] text-[#b89558]">TAPE {String(index + 1).padStart(2, '0')}</span>
+                <span className="mt-1 block truncate text-[12px] font-black leading-5 tracking-[0.02em] text-[#173b2a]">{track.title}</span>
+              </button>
+            )
+          })}
         </div>
       )}
 

@@ -46,7 +46,7 @@ export default function TermsPage() {
       <div className="grid gap-4">
         {terms.map((term, index) => (
           <section key={term.title} className="zmk-card grid gap-5 p-6 md:grid-cols-[80px_1fr]">
-            <p className="text-3xl font-bold text-[#b89558]">{String(index + 1).padStart(2, '0')}</p>
+            <p className="text-3xl font-bold text-[var(--zmk-gold)]">{String(index + 1).padStart(2, '0')}</p>
             <div>
               <h2 className="text-2xl">{term.title}</h2>
               <p className="zmk-muted mt-4 text-[15px] leading-8">{term.text}</p>

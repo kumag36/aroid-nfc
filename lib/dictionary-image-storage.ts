@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import {
   dictionaryImageCandidates,
+  staticDictionaryImageAssignments,
   type DictionaryImageAssignment,
   type DictionaryImageExclusion,
 } from '@/lib/dictionary-image-data'
@@ -126,7 +127,12 @@ function isExclusion(item: unknown): item is DictionaryImageExclusion {
 }
 
 export async function listDictionaryImageAssignments() {
-  return readJsonArray(assignmentsPath, isAssignment)
+  const storedAssignments = await readJsonArray(assignmentsPath, isAssignment)
+  const storedImageIds = new Set(storedAssignments.map((item) => item.imageId))
+  return [
+    ...staticDictionaryImageAssignments.filter((item) => !storedImageIds.has(item.imageId)),
+    ...storedAssignments,
+  ]
 }
 
 export async function listDictionaryImageExclusions() {
