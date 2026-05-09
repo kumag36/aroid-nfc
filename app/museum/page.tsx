@@ -24,11 +24,11 @@ export default async function MuseumPage() {
             植物のつまずきや世話のコツを、ゆるく読めるマンガで置いています。
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Link href="/lab" className="zmk-button">
-              物置へ
+            <Link href="/shokuchudoku" className="zmk-button zmk-button-primary">
+              植中毒へ
             </Link>
-            <Link href="/dictionary" className="zmk-button">
-              図鑑へ
+            <Link href="/lab" className="zmk-button">
+              音楽へ
             </Link>
           </div>
         </div>

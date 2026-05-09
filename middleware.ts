@@ -18,7 +18,7 @@ const protectedPrefixes = [
   '/api/nfc/verify',
 ]
 
-const publicOpenPaths = ['/_not-found', '/shokuchudoku', '/lab', '/music']
+const publicOpenPaths = ['/_not-found', '/shokuchudoku', '/lab', '/music', '/museum']
 
 const publicOpenPrefixes = [
   '/_next',
@@ -35,6 +35,7 @@ const publicOpenPrefixes = [
   '/music/admin',
   '/fonts',
   '/music',
+  '/museum',
   '/shokuchudoku',
 ]
 

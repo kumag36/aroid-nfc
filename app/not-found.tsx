@@ -14,6 +14,7 @@ export default function NotFound() {
           <>
             <Link href="/shokuchudoku" className="zmk-button zmk-button-primary">植中毒へ</Link>
             <Link href="/lab" className="zmk-button">音楽へ</Link>
+            <Link href="/museum" className="zmk-button">マンガへ</Link>
           </>
         }
       />

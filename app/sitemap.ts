@@ -4,7 +4,7 @@ const baseUrl = 'https://zamakuri.jp'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
-  const staticRoutes = ['/shokuchudoku', '/lab']
+  const staticRoutes = ['/shokuchudoku', '/lab', '/museum']
 
   return staticRoutes.map((path) => ({
     url: `${baseUrl}${path}`,

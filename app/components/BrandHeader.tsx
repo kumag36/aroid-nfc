@@ -5,6 +5,7 @@ import ThemeToggle from './ThemeToggle'
 const navItems = [
   { href: '/shokuchudoku', label: '植中毒' },
   { href: '/lab', label: '音楽' },
+  { href: '/museum', label: 'マンガ' },
 ]
 
 export default function BrandHeader() {

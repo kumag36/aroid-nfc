@@ -3,6 +3,7 @@ import Link from 'next/link'
 const footerLinks = [
   { href: '/shokuchudoku', label: '植中毒' },
   { href: '/lab', label: '音楽' },
+  { href: '/museum', label: 'マンガ' },
 ]
 
 export default function SiteFooter() {
