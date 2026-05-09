@@ -450,7 +450,7 @@ export default function MusicRoom({ variant = 'full', initialTracks = [] }: Musi
       </div>
 
       {variant === 'hero' && (
-        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4" aria-label="テープ選択">
+        <div className="mt-3 grid grid-cols-2 gap-2 pb-28 sm:grid-cols-4 md:pb-0" aria-label="テープ選択">
           {tracks.map((track, index) => {
             return (
               <button

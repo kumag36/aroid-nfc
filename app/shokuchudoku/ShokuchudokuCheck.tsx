@@ -348,7 +348,7 @@ export default function ShokuchudokuCheck() {
   }
 
   return (
-    <section className="mx-auto grid w-full max-w-[1040px] px-3 pb-[10.5rem] min-[430px]:px-4 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-5 lg:px-6 lg:pb-10">
+    <section className="mx-auto grid w-full max-w-[1040px] px-3 pb-[16.5rem] min-[430px]:px-4 md:pb-[10.5rem] lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-5 lg:px-6 lg:pb-10">
       <div className="sticky top-0 z-20 -mx-3 bg-[#07110c]/82 px-3 pb-3 pt-2 backdrop-blur-md min-[430px]:-mx-4 min-[430px]:px-4 lg:col-start-1 lg:row-span-3 lg:mx-0 lg:self-start lg:rounded-[26px] lg:border lg:border-[#d9ffd8]/16 lg:bg-[#10291e]/94 lg:p-5 lg:shadow-[0_20px_54px_rgba(0,0,0,0.24)]">
         <div className="flex items-center justify-between gap-3 text-[#d9ffd8]">
           <button
@@ -435,7 +435,7 @@ export default function ShokuchudokuCheck() {
         </div>
       ) : null}
 
-      <div className="fixed inset-x-0 bottom-0 z-30 mx-auto w-full max-w-[620px] border-t border-[#d9ffd8]/16 bg-[#07110c]/94 px-3 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-md min-[430px]:px-4 lg:static lg:inset-auto lg:col-start-2 lg:mt-5 lg:max-w-none lg:rounded-[26px] lg:border lg:border-[#d9ffd8]/16 lg:bg-[#10291e]/94 lg:p-5 lg:shadow-[0_18px_48px_rgba(0,0,0,0.22)]">
+      <div className="fixed inset-x-0 bottom-[5.8rem] z-30 mx-auto w-full max-w-[620px] border-t border-[#d9ffd8]/16 bg-[#07110c]/94 px-3 pb-3 pt-3 backdrop-blur-md min-[430px]:px-4 md:bottom-0 md:pb-[max(1rem,env(safe-area-inset-bottom))] lg:static lg:inset-auto lg:col-start-2 lg:mt-5 lg:max-w-none lg:rounded-[26px] lg:border lg:border-[#d9ffd8]/16 lg:bg-[#10291e]/94 lg:p-5 lg:shadow-[0_18px_48px_rgba(0,0,0,0.22)]">
         {completed ? (
           <button
             type="button"

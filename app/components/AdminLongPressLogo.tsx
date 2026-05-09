@@ -32,7 +32,7 @@ export default function AdminLongPressLogo() {
         />
       </span>
       <span className="min-w-0 max-w-[9.5rem] sm:max-w-none">
-        <span className="zmk-brand-title block truncate text-[12px] font-extrabold sm:text-sm">
+        <span className="zmk-brand-title block truncate text-[12px] font-extrabold text-[#f7fbf1] sm:text-sm">
           ざまくりプランツ
         </span>
         <span className="zmk-brand-subtitle block truncate text-[8px] font-bold text-[#d9ffd8] sm:text-[10px]">
