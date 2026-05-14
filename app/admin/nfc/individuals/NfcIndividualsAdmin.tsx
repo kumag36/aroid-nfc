@@ -44,6 +44,7 @@ type CareFormState = {
   date: string
   note: string
   imageUrl: string
+  imagePath: string
 }
 
 const emptyForm: FormState = {
@@ -77,6 +78,7 @@ const emptyCareForm: CareFormState = {
   date: new Date().toISOString().slice(0, 10),
   note: '',
   imageUrl: '',
+  imagePath: '',
 }
 
 function toForm(row: NfcIndividual): FormState {
@@ -138,6 +140,7 @@ export default function NfcIndividualsAdmin({ plants, initialIndividuals, storag
   const [query, setQuery] = useState('')
   const [careForm, setCareForm] = useState<CareFormState>(emptyCareForm)
   const [isAddingCare, setIsAddingCare] = useState(false)
+  const [isUploadingPhoto, setIsUploadingPhoto] = useState(false)
 
   const visibleIndividuals = useMemo(() => {
     const normalized = query.trim().toLowerCase()
@@ -224,6 +227,43 @@ export default function NfcIndividualsAdmin({ plants, initialIndividuals, storag
     setCareForm(emptyCareForm)
     setMessage(result.message ?? '育成ログを追加しました。')
     setIsAddingCare(false)
+  }
+
+  async function uploadCarePhoto(file: File | null) {
+    const uid = normalizeNfcId(form.uid)
+    if (!uid) {
+      setMessage('写真アップロード前にNFC UIDを入力してください。')
+      return
+    }
+    if (!file) return
+
+    setIsUploadingPhoto(true)
+    setMessage('')
+
+    const formData = new FormData()
+    formData.set('uid', uid)
+    formData.set('file', file)
+
+    const response = await fetch('/api/nfc/individuals/photos', {
+      method: 'POST',
+      body: formData,
+    })
+    const result = await response.json()
+
+    if (!response.ok || !result.ok) {
+      setMessage(result.message ?? '写真をアップロードできませんでした。')
+      setIsUploadingPhoto(false)
+      return
+    }
+
+    setCareForm((current) => ({
+      ...current,
+      type: 'photo',
+      imagePath: result.path ?? '',
+      imageUrl: result.url ?? '',
+    }))
+    setMessage('写真をアップロードしました。内容を確認して育成ログを追加してください。')
+    setIsUploadingPhoto(false)
   }
 
   return (
@@ -372,10 +412,16 @@ export default function NfcIndividualsAdmin({ plants, initialIndividuals, storag
             <Field label="日付">
               <input type="date" className="zmk-admin-input" value={careForm.date} onChange={(event) => updateCareField('date', event.target.value)} />
             </Field>
-            <Field label="画像URL・保存パス">
-              <input className="zmk-admin-input" value={careForm.imageUrl} onChange={(event) => updateCareField('imageUrl', event.target.value)} placeholder="次段でアップロード対応" />
+            <Field label="写真アップロード">
+              <input type="file" accept="image/*" className="zmk-admin-input py-2" disabled={isUploadingPhoto || !storageReady} onChange={(event) => uploadCarePhoto(event.target.files?.[0] ?? null)} />
             </Field>
           </div>
+          <Field label="画像URL・保存パス">
+            <input className="zmk-admin-input" value={careForm.imagePath || careForm.imageUrl} onChange={(event) => {
+              updateCareField('imagePath', '')
+              updateCareField('imageUrl', event.target.value)
+            }} placeholder={isUploadingPhoto ? 'アップロード中' : '写真アップロード後に自動入力'} />
+          </Field>
           <Field label="内容">
             <textarea className="zmk-admin-input min-h-24" value={careForm.note} onChange={(event) => updateCareField('note', event.target.value)} placeholder="鉢増し、葉の展開、不調、処置など" />
           </Field>
@@ -422,7 +468,7 @@ export default function NfcIndividualsAdmin({ plants, initialIndividuals, storag
                     <span className="zmk-admin-muted text-[11px] font-bold">{event.type}</span>
                   </div>
                   {event.note ? <p className="mt-2 text-sm font-bold leading-6">{event.note}</p> : null}
-                  {event.imageUrl ? <p className="zmk-admin-code mt-2 break-all p-2 text-[11px]">{event.imageUrl}</p> : null}
+                  {event.imagePath || event.imageUrl ? <p className="zmk-admin-code mt-2 break-all p-2 text-[11px]">{event.imagePath || event.imageUrl}</p> : null}
                 </div>
               ))
             ) : (

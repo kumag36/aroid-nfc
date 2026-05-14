@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import BrandHeader from '@/app/components/BrandHeader'
 import PageHero from '@/app/components/PageHero'
 import ScientificName from '@/app/components/ScientificName'
-import { getNfcIndividual } from '@/lib/nfc-individual-storage'
+import { createSignedNfcImageUrl, getNfcIndividual } from '@/lib/nfc-individual-storage'
 
 type PageProps = {
   params: Promise<{ uid: string }>
@@ -78,6 +78,14 @@ export default async function IndividualPage({ params }: PageProps) {
       }
     : await fetchItem(normalizedUid)
   const item = result.item
+  const careEvents = individual
+    ? await Promise.all(
+        individual.careEvents.map(async (event) => ({
+          ...event,
+          signedImageUrl: event.imagePath ? await createSignedNfcImageUrl(event.imagePath) : event.imageUrl ?? '',
+        })),
+      )
+    : []
   const displayName = item?.name_jp || item?.trade_name || item?.name_en || item?.scientific_name || item?.name || normalizedUid
   const contactHref = `mailto:kumajuko@gmail.com?subject=${encodeURIComponent(`植物ID問い合わせ: ${normalizedUid}`)}`
 
@@ -146,21 +154,25 @@ export default async function IndividualPage({ params }: PageProps) {
           </dl>
         </div>
       </section>
-      {individual?.careEvents.length ? (
+      {careEvents.length ? (
         <section className="zmk-section pt-0">
           <div className="zmk-container zmk-card p-5 sm:p-7">
             <p className="zmk-eyebrow mb-5">CARE LOG</p>
             <div className="grid gap-3">
-              {individual.careEvents.map((event) => (
+              {careEvents.map((event) => (
                 <article key={event.id} className="rounded-[8px] border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)] p-4">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <p className="text-sm font-black">{event.date}</p>
                     <p className="zmk-eyebrow text-[10px]">{event.type}</p>
                   </div>
+                  {event.signedImageUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={event.signedImageUrl} alt={event.note || '育成写真'} className="mt-3 max-h-[70vh] w-full rounded-[8px] border border-[var(--zmk-border)] object-contain" />
+                  ) : null}
                   {event.note ? <p className="mt-2 text-sm font-bold leading-7">{event.note}</p> : null}
-                  {event.imageUrl ? (
-                    <a href={event.imageUrl} className="zmk-admin-code mt-3 block break-all p-3 text-xs font-bold" target="_blank" rel="noreferrer">
-                      {event.imageUrl}
+                  {event.signedImageUrl ? (
+                    <a href={event.signedImageUrl} className="zmk-admin-code mt-3 block break-all p-3 text-xs font-bold" target="_blank" rel="noreferrer">
+                      写真を開く
                     </a>
                   ) : null}
                 </article>

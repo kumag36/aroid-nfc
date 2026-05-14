@@ -17,6 +17,7 @@ const protectedPrefixes = [
   '/api/music/upload',
   '/api/nfc/individuals',
   '/api/nfc/individuals/care',
+  '/api/nfc/individuals/photos',
   '/api/nfc/verify',
 ]
 
@@ -83,7 +84,7 @@ function withSecurityHeaders(response: NextResponse) {
       "object-src 'none'",
       "frame-ancestors 'none'",
       "form-action 'self'",
-      "img-src 'self' data: blob: https://i.ytimg.com https://upload.wikimedia.org",
+      "img-src 'self' data: blob: https://*.supabase.co https://i.ytimg.com https://upload.wikimedia.org",
       "media-src 'self' blob:",
       "font-src 'self' data:",
       "script-src 'self' 'unsafe-inline'",

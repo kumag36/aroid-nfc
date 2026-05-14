@@ -10,6 +10,7 @@ export type NfcCareEvent = {
   date: string
   note: string
   imageUrl?: string
+  imagePath?: string
   createdAt: string
 }
 
@@ -53,9 +54,10 @@ export type NfcCareEventInput = {
   date?: string
   note?: string
   imageUrl?: string
+  imagePath?: string
 }
 
-const nfcBucket = process.env.SUPABASE_NFC_BUCKET ?? 'nfc'
+export const nfcBucket = process.env.SUPABASE_NFC_BUCKET ?? 'nfc'
 const individualsPath = 'individuals/records.json'
 
 function getServiceClient() {
@@ -130,6 +132,7 @@ function normalizeCareEvents(value: unknown): NfcCareEvent[] {
         date: asString(item.date),
         note: asString(item.note),
         imageUrl: optionalString(item.imageUrl),
+        imagePath: optionalString(item.imagePath),
         createdAt: asString(item.createdAt) || new Date().toISOString(),
       }
     })
@@ -282,11 +285,12 @@ export async function addNfcCareEvent(input: NfcCareEventInput) {
     date: input.date?.trim() || now.slice(0, 10),
     note: input.note?.trim() || '',
     imageUrl: input.imageUrl?.trim() || undefined,
+    imagePath: input.imagePath?.trim() || undefined,
     createdAt: now,
   }
 
-  if (!event.note && !event.imageUrl) {
-    return { ok: false, message: 'メモまたは画像URLを入力してください。' }
+  if (!event.note && !event.imageUrl && !event.imagePath) {
+    return { ok: false, message: 'メモまたは写真を入力してください。' }
   }
 
   const nextItem: NfcIndividual = {
@@ -299,4 +303,24 @@ export async function addNfcCareEvent(input: NfcCareEventInput) {
   if (storageError) return { ok: false, message: storageError }
 
   return { ok: true, item: nextItem, individuals: nextRows, event, message: '育成ログを追加しました。' }
+}
+
+export async function ensureNfcStorageBucket() {
+  const error = await ensureNfcBucket()
+  return { ok: !error, message: error ?? undefined }
+}
+
+export function getNfcUploadClient() {
+  return getServiceClient()
+}
+
+export async function createSignedNfcImageUrl(path?: string) {
+  if (!path) return ''
+  if (/^https?:\/\//i.test(path)) return path
+
+  const client = getServiceClient()
+  if (!client) return ''
+
+  const { data } = await client.storage.from(nfcBucket).createSignedUrl(path, 60 * 60 * 24)
+  return data?.signedUrl ?? ''
 }
