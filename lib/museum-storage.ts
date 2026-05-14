@@ -33,12 +33,12 @@ function bundledPages(slug: string, count: number, extension = 'webp') {
 
 const bundledMuseumWorks: MuseumWork[] = [
   {
-    id: 'episode-010-first-batch-wrap',
-    title: '第10話｜まず見る順番',
+    id: 'episode-010-leaf-underside-check',
+    title: '第10話｜葉裏チェックは虫予防',
     description:
-      '第一弾のまとめ。植物の調子を見る時は、光、水、風と温度、根と土の順番で落ち着いて確認します。毎週少しずつ見れば、小さな変化に気づきやすくなります。',
-    createdAt: '2026-05-10T09:00:00.000Z',
-    pages: bundledPages('episode-010-first-batch-wrap', 5, 'png'),
+      'モンステラを見る時は葉の表だけでなく、葉裏、新芽まわり、茎のつけ根も確認します。白い点々、細い糸、ベタつきなどの小さなサインに早く気づくための虫予防の話です。',
+    createdAt: '2026-05-09T00:16:27.000Z',
+    pages: bundledPages('episode-010-leaf-underside-check', 5, 'png'),
   },
   {
     id: 'episode-009-fertilizer-is-not-medicine',
@@ -57,12 +57,12 @@ const bundledMuseumWorks: MuseumWork[] = [
     pages: bundledPages('episode-008-leaf-clean', 5, 'png'),
   },
   {
-    id: 'episode-007-root-check',
-    title: '第7話｜根っこを見る日',
+    id: 'episode-007-monstera-placement',
+    title: '第7話｜モンステラの置き場所',
     description:
-      '水や光を見直しても調子が戻らない時は、鉢の中も確認します。健康な根と傷んだ根を見分け、植え替え後は明るい日陰で休ませます。',
-    createdAt: '2026-05-06T12:00:00.000Z',
-    pages: bundledPages('episode-007-root-check', 5, 'png'),
+      'モンステラは光が好きですが、暗すぎる場所や強すぎる直射日光は苦手です。葉の向きと新芽を見ながら、レースカーテン越しの明るい日陰へ整えます。',
+    createdAt: '2026-05-06T22:54:06.000Z',
+    pages: bundledPages('episode-007-monstera-placement', 5, 'png'),
   },
   {
     id: 'monstera-leaf-mist',
