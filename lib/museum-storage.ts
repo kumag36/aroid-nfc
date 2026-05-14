@@ -33,6 +33,14 @@ function bundledPages(slug: string, count: number, extension = 'webp') {
 
 const bundledMuseumWorks: MuseumWork[] = [
   {
+    id: 'episode-010-first-batch-wrap',
+    title: '第10話｜まず見る順番',
+    description:
+      '第一弾のまとめ。植物の調子を見る時は、光、水、風と温度、根と土の順番で落ち着いて確認します。毎週少しずつ見れば、小さな変化に気づきやすくなります。',
+    createdAt: '2026-05-10T09:00:00.000Z',
+    pages: bundledPages('episode-010-first-batch-wrap', 5, 'png'),
+  },
+  {
     id: 'episode-009-fertilizer-is-not-medicine',
     title: '第9話｜肥料は元気の薬じゃない',
     description:
@@ -47,6 +55,14 @@ const bundledMuseumWorks: MuseumWork[] = [
       'モンステラの白い跡は水垢かもしれません。リーフクリンは缶をよく振り、葉から適度に離して表面へスプレー。拭き取らず自然に乾くまで待つのがコツです。',
     createdAt: '2026-05-07T06:16:57.000Z',
     pages: bundledPages('episode-008-leaf-clean', 5, 'png'),
+  },
+  {
+    id: 'episode-007-root-check',
+    title: '第7話｜根っこを見る日',
+    description:
+      '水や光を見直しても調子が戻らない時は、鉢の中も確認します。健康な根と傷んだ根を見分け、植え替え後は明るい日陰で休ませます。',
+    createdAt: '2026-05-06T12:00:00.000Z',
+    pages: bundledPages('episode-007-root-check', 5, 'png'),
   },
   {
     id: 'monstera-leaf-mist',
