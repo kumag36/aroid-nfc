@@ -34,7 +34,7 @@ export default async function NewItemPage({ searchParams }: NewItemPageProps) {
             <span className="block">登録する。</span>
           </>
         }
-        lead="未登録IDを受け取り、品種・管理名・公開状態を登録するための入口です。正式な保存処理は管理DB連携後にここへ集約します。"
+        lead="未登録IDを受け取り、NFC個体タグ管理で品種・入荷・順化・販売・顧客復旧情報を登録します。"
       />
 
       <section className="zmk-section">
@@ -46,11 +46,11 @@ export default async function NewItemPage({ searchParams }: NewItemPageProps) {
               <p className="mt-2 text-3xl font-black">{id || '未指定'}</p>
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <Link href={`/nfc/rewrite?id=${encodeURIComponent(id)}`} className="zmk-button zmk-button-primary">
-                書き込みへ
+              <Link href={`/admin/nfc/individuals?uid=${encodeURIComponent(id)}`} className="zmk-button zmk-button-primary">
+                個体タグ管理へ
               </Link>
-              <Link href="/admin" className="zmk-button">
-                管理へ戻る
+              <Link href={`/admin/nfc/rewrite?id=${encodeURIComponent(id)}`} className="zmk-button">
+                書き込みへ
               </Link>
             </div>
           </div>

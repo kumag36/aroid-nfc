@@ -15,6 +15,7 @@ const protectedPrefixes = [
   '/api/dictionary/images',
   '/api/museum/upload',
   '/api/music/upload',
+  '/api/nfc/individuals',
   '/api/nfc/verify',
 ]
 
@@ -185,6 +186,7 @@ export const config = {
     '/api/dictionary/images/:path*',
     '/api/museum/upload/:path*',
     '/api/music/upload/:path*',
+    '/api/nfc/individuals/:path*',
     '/api/nfc/verify/:path*',
   ],
 }

@@ -18,6 +18,7 @@ export default function AdminNfcPage() {
           <Link href="/admin" className="zmk-admin-link min-h-10 px-4 py-2 text-sm">管理へ</Link>
         </div>
         <div className="mb-4 grid gap-2 sm:grid-cols-2">
+          <Link href="/admin/nfc/individuals" className="zmk-admin-link min-h-11 px-4 py-3 text-sm">NFC個体タグ管理 ›</Link>
           <Link href="/admin/items/new" className="zmk-admin-link min-h-11 px-4 py-3 text-sm">新規登録 ›</Link>
           <Link href="/admin/nfc/rewrite" className="zmk-admin-link min-h-11 px-4 py-3 text-sm">NFC書き込み ›</Link>
         </div>

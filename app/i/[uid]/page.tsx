@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import BrandHeader from '@/app/components/BrandHeader'
 import PageHero from '@/app/components/PageHero'
 import ScientificName from '@/app/components/ScientificName'
+import { getNfcIndividual } from '@/lib/nfc-individual-storage'
 
 type PageProps = {
   params: Promise<{ uid: string }>
@@ -57,7 +58,25 @@ function DataRow({ label, value }: { label: string; value?: ReactNode }) {
 export default async function IndividualPage({ params }: PageProps) {
   const { uid } = await params
   const normalizedUid = decodeURIComponent(uid).trim().toUpperCase()
-  const result = await fetchItem(normalizedUid)
+  const individual = await getNfcIndividual(normalizedUid)
+  const result = individual
+    ? {
+        status: 'registered' as const,
+        code: 'PLANT_ID_REGISTERED',
+        message: 'この植物IDは登録済みです。',
+        item: {
+          id: individual.uid,
+          uid: individual.uid,
+          plant_id: individual.uid,
+          name: individual.cultivarName,
+          name_en: individual.scientificName,
+          scientific_name: individual.scientificName,
+          name_jp: individual.cultivarName,
+          trade_name: individual.tradeName,
+          slug: individual.plantSlug,
+        },
+      }
+    : await fetchItem(normalizedUid)
   const item = result.item
   const displayName = item?.name_jp || item?.trade_name || item?.name_en || item?.scientific_name || item?.name || normalizedUid
   const contactHref = `mailto:kumajuko@gmail.com?subject=${encodeURIComponent(`植物ID問い合わせ: ${normalizedUid}`)}`
@@ -114,6 +133,16 @@ export default async function IndividualPage({ params }: PageProps) {
             <DataRow label="学名" value={item.name_en || item.scientific_name ? <span className="zmk-scientific"><ScientificName name={(item.name_en || item.scientific_name) as string} /></span> : null} />
             <DataRow label="流通名" value={item.trade_name || item.name_jp} />
             <DataRow label="図鑑Slug" value={item.slug} />
+            <DataRow label="個体管理番号" value={individual?.individualCode} />
+            <DataRow label="入荷日" value={individual?.acquiredAt} />
+            <DataRow label="順化開始日" value={individual?.acclimationStartedAt} />
+            <DataRow label="順化完了日" value={individual?.acclimationCompletedAt} />
+            <DataRow label="販売日" value={individual?.saleAt} />
+            <DataRow label="ニックネーム" value={individual?.ownerNickname} />
+            <DataRow label="お迎え日" value={individual?.ownerAdoptedAt} />
+            <DataRow label="最終鉢増し日" value={individual?.lastRepottedAt} />
+            <DataRow label="生育状況" value={individual?.growthStatus} />
+            <DataRow label="メモ" value={individual?.publicNote} />
           </dl>
         </div>
       </section>
