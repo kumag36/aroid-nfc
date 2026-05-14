@@ -11,6 +11,7 @@ export const metadata = {
 const links = [
   ['アクセス解析', '/admin/analytics'],
   ['図鑑管理', '/dictionary/admin/images'],
+  ['タグ管理', '/admin/tags'],
   ['NFC管理', '/admin/nfc'],
   ['物置管理', '/music/admin'],
   ['感染度チェック兼認定審査', 'https://zamakuri.jp/shokuchudoku'],

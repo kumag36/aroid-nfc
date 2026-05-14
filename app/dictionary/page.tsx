@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import BrandHeader from '@/app/components/BrandHeader'
 import ScientificName from '@/app/components/ScientificName'
 import { categories, plants, type Category } from '@/lib/dictionary-data'
+import { sortDictionaryTags } from '@/lib/dictionary-tags'
 import { labelNameBySlug } from '@/lib/label-name-data'
 
 type DictionaryImageResponse = {
@@ -114,7 +115,7 @@ export default function DictionaryPage() {
   const subcategoryOptions = useMemo(() => {
     return (category: Category | 'All') => {
       const sourcePlants = category === 'All' ? plants : plants.filter((plant) => plant.category === category)
-      return Array.from(new Set(sourcePlants.flatMap((plant) => plant.tags))).sort((a, b) => a.localeCompare(b, 'ja'))
+      return sortDictionaryTags(Array.from(new Set(sourcePlants.flatMap((plant) => plant.tags))))
     }
   }, [])
 
