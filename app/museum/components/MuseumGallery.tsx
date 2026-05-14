@@ -32,6 +32,8 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [reloadKey, setReloadKey] = useState(0)
   const readerRef = useRef<HTMLDivElement | null>(null)
+  const workListRef = useRef<HTMLDivElement | null>(null)
+  const readerTopRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     let ignore = false
@@ -78,6 +80,8 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
     () => works.find((work) => work.id === selectedId) ?? works[0],
     [selectedId, works],
   )
+  const selectedWorkIndex = selectedWork ? works.findIndex((work) => work.id === selectedWork.id) : -1
+  const nextWork = selectedWorkIndex >= 0 ? works[selectedWorkIndex + 1] : null
 
   useEffect(() => {
     readerRef.current?.scrollTo({ left: 0, behavior: 'instant' })
@@ -92,6 +96,7 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
     setReadingMode(mode)
     setPageIndex(0)
     readerRef.current?.scrollTo({ left: 0, behavior: 'instant' })
+    readerTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   function scrollToPage(index: number) {
@@ -119,6 +124,24 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
     }, 0)
 
     setPageIndex(nextIndex)
+  }
+
+  function scrollToReaderTop() {
+    if (readingMode === 'horizontal') {
+      scrollToPage(0)
+      return
+    }
+    readerTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  function scrollToWorkList() {
+    workListRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  function selectNextWork() {
+    if (!nextWork) return
+    selectWork(nextWork.id)
+    readerTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   if (isLoading) {
@@ -163,9 +186,9 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
             <p className="zmk-eyebrow text-[11px] font-semibold">
               MANGA LIST / {works.length}
             </p>
-            <p className="text-[11px] font-black tracking-[0.16em] text-[var(--zmk-ink-soft)]">← SLIDE →</p>
+            <p className="text-[11px] font-black tracking-[0.16em] text-[var(--zmk-ink-soft)]">SLIDE</p>
           </div>
-          <div className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:snap-none lg:overflow-visible lg:px-0 lg:pb-0">
+          <div ref={workListRef} className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:snap-none lg:overflow-visible lg:px-0 lg:pb-0">
             {works.map((work) => (
               <button
                 key={work.id}
@@ -189,13 +212,13 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
 
       {selectedWork && (
         <article className="order-1 min-w-0 overflow-hidden border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/86 p-3 shadow-[0_28px_90px_rgba(44,106,75,0.12)] min-[430px]:p-4 md:p-6 lg:order-2">
-          <div className="mb-3 min-w-0 border-b border-[var(--zmk-border)] pb-3 md:mb-5 md:pb-5">
+          <div ref={readerTopRef} className="mb-3 min-w-0 scroll-mt-24 border-b border-[var(--zmk-border)] pb-3 md:mb-5 md:pb-5">
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="zmk-eyebrow text-[11px] font-semibold">
                 MANGA READER
               </p>
               <p className="text-[11px] font-black tracking-[0.18em] text-[var(--zmk-ink-soft)]">
-                {readingMode === 'horizontal' ? `← ${pageIndex + 1}/${selectedWork.pages.length} →` : `${selectedWork.pages.length} PAGES`}
+                {readingMode === 'horizontal' ? `${pageIndex + 1}/${selectedWork.pages.length}` : `${selectedWork.pages.length} PAGES`}
               </p>
             </div>
             <div className="mb-3 grid min-w-0 grid-cols-2 gap-2 rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)] p-1 md:mb-4">
@@ -233,7 +256,7 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
               onClick={() => scrollToPage(pageIndex - 1)}
               disabled={pageIndex === 0}
               aria-label="前のページ"
-              className="absolute left-2 top-1/2 z-20 grid h-11 w-11 -translate-y-1/2 place-items-center border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/92 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
+              className="absolute left-2 top-[calc(50%-1.25rem)] z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/94 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
             >
               ←
             </button>
@@ -242,7 +265,7 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
               onClick={() => scrollToPage(pageIndex + 1)}
               disabled={pageIndex >= selectedWork.pages.length - 1}
               aria-label="次のページ"
-              className="absolute right-2 top-1/2 z-20 grid h-11 w-11 -translate-y-1/2 place-items-center border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/92 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
+              className="absolute right-2 top-[calc(50%-1.25rem)] z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/94 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
             >
               →
             </button>
@@ -278,7 +301,7 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
             </div>
           </div>
           ) : (
-            <div className="mx-auto grid max-w-[760px] gap-3">
+            <div className="mx-auto grid max-w-[760px] gap-3 pb-20 md:pb-4">
               {selectedWork.pages.map((page, index) => (
                 <figure key={page.path} className="flex h-[min(72dvh,760px)] items-center justify-center overflow-hidden border border-[#2c6a4b]/8 bg-[#fffef8] dark:border-[#d9ffd8]/12 dark:bg-[#07110c] md:h-auto">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -290,8 +313,32 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
                   />
                 </figure>
               ))}
+              <div className="grid gap-2 border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)] p-3 sm:grid-cols-3">
+                <button type="button" onClick={scrollToReaderTop} className="zmk-button">
+                  先頭へ
+                </button>
+                <button type="button" onClick={scrollToWorkList} className="zmk-button">
+                  作品一覧へ
+                </button>
+                <button type="button" onClick={selectNextWork} disabled={!nextWork} className="zmk-button zmk-button-primary disabled:opacity-35">
+                  次の話へ
+                </button>
+              </div>
             </div>
           )}
+          {readingMode === 'vertical' ? (
+            <div className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-3 gap-2 rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/94 p-1 shadow-[0_18px_44px_rgba(0,0,0,0.18)] backdrop-blur md:hidden">
+              <button type="button" onClick={scrollToReaderTop} className="min-h-10 rounded-full text-xs font-black text-[var(--zmk-ink)]">
+                先頭
+              </button>
+              <button type="button" onClick={scrollToWorkList} className="min-h-10 rounded-full text-xs font-black text-[var(--zmk-ink)]">
+                一覧
+              </button>
+              <button type="button" onClick={() => changeReadingMode('horizontal')} className="min-h-10 rounded-full bg-[var(--zmk-ink)] text-xs font-black text-[var(--zmk-bg)]">
+                横読み
+              </button>
+            </div>
+          ) : null}
         </article>
       )}
     </div>
