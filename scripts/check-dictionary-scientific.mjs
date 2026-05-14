@@ -6,6 +6,9 @@ const findings = []
 
 for (const match of text.matchAll(displayNamePattern)) {
   const name = match[2]
+  if (name.includes('\u3000')) {
+    findings.push(`${name} contains full-width spaces. Use ASCII spaces.`)
+  }
   if (/[^\x20-\x7E]/.test(name)) {
     findings.push(`${name} contains non-ASCII characters.`)
   }
