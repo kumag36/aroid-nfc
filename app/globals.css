@@ -468,6 +468,18 @@ html.dark .zmk-mobile-bottom-link-active {
   padding-inline: 0.75rem;
   outline: none;
 }
+.zmk-admin-input[type="date"] {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.zmk-admin-input[type="date"]::-webkit-datetime-edit {
+  display: block;
+  padding-inline-end: 0.35rem;
+  text-align: right;
+}
+.zmk-admin-input[type="date"]::-webkit-calendar-picker-indicator {
+  margin-inline-start: 0.55rem;
+}
 .zmk-admin-input:focus {
   border-color: var(--zmk-ink);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--zmk-ink) 14%, transparent);
