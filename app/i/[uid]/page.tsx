@@ -146,6 +146,29 @@ export default async function IndividualPage({ params }: PageProps) {
           </dl>
         </div>
       </section>
+      {individual?.careEvents.length ? (
+        <section className="zmk-section pt-0">
+          <div className="zmk-container zmk-card p-5 sm:p-7">
+            <p className="zmk-eyebrow mb-5">CARE LOG</p>
+            <div className="grid gap-3">
+              {individual.careEvents.map((event) => (
+                <article key={event.id} className="rounded-[8px] border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)] p-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <p className="text-sm font-black">{event.date}</p>
+                    <p className="zmk-eyebrow text-[10px]">{event.type}</p>
+                  </div>
+                  {event.note ? <p className="mt-2 text-sm font-bold leading-7">{event.note}</p> : null}
+                  {event.imageUrl ? (
+                    <a href={event.imageUrl} className="zmk-admin-code mt-3 block break-all p-3 text-xs font-bold" target="_blank" rel="noreferrer">
+                      {event.imageUrl}
+                    </a>
+                  ) : null}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
     </main>
   )
 }

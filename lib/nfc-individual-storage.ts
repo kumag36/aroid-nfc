@@ -47,6 +47,14 @@ export type NfcIndividualInput = Partial<Omit<NfcIndividual, 'uid' | 'individual
   individualCode?: string
 }
 
+export type NfcCareEventInput = {
+  uid: string
+  type: NfcCareEvent['type']
+  date?: string
+  note?: string
+  imageUrl?: string
+}
+
 const nfcBucket = process.env.SUPABASE_NFC_BUCKET ?? 'nfc'
 const individualsPath = 'individuals/records.json'
 
@@ -257,4 +265,38 @@ export async function saveNfcIndividual(input: NfcIndividualInput) {
     individuals: nextRows,
     message: legacyError ? `個体台帳は保存しました。旧items同期のみ失敗: ${legacyError}` : '保存しました。',
   }
+}
+
+export async function addNfcCareEvent(input: NfcCareEventInput) {
+  const uid = normalizeNfcId(input.uid)
+  if (!uid) return { ok: false, message: 'NFC UIDを入力してください。' }
+
+  const currentRows = await listNfcIndividuals()
+  const current = currentRows.find((row) => row.uid === uid)
+  if (!current) return { ok: false, message: '先に個体情報を保存してください。' }
+
+  const now = new Date().toISOString()
+  const event: NfcCareEvent = {
+    id: `care-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    type: input.type,
+    date: input.date?.trim() || now.slice(0, 10),
+    note: input.note?.trim() || '',
+    imageUrl: input.imageUrl?.trim() || undefined,
+    createdAt: now,
+  }
+
+  if (!event.note && !event.imageUrl) {
+    return { ok: false, message: 'メモまたは画像URLを入力してください。' }
+  }
+
+  const nextItem: NfcIndividual = {
+    ...current,
+    careEvents: [event, ...current.careEvents].sort((a, b) => b.date.localeCompare(a.date)),
+    updatedAt: now,
+  }
+  const nextRows = [nextItem, ...currentRows.filter((row) => row.uid !== uid)].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+  const storageError = await writeIndividualsToStorage(nextRows)
+  if (storageError) return { ok: false, message: storageError }
+
+  return { ok: true, item: nextItem, individuals: nextRows, event, message: '育成ログを追加しました。' }
 }

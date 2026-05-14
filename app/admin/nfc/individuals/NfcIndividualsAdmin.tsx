@@ -39,6 +39,13 @@ type FormState = {
   replacementOfUid: string
 }
 
+type CareFormState = {
+  type: NfcIndividual['careEvents'][number]['type']
+  date: string
+  note: string
+  imageUrl: string
+}
+
 const emptyForm: FormState = {
   uid: '',
   individualCode: '',
@@ -63,6 +70,13 @@ const emptyForm: FormState = {
   privateNote: '',
   recoveryCode: '',
   replacementOfUid: '',
+}
+
+const emptyCareForm: CareFormState = {
+  type: 'note',
+  date: new Date().toISOString().slice(0, 10),
+  note: '',
+  imageUrl: '',
 }
 
 function toForm(row: NfcIndividual): FormState {
@@ -122,6 +136,8 @@ export default function NfcIndividualsAdmin({ plants, initialIndividuals, storag
   const [message, setMessage] = useState('')
   const [isSaving, setIsSaving] = useState(false)
   const [query, setQuery] = useState('')
+  const [careForm, setCareForm] = useState<CareFormState>(emptyCareForm)
+  const [isAddingCare, setIsAddingCare] = useState(false)
 
   const visibleIndividuals = useMemo(() => {
     const normalized = query.trim().toLowerCase()
@@ -139,6 +155,10 @@ export default function NfcIndividualsAdmin({ plants, initialIndividuals, storag
 
   function updateField<Key extends keyof FormState>(key: Key, value: FormState[Key]) {
     setForm((current) => ({ ...current, [key]: value }))
+  }
+
+  function updateCareField<Key extends keyof CareFormState>(key: Key, value: CareFormState[Key]) {
+    setCareForm((current) => ({ ...current, [key]: value }))
   }
 
   function applyPlant(slug: string) {
@@ -174,6 +194,36 @@ export default function NfcIndividualsAdmin({ plants, initialIndividuals, storag
     setForm(toForm(result.item))
     setMessage(result.message ?? '保存しました。')
     setIsSaving(false)
+  }
+
+  async function addCareEvent() {
+    const uid = normalizeNfcId(form.uid)
+    if (!uid) {
+      setMessage('先にNFC UIDを入力してください。')
+      return
+    }
+
+    setIsAddingCare(true)
+    setMessage('')
+
+    const response = await fetch('/api/nfc/individuals/care', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ uid, ...careForm }),
+    })
+    const result = await response.json()
+
+    if (!response.ok || !result.ok) {
+      setMessage(result.message ?? '育成ログを追加できませんでした。')
+      setIsAddingCare(false)
+      return
+    }
+
+    setIndividuals(result.individuals ?? [])
+    setForm(toForm(result.item))
+    setCareForm(emptyCareForm)
+    setMessage(result.message ?? '育成ログを追加しました。')
+    setIsAddingCare(false)
   }
 
   return (
@@ -302,6 +352,37 @@ export default function NfcIndividualsAdmin({ plants, initialIndividuals, storag
           {form.uid ? <p className="zmk-admin-code break-all p-3 text-xs font-bold">{getCanonicalNfcUrl(form.uid)}</p> : null}
           {selectedPlant ? <p className="zmk-admin-muted text-xs leading-5">選択中: {selectedPlant.displayName}</p> : null}
         </form>
+
+        <section className="zmk-admin-panel mt-5 grid gap-4 p-4">
+          <div>
+            <p className="zmk-eyebrow text-[10px]">CARE LOG</p>
+            <h2 className="mt-1 text-xl font-black">育成ログ追加</h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <Field label="種別">
+              <select className="zmk-admin-input" value={careForm.type} onChange={(event) => updateCareField('type', event.target.value as CareFormState['type'])}>
+                <option value="note">メモ</option>
+                <option value="photo">写真</option>
+                <option value="repot">鉢増し</option>
+                <option value="watering">水やり</option>
+                <option value="fertilizer">肥料</option>
+                <option value="treatment">処置</option>
+              </select>
+            </Field>
+            <Field label="日付">
+              <input type="date" className="zmk-admin-input" value={careForm.date} onChange={(event) => updateCareField('date', event.target.value)} />
+            </Field>
+            <Field label="画像URL・保存パス">
+              <input className="zmk-admin-input" value={careForm.imageUrl} onChange={(event) => updateCareField('imageUrl', event.target.value)} placeholder="次段でアップロード対応" />
+            </Field>
+          </div>
+          <Field label="内容">
+            <textarea className="zmk-admin-input min-h-24" value={careForm.note} onChange={(event) => updateCareField('note', event.target.value)} placeholder="鉢増し、葉の展開、不調、処置など" />
+          </Field>
+          <button type="button" className="zmk-button zmk-button-primary" disabled={isAddingCare || !storageReady} onClick={addCareEvent}>
+            {isAddingCare ? '追加中' : '育成ログを追加'}
+          </button>
+        </section>
       </section>
 
       <aside className="space-y-4">
@@ -327,6 +408,27 @@ export default function NfcIndividualsAdmin({ plants, initialIndividuals, storag
         <section className="zmk-admin-alert p-4">
           <p className="zmk-eyebrow text-[10px]">DESIGN RULE</p>
           <p className="mt-2 text-sm font-bold leading-6">NFCタグはUIDだけを書き込み、データはサーバーに置きます。タグ故障時は顧客情報・復旧コード・交換元UIDで再発行します。</p>
+        </section>
+
+        <section className="zmk-admin-card p-4">
+          <p className="zmk-eyebrow text-[10px]">CURRENT LOG</p>
+          <h2 className="mt-1 text-xl font-black">選択中の育成履歴</h2>
+          <div className="mt-4 space-y-2">
+            {(individuals.find((row) => row.uid === normalizeNfcId(form.uid))?.careEvents ?? []).length ? (
+              (individuals.find((row) => row.uid === normalizeNfcId(form.uid))?.careEvents ?? []).map((event) => (
+                <div key={event.id} className="rounded-[8px] border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)] p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-black">{event.date}</span>
+                    <span className="zmk-admin-muted text-[11px] font-bold">{event.type}</span>
+                  </div>
+                  {event.note ? <p className="mt-2 text-sm font-bold leading-6">{event.note}</p> : null}
+                  {event.imageUrl ? <p className="zmk-admin-code mt-2 break-all p-2 text-[11px]">{event.imageUrl}</p> : null}
+                </div>
+              ))
+            ) : (
+              <p className="zmk-admin-muted text-sm">育成履歴はありません。</p>
+            )}
+          </div>
         </section>
       </aside>
     </div>
