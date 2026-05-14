@@ -6,7 +6,7 @@
     "dev": "npm run check:encoding && next dev --webpack --disable-source-maps --hostname 127.0.0.1",
     "dev:turbo": "npm run check:encoding && next dev --turbo --hostname 127.0.0.1",
     "clean:next": "node scripts/clean-next-dev-cache.mjs",
-    "check:encoding": "node scripts/check-text-encoding.mjs",
+    "check:encoding": "node scripts/check-text-encoding.mjs && node scripts/check-dictionary-scientific.mjs",
     "check:admin-colors": "node scripts/check-admin-colors.mjs",
     "build": "npm run check:encoding && next build",
     "start": "next start",

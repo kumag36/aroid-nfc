@@ -255,7 +255,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'alocasia-black-velvet-pink-albo',
-    displayName: "Alocasia Black Velvet 'Pink Albo'",
+    displayName: "Alocasia 'Black Velvet Pink Albo'",
     tradeName: 'ブラックベルベット・ピンクアルボ',
     category: 'Alocasia',
     tags: ['アロカシア', '黒葉', 'ピンク斑', '斑入り'],
@@ -283,7 +283,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'philodendron-caramel-marble-fire-tiger',
-    displayName: "Philodendron Caramel Marble 'Fire Tiger'",
+    displayName: "Philodendron 'Caramel Marble Fire Tiger'",
     tradeName: 'ファイヤータイガー',
     category: 'Philodendron',
     tags: ['フィロデンドロン', '斑入り', '希少'],
@@ -374,7 +374,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-paul-vespa',
-    displayName: 'Platycerium Paul Vespa',
+    displayName: "Platycerium 'Paul Vespa'",
     tradeName: 'ポール ヴェスパ',
     category: 'Platycerium',
     tags: ['ビカクシダ', '交配種', 'コレクター向け'],
@@ -382,7 +382,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-diversifolium',
-    displayName: 'Platycerium Diversifolium',
+    displayName: 'Platycerium diversifolium',
     tradeName: 'ディバーシフォリウム',
     category: 'Platycerium',
     tags: ['ビカクシダ', '原種系', '個性派'],
@@ -390,7 +390,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-pewchan',
-    displayName: 'Platycerium Pewchan',
+    displayName: "Platycerium 'Pewchan'",
     tradeName: 'ピューチャン',
     category: 'Platycerium',
     tags: ['ビカクシダ', '人気', '交配種'],
@@ -398,7 +398,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-alcicorne-madagascar',
-    displayName: 'Platycerium alcicorne ver. Madagascar',
+    displayName: 'Platycerium alcicorne var. madagascar',
     tradeName: 'アルシコルネ・マダガスカル',
     category: 'Platycerium',
     tags: ['ビカクシダ', 'マダガスカル', '原種系'],
@@ -406,7 +406,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-wonder',
-    displayName: 'Platycerium Wonder',
+    displayName: "Platycerium 'Wonder'",
     tradeName: 'ワンダー',
     category: 'Platycerium',
     tags: ['ビカクシダ', '人気', '観賞性'],
@@ -414,7 +414,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-magnificent',
-    displayName: 'Platycerium Magnificent',
+    displayName: "Platycerium 'Magnificent'",
     tradeName: 'マグニフィセント',
     category: 'Platycerium',
     tags: ['ビカクシダ', 'ヒリー', '人気'],
@@ -422,7 +422,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-yal',
-    displayName: 'Platycerium YAL',
+    displayName: "Platycerium 'YAL'",
     tradeName: 'ヤール',
     category: 'Platycerium',
     tags: ['ビカクシダ', '交配種', 'コレクター向け'],
@@ -430,7 +430,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-veitchii-silver-frond',
-    displayName: 'Platycerium veitchii Silver frond',
+    displayName: "Platycerium veitchii 'Silver Frond'",
     tradeName: 'シルバーフロンド',
     category: 'Platycerium',
     tags: ['ビカクシダ', '銀葉', '乾燥に強い'],
@@ -438,7 +438,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-talnadge',
-    displayName: 'Platycerium Talnadge',
+    displayName: "Platycerium 'Talnadge'",
     tradeName: 'タルネッジ',
     category: 'Platycerium',
     tags: ['ビカクシダ', '交配種', '個性派'],
@@ -446,7 +446,7 @@ export const plants: Plant[] = [
   },
   {
     slug: 'platycerium-mulford',
-    displayName: 'Platycerium Mulford',
+    displayName: "Platycerium 'Mulford'",
     tradeName: 'ムルフォード',
     category: 'Platycerium',
     tags: ['ビカクシダ', '交配種', '存在感'],
