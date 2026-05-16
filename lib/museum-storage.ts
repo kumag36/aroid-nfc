@@ -98,11 +98,11 @@ const bundledMuseumWorks: MuseumWork[] = [
   },
   {
     id: 'episode-002-overwatering',
-    title: '第2話｜水やりはあげすぎ注意',
+    title: '第2話｜モンステラって何？',
     description:
-      '植物が心配で、つい水を足したくなることがあります。でも水やりは、量が多いほど良いわけではありません。土がずっと湿っていたり、鉢が重いままなら、今日は待つ日かもしれません。',
+      'アロイドの中でも人気の高いモンステラ。育てやすさ、葉の変化、代表的な種類などを、最初に見るポイントとしてまとめています。',
     createdAt: '2026-05-02T13:39:54.000Z',
-    pages: bundledPages('episode-002-overwatering', 5, 'png'),
+    pages: bundledPages('episode-002-overwatering', 6, 'png'),
   },
   {
     id: 'episode-001-why-plants-die',
