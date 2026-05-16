@@ -323,18 +323,18 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
             <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[var(--zmk-bg-card)] to-transparent" />
             <button
               type="button"
-              onClick={() => scrollToPage(pageIndex - 1)}
-              disabled={pageIndex === 0}
-              aria-label="前のページ"
+              onClick={() => scrollToPage(pageIndex + 1)}
+              disabled={pageIndex >= selectedWork.pages.length - 1}
+              aria-label="次のページ"
               className="absolute left-2 top-[calc(50%-1.25rem)] z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/94 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
             >
               ←
             </button>
             <button
               type="button"
-              onClick={() => scrollToPage(pageIndex + 1)}
-              disabled={pageIndex >= selectedWork.pages.length - 1}
-              aria-label="次のページ"
+              onClick={() => scrollToPage(pageIndex - 1)}
+              disabled={pageIndex === 0}
+              aria-label="前のページ"
               className="absolute right-2 top-[calc(50%-1.25rem)] z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/94 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
             >
               →
