@@ -198,6 +198,25 @@ a {
 html.dark .zmk-button { background: #10291e; color: #f7fbf1; border-color: var(--zmk-border-strong); }
 html.dark .zmk-button-primary { background: #d9ffd8; color: #07110c; border-color: #d9ffd8; }
 
+.zmk-preorder-input {
+  min-height: 3rem;
+  width: 100%;
+  border: 1px solid var(--zmk-border);
+  background: color-mix(in srgb, var(--zmk-bg-card) 94%, white);
+  color: var(--zmk-ink);
+  padding: 0.75rem 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  outline: none;
+}
+.zmk-preorder-input:focus {
+  border-color: var(--zmk-border-strong);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--zmk-ink) 12%, transparent);
+}
+.zmk-preorder-input::placeholder { color: color-mix(in srgb, var(--zmk-ink-soft) 72%, transparent); }
+html.dark .zmk-preorder-input { background: #07110c; }
+
 .zmk-pill {
   display: inline-flex;
   align-items: center;

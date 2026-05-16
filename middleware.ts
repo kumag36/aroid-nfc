@@ -19,6 +19,8 @@ const protectedPrefixes = [
   '/api/nfc/individuals/care',
   '/api/nfc/individuals/photos',
   '/api/nfc/verify',
+  '/api/preorder',
+  '/preorder',
 ]
 
 const publicOpenPaths = ['/', '/_not-found', '/shokuchudoku', '/lab', '/music', '/museum', '/legal']
@@ -191,5 +193,7 @@ export const config = {
     '/api/nfc/individuals/:path*',
     '/api/nfc/individuals/care/:path*',
     '/api/nfc/verify/:path*',
+    '/api/preorder/:path*',
+    '/preorder/:path*',
   ],
 }

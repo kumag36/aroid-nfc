@@ -31,7 +31,7 @@ export default function AdminLoginForm() {
       return
     }
 
-    router.replace(next.startsWith('/admin') ? next : '/admin')
+    router.replace(next.startsWith('/') && !next.startsWith('//') ? next : '/admin')
     router.refresh()
   }
 

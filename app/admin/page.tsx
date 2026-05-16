@@ -13,6 +13,7 @@ const links = [
   ['図鑑管理', '/dictionary/admin/images'],
   ['タグ管理', '/admin/tags'],
   ['NFC管理', '/admin/nfc'],
+  ['予約オーダー（非公開）', '/preorder'],
   ['物置管理', '/music/admin'],
   ['感染度チェック兼認定審査', 'https://zamakuri.jp/shokuchudoku'],
   ['ショップ情報', '/about'],
