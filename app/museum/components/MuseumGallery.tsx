@@ -31,9 +31,13 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
   const [isLoading, setIsLoading] = useState(initialWorks.length === 0)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [reloadKey, setReloadKey] = useState(0)
+  const [fullscreenIndex, setFullscreenIndex] = useState<number | null>(null)
+  const [fullscreenScrollTarget, setFullscreenScrollTarget] = useState<number | null>(null)
   const readerRef = useRef<HTMLDivElement | null>(null)
+  const fullscreenReaderRef = useRef<HTMLDivElement | null>(null)
   const workListRef = useRef<HTMLDivElement | null>(null)
   const readerTopRef = useRef<HTMLDivElement | null>(null)
+  const isFullscreenOpen = fullscreenIndex !== null
 
   useEffect(() => {
     let ignore = false
@@ -87,8 +91,34 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
     readerRef.current?.scrollTo({ left: 0, behavior: 'instant' })
   }, [selectedId])
 
+  useEffect(() => {
+    if (!isFullscreenOpen) return
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = originalOverflow
+    }
+  }, [isFullscreenOpen])
+
+  useEffect(() => {
+    if (fullscreenIndex === null || fullscreenScrollTarget === null) return
+
+    window.requestAnimationFrame(() => {
+      const item = fullscreenReaderRef.current?.children.item(fullscreenScrollTarget) as HTMLElement | null
+      item?.scrollIntoView({
+        behavior: 'instant',
+        block: readingMode === 'vertical' ? 'start' : 'nearest',
+        inline: readingMode === 'horizontal' ? 'center' : 'nearest',
+      })
+      setFullscreenScrollTarget(null)
+    })
+  }, [fullscreenIndex, fullscreenScrollTarget, readingMode])
+
   function selectWork(id: string) {
     setPageIndex(0)
+    setFullscreenIndex(null)
+    setFullscreenScrollTarget(null)
     setSelectedId(id)
   }
 
@@ -109,6 +139,20 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
     setPageIndex(nextIndex)
   }
 
+  function openFullscreen(index: number) {
+    setPageIndex(index)
+    setFullscreenIndex(index)
+    setFullscreenScrollTarget(index)
+  }
+
+  function closeFullscreen() {
+    if (fullscreenIndex !== null) {
+      setPageIndex(fullscreenIndex)
+    }
+    setFullscreenScrollTarget(null)
+    setFullscreenIndex(null)
+  }
+
   function updatePageIndexFromScroll() {
     const reader = readerRef.current
     if (!reader) return
@@ -124,6 +168,32 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
     }, 0)
 
     setPageIndex(nextIndex)
+  }
+
+  function updateFullscreenIndexFromScroll(axis: 'horizontal' | 'vertical') {
+    const reader = fullscreenReaderRef.current
+    if (!reader) return
+
+    const readerCenter =
+      axis === 'horizontal'
+        ? reader.scrollLeft + reader.clientWidth / 2
+        : reader.scrollTop + reader.clientHeight / 2
+    const children = Array.from(reader.children) as HTMLElement[]
+    const nextIndex = children.reduce((closestIndex, child, index) => {
+      const childCenter =
+        axis === 'horizontal'
+          ? child.offsetLeft + child.clientWidth / 2
+          : child.offsetTop + child.clientHeight / 2
+      const closestChild = children[closestIndex]
+      const closestCenter =
+        axis === 'horizontal'
+          ? closestChild.offsetLeft + closestChild.clientWidth / 2
+          : closestChild.offsetTop + closestChild.clientHeight / 2
+
+      return Math.abs(childCenter - readerCenter) < Math.abs(closestCenter - readerCenter) ? index : closestIndex
+    }, 0)
+
+    setFullscreenIndex(nextIndex)
   }
 
   function scrollToReaderTop() {
@@ -281,8 +351,9 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
                   <img
                     src={page.url}
                     alt={`${selectedWork.title} ${index + 1}ページ`}
-                    className="h-full w-full object-contain"
+                    className="h-full w-full cursor-zoom-in object-contain"
                     loading={index === 0 ? 'eager' : 'lazy'}
+                    onClick={() => openFullscreen(index)}
                   />
                 </figure>
               ))}
@@ -308,8 +379,9 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
                   <img
                     src={page.url}
                     alt={`${selectedWork.title} ${index + 1}ページ`}
-                    className="block h-auto w-full"
+                    className="block h-auto w-full cursor-zoom-in"
                     loading={index === 0 ? 'eager' : 'lazy'}
+                    onClick={() => openFullscreen(index)}
                   />
                 </figure>
               ))}
@@ -337,6 +409,52 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
               <button type="button" onClick={() => changeReadingMode('horizontal')} className="min-h-10 rounded-full bg-[var(--zmk-ink)] text-xs font-black text-[var(--zmk-bg)]">
                 横読み
               </button>
+            </div>
+          ) : null}
+          {fullscreenIndex !== null ? (
+            <div className="fixed inset-0 z-[80] bg-black">
+              <div className="pointer-events-none fixed left-3 top-3 z-[90] rounded-full bg-black/55 px-3 py-1 text-xs font-bold text-white/82">
+                {fullscreenIndex + 1}/{selectedWork.pages.length}
+              </div>
+              {readingMode === 'horizontal' ? (
+                <div
+                  ref={fullscreenReaderRef}
+                  onScroll={() => updateFullscreenIndexFromScroll('horizontal')}
+                  className="flex h-dvh snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth"
+                >
+                  {selectedWork.pages.map((page, index) => (
+                    <figure key={`${page.path}-fullscreen`} className="flex h-dvh w-screen shrink-0 snap-center items-center justify-center bg-black">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={page.url}
+                        alt={`${selectedWork.title} ${index + 1}ページ`}
+                        className="max-h-dvh w-screen object-contain"
+                        loading={Math.abs(index - fullscreenIndex) <= 1 ? 'eager' : 'lazy'}
+                        onClick={() => closeFullscreen()}
+                      />
+                    </figure>
+                  ))}
+                </div>
+              ) : (
+                <div
+                  ref={fullscreenReaderRef}
+                  onScroll={() => updateFullscreenIndexFromScroll('vertical')}
+                  className="h-dvh overflow-y-auto overscroll-contain bg-black"
+                >
+                  {selectedWork.pages.map((page, index) => (
+                    <figure key={`${page.path}-fullscreen`} className="bg-black">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={page.url}
+                        alt={`${selectedWork.title} ${index + 1}ページ`}
+                        className="block h-auto w-full"
+                        loading={Math.abs(index - fullscreenIndex) <= 1 ? 'eager' : 'lazy'}
+                        onClick={() => closeFullscreen()}
+                      />
+                    </figure>
+                  ))}
+                </div>
+              )}
             </div>
           ) : null}
         </article>
