@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 export type PreorderPickupMethod = 'store' | 'shipping' | 'event' | 'consult'
 
 export type PreorderRequestInput = {
+  productId: string
   customerName: string
   customerEmail?: string
   customerPhone?: string
@@ -41,6 +42,7 @@ export async function stockPreorderRequest(input: PreorderRequestInput): Promise
     id,
     created_at: new Date().toISOString(),
     status: 'new',
+    product_id: input.productId,
     customer_name: input.customerName,
     customer_email: input.customerEmail || null,
     customer_phone: input.customerPhone || null,

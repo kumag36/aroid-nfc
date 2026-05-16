@@ -1,7 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { FormEvent, useState } from 'react'
 import type { ReactNode } from 'react'
+import type { PreorderProduct } from '@/lib/preorder-products'
 
 const pickupOptions = [
   { value: 'store', label: '店頭・直接受取' },
@@ -20,7 +22,11 @@ function getValue(formData: FormData, name: string) {
   return typeof value === 'string' ? value.trim() : ''
 }
 
-export default function PreorderForm() {
+type PreorderFormProps = {
+  products: PreorderProduct[]
+}
+
+export default function PreorderForm({ products }: PreorderFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitState, setSubmitState] = useState<SubmitState>({ kind: 'idle', message: '' })
 
@@ -36,9 +42,8 @@ export default function PreorderForm() {
       customerEmail: getValue(formData, 'customerEmail'),
       customerPhone: getValue(formData, 'customerPhone'),
       instagramHandle: getValue(formData, 'instagramHandle'),
-      plantName: getValue(formData, 'plantName'),
+      productId: getValue(formData, 'productId'),
       quantity: Number(getValue(formData, 'quantity') || '1'),
-      budget: getValue(formData, 'budget'),
       pickupMethod: getValue(formData, 'pickupMethod'),
       preferredTiming: getValue(formData, 'preferredTiming'),
       note: getValue(formData, 'note'),
@@ -76,6 +81,39 @@ export default function PreorderForm() {
     <form onSubmit={handleSubmit} className="grid gap-5 border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/92 p-4 shadow-[0_24px_70px_rgba(44,106,75,0.12)] sm:p-6">
       <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
+      <fieldset className="grid gap-3">
+        <legend className="zmk-eyebrow text-[11px]">予約商品</legend>
+        <div className="grid gap-3">
+          {products.map((product, index) => (
+            <label key={product.id} className="grid cursor-pointer gap-3 border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)]/42 p-3 transition hover:border-[var(--zmk-border-strong)] sm:grid-cols-[8.5rem_minmax(0,1fr)]">
+              <div className="relative aspect-square overflow-hidden border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]">
+                <Image src={product.image} alt={product.name} fill className="object-cover" sizes="136px" priority={index === 0} />
+              </div>
+              <div className="grid min-w-0 gap-3">
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <p className="text-[11px] font-black text-[var(--zmk-gold)]">{product.category}</p>
+                    <h2 className="mt-1 text-xl font-black leading-tight">{product.name}</h2>
+                  </div>
+                  <input type="radio" name="productId" value={product.id} required className="mt-1 h-5 w-5 accent-[#123d2b]" />
+                </div>
+                <p className="text-sm font-bold leading-7 text-[var(--zmk-ink-soft)]">{product.summary}</p>
+                <div className="flex flex-wrap gap-2 text-[11px] font-black text-[var(--zmk-ink)]">
+                  <span className="border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)] px-2 py-1">{product.priceLabel}</span>
+                  <span className="border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)] px-2 py-1">{product.arrivalLabel}</span>
+                  <span className="border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)] px-2 py-1">{product.stockLabel}</span>
+                </div>
+                <ul className="grid gap-1 text-xs font-bold leading-5 text-[var(--zmk-ink-soft)]">
+                  {product.notes.map((note) => (
+                    <li key={note}>・{note}</li>
+                  ))}
+                </ul>
+              </div>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
       <div className="grid gap-4 md:grid-cols-2">
         <Field label="お名前" required>
           <input name="customerName" required className="zmk-preorder-input" autoComplete="name" />
@@ -91,18 +129,9 @@ export default function PreorderForm() {
         </Field>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_8rem]">
-        <Field label="希望する植物" required>
-          <input name="plantName" required className="zmk-preorder-input" placeholder="例: モンステラ、アロイド、ビカクシダ" />
-        </Field>
+      <div className="grid gap-4 md:grid-cols-[8rem_minmax(0,1fr)]">
         <Field label="数量">
           <input name="quantity" type="number" min="1" max="99" defaultValue="1" className="zmk-preorder-input" />
-        </Field>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2">
-        <Field label="希望予算">
-          <input name="budget" className="zmk-preorder-input" placeholder="例: 1万円前後、相談したい" />
         </Field>
         <Field label="希望時期">
           <input name="preferredTiming" className="zmk-preorder-input" placeholder="例: 今月中、イベント当日、急ぎではない" />
@@ -122,7 +151,7 @@ export default function PreorderForm() {
       </fieldset>
 
       <Field label="備考">
-        <textarea name="note" rows={5} className="zmk-preorder-input min-h-32 resize-y py-3" placeholder="探している品種、サイズ感、斑の好み、配送先地域など" />
+        <textarea name="note" rows={5} className="zmk-preorder-input min-h-32 resize-y py-3" placeholder="希望するサイズ感、斑の好み、配送先地域、確認したいことなど" />
       </Field>
 
       <div className="grid gap-3 border-t border-[var(--zmk-border)] pt-5 sm:grid-cols-[1fr_auto] sm:items-center">

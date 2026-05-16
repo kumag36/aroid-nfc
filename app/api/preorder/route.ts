@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { checkRateLimit, getRequestIp, isSameOriginRequest, readJsonBody, rejectCrossOrigin } from '@/lib/request-security'
 import { PreorderPickupMethod, stockPreorderRequest } from '@/lib/preorder-storage'
+import { findPreorderProduct } from '@/lib/preorder-products'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -10,6 +11,7 @@ type RequestBody = {
   customerEmail?: unknown
   customerPhone?: unknown
   instagramHandle?: unknown
+  productId?: unknown
   plantName?: unknown
   quantity?: unknown
   budget?: unknown
@@ -51,7 +53,9 @@ export async function POST(request: Request) {
   const customerEmail = normalizeEmail(body.customerEmail)
   const customerPhone = text(body.customerPhone, 40)
   const instagramHandle = text(body.instagramHandle, 80)
-  const plantName = text(body.plantName, 120)
+  const productId = text(body.productId, 120)
+  const product = findPreorderProduct(productId)
+  const plantName = product?.name ?? text(body.plantName, 120)
   const pickupMethod = text(body.pickupMethod, 20) as PreorderPickupMethod
 
   if (!customerName) {
@@ -62,8 +66,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, message: 'メール、電話、Instagramのいずれかを入力してください。' }, { status: 400 })
   }
 
-  if (!plantName) {
-    return NextResponse.json({ ok: false, message: '希望する植物を入力してください。' }, { status: 400 })
+  if (!product) {
+    return NextResponse.json({ ok: false, message: '予約商品を選択してください。' }, { status: 400 })
   }
 
   if (!pickupMethods.has(pickupMethod)) {
@@ -71,6 +75,7 @@ export async function POST(request: Request) {
   }
 
   const result = await stockPreorderRequest({
+    productId,
     customerName,
     customerEmail,
     customerPhone,
