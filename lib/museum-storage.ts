@@ -119,6 +119,19 @@ function getEpisodeNumber(work: MuseumWork) {
   return match ? Number(match[1]) : null
 }
 
+function sortMuseumWorks(works: MuseumWork[]) {
+  return [...works].sort((a, b) => {
+    const episodeA = getEpisodeNumber(a)
+    const episodeB = getEpisodeNumber(b)
+
+    if (episodeA && episodeB && episodeA !== episodeB) {
+      return episodeA - episodeB
+    }
+
+    return a.createdAt.localeCompare(b.createdAt)
+  })
+}
+
 function getMuseumClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -145,7 +158,7 @@ export async function listMuseumWorks(): Promise<MuseumWork[]> {
   const client = getMuseumClient()
 
   if (!client) {
-    return bundledMuseumWorks
+    return sortMuseumWorks(bundledMuseumWorks)
   }
 
   const { data: folders, error } = await client.storage.from(museumBucket).list('works', {
@@ -154,7 +167,7 @@ export async function listMuseumWorks(): Promise<MuseumWork[]> {
   })
 
   if (error || !folders) {
-    return bundledMuseumWorks
+    return sortMuseumWorks(bundledMuseumWorks)
   }
 
   const works = await Promise.all(
@@ -193,18 +206,9 @@ export async function listMuseumWorks(): Promise<MuseumWork[]> {
       }),
   )
 
-  return [...bundledMuseumWorks, ...works]
-    .filter((work): work is MuseumWork => Boolean(work && work.pages.length > 0))
-    .sort((a, b) => {
-      const episodeA = getEpisodeNumber(a)
-      const episodeB = getEpisodeNumber(b)
-
-      if (episodeA && episodeB && episodeA !== episodeB) {
-        return episodeB - episodeA
-      }
-
-      return b.createdAt.localeCompare(a.createdAt)
-    })
+  return sortMuseumWorks(
+    [...bundledMuseumWorks, ...works].filter((work): work is MuseumWork => Boolean(work && work.pages.length > 0)),
+  )
 }
 
 export function getMuseumAdminReady() {

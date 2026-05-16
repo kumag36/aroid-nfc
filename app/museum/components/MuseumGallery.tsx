@@ -221,20 +221,20 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
                 {readingMode === 'horizontal' ? `${pageIndex + 1}/${selectedWork.pages.length}` : `${selectedWork.pages.length} PAGES`}
               </p>
             </div>
-            <div className="mb-3 grid min-w-0 grid-cols-2 gap-2 rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)] p-1 md:mb-4">
-              <button
-                type="button"
-                onClick={() => changeReadingMode('horizontal')}
-                className={`min-h-10 rounded-full text-sm font-black transition ${readingMode === 'horizontal' ? 'bg-[var(--zmk-ink)] text-[var(--zmk-bg)]' : 'text-[var(--zmk-ink-soft)]'}`}
-              >
-                横スライド
-              </button>
+            <div className="mb-3 grid min-w-0 grid-cols-2 gap-1 rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-soft)]/70 p-0.5 md:mb-4 md:max-w-xs">
               <button
                 type="button"
                 onClick={() => changeReadingMode('vertical')}
-                className={`min-h-10 rounded-full text-sm font-black transition ${readingMode === 'vertical' ? 'bg-[var(--zmk-ink)] text-[var(--zmk-bg)]' : 'text-[var(--zmk-ink-soft)]'}`}
+                className={`min-h-8 rounded-full text-xs font-bold transition md:min-h-9 ${readingMode === 'vertical' ? 'bg-[var(--zmk-ink)]/88 text-[var(--zmk-bg)]' : 'text-[var(--zmk-ink-soft)]'}`}
               >
-                縦スクロール
+                縦読み
+              </button>
+              <button
+                type="button"
+                onClick={() => changeReadingMode('horizontal')}
+                className={`min-h-8 rounded-full text-xs font-bold transition md:min-h-9 ${readingMode === 'horizontal' ? 'bg-[var(--zmk-ink)]/88 text-[var(--zmk-bg)]' : 'text-[var(--zmk-ink-soft)]'}`}
+              >
+                横読み
               </button>
             </div>
             <h2 className="hidden break-words text-[1.35rem] font-black leading-tight md:block md:text-[clamp(1.8rem,4vw,3.2rem)]">
@@ -301,14 +301,14 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
             </div>
           </div>
           ) : (
-            <div className="mx-auto grid max-w-[760px] gap-3 pb-20 md:pb-4">
+            <div className="mx-auto grid max-w-[760px] gap-1 pb-20 md:gap-3 md:pb-4">
               {selectedWork.pages.map((page, index) => (
-                <figure key={page.path} className="flex h-[min(72dvh,760px)] items-center justify-center overflow-hidden border border-[#2c6a4b]/8 bg-[#fffef8] dark:border-[#d9ffd8]/12 dark:bg-[#07110c] md:h-auto">
+                <figure key={page.path} className="overflow-hidden border border-[#2c6a4b]/8 bg-[#fffef8] dark:border-[#d9ffd8]/12 dark:bg-[#07110c]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={page.url}
                     alt={`${selectedWork.title} ${index + 1}ページ`}
-                    className="h-full w-full object-contain md:h-auto"
+                    className="block h-auto w-full"
                     loading={index === 0 ? 'eager' : 'lazy'}
                   />
                 </figure>
