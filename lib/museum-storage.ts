@@ -98,9 +98,9 @@ const bundledMuseumWorks: MuseumWork[] = [
   },
   {
     id: 'episode-002-overwatering',
-    title: '第2話｜水をあげすぎる理由',
+    title: '第2話｜水やりはあげすぎ注意',
     description:
-      '植物が心配で、つい水を足したくなることがあります。でも根には水だけでなく空気も必要です。土がずっと湿っていたり、鉢が重いままなら、今日は待つ日かもしれません。',
+      '植物が心配で、つい水を足したくなることがあります。でも水やりは、量が多いほど良いわけではありません。土がずっと湿っていたり、鉢が重いままなら、今日は待つ日かもしれません。',
     createdAt: '2026-05-02T13:39:54.000Z',
     pages: bundledPages('episode-002-overwatering', 5, 'png'),
   },
