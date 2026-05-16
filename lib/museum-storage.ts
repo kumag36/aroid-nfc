@@ -102,7 +102,7 @@ const bundledMuseumWorks: MuseumWork[] = [
     description:
       'アロイドの中でも人気の高いモンステラ。育てやすさ、葉の変化、代表的な種類などを、最初に見るポイントとしてまとめています。',
     createdAt: '2026-05-02T13:39:54.000Z',
-    pages: bundledPages('episode-002-overwatering', 6, 'png'),
+    pages: bundledPages('episode-002-overwatering', 5, 'png'),
   },
   {
     id: 'episode-001-why-plants-die',
@@ -110,7 +110,7 @@ const bundledMuseumWorks: MuseumWork[] = [
     description:
       'モンステラを知る前に押さえておきたい、アロイドという植物のグループについて。サトイモ科の特徴や人気の理由を、最初の入口としてまとめています。',
     createdAt: '2026-05-01T09:55:35.000Z',
-    pages: bundledPages('episode-001-why-plants-die', 6, 'png'),
+    pages: bundledPages('episode-001-why-plants-die', 5, 'png'),
   },
 ]
 
