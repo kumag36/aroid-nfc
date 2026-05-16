@@ -106,11 +106,11 @@ const bundledMuseumWorks: MuseumWork[] = [
   },
   {
     id: 'episode-001-why-plants-die',
-    title: '第1話｜植物が枯れる本当の理由',
+    title: '第1話｜アロイドって何？',
     description:
-      '植物をすぐ枯らしてしまうと、自分には向いてないのかなと思ってしまいますよね。でも、枯れるのは才能の問題ではなく、光・水・風・土のどこかに理由があることが多いです。まず見るのは、葉の元気、土の乾き、新芽の動き。植物は言葉の代わりに、小さな変化で返事をしています。',
+      'モンステラを知る前に押さえておきたい、アロイドという植物のグループについて。サトイモ科の特徴や人気の理由を、最初の入口としてまとめています。',
     createdAt: '2026-05-01T09:55:35.000Z',
-    pages: bundledPages('episode-001-why-plants-die', 5, 'png'),
+    pages: bundledPages('episode-001-why-plants-die', 6, 'png'),
   },
 ]
 
