@@ -33,6 +33,7 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
   const [reloadKey, setReloadKey] = useState(0)
   const [fullscreenIndex, setFullscreenIndex] = useState<number | null>(null)
   const [fullscreenScrollTarget, setFullscreenScrollTarget] = useState<number | null>(null)
+  const [isFullscreenZoomed, setIsFullscreenZoomed] = useState(false)
   const readerRef = useRef<HTMLDivElement | null>(null)
   const fullscreenReaderRef = useRef<HTMLDivElement | null>(null)
   const workListRef = useRef<HTMLDivElement | null>(null)
@@ -119,12 +120,14 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
     setPageIndex(0)
     setFullscreenIndex(null)
     setFullscreenScrollTarget(null)
+    setIsFullscreenZoomed(false)
     setSelectedId(id)
   }
 
   function changeReadingMode(mode: ReadingMode) {
     setReadingMode(mode)
     setPageIndex(0)
+    setIsFullscreenZoomed(false)
     readerRef.current?.scrollTo({ left: 0, behavior: 'instant' })
     readerTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
@@ -143,6 +146,7 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
     setPageIndex(index)
     setFullscreenIndex(index)
     setFullscreenScrollTarget(index)
+    setIsFullscreenZoomed(false)
   }
 
   function closeFullscreen() {
@@ -150,7 +154,12 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
       setPageIndex(fullscreenIndex)
     }
     setFullscreenScrollTarget(null)
+    setIsFullscreenZoomed(false)
     setFullscreenIndex(null)
+  }
+
+  function toggleFullscreenZoom() {
+    setIsFullscreenZoomed((current) => !current)
   }
 
   function updatePageIndexFromScroll() {
@@ -328,7 +337,7 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
               aria-label="次のページ"
               className="absolute left-2 top-[calc(50%-1.25rem)] z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/94 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
             >
-              ←
+              <Chevron direction="left" />
             </button>
             <button
               type="button"
@@ -337,7 +346,7 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
               aria-label="前のページ"
               className="absolute right-2 top-[calc(50%-1.25rem)] z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[var(--zmk-border)] bg-[var(--zmk-bg-card)]/94 text-2xl font-black text-[var(--zmk-ink)] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur disabled:opacity-25"
             >
-              →
+              <Chevron direction="right" />
             </button>
 
             <div
@@ -416,7 +425,33 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
               <div className="pointer-events-none fixed left-3 top-3 z-[90] rounded-full bg-black/55 px-3 py-1 text-xs font-bold text-white/82">
                 {fullscreenIndex + 1}/{selectedWork.pages.length}
               </div>
-              {readingMode === 'horizontal' ? (
+              <div className="fixed right-3 top-3 z-[90] flex gap-2">
+                <button
+                  type="button"
+                  onClick={toggleFullscreenZoom}
+                  className="rounded-full bg-white/90 px-3 py-1 text-xs font-black text-black shadow-[0_10px_24px_rgba(0,0,0,0.28)]"
+                >
+                  {isFullscreenZoomed ? '縮小' : '拡大'}
+                </button>
+                <button
+                  type="button"
+                  onClick={closeFullscreen}
+                  className="rounded-full bg-white/90 px-3 py-1 text-xs font-black text-black shadow-[0_10px_24px_rgba(0,0,0,0.28)]"
+                >
+                  閉じる
+                </button>
+              </div>
+              {isFullscreenZoomed ? (
+                <div className="h-dvh overflow-auto overscroll-contain bg-black p-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={selectedWork.pages[fullscreenIndex].url}
+                    alt={`${selectedWork.title} ${fullscreenIndex + 1}ページ`}
+                    className="mx-auto block h-auto min-h-dvh w-[180vw] max-w-none cursor-zoom-out object-contain sm:w-[150vw] lg:w-[120vw]"
+                    onClick={toggleFullscreenZoom}
+                  />
+                </div>
+              ) : readingMode === 'horizontal' ? (
                 <div
                   ref={fullscreenReaderRef}
                   onScroll={() => updateFullscreenIndexFromScroll('horizontal')}
@@ -428,9 +463,9 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
                       <img
                         src={page.url}
                         alt={`${selectedWork.title} ${index + 1}ページ`}
-                        className="max-h-dvh w-screen object-contain"
+                        className="max-h-dvh w-screen cursor-zoom-in object-contain"
                         loading={Math.abs(index - fullscreenIndex) <= 1 ? 'eager' : 'lazy'}
-                        onClick={() => closeFullscreen()}
+                        onClick={toggleFullscreenZoom}
                       />
                     </figure>
                   ))}
@@ -447,9 +482,9 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
                       <img
                         src={page.url}
                         alt={`${selectedWork.title} ${index + 1}ページ`}
-                        className="block h-auto w-full"
+                        className="block h-auto w-full cursor-zoom-in"
                         loading={Math.abs(index - fullscreenIndex) <= 1 ? 'eager' : 'lazy'}
-                        onClick={() => closeFullscreen()}
+                        onClick={toggleFullscreenZoom}
                       />
                     </figure>
                   ))}
@@ -460,5 +495,18 @@ export default function MuseumGallery({ initialWorks = [] }: MuseumGalleryProps)
         </article>
       )}
     </div>
+  )
+}
+
+function Chevron({ direction }: { direction: 'left' | 'right' }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`block h-4 w-4 border-b-[3px] border-current ${
+        direction === 'left'
+          ? 'rotate-45 border-l-[3px]'
+          : '-rotate-45 border-r-[3px]'
+      }`}
+    />
   )
 }
